@@ -14,7 +14,14 @@ from skbio import OrdinationResults
 #general treatment 
 
 def quant_table(df):
-    #df = quant_df.copy()
+    """ Cleans up the quantitative table to specific format
+
+    Args:
+        df = quantitative.csv file, output from MZmine
+
+    Returns:
+        None
+    """
     df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
     df.set_index('row ID', inplace=True)
     df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
@@ -22,7 +29,16 @@ def quant_table(df):
     df.drop('row retention time', axis=1, inplace=True)
     return df
 
-def full_data(df1,df2):
+def full_data(df1, df2):
+    """ merge and format the metadata + quantitative information 
+
+    Args:
+        df1 = metadata table
+        df2 = quantitative.csv file, output from MZmine
+
+    Returns:
+        None
+    """
     df2 = df2.transpose()
     df2.index.name = 'filename'
     df2.reset_index(inplace=True)
@@ -30,18 +46,25 @@ def full_data(df1,df2):
     df = pd.merge(df1, df2, how='outer', on='filename')
     return df
 
-def top_ions(df1,df2):
-    #computes the top species for each feature
+def top_ions(df1, df2):
+    """ function to compute the top species, top filename and top species/plant part for each ion 
+    Args:
+        df1 = reduced_df, table of with index on sp/part column and features only.
+        df2 = quantitative.csv file, output from MZmine
+        Returns:
+        None
+    """
+    #computes the % for each feature
     dfA = df1.copy().transpose()
     dfA = dfA.div(dfA.sum(axis=1), axis=0)*100
     dfA.reset_index(inplace=True)
     dfA.rename(columns={'index': 'row ID'}, inplace=True)
     dfA.set_index('row ID', inplace=True)
     dfA = dfA.astype(float)
-    dfA['Top_Species'] = dfA.apply(lambda s: s.abs().nlargest(1).sum(), axis=1)
+    dfA['Feature_specificity '] = dfA.apply(lambda s: s.abs().nlargest(1).sum(), axis=1)
     dfA.reset_index(inplace=True)
     #df1 = df1.drop([0], axis=1)
-    dfA = dfA[['row ID', 'Top_Species']]
+    dfA = dfA[['row ID', 'Feature_specificity ']]
 
     #computes the top filename for each ion 
     #df2 = quant_df
@@ -70,36 +93,39 @@ def top_ions(df1,df2):
     return df
 
 
-#feature compoenent 
-
 def annotations_conditions(df):
+    """ function to classify the annotations results 
+    Args:
+        df = treated and combinend table with the gnps and insilico results
+    Returns:
+        None
+    """
     if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
         return 1
     else: 
         return 0
 
-def annotations(df):
+def annotations(df1, df2):
+    """ function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
+    Args:
+        df1 = cluster summary results file from GNPS
+        df2 = in silico dereplication results file
+        Returns:
+        None
+    """
     if only_gnps_annotations == True:
-
         #work on gnps annotations
         #df1 = annot_df.copy()
-        
         #find null values (non annotated)
         df1['Annotated'] = pd.isnull(df1['SpectrumID'])
         #lets replace the booleans 
         bD = {True: '0', False: '1'}
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
-
         #merge the information 
         df = df1[['cluster index', 'componentindex', 'Annotated_GNPS']]
         return df
-        
     else:
         #work on gnps annotations
-        df1 = pd.read_csv(clusterinfosummary, 
-                                sep='\t', 
-                                usecols=['cluster index','componentindex', 'SpectrumID'], 
-                                low_memory=False)
          #find null values (non annotated)
         df1['Annotated'] = pd.isnull(df1['SpectrumID'])
         #lets replace the booleans 
@@ -107,10 +133,6 @@ def annotations(df):
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
 
         #work on isdb annotations
-        df2 = pd.read_csv(isdb_results_filename,
-                                sep='\t', 
-                                usecols =['libname','feature_id','short_inchikey'], 
-                                low_memory=False)
         if only_ms2_annotations == True:
             df2 = df2[~df2.libname.str.contains('MS1_match', na=False)]
             df2['Annotated'] = pd.isnull(df2['short_inchikey'])
@@ -120,15 +142,22 @@ def annotations(df):
             df2['Annotated_ISDB'] = df2['Annotated'].replace(bD)
         
         #merge the information 
-        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], 
-                            right=df2[['feature_id','Annotated_ISDB']], 
-                            how='left', left_on= 'cluster index', right_on='feature_id')
-        df.drop('feature_id', axis=1, inplace=True)
-        df = df.fillna({'Annotated_ISDB':0})
-        df['annotation'] = df.apply(annotations_conditions, axis=1)
-        return df
+    df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], 
+                  right=df2[['feature_id','Annotated_ISDB']], 
+                  how='left', left_on= 'cluster index', right_on='feature_id')
+    df.drop('feature_id', axis=1, inplace=True)
+    df = df.fillna({'Annotated_ISDB':0})
+    df['annotation'] = df.apply(annotations_conditions, axis=1)
+    return df
 
 def feature_component(df1,df2):
+    """ function to calculate the feature specificity and feature component, as default both columns are added. 
+    Args:
+        df1 = specificity_df, calculated with the top_ions function 
+        df2 = annotation_df, calculated with the annotations function
+    Returns:
+        None
+    """
     if FC_component == False:
         print('Feature component not calculated')
     else:
@@ -138,15 +167,30 @@ def feature_component(df1,df2):
         df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
 
         if only_feature_specificity == True:
+            #Computation of the general specificity 
             df5 = df4.copy().groupby('filename').apply(lambda x: len(
-            x[(x['Top_Species']>= min_specificity)])).sort_values(ascending=False)
-        else:
-            df5 = df4.copy().groupby('filename').apply(lambda x: len(
-            x[(x['Top_Species']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
+                x[(x['Feature_specificity ']>= min_specificity)])).sort_values(ascending=False)
+            df5 = df5.div(df4.groupby('filename').Feature_specificity .count(), axis=0)
+            df = pd.DataFrame(df5)
+            df.rename(columns={0: 'Sample_specificity'}, inplace=True)
 
-        df5 = df5.div(df4.groupby('filename').Top_Species.count(), axis=0)
-        df = pd.DataFrame(df5)
-        df.rename(columns={0: 'FC'}, inplace=True)
+        else: 
+            #Computation of the general specificity 
+            df5 = df4.copy().groupby('filename').apply(lambda x: len(
+                x[(x['Feature_specificity ']>= min_specificity)])).sort_values(ascending=False)
+            df5 = df5.div(df4.groupby('filename').Feature_specificity .count(), axis=0)
+            df5 = pd.DataFrame(df5)
+            df5.rename(columns={0: 'Sample_specificity'}, inplace=True)
+
+            #Computation of the feature component 
+
+            df6 = df4.copy().groupby('filename').apply(lambda x: len(
+                x[(x['Feature_specificity ']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
+            df6 = df6.div(df4.groupby('filename').Feature_specificity .count(), axis=0)
+            df6 = pd.DataFrame(df6)
+            df6.rename(columns={0: 'FC'}, inplace=True)
+            df = pd.merge(df5, df6, how='left', on='filename')
+
         df = pd.merge(df3, df, how='left', on='filename')
         df = df.sort_values(by=['FC'], ascending=False)
         return df
@@ -154,6 +198,12 @@ def feature_component(df1,df2):
 #literature component
  
 def literature_report(y):
+    """ function to give a weigth to the counts of the reported compouds according to the used
+    Args:
+        df1 = Literature_component output
+    Returns:
+        None
+    """
     if (y['Reported_comp_Species'] <= min_comp_reported):
         return 1
     elif (y['Reported_comp_Species'] <= max_comp_reported & y['Reported_comp_Species'] >= min_comp_reported): 
@@ -162,6 +212,13 @@ def literature_report(y):
         return 0
 
 def literature_component(df):
+    """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
+    Args:
+        df = metadata_df
+
+    Returns:
+        None
+    """
     if LC_component == False:
         print('Literature component not calculated')
     else:
@@ -205,7 +262,6 @@ def literature_component(df):
         df['Reported_comp_Species'] = df['Reported_comp_Species'].astype(int) 
         df['LC'] = df.apply(literature_report, axis=1)
         return df
-
 
 #similarity component: 
 
@@ -336,3 +392,5 @@ def class_component(df1, df2):
         df.drop('NG', axis=1, inplace=True)
         return df
 
+def selection_changed(selection):
+    return PR.iloc[selection]
