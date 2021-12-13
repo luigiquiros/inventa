@@ -1,0 +1,255 @@
+,filename,ATTRIBUTE_Species,ATTRIBUTE_Sppart,FC,ATTRIBUTE_Family,F_Specificty,Reported_comp_Species,Reported_comp_Genus,Reported_comp_Family
+0,PF200_V601820_1E1_pos_v7_IODA.mzML,Houttuynia cordata,Houttuynia cordata PARTIE AERIENNE,0.576923077,Saururaceae,0.807692308,185,185,185
+1,PF200_V114417_1B3_pos_v7_IODA.mzML,Phyllanthus emblica,Phyllanthus emblica FRUIT,0.413043478,Phyllanthaceae,0.913043478,290,290,290
+2,PF200_V601233_1D10_pos_v7_IODA.mzML,Hamamelis virginiana,Hamamelis virginiana FEUILLE,0.333333333,Hamamelidaceae,0.666666667,234,234,234
+3,PF200_ID27678_1B9_pos_v7_IODA.mzML,Ophiopogon japonicus,Ophiopogon japonicus PARTIE AERIENNE,0.325581395,Asparagaceae,0.720930233,177,177,579
+4,PF200_V601075_1E12_pos_v7_IODA.mzML,Plantago major,Plantago major FEUILLE,0.318181818,Plantaginaceae,0.848484848,227,228,728
+5,PF200_V602414_1D11_pos_v7_IODA.mzML,Ficus carica,Ficus carica FEUILLE,0.311111111,Moraceae,0.57037037,108,108,1163
+6,PF200_V601787_1F10_pos_v7_IODA.mzML,Nigella sativa,Nigella sativa GRAINE,0.253424658,Ranunculaceae,0.589041096,156,156,612
+7,PF200_ID27671_1C4_pos_v7_IODA.mzML,Atractylodes lancea,Atractylodes lancea PARTIE AERIENNE,0.25,Asteraceae,0.4,213,213,3902
+8,PF200_V602695_2E1_pos_v7_IODA.mzML,Melissa officinalis,Melissa officinalis FEUILLE,0.25,Lamiaceae,0.416666667,188,188,1856
+9,PF200_V602431_1B7_pos_v7_IODA.mzML,Limonia acidissima,Limonia acidissima TIGE,0.242990654,Rutaceae,0.588785047,77,77,339
+10,PF200_V602707_2F1_pos_v7_IODA.mzML,Betula pendula,Betula pendula BOIS,0.231292517,Betulaceae,0.69047619,232,282,282
+11,PF200_V602382_1F1_pos_v7_IODA.mzML,Schisandra chinensis,Schisandra chinensis FRUIT,0.225490196,Schisandraceae,0.838235294,486,487,487
+12,PF200_V601891_1G10_pos_v7_IODA.mzML,Psidium guajava,Psidium guajava FEUILLE,0.217391304,Myrtaceae,0.581521739,358,358,358
+13,PF200_ID24778_1A11_pos_v7_IODA.mzML,Selenicereus grandiflorus,Selenicereus grandiflorus PARTIE AERIENNE,0.214285714,Cactaceae,0.285714286,3,3,3
+14,PF200_V112215_1A8_pos_v7_IODA.mzML,Citrus hystrix,Citrus hystrix RACINE,0.213592233,Rutaceae,0.654368932,113,113,339
+15,PF200_V601513_1E5_pos_v7_IODA.mzML,Vitellaria paradoxa,Vitellaria paradoxa TOURTEAU,0.203703704,Sapotaceae,0.555555556,12,16,16
+16,PF200_V602692_2H2_pos_v7_IODA.mzML,Tropaeolum majus,Tropaeolum majus PARTIE AERIENNE,0.196078431,Tropaeolaceae,0.450980392,10,10,10
+17,PF200_V602666_1E3_pos_v7_IODA.mzML,Withania somnifera,Withania somnifera RACINE,0.194117647,Solanaceae,0.941176471,568,568,738
+18,PF200_V602721_2G2_pos_v7_IODA.mzML,Mosla chinensis,Mosla chinensis PLANTE ENTIERE,0.191780822,Lamiaceae,0.534246575,105,105,1856
+19,PF200_V602711_2F5_pos_v7_IODA.mzML,Armoracia rusticana,Armoracia rusticana RACINE,0.1875,Brassicaceae,0.1875,26,26,306
+20,PF200_V602693_2G12_pos_v7_IODA.mzML,Calendula officinalis,Calendula officinalis SOMMITE,0.185430464,Asteraceae,0.547461369,327,327,3902
+21,PF200_Blank9DMSO_1H2O_1A1_pos_v7_IODA_H.mzML,,,0.181818182,,0.181818182,0,0,0
+22,PF200_V601374_1B8_pos_v7_IODA.mzML,Geranium robertianum,Geranium robertianum PLANTE ENTIERE,0.178571429,Geraniaceae,0.285714286,16,16,16
+23,PF200_V602417_1F3_pos_v7_IODA.mzML,Solidago virgaurea,Solidago virgaurea PARTIE AERIENNE,0.178217822,Asteraceae,0.633663366,109,109,3902
+24,PF200_StdsPF1_1A4_pos_v7_IODA.mzML,,,0.176691729,,0.547932331,0,0,0
+25,PF200_V601372_1D4_pos_v7_IODA.mzML,Euphrasia parviflora,Euphrasia parviflora PLANTE ENTIERE,0.174193548,Orobanchaceae,0.670967742,0,0,416
+26,PF200_V602722_2G3_pos_v7_IODA.mzML,Phryma leptostachya,Phryma leptostachya PLANTE ENTIERE,0.173913043,Phrymaceae,0.652173913,36,38,38
+27,PF200_V602691_2D11_pos_v7_IODA.mzML,Drosera madagascariensis,Drosera madagascariensis PARTIE AERIENNE,0.170212766,Droseraceae,0.29787234,9,9,9
+28,PF200_ID27746_2H10_pos_v7_IODA.mzML,Sedum rosea,Sedum rosea RACINE,0.17,Crassulaceae,0.75,0,0,0
+29,PF200_V601260_1D9_pos_v7_IODA.mzML,Gentiana lutea,Gentiana lutea RACINE,0.168421053,Gentianaceae,0.505263158,172,172,227
+30,PF200_V601225_1G12_pos_v7_IODA.mzML,Orthosiphon aristatus,Orthosiphon aristatus FEUILLE,0.168367347,Lamiaceae,0.505102041,95,95,1856
+31,PF200_StdsPF3_1A6_pos_v7_IODA.mzML,,,0.168032787,,0.553278689,0,0,0
+32,PF200_V602715_2F9_pos_v7_IODA.mzML,Adenophora stricta,Adenophora stricta PLANTE ENTIERE,0.166666667,Campanulaveae,0.770833333,12,12,0
+33,PF200_V601315_2C2_pos_v7_IODA.mzML,Fraxinus excelsior,Fraxinus excelsior ECORCE,0.165605096,Oleaceae,0.76433121,92,92,873
+34,PF200_V601950_1G3_pos_v7_IODA.mzML,Murraya koenigii,Murraya koenigii TIGE,0.165441176,Rutaceae,0.908088235,0,0,339
+35,PF200_V602101_1E8_pos_v7_IODA.mzML,Laurus nobilis,Laurus nobilis FEUILLE,0.16,Lauraceae,0.611428571,331,331,331
+36,PF200_V601903_1F11_pos_v7_IODA.mzML,Sambucus nigra,Sambucus nigra FLEUR,0.155172414,Adoxaceae,0.431034483,178,178,178
+37,PF200_V602720_2G1_pos_v7_IODA.mzML,Lysionotus pauciflorus,Lysionotus pauciflorus PLANTE ENTIERE,0.154185022,Gesneriaceae,0.49339207,16,16,16
+38,PF200_V602708_2F2_pos_v7_IODA.mzML,Scrophularia nodosa,Scrophularia nodosa PARTIE AERIENNE,0.152838428,Scrophulariaceae,0.580786026,104,104,238
+39,PF200_V113117_1A4_pos_v7_IODA.mzML,Alisma plantago-aquatica,Alisma plantago-aquatica PLANTE ENTIERE,0.147887324,Alismataceae,0.605633803,20,112,112
+40,PF200_V114578_1B2_pos_v7_IODA.mzML,Paeonia lactiflora,Paeonia lactiflora FLEUR,0.147058824,Paeoniaceae,0.539215686,367,630,630
+41,PF200_V601263_1F5_pos_v7_IODA.mzML,Melilotus officinalis,Melilotus officinalis PLANTE ENTIERE,0.146341463,Leguminosae,0.512195122,51,53,0
+42,PF200_V602548_2B6_pos_v7_IODA.mzML,Alpinia galanga,Alpinia galanga RHIZOME,0.143884892,Zingiberaceae,0.618705036,242,502,976
+43,PF200_V114600_1B4_pos_v7_IODA.mzML,Ribes nigrum,Ribes nigrum FRUIT,0.142857143,Grossulariaceae,0.642857143,255,255,255
+44,PF200_V601168_2C11_pos_v7_IODA.mzML,Bellis perennis,Bellis perennis FLEUR,0.142857143,Asteraceae,0.705882353,327,327,3902
+45,PF200_StdsPF2_1A5_pos_v7_IODA.mzML,,,0.141791045,,0.440298507,0,0,0
+46,PF200_L600005_2B9_pos_v7_IODA.mzML,Cetraria islandica,Cetraria islandica THALLE,0.138528139,Parmeliaceae,0.701298701,7,7,7
+47,PF200_V602724_2G5_pos_v7_IODA.mzML,Semiaquilegia adoxoides,Semiaquilegia adoxoides PLANTE ENTIERE,0.136054422,Ranunculaceae,0.408163265,21,21,612
+48,PF200_V602703_2E9_pos_v7_IODA.mzML,Angelica archangelica,Angelica archangelica RACINE,0.134680135,Apiaceae,0.616161616,196,196,1499
+49,PF200_V601164_1C9_pos_v7_IODA.mzML,Cassine quadrangulata,Cassine quadrangulata FEUILLE,0.134020619,Celastraceae,0.422680412,0,0,0
+50,PF200_ID27679_1B8_pos_v7_IODA.mzML,Paeonia lactiflora,Paeonia lactiflora RACINE,0.133928571,Paeoniaceae,0.544642857,367,630,630
+51,PF200_V601262_1C3_pos_v7_IODA.mzML,Malva sylvestris,Malva sylvestris FEUILLE,0.133333333,Malvaceae,0.133333333,41,42,354
+52,PF200_V601203_1H3_pos_v7_IODA.mzML,Prunus cerasus,Prunus cerasus FRUIT,0.131578947,Rosaceae,0.48245614,169,169,598
+53,PF200_V601151_2B2_pos_v7_IODA.mzML,Combretum micranthum,Combretum micranthum FEUILLE,0.130434783,Combretaceae,0.782608696,11,11,335
+54,PF200_V114605_1B5_pos_v7_IODA.mzML,Thymus vulgaris,Thymus vulgaris PARTIE AERIENNE,0.12962963,Lamiaceae,0.277777778,262,262,1856
+55,PF200_ID27675_1B12_pos_v7_IODA.mzML,Haematoxylum campechianum,Haematoxylum campechianum BOIS,0.127192982,Leguminosae,0.644736842,43,43,0
+56,PF200_V602706_2E12_pos_v7_IODA.mzML,Centella asiatica,Centella asiatica FEUILLE,0.126506024,Apiaceae,0.572289157,377,377,1499
+57,PF200_V601170_1G11_pos_v7_IODA.mzML,Primula veris,Primula veris FLEUR,0.123287671,Primulaceae,0.664383562,62,105,105
+58,PF200_V601808_2B1_pos_v7_IODA.mzML,Abelmoschus esculentus,Abelmoschus esculentus FRUIT,0.12,Malvaceae,0.4,51,51,354
+59,PF200_V601337_1G7_pos_v7_IODA.mzML,Salix alba,Salix alba FEUILLE,0.118181818,Salicaceae,0.613636364,51,51,51
+60,PF200_V602170_1D8_pos_v7_IODA.mzML,Fumaria officinalis,Fumaria officinalis PARTIE AERIENNE,0.117021277,Papaveraceae,0.771276596,91,91,183
+61,PF200_V601202_1F9_pos_v7_IODA.mzML,Ribes nigrum,Ribes nigrum FEUILLE,0.115942029,Grossulariaceae,0.463768116,255,255,255
+62,PF200_ID27673_1C2_pos_v7_IODA.mzML,Curcuma longa,Curcuma longa RHIZOME,0.114644351,Zingiberaceae,0.687029289,434,434,976
+63,PF200_V602710_2F4_pos_v7_IODA.mzML,Nelumbo nucifera,Nelumbo nucifera FLEUR,0.111801242,Nelumbonaceae,0.698757764,222,224,224
+64,PF200_V602363_1H6_pos_v7_IODA.mzML,Phyllanthus emblica,Phyllanthus emblica FRUIT,0.109756098,Phyllanthaceae,0.756097561,290,290,290
+65,PF200_V602705_2E11_pos_v7_IODA.mzML,Pimpinella anisum,Pimpinella anisum FRUIT,0.108527132,Apiaceae,0.705426357,121,121,1499
+66,PF200_V601270_1F12_pos_v7_IODA.mzML,Polygonum aviculare,Polygonum aviculare PLANTE ENTIERE,0.104166667,Polygonaceae,0.520833333,48,48,48
+67,PF200_V601343_1D2_pos_v7_IODA.mzML,Grindelia robusta,Grindelia robusta PLANTE ENTIERE,0.100832562,Asteraceae,0.564292322,0,0,3902
+68,PF200_V601135_2B12_pos_v7_IODA.mzML,Cyanus segetum,Cyanus segetum FLEUR,0.1,Asteraceae,0.1,0,0,3902
+69,PF200_V601157_1C5_pos_v7_IODA.mzML,Levisticum officinale,Levisticum officinale RACINE,0.1,Apiaceae,0.65,149,149,1499
+70,PF200_Blank9DMSO_1H2O_2A1_pos_v7_IODA_C.mzML,,,0.1,,0.1,0,0,0
+71,PF200_V602434_1H1_pos_v7_IODA.mzML,Momordica charantia,Momordica charantia FRUIT,0.097826087,Cucurbitaceae,0.586956522,619,621,621
+72,PF200_V601254_2C10_pos_v7_IODA.mzML,Capsella bursa-pastoris,Capsella bursa-pastoris PLANTE ENTIERE,0.097826087,Brassicaceae,0.25,8,8,306
+73,PF200_ID26647_1C10_pos_v7_IODA.mzML,Broussonetia papyrifera,Broussonetia papyrifera TIGE,0.095744681,Moraceae,0.590425532,318,318,1163
+74,PF200_V114245_1A7_pos_v7_IODA.mzML,Bombax ceiba,Bombax ceiba ECORCE,0.094117647,Malvaceae,0.411764706,82,147,354
+75,PF200_V601296_1F7_pos_v7_IODA.mzML,Rosa centifolia,Rosa centifolia FLEUR,0.094017094,Rosaceae,0.461538462,0,0,598
+76,PF200_ID24723_1B1_pos_v7_IODA.mzML,Isatis tinctoria,Isatis tinctoria PARTIE AERIENNE,0.09375,Brassicaceae,0.53125,242,242,306
+77,PF200_V601095_1G5_pos_v7_IODA.mzML,Polygala tenuifolia,Polygala tenuifolia RACINE,0.092857143,Polygalaceae,0.542857143,219,219,219
+78,PF200_V111499_1B6_pos_v7_IODA.mzML,Verbena officinalis,Verbena officinalis RACINE,0.091891892,Verbenaceae,0.432432432,117,117,117
+79,PF200_V601133_2B8_pos_v7_IODA.mzML,Crataegus monogyna,Crataegus monogyna PARTIE AERIENNE,0.090909091,Rosaceae,0.318181818,162,162,598
+80,PF200_V602699_2E5_pos_v7_IODA.mzML,Nasturtium officinale,Nasturtium officinale PARTIE AERIENNE,0.090909091,Brassicaceae,0.272727273,29,29,306
+81,PF200_Blank9DMSO_1H2O_2A1_pos_v7_IODA_F.mzML,,,0.090909091,,0.363636364,0,0,0
+82,PF200_ID23808_1C9_pos_v7_IODA.mzML,Anemarrhena asphodeloides,Anemarrhena asphodeloides RHIZOME,0.090909091,Asparagaceae,0.636363636,130,130,579
+83,PF200_V601239_1C7_pos_v7_IODA.mzML,Lycopodium clavatum,Lycopodium clavatum PLANTE ENTIERE,0.09021601,Lycopodiaceae,0.514612452,92,98,98
+84,PF200_V602719_2F12_pos_v7_IODA.mzML,Swertia leduci,Swertia leduci PLANTE ENTIERE,0.089403974,Gentianaceae,0.377483444,0,0,227
+85,PF200_V601385_1D5_pos_v7_IODA.mzML,Hedera helix,Hedera helix FEUILLE,0.089285714,Araliaceae,0.419642857,237,237,672
+86,PF200_V601857_2C3_pos_v7_IODA.mzML,Alpinia officinarum,Alpinia officinarum FEUILLE,0.089171975,Zingiberaceae,0.649681529,260,502,976
+87,PF200_V601806_1E11_pos_v7_IODA.mzML,Strobilanthes cusia,Strobilanthes cusia FEUILLE,0.088414634,Acanthaceae,0.576219512,27,27,510
+88,PF200_ID27747_2H9_pos_v7_IODA.mzML,Ophiopogon japonicus,Ophiopogon japonicus TUBERCULE,0.086956522,Asparagaceae,0.086956522,177,177,579
+89,PF200_V700059_2G6_pos_v7_IODA.mzML,Moringa oleifera,Moringa oleifera GRAINE,0.086956522,Moringaceae,0.550724638,65,65,65
+90,PF200_V602718_2F11_pos_v7_IODA.mzML,Pyrola decorata,Pyrola decorata PLANTE ENTIERE,0.085889571,Ericaceae,0.570552147,1,1,298
+91,PF200_ID27742_1A8_pos_v7_IODA.mzML,Eleutherococcus nodiflorus,Eleutherococcus nodiflorus RACINE,0.085820896,Araliaceae,0.757462687,67,435,672
+92,PF200_V601215_2C12_pos_v7_IODA.mzML,Harpagophytum zeyheri,Harpagophytum zeyheri TUBERCULE,0.085714286,Pedaliaceae,0.285714286,16,16,16
+93,PF200_ID27681_1B6_pos_v7_IODA.mzML,Silybum marianum,Silybum marianum GRAINE,0.085106383,Asteraceae,0.414893617,237,237,3902
+94,PF200_V600363_2C1_pos_v7_IODA.mzML,Aesculus hippocastanum,Aesculus hippocastanum GRAINE,0.083969466,Sapindaceae,0.267175573,234,234,234
+95,PF200_V113521_1A12_pos_v7_IODA.mzML,Lespedeza capitata,Lespedeza capitata PARTIE AERIENNE,0.083333333,Leguminosae,0.166666667,10,10,0
+96,PF200_V602716_2G11_pos_v7_IODA.mzML,Dolomiaea souliei,Dolomiaea souliei RACINE,0.082840237,Asteraceae,0.461538462,56,56,3902
+97,PF200_V602717_2F10_pos_v7_IODA.mzML,Cyrtomium fortunei,Cyrtomium fortunei RACINE,0.082061069,Dryopteridaceae,0.748091603,0,0,0
+98,PF200_V602723_2G4_pos_v7_IODA.mzML,Neopicrorhiza scrophulariiflora,Neopicrorhiza scrophulariiflora RACINE,0.079295154,Plantaginaceae,0.462555066,65,251,728
+99,PF200_ID27745_2H11_pos_v7_IODA.mzML,Atractylodes lancea,Atractylodes lancea RACINE,0.07826087,Asteraceae,0.713043478,213,213,3902
+100,PF200_V601255_2B7_pos_v7_IODA.mzML,Ononis spinosa,Ononis spinosa RACINE,0.076923077,Leguminosae,0.527972028,34,34,0
+101,PF200_V601340_1C6_pos_v7_IODA.mzML,Aloysia citriodora,Aloysia citriodora FEUILLE,0.076923077,Verbenaceae,0.186813187,0,0,117
+102,PF200_ID27744_2H12_pos_v7_IODA.mzML,Zanthoxylum bungeanum,Zanthoxylum bungeanum FRUIT,0.074018127,Rutaceae,0.86858006,71,71,339
+103,PF200_V602331_2A8_pos_v7_IODA.mzML,Citrus hystrix,Citrus hystrix FEUILLE,0.071428571,Rutaceae,0.314285714,113,113,339
+104,PF200_V601517_1H11_pos_v7_IODA.mzML,Actaea racemosa,Actaea racemosa RACINE,0.071428571,Ranunculaceae,0.593253968,435,435,612
+105,PF200_V602696_2E2_pos_v7_IODA.mzML,Aloysia citriodora,Aloysia citriodora FEUILLE,0.071428571,Verbenaceae,0.201298701,0,0,117
+106,PF200_ID24848_1A9_pos_v7_IODA.mzML,Pilosella officinarum,Pilosella officinarum PLANTE ENTIERE,0.071428571,Asteraceae,0.328571429,7,14,3902
+107,PF200_V602704_2E10_pos_v7_IODA.mzML,Angelica archangelica,Angelica archangelica FEUILLE,0.069954128,Apiaceae,0.81766055,196,196,1499
+108,PF200_V601138_2A9_pos_v7_IODA.mzML,Adiantum capillus-veneris,Adiantum capillus-veneris PLANTE ENTIERE,0.069852941,Pteridaceae,0.455882353,95,95,95
+109,PF200_V601167_2B5_pos_v7_IODA.mzML,Cola nitida,Cola nitida GRAINE,0.066666667,Malvaceae,0.233333333,11,11,354
+110,PF200_V602674_2D1_pos_v7_IODA.mzML,Agrimonia eupatoria,Agrimonia eupatoria PARTIE AERIENNE,0.06557377,Rosaceae,0.557377049,35,35,598
+111,PF200_V602690_2D10_pos_v7_IODA.mzML,Coriandrum sativum,Coriandrum sativum FRUIT,0.065116279,Apiaceae,0.344186047,239,239,1499
+112,PF200_V113443_1A6_pos_v7_IODA.mzML,Amorphophallus paeoniifolius,Amorphophallus paeoniifolius FEUILLE,0.063559322,Araceae,0.381355932,0,0,0
+113,PF200_V602687_2D9_pos_v7_IODA.mzML,Avena sativa,Avena sativa GRAINE,0.063291139,Poaceae,0.251582278,210,210,335
+114,PF200_V602688_2H3_pos_v7_IODA.mzML,Ruscus aculeatus,Ruscus aculeatus RHIZOME,0.060416667,Asparagaceae,0.885416667,125,125,579
+115,PF200_V602168_2C6_pos_v7_IODA.mzML,Camellia japonica,Camellia japonica FEUILLE,0.06,Theaceae,0.525,282,282,282
+116,PF200_V601550_1C8_pos_v7_IODA.mzML,Papaver rhoeas,Papaver rhoeas PETALE,0.06,Papaveraceae,0.36,92,92,183
+117,PF200_V601191_1C11_pos_v7_IODA.mzML,Thymus vulgaris,Thymus vulgaris PARTIE AERIENNE,0.05982906,Lamiaceae,0.282051282,262,262,1856
+118,PF200_V601154_2A10_pos_v7_IODA.mzML,Agathosma betulina,Agathosma betulina FEUILLE,0.059701493,Rutaceae,0.537313433,78,78,339
+119,PF200_ID26635_1C7_pos_v7_IODA.mzML,Althaea officinalis,Althaea officinalis PARTIE AERIENNE,0.058823529,Malvaceae,0.176470588,67,67,354
+120,PF200_V113385_1A5_pos_v7_IODA.mzML,Alpinia galanga,Alpinia galanga TIGE,0.058558559,Zingiberaceae,0.373873874,242,502,976
+121,PF200_V602700_2E6_pos_v7_IODA.mzML,Castanea sativa,Castanea sativa FEUILLE,0.058394161,Fagaceae,0.416058394,96,96,96
+122,PF200_V601132_1H12_pos_v7_IODA.mzML,Asparagus officinalis,Asparagus officinalis RACINE,0.0575,Asparagaceae,0.75,146,147,579
+123,PF200_ID24779_1A10_pos_v7_IODA.mzML,Amorphophallus paeoniifolius,Amorphophallus paeoniifolius RHIZOME,0.057142857,Araceae,0.285714286,0,0,0
+124,PF200_V602709_2F3_pos_v7_IODA.mzML,Vitis vinifera,Vitis vinifera FEUILLE,0.056818182,Vitaceae,0.176136364,1530,1530,1530
+125,PF200_V601222_1E6_pos_v7_IODA.mzML,Valeriana officinalis,Valeriana officinalis RACINE,0.05643739,Caprifoliaceae,0.622574956,683,721,721
+126,PF200_V601896_1H5_pos_v7_IODA.mzML,Passiflora edulis,Passiflora edulis PARTIE AERIENNE,0.055555556,Passifloraceae,0.055555556,130,130,130
+127,PF200_V602397_2C8_pos_v7_IODA.mzML,Andrographis paniculata,Andrographis paniculata FEUILLE,0.055555556,Acanthaceae,0.383838384,483,483,510
+128,PF200_V601413_1G9_pos_v7_IODA.mzML,Platycodon grandiflorus ,Platycodon grandiflorus  RACINE,0.055555556,Campanulaveae,0.222222222,0,0,0
+129,PF200_V602686_2D8_pos_v7_IODA.mzML,Centella asiatica,Centella asiatica FEUILLE,0.054945055,Apiaceae,0.384615385,377,377,1499
+130,PF200_V601141_2D3_pos_v7_IODA.mzML,Centaurium erythraea,Centaurium erythraea FLEUR,0.054545455,Gentianaceae,0.509090909,55,55,227
+131,PF200_V602712_2F6_pos_v7_IODA.mzML,Gymnema sylvestre,Gymnema sylvestre FEUILLE,0.053571429,Apocynaceae,0.595238095,321,321,321
+132,PF200_ID27674_1C1_pos_v7_IODA.mzML,Gardenia jasminoides,Gardenia jasminoides FRUIT,0.052805281,Rubiaceae,0.475247525,402,402,402
+133,PF200_V601333_1G6_pos_v7_IODA.mzML,Raphanus raphanistrum,Raphanus raphanistrum RACINE,0.052631579,Brassicaceae,0.842105263,1,1,306
+134,PF200_V601134_1E2_pos_v7_IODA.mzML,Inula helenium,Inula helenium RACINE,0.05078125,Asteraceae,0.21875,135,135,3902
+135,PF200_V602427_1E9_pos_v7_IODA.mzML,Verbascum thapsus,Verbascum thapsus PARTIE AERIENNE,0.049180328,Scrophulariaceae,0.278688525,134,134,238
+136,PF200_V602038_1G1_pos_v7_IODA.mzML,Rosmarinus officinalis,Rosmarinus officinalis FEUILLE,0.049122807,Lamiaceae,0.259649123,0,0,1856
+137,PF200_ID27680_1B7_pos_v7_IODA.mzML,Hebanthe eriantha,Hebanthe eriantha TIGE,0.049019608,Amaranthaceae,0.470588235,38,38,38
+138,PF200_ID27676_1B11_pos_v7_IODA.mzML,Magnolia sprengeri,Magnolia sprengeri FEUILLE,0.048780488,Magnoliaceae,0.414634146,6,6,6
+139,PF200_V602713_2F7_pos_v7_IODA.mzML,Changium smyrnioides,Changium smyrnioides RACINE,0.048543689,Apiaceae,0.475728155,1,1,1499
+140,PF200_V601208_2A12_pos_v7_IODA.mzML,Calluna vulgaris,Calluna vulgaris FLEUR,0.048192771,Ericaceae,0.192771084,74,74,298
+141,PF200_ID27672_1C3_pos_v7_IODA.mzML,Avena sativa,Avena sativa POUSSE (Plantule),0.048076923,Poaceae,0.384615385,210,210,335
+142,PF200_V601308_2C9_pos_v7_IODA.mzML,Ceratonia siliqua,Ceratonia siliqua FRUIT,0.047619048,Leguminosae,0.80952381,37,37,0
+143,PF200_V602689_2H1_pos_v7_IODA.mzML,Helichrysum italicum,Helichrysum italicum SOMMITE,0.047531993,Asteraceae,0.669104205,102,113,3902
+144,PF200_ID27677_1B10_pos_v7_IODA.mzML,Olea europaea,Olea europaea FEUILLE,0.047393365,Oleaceae,0.28436019,764,781,873
+145,PF200_V601140_1F6_pos_v7_IODA.mzML,Elettaria cardamomum,Elettaria cardamomum FRUIT,0.046511628,Zingiberaceae,0.604651163,40,40,976
+146,PF200_V601276_2A7_pos_v7_IODA.mzML,Artemisia vulgaris,Artemisia vulgaris FEUILLE,0.045977011,Asteraceae,0.149425287,224,439,3902
+147,PF200_V602303_1C1_pos_v7_IODA.mzML,Matricaria chamomilla,Matricaria chamomilla FLEUR,0.045112782,Asteraceae,0.461152882,278,279,3902
+148,PF200_V602622_2D4_pos_v7_IODA.mzML,Paeonia lactiflora,Paeonia lactiflora RACINE,0.044444444,Paeoniaceae,0.377777778,367,630,630
+149,PF200_V601493_1C10_pos_v7_IODA.mzML,Terminalia chebula,Terminalia chebula FRUIT,0.044444444,Combretaceae,0.555555556,202,324,335
+150,PF200_ID24835_1C8_pos_v7_IODA.mzML,Salvia sclarea,Salvia sclarea SOMMITE,0.043715847,Lamiaceae,0.459016393,224,729,1856
+151,PF200_V602702_2E8_pos_v7_IODA.mzML,Krameria lappacea,Krameria lappacea RACINE,0.041420118,Krameriaceae,0.856015779,35,35,35
+152,PF200_ID24776_2H6_pos_v7_IODA.mzML,Dendrobium chrysanthum,Dendrobium chrysanthum PARTIE AERIENNE,0.04048583,Orchidaceae,0.198380567,16,16,16
+153,PF200_V113520_1A9_pos_v7_IODA.mzML,Filipendula ulmaria,Filipendula ulmaria PARTIE AERIENNE,0.040322581,Rosaceae,0.346774194,38,39,598
+154,PF200_ID24773_2D6_pos_v7_IODA.mzML,Melissa officinalis,Melissa officinalis FEUILLE,0.04,Lamiaceae,0.16,188,188,1856
+155,PF200_V602395_1F2_pos_v7_IODA.mzML,Sesbania grandiflora,Sesbania grandiflora FLEUR,0.039215686,Leguminosae,0.274509804,20,20,0
+156,PF200_V114380_1B1_pos_v7_IODA.mzML,Limonia acidissima,Limonia acidissima FEUILLE,0.036956522,Rutaceae,0.569565217,77,77,339
+157,PF200_ID27682_1B5_pos_v7_IODA.mzML,Vaccinium myrtillus,Vaccinium myrtillus FRUIT,0.035714286,Ericaceae,0.285714286,223,223,298
+158,PF200_V602014_2H5_pos_v7_IODA.mzML,Solanum dulcamara,Solanum dulcamara TIGE,0.032608696,Solanaceae,0.532608696,87,87,738
+159,PF200_V602299_1H2_pos_v7_IODA.mzML,Chamaemelum nobile,Chamaemelum nobile FLEUR,0.032258065,Asteraceae,0.649769585,133,133,3902
+160,PF200_V602665_1H8_pos_v7_IODA.mzML,Melissa officinalis,Melissa officinalis PARTIE AERIENNE,0.032258065,Lamiaceae,0.322580645,188,188,1856
+161,PF200_V602698_2E4_pos_v7_IODA.mzML,Bacopa monnieri,Bacopa monnieri PARTIE AERIENNE,0.030534351,Plantaginaceae,0.480916031,138,249,728
+162,PF200_V601336_1G2_pos_v7_IODA.mzML,Salvia sclarea,Salvia sclarea SOMMITE,0.02955665,Lamiaceae,0.448275862,224,729,1856
+163,PF200_V700103_2G7_pos_v7_IODA.mzML,Chrysanthemum indicum,Chrysanthemum indicum PARTIE AERIENNE,0.029411765,Asteraceae,0.117647059,196,392,3902
+164,PF200_V601317_1E4_pos_v7_IODA.mzML,Vitex agnus castus,Vitex agnus castus FRUIT,0.028795812,Lamiaceae,0.441535777,0,0,1856
+165,PF200_ID26638_1C6_pos_v7_IODA.mzML,Arctium lappa,Arctium lappa PARTIE AERIENNE,0.027027027,Asteraceae,0.745945946,242,242,3902
+166,PF200_V602194_1C12_pos_v7_IODA.mzML,Terminalia catappa,Terminalia catappa FEUILLE,0.027027027,Combretaceae,0.383783784,105,324,335
+167,PF200_V601245_1C2_pos_v7_IODA.mzML,Lamium album,Lamium album SOMMITE,0.026490066,Lamiaceae,0.549668874,53,53,1856
+168,PF200_V114002_1A10_pos_v7_IODA.mzML,Harungana madagascariensis,Harungana madagascariensis GRAINE,0.025641026,Hypericaceae,0.179487179,66,66,66
+169,PF200_V114365_1A11_pos_v7_IODA.mzML,Hibiscus sabdariffa,Hibiscus sabdariffa TIGE,0.025641026,Malvaceae,0.307692308,36,36,354
+170,PF200_V601326_1H7_pos_v7_IODA.mzML,Menyanthes trifoliata,Menyanthes trifoliata FEUILLE,0.025,Menyanthaceae,0.5875,43,43,43
+171,PF200_ID24719_1B4_pos_v7_IODA.mzML,Morus alba,Morus alba ECORCE,0.02484472,Moraceae,0.142857143,695,737,1163
+172,PF200_V602173_1G4_pos_v7_IODA.mzML,Salvia officinalis,Salvia officinalis PARTIE AERIENNE,0.024590164,Lamiaceae,0.114754098,505,729,1856
+173,PF200_T600024_2D5_pos_v7_IODA.mzML,Corallina officinalis,Corallina officinalis na,0.023809524,Corrallinaceae,0.952380952,21,21,0
+174,PF200_V602697_2E3_pos_v7_IODA.mzML,Pinus sylvestris,Pinus sylvestris ECORCE,0.022357724,Pinaceae,0.382113821,376,405,405
+175,PF200_V601227_1B12_pos_v7_IODA.mzML,Lavandula angustifolia,Lavandula angustifolia FLEUR,0.021276596,Lamiaceae,0.244680851,170,175,1856
+176,PF200_V602685_2B3_pos_v7_IODA.mzML,Cistus monspeliensis,Cistus monspeliensis PARTIE AERIENNE,0.020491803,Cistaceae,0.12295082,130,130,130
+177,PF200_ID24777_1A12_pos_v7_IODA.mzML,Epiphyllum oxypetalum,Epiphyllum oxypetalum PARTIE AERIENNE,0.020408163,Cactaceae,0.551020408,0,0,3
+178,PF200_V601320_2C5_pos_v7_IODA.mzML,Althaea officinalis,Althaea officinalis FEUILLE,0.019607843,Malvaceae,0.019607843,67,67,354
+179,PF200_V700055_2G8_pos_v7_IODA.mzML,Humulus lupulus,Humulus lupulus FLEUR,0.019230769,Cannabaceae,0.668269231,728,729,729
+180,PF200_ID24721_1B3_pos_v7_IODA.mzML,Andrographis paniculata,Andrographis paniculata PARTIE AERIENNE,0.016949153,Acanthaceae,0.276836158,483,483,510
+181,PF200_V601368_2B11_pos_v7_IODA.mzML,Eleutherococcus senticosus,Eleutherococcus senticosus RACINE,0.016666667,Araliaceae,0.141666667,368,435,672
+182,PF200_QCMixUNIGE_1A2_pos_v7_C.mzML,,,0.014028056,,0.086172345,0,0,0
+183,PF200_V602663_1D12_pos_v7_IODA.mzML,Hibiscus sabdariffa,Hibiscus sabdariffa CALICE,0.013888889,Malvaceae,0.305555556,36,36,354
+184,PF200_ID27748_2H8_pos_v7_IODA.mzML,Coix lacryma-jobi,Coix lacryma-jobi GRAINE,0.013043478,Poaceae,0.091304348,19,32,335
+185,PF200_V602263_2D2_pos_v7_IODA.mzML,Althaea officinalis,Althaea officinalis RACINE,0.012987013,Malvaceae,0.363636364,67,67,354
+186,PF200_V601274_2C7_pos_v7_IODA.mzML,Artemisia absinthium,Artemisia absinthium SOMMITE,0.012814645,Asteraceae,0.748741419,215,439,3902
+187,PF200_V602685_2H4_pos_v7_IODA.mzML,Cistus monspeliensis,Cistus monspeliensis PARTIE AERIENNE,0.012676056,Cistaceae,0.191549296,130,130,130
+188,PF200_QCMixUNIGE_1A2_pos_v7_IODA_H_20211106090835.mzML,,,0.012345679,,0.148148148,0,0,0
+189,PF200_QCMixUNIGE_1A2_pos_v7_IODA_H.mzML,,,0.011450382,,0.048091603,0,0,0
+190,PF200_V601324_2A11_pos_v7_IODA.mzML,Aesculus hippocastanum,Aesculus hippocastanum FRUIT,0.011111111,Sapindaceae,0.1,234,234,234
+191,PF200_V601214_2B10_pos_v7_IODA.mzML,Achillea millefolium,Achillea millefolium SOMMITE,0.010989011,Asteraceae,0.487912088,324,357,3902
+192,PF200_QCMixUNIGE_2A2_pos_v7.mzML,,,0.010344828,,0.04137931,0,0,0
+193,PF200_V601231_1B9_pos_v7_IODA.mzML,Juniperus communis,Juniperus communis FRUIT,0.010309278,Cupressaceae,0.422680412,389,433,433
+194,PF200_QCMixUNIGE_1A2_pos_v7_A.mzML,,,0.00877193,,0.105263158,0,0,0
+195,PF200_QCMixUNIGE_2A2_pos_v7_end.mzML,,,0.004366812,,0.065502183,0,0,0
+196,PF200_Blank9DMSO_1H2O_2A1_pos_v7_IODA_E.mzML,,,0,,0.230769231,0,0,0
+197,PF200_Blank9DMSO_1H2O_1A1_pos_v7_IODA_G.mzML,,,0,,0,0,0,0
+198,PF200_QCMix_1A3_pos_v7_IODA_F.mzML,,,0,,0,0,0,0
+199,PF200_V601218_1D3_pos_v7_IODA.mzML,Taraxacum campylodes,Taraxacum campylodes RACINE,0,Asteraceae,0.714285714,87,87,3902
+200,PF200_QCMix_1A3_pos_v7_IODA_E.mzML,,,0,,0.2,0,0,0
+201,PF200_V602701_2E7_pos_v7_IODA.mzML,Echinacea angustifolia,Echinacea angustifolia PARTIE AERIENNE,0,Asteraceae,0.553571429,178,178,3902
+202,PF200_V601217_1F4_pos_v7_IODA.mzML,Cynara scolymus,Cynara scolymus FEUILLE,0,Asteraceae,0.721804511,0,0,3902
+203,PF200_V601145_1H10_pos_v7_IODA.mzML,Cichorium intybus,Cichorium intybus FEUILLE,0,Asteraceae,0,264,264,3902
+204,PF200_V601313_1B10_pos_v7_IODA.mzML,Foeniculum vulgare,Foeniculum vulgare RACINE,0,Apiaceae,0.375,416,416,1499
+205,PF200_QCMix_1A3_pos_v7_IODA_C.mzML,,,0,,0.2,0,0,0
+206,PF200_QCMix_1A3_pos_v7_IODA_B.mzML,,,0,,0,0,0,0
+207,PF200_QCMix_1A3_pos_v7_IODA_A.mzML,,,0,,0,0,0,0
+208,PF200_V601865_2B4_pos_v7_IODA.mzML,Lycium barbarum,Lycium barbarum FRUIT,0,Solanaceae,0,83,83,738
+209,PF200_V602421_2C4_pos_v7_IODA.mzML,Arctium lappa,Arctium lappa RACINE,0,Asteraceae,0.333333333,242,242,3902
+210,PF200_Blank9DMSO_1H2O_2A1_pos_v7_IODA_end.mzML,,,0,,0,0,0,0
+211,PF200_V601890_1H4_pos_v7_IODA.mzML,Physalis alkekengi,Physalis alkekengi FRUIT,0,Solanaceae,0.625,0,0,738
+212,PF200_Blank9DMSO_1H2O_2A1_pos_v7_IODA_H.mzML,,,0,,0.375,0,0,0
+213,PF200_Blank9DMSO_1H2O_2A1_pos_v7_IODA_G.mzML,,,0,,0,0,0,0
+214,PF200_V602714_2F8_pos_v7_IODA.mzML,Adenophora stricta,Adenophora stricta RACINE,0,Campanulaveae,0.1875,12,12,0
+215,PF200_V601232_1D6_pos_v7_IODA.mzML,Taraxacum campylodes,Taraxacum campylodes FEUILLE,0,Asteraceae,0.927419355,87,87,3902
+216,PF200_Blank9DMSO_1H2O_2A1_pos_v7_IODA_D.mzML,,,0,,0,0,0,0
+217,PF200_Blank9DMSO_1H2O_1A1_pos_v7_IODA_F.mzML,,,0,,0,0,0,0
+218,PF200_V700052_2G9_pos_v7_IODA.mzML,Urtica dioica,Urtica dioica FEUILLE,0,Urticaceae,0.076923077,63,63,63
+219,PF200_V602601_1E7_pos_v7_IODA.mzML,Verbena officinalis,Verbena officinalis PARTIE AERIENNE,0,Verbenaceae,0.265060241,117,117,117
+220,PF200_V602669_1H9_pos_v7_IODA.mzML,Morus alba,Morus alba FEUILLE,0,Moraceae,0.52173913,695,737,1163
+221,PF200_QCMix_2A3_pos_v7_IODA_B.mzML,,,0,,0.0625,0,0,0
+222,PF200_QCMix_1A3_pos_v7_IODA_G.mzML,,,0,,0,0,0,0
+223,PF200_V601188_1D7_pos_v7_IODA.mzML,Equisetum arvense,Equisetum arvense PLANTE ENTIERE,0,Equisetaceae,0,146,146,146
+224,PF200_Blank9DMSO_1H2O_1A1_pos_v7_IODA_B.mzML,,,0,,0,0,0,0
+225,PF200_ID24895_1C5_pos_v7_IODA.mzML,Paeonia suffruticosa,Paeonia suffruticosa TEGUMENT,0,Paeoniaceae,0.626373626,263,630,630
+226,PF200_Blank9DMSO_1H2O_1A1_pos_v7_IODA_C.mzML,,,0,,0,0,0,0
+227,PF200_V602663_2D7_pos_v7_IODA.mzML,Hibiscus sabdariffa,Hibiscus sabdariffa FLEUR,0,Malvaceae,0,36,36,354
+228,PF200_Blank9DMSO_1H2O_1A1_pos_v7_IODA_D.mzML,,,0,,0,0,0,0
+229,PF200_Blank9DMSO_1H2O_1A1_pos_v7_IODA_E.mzML,,,0,,0,0,0,0
+230,PF200_V601298_1C4_pos_v7_IODA.mzML,Lythrum salicaria,Lythrum salicaria PLANTE ENTIERE,0,Lythraceae,0.043478261,42,89,89
+231,PF200_V602609_1B11_pos_v7_IODA.mzML,Lespedeza capitata,Lespedeza capitata PARTIE AERIENNE,0,Leguminosae,0,10,10,0
+232,PF200_V602956_2G10_pos_v7_IODA.mzML,Astragalus propinquus,Astragalus propinquus RACINE,0,Leguminosae,0.111111111,31,136,0
+233,PF200_ID27743_1A7_pos_v7_IODA.mzML,Astragalus mongholicus,Astragalus mongholicus RACINE,0,Leguminosae,0.15,105,136,0
+234,PF200_Blank9DMSO_1H2O_2A1_pos_v7_IODA_B.mzML,,,0,,0,0,0,0
+235,PF200_ID24720_1B2_pos_v7_IODA.mzML,Rehmannia glutinosa,Rehmannia glutinosa RACINE,0,Plantaginaceae,0.333333333,416,416,728
+236,PF200_ID24775_2H7_pos_v7_IODA.mzML,Cymbopogon citratus,Cymbopogon citratus PLANTE ENTIERE,0,Poaceae,0,93,93,335
+237,PF200_QCMix_2A3_pos_v7_IODA_H.mzML,,,0,,0,0,0,0
+238,PF200_V601153_1F8_pos_v7_IODA.mzML,Ocimum basilicum,Ocimum basilicum FEUILLE,0,Lamiaceae,0,249,249,1856
+239,PF200_V602694_2D12_pos_v7_IODA.mzML,Melissa officinalis,Melissa officinalis FEUILLE,0,Lamiaceae,0,188,188,1856
+240,PF200_QCMix_2A3_pos_v7_IODA_G.mzML,,,0,,0,0,0,0
+241,PF200_QCMix_2A3_pos_v7_IODA_F.mzML,,,0,,0,0,0,0
+242,PF200_QCMix_2A3_pos_v7_IODA_end.mzML,,,0,,0,0,0,0
+243,PF200_QCMix_2A3_pos_v7_IODA_E.mzML,,,0,,0,0,0,0
+244,PF200_V601286_1D1_pos_v7_IODA.mzML,Glechoma hederaceae,Glechoma hederaceae PLANTE ENTIERE,0,Lamiaceae,0.725490196,0,0,1856
+245,PF200_QCMix_2A3_pos_v7_IODA_D.mzML,,,0,,0,0,0,0
+246,PF200_QCMix_2A3_pos_v7_IODA_C.mzML,,,0,,0,0,0,0
+247,PF200_V601193_1E10_pos_v7_IODA.mzML,Filipendula ulmaria,Filipendula ulmaria SOMMITE,0,Rosaceae,0.833333333,38,39,598
+248,PF200_Blank9DMSO_1H2O_1A1_pos_v7_IODA_A.mzML,,,0,,0,0,0,0
+249,PF200_QCMix_2A3_pos_v4_IODA_A.mzML,,,0,,0,0,0,0
+250,PF200_V601242_1G8_pos_v7_IODA.mzML,Rubus idaeus,Rubus idaeus FEUILLE,0,Rosaceae,0.176470588,193,193,598
+251,PF200_Blank9DMSO_1H2O_2A1_pos_v7_IODA_A.mzML,,,0,,0,0,0,0
+252,PF200_QCMix_1A3_pos_v7_IODA_D.mzML,,,0,,0,0,0,0
+253,PF200_QCMix_1A3_pos_v7_IODA_H.mzML,,,0,,0,0,0,0
