@@ -1,3 +1,27 @@
+
+#Feature component
+FC_component = True  #FC will be calculated
+min_specificity = 90  #minimun feature specificity to consider
+only_feature_specificity = False  #True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
+only_gnps_annotations = False  #only the annotations from gpns will be considered 
+only_ms2_annotations = False  #False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
+annotation_preference= 0  #Only Annotated nodes: '1' 
+                          #Only Not annotated: '0'
+
+#Literature component 
+LC_component = True  #LC will be calculated
+max_comp_reported = 40  #more than this value, the plant is considered no interesting LC =0
+min_comp_reported = 10  #less than this value, the plant is consireded very interesintg LC =1
+                        #a sample with x between both values gets a LC=0.5
+
+#Class component+
+CC_component = True  #CC will be calculated
+
+#Similarity component
+SC_component = True  #SC will be calculated
+
+# dependencies 
+
 import pandas as pd
 import numpy as np
 import zipfile
@@ -61,10 +85,10 @@ def top_ions(df1, df2):
     dfA.rename(columns={'index': 'row ID'}, inplace=True)
     dfA.set_index('row ID', inplace=True)
     dfA = dfA.astype(float)
-    dfA['Feature_specificity '] = dfA.apply(lambda s: s.abs().nlargest(1).sum(), axis=1)
+    dfA['Feature_specificity'] = dfA.apply(lambda s: s.abs().nlargest(1).sum(), axis=1)
     dfA.reset_index(inplace=True)
     #df1 = df1.drop([0], axis=1)
-    dfA = dfA[['row ID', 'Feature_specificity ']]
+    dfA = dfA[['row ID', 'Feature_specificity']]
 
     #computes the top filename for each ion 
     #df2 = quant_df
@@ -150,48 +174,46 @@ def annotations(df1, df2):
     df['annotation'] = df.apply(annotations_conditions, axis=1)
     return df
 
-def feature_component(df1,df2):
+def feature_component(df1,df2,df3):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
     Args:
         df1 = specificity_df, calculated with the top_ions function 
         df2 = annotation_df, calculated with the annotations function
+        df3 = metadata_df
     Returns:
         None
     """
     if FC_component == False:
         print('Feature component not calculated')
     else:
-        #df1 = specificity_df.copy()
-        #df2 = annotation_df.copy()
-        df3 = metadata_df[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']]
         df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
 
         if only_feature_specificity == True:
             #Computation of the general specificity 
             df5 = df4.copy().groupby('filename').apply(lambda x: len(
-                x[(x['Feature_specificity ']>= min_specificity)])).sort_values(ascending=False)
-            df5 = df5.div(df4.groupby('filename').Feature_specificity .count(), axis=0)
+                x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+            df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
             df = pd.DataFrame(df5)
             df.rename(columns={0: 'Sample_specificity'}, inplace=True)
 
         else: 
             #Computation of the general specificity 
             df5 = df4.copy().groupby('filename').apply(lambda x: len(
-                x[(x['Feature_specificity ']>= min_specificity)])).sort_values(ascending=False)
-            df5 = df5.div(df4.groupby('filename').Feature_specificity .count(), axis=0)
+                x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+            df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
             df5 = pd.DataFrame(df5)
             df5.rename(columns={0: 'Sample_specificity'}, inplace=True)
 
             #Computation of the feature component 
 
             df6 = df4.copy().groupby('filename').apply(lambda x: len(
-                x[(x['Feature_specificity ']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
-            df6 = df6.div(df4.groupby('filename').Feature_specificity .count(), axis=0)
+                x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
+            df6 = df6.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
             df6 = pd.DataFrame(df6)
             df6.rename(columns={0: 'FC'}, inplace=True)
             df = pd.merge(df5, df6, how='left', on='filename')
 
-        df = pd.merge(df3, df, how='left', on='filename')
+        df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']], df, how='left', on='filename')
         df = df.sort_values(by=['FC'], ascending=False)
         return df
 
@@ -214,7 +236,7 @@ def literature_report(y):
 def literature_component(df):
     """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
     Args:
-        df = metadata_df
+        df2 = metadata_df
 
     Returns:
         None
@@ -222,41 +244,23 @@ def literature_component(df):
     if LC_component == False:
         print('Literature component not calculated')
     else:
-        df1 = pd.read_csv('data/210715_inhouse_metadata.csv.gz',
-                       compression='gzip', 
-                       sep=',', 
-                       low_memory=False, 
-                       usecols =['organism_name','organism_taxonomy_06family', 'organism_taxonomy_08genus',
-                                 'organism_taxonomy_09species','structure_taxonomy_npclassifier_03class']).dropna()
-        df2 = metadata_df.copy()
+        LotusDB = pd.read_csv('../data/LotusDB_inhouse_metadata.csv', 
+                       sep=',').dropna()
 
         #create a set of species from the metadata table
-        set_sp = set(df2['ATTRIBUTE_Species'].dropna()) #dropna is used to erase all the QC, blanks, etc not having a species associated
+        set_sp = set(df['ATTRIBUTE_Species'].dropna()) #dropna is used to erase all the QC, blanks, etc not having a species associated
 
-        df3 = df1[df1['organism_taxonomy_09species'].isin(set_sp)] #lets use the set_sp to reduce the Lotus_DB
-        df4 = df3.copy().groupby(['organism_name']).size().reset_index(name='Reported_comp_Species')#Count the reported compounds par species
-        df5 = df3.copy().groupby(['organism_taxonomy_08genus']).size().reset_index(name='Reported_comp_Genus') #Count the reported compounds par genus
-        df6 = df3.copy().groupby(['organism_taxonomy_06family']).size().reset_index(name='Reported_comp_Family') #Count the reported compounds par family
-    
-        #merge the results in the original Lotus DB dataframe
-        LotusDB = pd.merge(df1,df6,on='organism_taxonomy_06family', how='left') 
-        LotusDB = pd.merge(LotusDB,df5,on='organism_taxonomy_08genus', how='left')
-        LotusDB = pd.merge(LotusDB,df4,on='organism_name', how='left')
-
-        #if the species are present in the Lotus DB, the number of compounds reported in the Species, Genus and Family are added. 
-
-        if family_compounds == True:
-            LotusDB_sp = pd.merge(df2, df4, how= 'left', left_on='ATTRIBUTE_Species', right_on='organism_name')
-            LotusDB_g = pd.merge(df2, df5, how= 'left', left_on='ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus')
-            df = pd.merge(LotusDB_sp,LotusDB_g[['filename', 'Reported_comp_Genus']], how= 'left', on='filename')
-            LotusDB_f = pd.merge(df2, df6, how= 'left', left_on='ATTRIBUTE_Family', right_on='organism_taxonomy_06family')
-            df = pd.merge(df,LotusDB_f[['filename', 'Reported_comp_Family']], how= 'left', on='filename')
-            df = df[['filename', 'ATTRIBUTE_Family', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Species', 'Reported_comp_Family', 'Reported_comp_Genus', 'Reported_comp_Species']]
-        else: 
-            LotusDB_sp = pd.merge(df2, df4, how= 'left', left_on='ATTRIBUTE_Species', right_on='organism_name')
-            LotusDB_g = pd.merge(df2, df5, how= 'left', left_on='ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus')
-            df = pd.merge(LotusDB_sp,LotusDB_g[['filename', 'Reported_comp_Genus']], how= 'left', on='filename') 
-            df = df[['filename', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Species', 'Reported_comp_Genus', 'Reported_comp_Species']]
+        #reduce LotusDB a sp in set 
+        LotusDB= LotusDB[LotusDB['organism_taxonomy_09species'].isin(set_sp)]
+        LotusDB = LotusDB[['organism_name',
+            'organism_taxonomy_06family', 'organism_taxonomy_08genus',
+            'organism_taxonomy_09species', 'Reported_comp_Family',
+            'Reported_comp_Genus', 'Reported_comp_Species']].drop_duplicates()
+        #LotusDB.head()
+        
+        df = pd.merge(df2[['filename', 'ATTRIBUTE_Family', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Species']],
+                LotusDB[['organism_taxonomy_09species', 'Reported_comp_Family','Reported_comp_Genus', 'Reported_comp_Species']],
+                how= 'left', left_on='ATTRIBUTE_Species', right_on='organism_taxonomy_09species')
 
         df = df.fillna(0) #assumign species not present in LotusDB the number of reported compounds is set to 0
         df['Reported_comp_Species'] = df['Reported_comp_Species'].astype(int) 
@@ -272,12 +276,19 @@ def similarity_conditions(df):
         return 0 
 
 def similarity_component(df):
+    """ function to compute the similarity component based on the MEMO matrix and machine learning unsupervised clustering methods 
+    Args:
+        df = meme matrix
+
+    Returns:
+        None
+    """
     if SC_component == False:
         print('Similarity component not calculated')
     else:
-        df2 = SC.copy()
+        df2 = df.copy()
         df2.rename(columns = {'Unnamed: 0': 'filename'}, inplace=True)
-        columns_to_model=df2.columns[1:69198] #specify the X metrics column names to be modelled (THIS CORRESPOND TO THE SIZE OF THE FEATURES)
+        columns_to_model=df2.columns[1:39121] #specify the X metrics column names to be modelled (THIS CORRESPOND TO THE SIZE OF THE FEATURES)
         df1 = df2[columns_to_model].astype(np.uint8)
     
         #specify the parameters of the individual classification algorithms
@@ -318,61 +329,79 @@ def similarity_component(df):
         #recover and print the results
         df1.reset_index(inplace=True)
         df2.reset_index(inplace=True)
-        df = pd.merge(df2,df1, how='left', left_on='index', right_on='index')
+        df = pd.merge(df1,df2, how='left', left_on='index', right_on='index')
         df = df[['filename', 'anomaly_IF', 'anomaly_LOF', 'anomaly_OCSVM']]
         df['SC'] = df.apply(similarity_conditions, axis=1)
         return df
 
 #Class component:
 
-def sirius_classes(df1,df2): 
-    df1 = specificity_df[['row ID', 'filename', 'ATTRIBUTE_Sppart']]
-    df2 = metadata_df[['filename', 'ATTRIBUTE_Species']]
+def sirius_classes(df1,df2,df3): 
+    """ function to find the chemical classes proposed by sirius and assign them to a specific species based on the top specificity of the feature
+    Args:
+        df1 = specificity_df
+        df2 = metadata_df
+        df3 = output from SIRIUS and Canopus 
+
+    Returns:
+        None
+    """
     # merge with top filename with iones 
-    df3 = pd.merge(left=df1, right=SIRIUS, how='left', left_on='row ID', right_on='shared name').dropna()
+    df3 = pd.merge(left=df1[['row ID', 'filename', 'ATTRIBUTE_Sppart']], right=df3, how='left', left_on='row ID', right_on='shared name').dropna()
     df3.drop('shared name', axis=1, inplace=True)
     df4 = df3[['filename', 'CAN_classe']].groupby('filename').agg(set)
-    df = pd.merge(left=df2, right=df4, how='left', left_on='filename', right_on='filename').dropna()
+    df = pd.merge(left=df2[['filename', 'ATTRIBUTE_Species']], right=df4, how='left', left_on='filename', right_on='filename').dropna()
     df.drop('ATTRIBUTE_Species', axis=1, inplace=True)
     return df
 
-def search_reported_class(df2):
-    df1 = pd.read_csv('data/210715_inhouse_metadata.csv.gz',
-                       compression='gzip', 
-                       sep=',', 
-                       low_memory=False, 
-                       usecols =['organism_name','organism_taxonomy_06family', 'organism_taxonomy_08genus',
-                                 'organism_taxonomy_09species','structure_taxonomy_npclassifier_03class']).dropna()
-    #df2 = df
+def search_reported_class(df):
+    """ function to search the reported chemical classes in each species of the set 
+    Args:
+        df2 = metadata_df
+        Returns:
+        None
+    """
+    LotusDB = pd.read_csv('../data/dataLotusDB_inhouse_metadata.csv',
+                       sep=',').dropna()
+    
     #create a set of species present in the metatada and reduce the lotus DB to it
-    set_sp = set(df2['ATTRIBUTE_Species'].dropna())
-    df3 = df1[df1['organism_taxonomy_09species'].isin(set_sp)]
+    set_sp = set(df['ATTRIBUTE_Species'].dropna())
+    LotusDB= LotusDB[LotusDB['organism_taxonomy_09species'].isin(set_sp)]
 
     #retrieve the chemical classes associated to the species and genus
-    df4 = df3[['organism_taxonomy_09species', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_09species').agg(set)
+    df4 = LotusDB[['organism_taxonomy_09species', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_09species').agg(set)
     df4.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_species'}, inplace=True)
-    df5 = df3[['organism_taxonomy_08genus', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_08genus').agg(set)
+    df5 = LotusDB[['organism_taxonomy_08genus', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_08genus').agg(set)
     df5.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
 
     #merge into a single dataframe
-    df = pd.merge(df2[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Sppart']],df4,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
+    df = pd.merge(df[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Sppart']],df4,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
     df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
     return df
 
 def is_empty(df):
+    """ function to check if the sets are empty or not 
+    Args:
+        df = Class component column CC 
+        Returns:
+        None
+    """
     if df:
         return 1 # if the column is not empty then 1, something is new in the sp &/ genus
     else:
         return 0
 
 def class_component(df1, df2):
+    """ function to compute the class component based on the possible presence of new chemical classes 
+    Args:
+        df1 = reported_classes_df 
+        df2 = sirius_classes_df
+        Returns:
+        None
+    """
     if CC_component == False:
         print ('Similarit Class component not calculated')
     else:
-        
-        #df1 = reported_classes_df
-        #df2 = sirus_classes_df
-
         #merge the both tables
         df = pd.merge(df1,df2,on='filename', how='left').dropna()
 
@@ -391,6 +420,3 @@ def class_component(df1, df2):
         df.drop('NS', axis=1, inplace=True)
         df.drop('NG', axis=1, inplace=True)
         return df
-
-def selection_changed(selection):
-    return PR.iloc[selection]
