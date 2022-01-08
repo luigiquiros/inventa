@@ -411,12 +411,5 @@ def class_component(df1, df2):
         df['New_in_genus'] = df["New_in_species"] - df["Chemical_class_reported_in_genus"]  #check if the NEW chemical classes in the species are reported in the genus
 
         #Add the weight accordingly to the results 
-        df['NS'] = df['New_in_species'].apply(is_empty)
-        df['NG'] = df['New_in_genus'].apply(is_empty)
-        
-        #get the value of the CC 
-        df['CC'] = df['NS'] + df['NG']
-        
-        df.drop('NS', axis=1, inplace=True)
-        df.drop('NG', axis=1, inplace=True)
+        df['CC'] = df['New_in_species'].apply(is_empty)
         return df
