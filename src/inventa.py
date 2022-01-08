@@ -258,7 +258,7 @@ def literature_component(df):
             'Reported_comp_Genus', 'Reported_comp_Species']].drop_duplicates()
         #LotusDB.head()
         
-        df = pd.merge(df2[['filename', 'ATTRIBUTE_Family', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Species']],
+        df = pd.merge(df[['filename', 'ATTRIBUTE_Family', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Species']],
                 LotusDB[['organism_taxonomy_09species', 'Reported_comp_Family','Reported_comp_Genus', 'Reported_comp_Species']],
                 how= 'left', left_on='ATTRIBUTE_Species', right_on='organism_taxonomy_09species')
 
@@ -357,11 +357,11 @@ def sirius_classes(df1,df2,df3):
 def search_reported_class(df):
     """ function to search the reported chemical classes in each species of the set 
     Args:
-        df2 = metadata_df
+        df = metadata_df
         Returns:
         None
     """
-    LotusDB = pd.read_csv('../data/dataLotusDB_inhouse_metadata.csv',
+    LotusDB = pd.read_csv('../data/LotusDB_inhouse_metadata.csv',
                        sep=',').dropna()
     
     #create a set of species present in the metatada and reduce the lotus DB to it
