@@ -27,7 +27,7 @@ Use the format of the metadata tables specified:
 #### Feature quantitative table
   - `quantitative_data_filename` = MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
 -if you prefer 'Peak Height', go to INVENTA > src > inventa.py and change it inside the function quand_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
--if you did export any other column, like identities, etc,  please remove manually or add the corresponding lines in the funcion quand_table(), [df.drop('name of the colum', axis=1, inplace=True)]  
+-if you did export any other column, like identities, etc,  please remove manually or add the corresponding lines in the funcion quand_table(), `df.drop('name of the colum', axis=1, inplace=True)`  
 
 #### Annotation tables 
 Normally there are columns with the header 'Unkown: number' at the very end of the quantitative table, the scrip takes care of theses columns, you do not need to erase them.  
