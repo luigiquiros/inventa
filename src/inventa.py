@@ -149,8 +149,7 @@ def annotations(df1, df2):
                 return 0
 
         df['annotation'] = df.apply(annotations_gnps, axis=1)
-        return df
-        
+
     else:
         #work on gnps annotations
         #find null values (non annotated)
@@ -188,8 +187,8 @@ def annotations(df1, df2):
                 return 0
 
         df['annotation'] = df.apply(annotations_conditions, axis=1)
-        return df
     return df
+
 
 def feature_component(df1,df2,df3):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
@@ -259,7 +258,7 @@ def literature_component(df):
         df = pd.merge(df[['filename', 'ATTRIBUTE_Family', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Species']],
                 LotusDB[['organism_taxonomy_09species', 'Reported_comp_Family','Reported_comp_Genus', 'Reported_comp_Species']],
                 how= 'left', left_on='ATTRIBUTE_Species', right_on='organism_taxonomy_09species')
-
+        df.drop('organism_taxonomy_09species', axis=1, inplace=True)
         df = df.fillna(0) #assumign species not present in LotusDB the number of reported compounds is set to 0
         df['Reported_comp_Species'] = df['Reported_comp_Species'].astype(int) 
 
@@ -273,12 +272,12 @@ def literature_component(df):
             """
             if (df['Reported_comp_Species'] <= min_comp_reported):
                 return 1
-            elif (df['Reported_comp_Species'] <= max_comp_reported & y['Reported_comp_Species'] >= min_comp_reported): 
+            elif (df['Reported_comp_Species'] <= max_comp_reported & df['Reported_comp_Species'] >= min_comp_reported): 
                 return 0.5
             else:
                 return 0
 
-    df['LC'] = df.apply(literature_report, axis=1)
+        df['LC'] = df.apply(literature_report, axis=1)
     return df
 
 #similarity component: 
@@ -296,7 +295,7 @@ def similarity_component(df):
     else:
         df2 = df.copy()
         df2.rename(columns = {'Unnamed: 0': 'filename'}, inplace=True)
-        columns_to_model=df2.columns[1:39121] #specify the X metrics column names to be modelled (THIS CORRESPOND TO THE SIZE OF THE FEATURES)
+        columns_to_model=df2.columns[1:91861] #specify the X metrics column names to be modelled (THIS CORRESPOND TO THE SIZE OF THE FEATURES)
         df1 = df2[columns_to_model].astype(np.uint8)
     
         #specify the parameters of the individual classification algorithms
