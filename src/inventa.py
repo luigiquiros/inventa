@@ -347,9 +347,10 @@ def sirius_classes(df1,df2,df3):
         None
     """
     # merge with top filename with iones 
-    df3 = pd.merge(left=df1[['row ID', 'filename', 'ATTRIBUTE_Sppart']], right=df3, how='left', left_on='row ID', right_on='shared name').dropna()
+    df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int)
+    df3 = pd.merge(left=df1[['row ID', 'filename', 'ATTRIBUTE_Sppart']], right=df3[['shared name', 'classe']], how='left', left_on='row ID', right_on='shared name').dropna()
     df3.drop('shared name', axis=1, inplace=True)
-    df4 = df3[['filename', 'CAN_classe']].groupby('filename').agg(set)
+    df4 = df3[['filename', 'classe']].groupby('filename').agg(set)
     df = pd.merge(left=df2[['filename', 'ATTRIBUTE_Species']], right=df4, how='left', left_on='filename', right_on='filename').dropna()
     df.drop('ATTRIBUTE_Species', axis=1, inplace=True)
     return df
@@ -407,7 +408,7 @@ def class_component(df1, df2):
 
         #get the difference between sets 
 
-        df['New_in_species'] = df["CAN_classe"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species
+        df['New_in_species'] = df["classe"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species
         df['New_in_genus'] = df["New_in_species"] - df["Chemical_class_reported_in_genus"]  #check if the NEW chemical classes in the species are reported in the genus
 
         #Add the weight accordingly to the results 
