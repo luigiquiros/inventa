@@ -117,18 +117,6 @@ def top_ions(df1, df2):
     return df
 
 
-def annotations_conditions(df):
-    """ function to classify the annotations results 
-    Args:
-        df = treated and combinend table with the gnps and insilico results
-    Returns:
-        None
-    """
-    if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
-        return 1
-    else: 
-        return 0
-
 def annotations(df1, df2):
     """ function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
     Args:
@@ -149,6 +137,12 @@ def annotations(df1, df2):
         df = df.fillna({'Annotated_GNPS':0})
 
         def annotations_gnps(df):
+            """ function to classify the annotations results 
+            Args:
+            df = treated and combinend table with the gnps and insilico results
+            Returns:
+            None
+            """
             if (df['Annotated_GNPS'] == '1'):
                 return 1
             else: 
@@ -180,6 +174,19 @@ def annotations(df1, df2):
                   how='left', left_on= 'cluster index', right_on='feature_id')
         df.drop('feature_id', axis=1, inplace=True)
         df = df.fillna({'Annotated_ISDB':0})
+
+        def annotations_conditions(df):
+            """ function to classify the annotations results 
+             Args:
+            df = treated and combinend table with the gnps and insilico results
+            Returns:
+            None
+            """
+            if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
+                return 1
+            else: 
+                return 0
+
         df['annotation'] = df.apply(annotations_conditions, axis=1)
         return df
     return df
@@ -218,27 +225,12 @@ def feature_component(df1,df2,df3):
             df6 = pd.DataFrame(df6)
             df6.rename(columns={0: 'FC'}, inplace=True)
             df = pd.merge(df5, df6, how='left', on='filename')
-
-        df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']], df, how='left', on='filename')
-        df = df.sort_values(by=['FC'], ascending=False)
-        return df
+            df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']], df, how='left', on='filename')
+            df = df.sort_values(by=['FC'], ascending=False)
+    return df
 
 #literature component
  
-def literature_report(y):
-    """ function to give a weigth to the counts of the reported compouds according to the used
-    Args:
-        df1 = Literature_component output
-    Returns:
-        None
-    """
-    if (y['Reported_comp_Species'] <= min_comp_reported):
-        return 1
-    elif (y['Reported_comp_Species'] <= max_comp_reported & y['Reported_comp_Species'] >= min_comp_reported): 
-        return 0.5
-    else:
-        return 0
-
 def literature_component(df):
     """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
     Args:
@@ -270,16 +262,26 @@ def literature_component(df):
 
         df = df.fillna(0) #assumign species not present in LotusDB the number of reported compounds is set to 0
         df['Reported_comp_Species'] = df['Reported_comp_Species'].astype(int) 
-        df['LC'] = df.apply(literature_report, axis=1)
-        return df
+
+        
+        def literature_report(df):
+            """ function to give a weigth to the counts of the reported compouds according to the used
+            Args:
+                df = Literature_component output
+            Returns:
+                None
+            """
+            if (df['Reported_comp_Species'] <= min_comp_reported):
+                return 1
+            elif (df['Reported_comp_Species'] <= max_comp_reported & y['Reported_comp_Species'] >= min_comp_reported): 
+                return 0.5
+            else:
+                return 0
+
+    df['LC'] = df.apply(literature_report, axis=1)
+    return df
 
 #similarity component: 
-
-def similarity_conditions(df):
-    if (df['anomaly_IF'] == -1) | (df['anomaly_LOF'] == -1) | (df['anomaly_OCSVM'] == -1):
-        return 1
-    else: 
-        return 0 
 
 def similarity_component(df):
     """ function to compute the similarity component based on the MEMO matrix and machine learning unsupervised clustering methods 
@@ -337,8 +339,15 @@ def similarity_component(df):
         df2.reset_index(inplace=True)
         df = pd.merge(df1,df2, how='left', left_on='index', right_on='index')
         df = df[['filename', 'anomaly_IF', 'anomaly_LOF', 'anomaly_OCSVM']]
-        df['SC'] = df.apply(similarity_conditions, axis=1)
-        return df
+
+        def similarity_conditions(df):
+            if (df['anomaly_IF'] == -1) | (df['anomaly_LOF'] == -1) | (df['anomaly_OCSVM'] == -1):
+                return 1
+            else: 
+                return 0 
+
+    df['SC'] = df.apply(similarity_conditions, axis=1)
+    return df
 
 #Class component:
 
@@ -386,18 +395,6 @@ def search_reported_class(df):
     df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
     return df
 
-def is_empty(df):
-    """ function to check if the sets are empty or not 
-    Args:
-        df = Class component column CC 
-        Returns:
-        None
-    """
-    if df:
-        return 1 # if the column is not empty then 1, something is new in the sp &/ genus
-    else:
-        return 0
-
 def class_component(df1, df2):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
@@ -418,5 +415,18 @@ def class_component(df1, df2):
         df['New_in_genus'] = df["New_in_species"] - df["Chemical_class_reported_in_genus"]  #check if the NEW chemical classes in the species are reported in the genus
 
         #Add the weight accordingly to the results 
+
+        def is_empty(df):
+            """ function to check if the sets are empty or not 
+        Args:
+            df = Class component column CC 
+            Returns:
+            None
+        """
+            if df:
+                return 1 # if the column is not empty then 1, something is new in the sp &/ genus
+            else:
+                return 0
+
         df['CC'] = df['New_in_species'].apply(is_empty)
-        return df
+    return df
