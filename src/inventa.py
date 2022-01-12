@@ -3,7 +3,7 @@
 FC_component = True  #FC will be calculated
 min_specificity = 90  #minimun feature specificity to consider
 only_feature_specificity = False  #True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
-only_gnps_annotations = False  #only the annotations from gpns will be considered 
+only_gnps_annotations = True #only the annotations from gpns will be considered 
 only_ms2_annotations = False  #False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
 annotation_preference= 0  #Only Annotated nodes: '1' 
                           #Only Not annotated: '0'
@@ -139,18 +139,27 @@ def annotations(df1, df2):
     """
     if only_gnps_annotations == True:
         #work on gnps annotations
-        #df1 = annot_df.copy()
         #find null values (non annotated)
         df1['Annotated'] = pd.isnull(df1['SpectrumID'])
         #lets replace the booleans 
         bD = {True: '0', False: '1'}
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
-        #merge the information 
+        #reduced
         df = df1[['cluster index', 'componentindex', 'Annotated_GNPS']]
+        df = df.fillna({'Annotated_GNPS':0})
+
+        def annotations_gnps(df):
+            if (df['Annotated_GNPS'] == '1'):
+                return 1
+            else: 
+                return 0
+
+        df['annotation'] = df.apply(annotations_gnps, axis=1)
         return df
+        
     else:
         #work on gnps annotations
-         #find null values (non annotated)
+        #find null values (non annotated)
         df1['Annotated'] = pd.isnull(df1['SpectrumID'])
         #lets replace the booleans 
         bD = {True: '0', False: '1'}
@@ -164,14 +173,15 @@ def annotations(df1, df2):
         else:
             df2['Annotated'] = pd.isnull(df2['short_inchikey'])
             df2['Annotated_ISDB'] = df2['Annotated'].replace(bD)
-        
+    
         #merge the information 
-    df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], 
+        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], 
                   right=df2[['feature_id','Annotated_ISDB']], 
                   how='left', left_on= 'cluster index', right_on='feature_id')
-    df.drop('feature_id', axis=1, inplace=True)
-    df = df.fillna({'Annotated_ISDB':0})
-    df['annotation'] = df.apply(annotations_conditions, axis=1)
+        df.drop('feature_id', axis=1, inplace=True)
+        df = df.fillna({'Annotated_ISDB':0})
+        df['annotation'] = df.apply(annotations_conditions, axis=1)
+        return df
     return df
 
 def feature_component(df1,df2,df3):
@@ -190,24 +200,20 @@ def feature_component(df1,df2,df3):
 
         if only_feature_specificity == True:
             #Computation of the general specificity 
-            df5 = df4.copy().groupby('filename').apply(lambda x: len(
-                x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+            df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
             df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
             df = pd.DataFrame(df5)
             df.rename(columns={0: 'Sample_specificity'}, inplace=True)
 
         else: 
             #Computation of the general specificity 
-            df5 = df4.copy().groupby('filename').apply(lambda x: len(
-                x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+            df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
             df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
             df5 = pd.DataFrame(df5)
             df5.rename(columns={0: 'Sample_specificity'}, inplace=True)
 
             #Computation of the feature component 
-
-            df6 = df4.copy().groupby('filename').apply(lambda x: len(
-                x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
+            df6 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
             df6 = df6.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
             df6 = pd.DataFrame(df6)
             df6.rename(columns={0: 'FC'}, inplace=True)
