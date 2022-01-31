@@ -70,6 +70,21 @@ def full_data(df1, df2):
     df = pd.merge(df1, df2, how='outer', on='filename')
     return df
 
+def reduce_df(df, metadata_df, column):
+    """ Reduce the full df to minimal info
+
+    Args:
+        df = full_df object (pandas table)
+
+    Returns:
+        reduced_df
+    """
+    reduced_df = df
+    reduced_df.set_index(column, inplace=True)
+    reduced_df = reduced_df.iloc[:,len(metadata_df.columns)-1:]
+    return reduced_df
+
+
 def top_ions(df1, df2):
     """ function to compute the top species, top filename and top species/plant part for each ion 
     Args:
