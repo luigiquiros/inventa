@@ -3,7 +3,7 @@
 FC_component = True  #FC will be calculated
 min_specificity = 90  #minimun feature specificity to consider
 only_feature_specificity = False  #True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
-only_gnps_annotations = False  #only the annotations from gpns will be considered 
+only_gnps_annotations = True #only the annotations from gpns will be considered 
 only_ms2_annotations = False  #False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
 annotation_preference= 0  #Only Annotated nodes: '1' 
                           #Only Not annotated: '0'
@@ -70,6 +70,21 @@ def full_data(df1, df2):
     df = pd.merge(df1, df2, how='outer', on='filename')
     return df
 
+def reduce_df(df, metadata_df, column):
+    """ Reduce the full df to minimal info
+
+    Args:
+        df = full_df object (pandas table)
+
+    Returns:
+        reduced_df
+    """
+    reduced_df = df
+    reduced_df.set_index(column, inplace=True)
+    reduced_df = reduced_df.iloc[:,len(metadata_df.columns)-1:]
+    return reduced_df
+
+
 def top_ions(df1, df2):
     """ function to compute the top species, top filename and top species/plant part for each ion 
     Args:
@@ -117,18 +132,6 @@ def top_ions(df1, df2):
     return df
 
 
-def annotations_conditions(df):
-    """ function to classify the annotations results 
-    Args:
-        df = treated and combinend table with the gnps and insilico results
-    Returns:
-        None
-    """
-    if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
-        return 1
-    else: 
-        return 0
-
 def annotations(df1, df2):
     """ function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
     Args:
@@ -139,18 +142,32 @@ def annotations(df1, df2):
     """
     if only_gnps_annotations == True:
         #work on gnps annotations
-        #df1 = annot_df.copy()
         #find null values (non annotated)
         df1['Annotated'] = pd.isnull(df1['SpectrumID'])
         #lets replace the booleans 
         bD = {True: '0', False: '1'}
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
-        #merge the information 
+        #reduced
         df = df1[['cluster index', 'componentindex', 'Annotated_GNPS']]
-        return df
+        df = df.fillna({'Annotated_GNPS':0})
+
+        def annotations_gnps(df):
+            """ function to classify the annotations results 
+            Args:
+            df = treated and combinend table with the gnps and insilico results
+            Returns:
+            None
+            """
+            if (df['Annotated_GNPS'] == '1'):
+                return 1
+            else: 
+                return 0
+
+        df['annotation'] = df.apply(annotations_gnps, axis=1)
+
     else:
         #work on gnps annotations
-         #find null values (non annotated)
+        #find null values (non annotated)
         df1['Annotated'] = pd.isnull(df1['SpectrumID'])
         #lets replace the booleans 
         bD = {True: '0', False: '1'}
@@ -164,15 +181,29 @@ def annotations(df1, df2):
         else:
             df2['Annotated'] = pd.isnull(df2['short_inchikey'])
             df2['Annotated_ISDB'] = df2['Annotated'].replace(bD)
-        
+    
         #merge the information 
-    df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], 
+        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], 
                   right=df2[['feature_id','Annotated_ISDB']], 
                   how='left', left_on= 'cluster index', right_on='feature_id')
-    df.drop('feature_id', axis=1, inplace=True)
-    df = df.fillna({'Annotated_ISDB':0})
-    df['annotation'] = df.apply(annotations_conditions, axis=1)
+        df.drop('feature_id', axis=1, inplace=True)
+        df = df.fillna({'Annotated_ISDB':0})
+
+        def annotations_conditions(df):
+            """ function to classify the annotations results 
+             Args:
+            df = treated and combinend table with the gnps and insilico results
+            Returns:
+            None
+            """
+            if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
+                return 1
+            else: 
+                return 0
+
+        df['annotation'] = df.apply(annotations_conditions, axis=1)
     return df
+
 
 def feature_component(df1,df2,df3):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
@@ -190,49 +221,30 @@ def feature_component(df1,df2,df3):
 
         if only_feature_specificity == True:
             #Computation of the general specificity 
-            df5 = df4.copy().groupby('filename').apply(lambda x: len(
-                x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+            df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
             df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
             df = pd.DataFrame(df5)
             df.rename(columns={0: 'Sample_specificity'}, inplace=True)
 
         else: 
             #Computation of the general specificity 
-            df5 = df4.copy().groupby('filename').apply(lambda x: len(
-                x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+            df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
             df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
             df5 = pd.DataFrame(df5)
             df5.rename(columns={0: 'Sample_specificity'}, inplace=True)
 
             #Computation of the feature component 
-
-            df6 = df4.copy().groupby('filename').apply(lambda x: len(
-                x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
+            df6 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
             df6 = df6.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
             df6 = pd.DataFrame(df6)
             df6.rename(columns={0: 'FC'}, inplace=True)
             df = pd.merge(df5, df6, how='left', on='filename')
-
-        df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']], df, how='left', on='filename')
-        df = df.sort_values(by=['FC'], ascending=False)
-        return df
+            df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']], df, how='left', on='filename')
+            df = df.sort_values(by=['FC'], ascending=False)
+    return df
 
 #literature component
  
-def literature_report(y):
-    """ function to give a weigth to the counts of the reported compouds according to the used
-    Args:
-        df1 = Literature_component output
-    Returns:
-        None
-    """
-    if (y['Reported_comp_Species'] <= min_comp_reported):
-        return 1
-    elif (y['Reported_comp_Species'] <= max_comp_reported & y['Reported_comp_Species'] >= min_comp_reported): 
-        return 0.5
-    else:
-        return 0
-
 def literature_component(df):
     """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
     Args:
@@ -261,19 +273,29 @@ def literature_component(df):
         df = pd.merge(df[['filename', 'ATTRIBUTE_Family', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Species']],
                 LotusDB[['organism_taxonomy_09species', 'Reported_comp_Family','Reported_comp_Genus', 'Reported_comp_Species']],
                 how= 'left', left_on='ATTRIBUTE_Species', right_on='organism_taxonomy_09species')
-
+        df.drop('organism_taxonomy_09species', axis=1, inplace=True)
         df = df.fillna(0) #assumign species not present in LotusDB the number of reported compounds is set to 0
         df['Reported_comp_Species'] = df['Reported_comp_Species'].astype(int) 
+
+        
+        def literature_report(df):
+            """ function to give a weigth to the counts of the reported compouds according to the used
+            Args:
+                df = Literature_component output
+            Returns:
+                None
+            """
+            if (df['Reported_comp_Species'] <= min_comp_reported):
+                return 1
+            elif (df['Reported_comp_Species'] <= max_comp_reported & df['Reported_comp_Species'] >= min_comp_reported): 
+                return 0.5
+            else:
+                return 0
+
         df['LC'] = df.apply(literature_report, axis=1)
-        return df
+    return df
 
 #similarity component: 
-
-def similarity_conditions(df):
-    if (df['anomaly_IF'] == -1) | (df['anomaly_LOF'] == -1) | (df['anomaly_OCSVM'] == -1):
-        return 1
-    else: 
-        return 0 
 
 def similarity_component(df):
     """ function to compute the similarity component based on the MEMO matrix and machine learning unsupervised clustering methods 
@@ -288,7 +310,7 @@ def similarity_component(df):
     else:
         df2 = df.copy()
         df2.rename(columns = {'Unnamed: 0': 'filename'}, inplace=True)
-        columns_to_model=df2.columns[1:39121] #specify the X metrics column names to be modelled (THIS CORRESPOND TO THE SIZE OF THE FEATURES)
+        columns_to_model=df2.columns[1:91861] #specify the X metrics column names to be modelled (THIS CORRESPOND TO THE SIZE OF THE FEATURES)
         df1 = df2[columns_to_model].astype(np.uint8)
     
         #specify the parameters of the individual classification algorithms
@@ -331,8 +353,15 @@ def similarity_component(df):
         df2.reset_index(inplace=True)
         df = pd.merge(df1,df2, how='left', left_on='index', right_on='index')
         df = df[['filename', 'anomaly_IF', 'anomaly_LOF', 'anomaly_OCSVM']]
-        df['SC'] = df.apply(similarity_conditions, axis=1)
-        return df
+
+        def similarity_conditions(df):
+            if (df['anomaly_IF'] == -1) | (df['anomaly_LOF'] == -1) | (df['anomaly_OCSVM'] == -1):
+                return 1
+            else: 
+                return 0 
+
+    df['SC'] = df.apply(similarity_conditions, axis=1)
+    return df
 
 #Class component:
 
@@ -347,9 +376,10 @@ def sirius_classes(df1,df2,df3):
         None
     """
     # merge with top filename with iones 
-    df3 = pd.merge(left=df1[['row ID', 'filename', 'ATTRIBUTE_Sppart']], right=df3, how='left', left_on='row ID', right_on='shared name').dropna()
+    df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int)
+    df3 = pd.merge(left=df1[['row ID', 'filename', 'ATTRIBUTE_Sppart']], right=df3[['shared name', 'classe']], how='left', left_on='row ID', right_on='shared name').dropna()
     df3.drop('shared name', axis=1, inplace=True)
-    df4 = df3[['filename', 'CAN_classe']].groupby('filename').agg(set)
+    df4 = df3[['filename', 'classe']].groupby('filename').agg(set)
     df = pd.merge(left=df2[['filename', 'ATTRIBUTE_Species']], right=df4, how='left', left_on='filename', right_on='filename').dropna()
     df.drop('ATTRIBUTE_Species', axis=1, inplace=True)
     return df
@@ -379,18 +409,6 @@ def search_reported_class(df):
     df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
     return df
 
-def is_empty(df):
-    """ function to check if the sets are empty or not 
-    Args:
-        df = Class component column CC 
-        Returns:
-        None
-    """
-    if df:
-        return 1 # if the column is not empty then 1, something is new in the sp &/ genus
-    else:
-        return 0
-
 def class_component(df1, df2):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
@@ -407,9 +425,22 @@ def class_component(df1, df2):
 
         #get the difference between sets 
 
-        df['New_in_species'] = df["CAN_classe"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species
+        df['New_in_species'] = df["classe"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species
         df['New_in_genus'] = df["New_in_species"] - df["Chemical_class_reported_in_genus"]  #check if the NEW chemical classes in the species are reported in the genus
 
         #Add the weight accordingly to the results 
+
+        def is_empty(df):
+            """ function to check if the sets are empty or not 
+        Args:
+            df = Class component column CC 
+            Returns:
+            None
+        """
+            if df:
+                return 1 # if the column is not empty then 1, something is new in the sp &/ genus
+            else:
+                return 0
+
         df['CC'] = df['New_in_species'].apply(is_empty)
-        return df
+    return df
