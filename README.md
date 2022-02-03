@@ -14,35 +14,46 @@ The **class component (CC)** is a score based on the presence of possible new ch
 
 The similarity component (SC) is a score based on the spectral similarity of the sample within the set. Multiple outlier detection machine learning algorithms are implemented to spot the dissimilar samples. A weight of ‘1’ is given to the sample considered anomalies in at least one detection method.
 
-### To install it:
+### Running INVENTA with Binder
+
+Binder allows to run INVENTA on the cloud with a Binder instance, which is really convenient but you need to save the parameters and results locally as these instance are shutting down after 15 min of inactivity.
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/INVENTA/main?labpath=notebooks%2FINVENTA_v7.ipynb)
+
+
+### Running INVENTA locally:
+
+#### Install the conda environment
 
 First make sure to have [anaconda](https://www.anaconda.com/products/individual) installed.
 
-#### Clone and install locally
-First clone the repository using git clone in command line:
+#### Clone the repo locally
+First clone the repository using git clone in command line. You may need to install the git package (see [here](https://www.atlassian.com/git/tutorials/install-git):
 ```
 git clone https://github.com/luigiquiros/INVENTA.git
 ```
 
 Create a new conda environment to avoid clashes:
 ```
-conda env create -f environment.yml
+conda env create -n inventa -f inventa/environment.yml
 ```
 Use this one to activate the environment: 
 ```
 conda activate inventa
 ```
 
-If you need to update the environment run
+If you need to update the environment run, make sure to run the following to keep the depencies versions
 ```
 conda env update --file environment.yml
 ```
 
-If you have an error, try instllaing scikit-bio from conda-forge before installing the package with pip:
+If you have an error, try installing `scikit-bio` from `conda-forge` before installing the package with pip:
 ```
 conda install -c conda-forge scikit-bio
 pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ memo-ms
 ```
+
+
 
 ### The format for imput tables is critical! please read carefully the following lines to asure you have the right format
 #### Metadata table format
