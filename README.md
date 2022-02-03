@@ -14,10 +14,33 @@ The **class component (CC)** is a score based on the presence of possible new ch
 
 The similarity component (SC) is a score based on the spectral similarity of the sample within the set. Multiple outlier detection machine learning algorithms are implemented to spot the dissimilar samples. A weight of ‘1’ is given to the sample considered anomalies in at least one detection method.
 
-## Usage
+### To install it:
 
-Ensure the following dependencies are installed and running: pandas, numpy, scipy, matplotlip, plotly, zipfile, lineup_widget, ipywidgets, sklearn adn skbio.
+First make sure to have [anaconda](https://www.anaconda.com/products/individual) installed.
 
+#### Clone and install locally
+A.1. First clone the repository using git clone in command line:
+```
+git clone <ssh_key or https>
+```
+
+Create a new conda environment to avoid clashes:
+```
+conda create --name inventa python
+conda activate inventa
+```
+
+Install the package locally using pip:
+```
+pip install .
+```
+
+If you have an error, try instllaing scikit-bio from conda-forge before installing the package with pip:
+```
+conda install -c conda-forge scikit-bio
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ memo-ms
+```
+### The format for imput tables is critical! please read carefully the following lines to asure you have the right format
 #### Metadata table format
 Use the format of the metadata tables specified:
     `metadata_filename`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
