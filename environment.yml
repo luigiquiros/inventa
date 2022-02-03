@@ -16,4 +16,5 @@ dependencies:
     - matplotlib==3.4.3
     - plotly==4.14.3
     - ipywidgets==7.6.5
+    - lineup_widget==4.0.0
     
