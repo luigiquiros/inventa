@@ -19,20 +19,23 @@ The similarity component (SC) is a score based on the spectral similarity of the
 First make sure to have [anaconda](https://www.anaconda.com/products/individual) installed.
 
 #### Clone and install locally
-A.1. First clone the repository using git clone in command line:
+First clone the repository using git clone in command line:
 ```
-git clone <ssh_key or https>
+git clone https://github.com/luigiquiros/INVENTA.git
 ```
 
 Create a new conda environment to avoid clashes:
 ```
-conda create --name inventa python
+conda env create -f environment.yml
+```
+Use this one to activate the environment: 
+```
 conda activate inventa
 ```
 
-Install the package locally using pip:
+If you need to update the environment run
 ```
-pip install .
+conda env update --file environment.yml
 ```
 
 If you have an error, try instllaing scikit-bio from conda-forge before installing the package with pip:
@@ -40,6 +43,7 @@ If you have an error, try instllaing scikit-bio from conda-forge before installi
 conda install -c conda-forge scikit-bio
 pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ memo-ms
 ```
+
 ### The format for imput tables is critical! please read carefully the following lines to asure you have the right format
 #### Metadata table format
 Use the format of the metadata tables specified:
