@@ -1,0 +1,6 @@
+scikit_bio==0.5.6
+scikit_learn==1.0.2
+matplotlib==3.4.3
+plotly==4.14.3
+ipywidgets==7.6.5
+lineup_widget==4.0.0
