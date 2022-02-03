@@ -18,7 +18,7 @@ The similarity component (SC) is a score based on the spectral similarity of the
 
 Binder allows to run INVENTA on the cloud with a Binder instance, which is really convenient but you need to save the parameters and results locally as these instance are shutting down after 15 min of inactivity.
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/INVENTA/main?labpath=notebooks%2FINVENTA_v7.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/INVENTA/main?labpath=notebooks%2INVENTA_v7.ipynb)
 
 
 ### Running INVENTA locally:
