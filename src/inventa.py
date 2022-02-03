@@ -25,6 +25,7 @@ SC_component = True  #SC will be calculated
 import pandas as pd
 import numpy as np
 import zipfile
+import os
 
 from sklearn.metrics import pairwise_distances
 from sklearn.neighbors import LocalOutlierFactor
@@ -47,7 +48,6 @@ def quant_table(df):
         None
     """
     df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
-    df.set_index('row ID', inplace=True)
     df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
     df.drop('row m/z', axis=1, inplace=True)
     df.drop('row retention time', axis=1, inplace=True)
@@ -68,6 +68,24 @@ def full_data(df1, df2):
     df2.reset_index(inplace=True)
     df2.set_index('filename', inplace=True)
     df = pd.merge(df1, df2, how='outer', on='filename')
+    return df
+
+def drop_samples_based_on_string(df,list_of_strings_for_QC_Blank_filter,column):
+    """ drop samples based on string 
+
+    Args:
+        pd dataframe
+        list of string
+
+    Returns:
+        pd dataframe
+    """
+    print(df.shape)
+    for string in list_of_strings_for_QC_Blank_filter:
+        df = df[~df[column].str.contains(string, na=False)]
+        df = df.dropna(how = 'any', subset=[column])
+    print(df.shape)
+
     return df
 
 def reduce_df(df, metadata_df, column):
@@ -405,7 +423,7 @@ def search_reported_class(df):
     df5.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
 
     #merge into a single dataframe
-    df = pd.merge(df[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Sppart']],df4,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
+    df = pd.merge(df[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Family', 'ATTRIBUTE_Family', 'ATTRIBUTE_Sppart']],df4,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
     df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
     return df
 
@@ -444,3 +462,56 @@ def class_component(df1, df2):
 
         df['CC'] = df['New_in_species'].apply(is_empty)
     return df
+
+def process_gnps_results(gnps_folder_path):
+    """ function to compute the class component based on the possible presence of new chemical classes 
+    Args:
+        gnps_folder_path
+        Returns: pandas table (deactivated here) and path
+    """
+
+    try :
+        path = [x for x in os.listdir(gnps_folder_path+'/result_specnets_DB')][0]
+        df_annotations = pd.read_csv(gnps_folder_path+'/result_specnets_DB/'+path, sep='\t')
+        print('==================')
+        print('Classical MN job detected')
+        print('==================')
+        print('   Number of spectral library annotations in the job = '+str(df_annotations.shape[0]))
+        
+        path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID')][0]
+        #df_network = pd.read_csv(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID/'+path_networkinfo, sep='\t')
+        print('==================')
+        print('   Number of network nodes in the job = '+str(df_network.shape[0]))
+    
+    
+    except: 
+        print('==================')
+        try: 
+            path = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
+            df_annotations = pd.read_csv(gnps_folder_path+'/DB_result/'+path, sep='\t')
+            print('==================')
+            print('FBMN job detected')
+            print('==================')
+            print('   Number of spectral library annotations in job = '+str(df_annotations.shape[0]))
+            
+            path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfo_summary')][0]
+            clusterinfosummary = gnps_folder_path+'/clusterinfo_summary/'+path_networkinfo
+            df_network = pd.read_csv(clusterinfosummary, sep='\t')
+            print('==================')
+            print('   Number of network nodes in the job = '+str(df_network.shape[0]))
+            return clusterinfosummary
+
+        except:
+            path = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
+            df_annotations = pd.read_csv(gnps_folder_path+'/DB_result/'+path, sep='\t')
+            print('==================')
+            print('FBMN job detected')
+            print('==================')
+            print('   Number of spectral library annotations in job = '+str(df_annotations.shape[0]))
+            
+            path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID')][0]
+            clusterinfosummary = gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID/'+path_networkinfo
+            df_network = pd.read_csv(clusterinfosummary, sep='\t')
+            print('==================')
+            print('   Number of network nodes in the job = '+str(df_network.shape[0]))
+            return clusterinfosummary
