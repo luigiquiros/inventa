@@ -1,6 +1,8 @@
 data/all_annotations
 data/all_annotations.zip
 *_pycache_*
+src/lineup-widget
+
 
 
 # Byte-compiled / optimized / DLL files
