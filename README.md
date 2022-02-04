@@ -14,6 +14,9 @@ The **Class Component (CC)** is a score based on the presence of possible new ch
 
 The **Similarity Component (SC)** is a score based on the spectral similarity of the sample within the set. Multiple outlier detection machine learning algorithms are implemented to spot the dissimilar samples. A weight of ‘1’ is given to the sample considered anomalies in at least one detection method.
 
+The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .csv file with all the information generared along the final rank of the samples.
+
+
 ## Running INVENTA 
 
 ## A) Running INVENTA with Binder:
@@ -136,10 +139,10 @@ GO TO INVENTA > src > inventa.py and cange accordingly:
         family_compounds = False                    #True is the nomber of reported in the family should be retreived
 
 ### Class component+
-`CC_component = True  #CC will be calculated`
+        `CC_component = True  #CC will be calculated`
 
 ### Similarity component
-`SC_component = True  #SC will be calculated`
+        `SC_component = True  #SC will be calculated`
 
 
 ### ENJOY!!! 
