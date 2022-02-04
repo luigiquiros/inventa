@@ -1,0 +1,10 @@
+filename	ATTRIBUTE_Code	ATTRIBUTE_Type	ATTRIBUTE_Family	ATTRIBUTE_Genus	ATTRIBUTE_Species	ATTRIBUTE_Organe	ATTRIBUTE_Broad_organ	ATTRIBUTE_Tissue	ATTRIBUTE_Subsystem
+LQ-01-61-01_pos.mzXML	V107694	Sample	Celastraceae	Catha	Catha edulis	Leaves	photosynthetic	green tissue	aboveground
+LQ-01-61-02_pos.mzXML	V107695	Sample	Celastraceae	Catha	Catha edulis	Stems	woody vegetative	woody tissue	aboveground
+LQ-01-61-03_pos.mzXML	V107696	Sample	Celastraceae	Catha	Catha edulis	Roots	roots	root tissue	belowground
+LQ-01-61-04_pos.mzXML	V114502	Sample	Celastraceae	Catha	Catha edulis	Aerial_parts	multiple	multiple	aboveground
+LQ-01-61-05_pos.mzXML	V103080	Sample	Celastraceae	Celastrus	Celastrus orbiculatus	Stems	woody vegetative	woody tissue	aboveground
+LQ-01-61-06_pos.mzXML	V111863	Sample	Celastraceae	Celastrus	Celastrus orbiculatus	Roots	roots	root tissue	belowground
+LQ-01-61-07_pos.mzXML	V100029	Sample	Celastraceae	Celastrus	Celastrus paniculatus	Seeds	reproductive	green tissue	aboveground
+LQ-01-61-08_pos.mzXML	V105603	Sample	Celastraceae	Celastrus	Celastrus paniculatus	Leaves	photosynthetic	green tissue	aboveground
+LQ-01-61-09_pos.mzXML	V105604	Sample	Celastraceae	Celastrus	Celastrus paniculatus	Bark	woody vegetative	woody tissue	aboveground

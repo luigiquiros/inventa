@@ -22,9 +22,9 @@ Binder allows to run INVENTA on the cloud with a Binder instance, which is reall
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/INVENTA/main?labpath=/home/jovyan/notebooks%2INVENTA_v7.ipynb)
 
-### how to use Binder (in construction) 
+### how to use Binder?
 
-
+#### inputs: all the necessary tables described below can be 'drag & drop' in the folder INVENTA>data direclty in the browser
 
 
 ## B) Running INVENTA locally:
@@ -63,7 +63,7 @@ conda install -c conda-forge scikit-bio
 
 # In both cases, running INVENTA with Binder or locally, the following formats and parameters are necesary:
 
-## Checking the necessary inputs!
+## Checking the necessary inputs! 
 ### The format of the imput tables is critical!
 #### please read carefully the following lines:
 #### Metadata table:
@@ -92,6 +92,7 @@ While creating the 'metadata' there some MANDATORY headers:
     `vectorized_data_filename` : MEMO package format (https://github.com/mandelbrot-project/memo).
     `sirius_results_filename` : CANOPUS/SIRIUS format. npc_summary_network (https://bio.informatik.uni-jena.de/software/sirius/)
 
+[Examples of all these input could be found in INVENTA>format_examples]
 ## Once the input files have the right format 
 
 Drop your files in the data folder and change the names in the notebook to march them:

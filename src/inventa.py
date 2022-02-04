@@ -274,7 +274,7 @@ def literature_component(df):
     if LC_component == False:
         print('Literature component not calculated')
     else:
-        LotusDB = pd.read_csv('../data/LotusDB_inhouse_metadata.csv', 
+        LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv', 
                        sep=',').dropna()
 
         #create a set of species from the metadata table
