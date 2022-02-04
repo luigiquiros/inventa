@@ -3,16 +3,16 @@
 
 ## Description 
 
-This is a workflow to explore the potential of a set of samples to contain not previously reported compounds. It is based on the results from data treatment usign MZmine, spectral organization through Molecular Netwroking, in-silico dereplication and prediction. 
+This is a workflow to explore the potential of a set of samples to contain not previously reported compounds. It is based on the results from data treatment usign MZmine, spectral organization through Molecular Networking, in-silico dereplication and prediction. 
 It is composed of 4 independend components: 
 
-The **feature component (FC)** is a ratio that considers compounds with a specificity higher than, for instance, 90% per sample (specified by the user), and without putative annotation. Results: 1 Column with  FC ratio and 1 column with the sample specificity (ratio of peaks higher thant the specificied % wth or without annotations).
+The **Feature Component (FC)** is a ratio that considers compounds with a specificity higher than, for instance, 90% per sample (specified by the user), and without putative annotation. Results: 1 Column with  FC ratio and 1 column with the sample specificity (ratio of peaks higher thant the specificied % wth or without annotations).
 
-The **literature component (LC)** is a score based on the number of compounds reported in the literature for the taxon. The output includes one column with the LC score and at least two additional columns of metadata containing the number of reported compounds at the species and genus levels. 
+The **Literature Component (LC)** is a score based on the number of compounds reported in the literature for the taxon. The output includes one column with the LC score and at least two additional columns of metadata containing the number of reported compounds at the species and genus levels. 
 
-The **class component (CC)** is a score based on the presence of possible new chemical classes in the taxon, not previously reported before. The CC will be considered an integer ‘1’ if there are new chemical classes at the species level, and an additional ‘1’ if those new chemical classes are not present in the genus either.
+The **Class Component (CC)** is a score based on the presence of possible new chemical classes in the taxon, not previously reported before. The CC will be considered an integer ‘1’ if there are new chemical classes at the species level, and an additional ‘1’ if those new chemical classes are not present in the genus either.
 
-The similarity component (SC) is a score based on the spectral similarity of the sample within the set. Multiple outlier detection machine learning algorithms are implemented to spot the dissimilar samples. A weight of ‘1’ is given to the sample considered anomalies in at least one detection method.
+The **Similarity Component (SC)** is a score based on the spectral similarity of the sample within the set. Multiple outlier detection machine learning algorithms are implemented to spot the dissimilar samples. A weight of ‘1’ is given to the sample considered anomalies in at least one detection method.
 
 ## Running INVENTA 
 
@@ -20,14 +20,14 @@ The similarity component (SC) is a score based on the spectral similarity of the
 
 Binder allows to run INVENTA on the cloud with a Binder instance, which is really convenient but you need to save the parameters and results locally as these instance are shutting down after 15 min of inactivity.
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/INVENTA/main?labpath=/home/jovyan/notebooks%2INVENTA_v7.ipynb)
+-> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/INVENTA/main?labpath=/home/jovyan/otebooks/INVENTA_v7.ipynb) <- this may take several minutes to build Jupyter assets ... please wait.
 
 ### how to use Binder?
 
-- All the necessary tables described below can be 'drag & drop' in the folder INVENTA>data direclty in the browser, you'll find the folder in the left side.
-- The output can be found in the folder INVENTA>results as a .csv file
-- If needed, you can modify the jupyter notebook directly in the browser
-- As explain below you have to modify the inventa.py parameters inside INVENTA>src>inventa.py, this can be done as well directly in the browser.
+- All the necessary tables described below can be 'drag & drop' in the folder `data/` direclty in the browser, you'll find the folder in the left side.
+- The output can be found in the folder`results/` as a TAB separated file.
+- If needed, you can modify the jupyter notebook directly in the browser (make sure to save it locally).
+- As explain below, if needed, you can modify the `inventa.py` parameters inside `src/inventa.py`, this can be done as well directly in the browser.
 
 ## B) Running INVENTA locally:
 
@@ -38,27 +38,32 @@ First make sure to have [anaconda](https://www.anaconda.com/products/individual)
 ### Clone the repo locally
 
 First clone the repository using git clone in command line. You may need to install the git package (see [here](https://www.atlassian.com/git/tutorials/install-git)):
+
 ```
 git clone https://github.com/luigiquiros/INVENTA.git
 ```
 
 Create a new conda environment to avoid clashes:
+
 ```
 conda env create -n inventa -f inventa/environment.yml
 ```
 
 Then, activate the environment: 
+
 ```
 conda activate inventa
 ```
 
 If you need to update the environment run: 
 [make sure to run the following to keep the depencies versions]
+
 ```
 conda env update --file environment.yml
 ```
 
 If you have an error, try installing `scikit-bio` from `conda-forge` before create the environment:
+
 ```
 conda install -c conda-forge scikit-bio
 ```
@@ -74,9 +79,10 @@ The standard format from GNPS is prefered:
     `metadata`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
 
 While creating the 'metadata' there some MANDATORY headers:
+
 - `ATTRIBUTE_Species` : The species should be cleaned to uptoday recognized names, you can use the Open Tree of Life to do so (https://opentree.readthedocs.io/en/latest/readme.html).
 - `ATTRIBUTE_Organe`  : This column correpond to the part of the plant or organism.
-- the `ATTRIBUTE_Sppart` is generated in the notebook from the ATTRIBUTE_Species and ATTRIBUTE_organe colums, if you already have this column in your metadata be sure the header match properly and ignore the line in the data preparation section. 
+- `ATTRIBUTE_Sppart` is generated in the notebook from the ATTRIBUTE_Species and ATTRIBUTE_organe colums, if you already have this column in your metadata be sure the header match properly and ignore the line in the data preparation section. 
 
 #### Feature quantitative table:
 
@@ -90,11 +96,12 @@ While creating the 'metadata' there some MANDATORY headers:
 #### Other tables:
 
     `clusterinfosummary` : GNPS format as downloaded from the job.
-    `isdb_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
+    `reponderation_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
     `vectorized_data_filename` : MEMO package format (https://github.com/mandelbrot-project/memo).
     `sirius_results_filename` : CANOPUS/SIRIUS format. npc_summary_network (https://bio.informatik.uni-jena.de/software/sirius/)
 
 [Examples of all these input could be found in INVENTA>format_examples]
+
 ## Once the input files have the right format 
 
 Drop your files in the data folder and change the names in the notebook to march them:
