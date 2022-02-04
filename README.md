@@ -24,8 +24,10 @@ Binder allows to run INVENTA on the cloud with a Binder instance, which is reall
 
 ### how to use Binder?
 
-#### inputs: all the necessary tables described below can be 'drag & drop' in the folder INVENTA>data direclty in the browser
-
+- All the necessary tables described below can be 'drag & drop' in the folder INVENTA>data direclty in the browser, you'll find the folder in the left side.
+- The output can be found in the folder INVENTA>results as a .csv file
+- If needed, you can modify the jupyter notebook directly in the browser
+- As explain below you have to modify the inventa.py parameters inside INVENTA>src>inventa.py, this can be done as well directly in the browser.
 
 ## B) Running INVENTA locally:
 
