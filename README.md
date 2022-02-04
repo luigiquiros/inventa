@@ -20,6 +20,10 @@ Binder allows to run INVENTA on the cloud with a Binder instance, which is reall
 
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/INVENTA/main?labpath=/home/jovyan/notebooks%2INVENTA_v7.ipynb)
 
+## how to use Binder 
+
+
+
 
 ### Running INVENTA locally:
 
@@ -42,19 +46,19 @@ Use this one to activate the environment:
 conda activate inventa
 ```
 
-If you need to update the environment run, make sure to run the following to keep the depencies versions
+If you need to update the environment run: 
+[make sure to run the following to keep the depencies versions]
 ```
 conda env update --file environment.yml
 ```
 
-If you have an error, try installing `scikit-bio` from `conda-forge` before installing the package with pip:
+If you have an error, try installing `scikit-bio` from `conda-forge` before installing create the environment:
 ```
 conda install -c conda-forge scikit-bio
-pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ memo-ms
 ```
 
 
-
+### Checking the necessary inputs!
 ### The format for imput tables is critical! please read carefully the following lines to asure you have the right format
 #### Metadata table format
 Use the format of the metadata tables specified:
