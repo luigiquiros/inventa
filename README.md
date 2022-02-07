@@ -91,7 +91,7 @@ While creating the 'metadata' there some MANDATORY headers:
 
 - `quantitative_data` = MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
 
-- if you prefer 'Peak Height', go to INVENTA > src > inventa.py and change it inside the function quand_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
+- if you prefer 'Peak Height', go to `src/inventa.py`and change it inside the function quand_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
 
 - if you did export any other column, like identities, etc,  please remove manually or add the corresponding lines in the funcion quand_table(), `df.drop('name of the colum', axis=1, inplace=True)`.
 - Usualy there are columns with the header 'Unkown: number' at the very end of the quantitative table, the scrip takes care of theses columns, you do not need to erase them
@@ -103,7 +103,7 @@ While creating the 'metadata' there some MANDATORY headers:
     `vectorized_data_filename` : MEMO package format (https://github.com/mandelbrot-project/memo).
     `sirius_results_filename` : CANOPUS/SIRIUS format. npc_summary_network (https://bio.informatik.uni-jena.de/software/sirius/)
 
-[Examples of all these input could be found in INVENTA>format_examples]
+[Examples of all these input could be found in `/format_examples`]
 
 ## Once the input files have the right format 
 
@@ -121,7 +121,7 @@ Drop your files in the data folder and change the names in the notebook to march
 ## Parameter to be fixed before running INVENTA
 
 There are some parameters that need to be fixed by the user before launching the job. 
-GO TO INVENTA > src > inventa.py and cange accordingly: 
+GO TO `src/inventa.py` and cange accordingly: 
 #### Feature component
 
         FC_component = True                          #FC will be calculated
