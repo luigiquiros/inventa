@@ -198,23 +198,8 @@ def annotations(df1, df2, only_gnps_annotations, only_ms2_annotations):
         df['annotation'] = df.apply(annotations_conditions, axis=1)
     return df
 
-def annotations_conditions(df):
-            """ function to classify the annotations results 
-             Args:
-            df = treated and combinend table with the gnps and insilico results
-            Returns:
-            None
-            """
-            if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
-                return 1
-            else: 
-                return 0
 
-            df['annotation'] = df.apply(annotations_conditions, axis=1)
-            return df
-
-
-def feature_component(df1,df2,df3, FC_component, only_feature_specificity, min_specificity):
+def feature_component(df1,df2,df3, FC_component, only_feature_specificity, min_specificity, annotation_preference):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
     Args:
         df1 = specificity_df, calculated with the top_ions function 
