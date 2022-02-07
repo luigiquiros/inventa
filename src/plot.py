@@ -50,7 +50,7 @@ def pcoa_2d(filename_col, group_col, title, matrix, data, metric = 'braycurtis',
     hover_name=data[filename_col],
     template="simple_white",
         )
-    fig.update_layout({'width':700, 'height':650})
+    #fig.update_layout({'width':700, 'height':650})
     fig.update_traces(marker=dict(size=10,
                                 line=dict(width=1,
                                 color='DarkSlateGrey'))
