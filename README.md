@@ -80,7 +80,7 @@ conda install -c conda-forge scikit-bio
 #### Metadata table:
 The standard format from GNPS is prefered:
 
-- `metadata`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
+`metadata`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
 
 While creating the 'metadata' there are some MANDATORY headers:
 
@@ -90,7 +90,7 @@ While creating the 'metadata' there are some MANDATORY headers:
 
 #### Feature quantitative table:
 
-- `quantitative_data`: MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
+`quantitative_data`: MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
 
 - if you prefer 'Peak Height', go to `src/inventa.py`and change it inside the function quand_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
 
@@ -99,7 +99,7 @@ While creating the 'metadata' there are some MANDATORY headers:
 
 #### sirius_class_results_filename:
 
-- `canopus_npc_summary_filename`: Sirius CANOPUS output format. 
+`canopus_npc_summary_filename`: Sirius CANOPUS recomputated output format.
 
 This output needs an additional step after runnign sirius, please follow the next instructions:
 
@@ -115,17 +115,19 @@ This output needs an additional step after runnign sirius, please follow the nex
 
 - the output `canopus_npc_summary.tsv` corresponds to the file nedded for running Inventa
 
+- given that the Lotus Dabase (https://lotus.naturalproducts.net/) uses the NPClassifyre ontology and Sirius uses the Classifyre ontology, performing this step is absolutley necesary for a proper comparison of the propsed chemical classes.
+
 #### sirius_annotations_filename: 
 
-- `sirius_annotations_filename`: Sirius annotations output format. Containing Zodiac and Cosmic results. 
+`sirius_annotations_filename`: Sirius annotations output format. Containing Zodiac and Cosmic results.
 
 
 
 #### Other tables:
 
-- `clusterinfosummary`: GNPS format as downloaded from the job.
-- `reponderation_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
-- `vectorized_data_filename`: MEMO package format (https://github.com/mandelbrot-project/memo).
+`clusterinfosummary`: GNPS format as downloaded from the job.
+`reponderation_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
+`vectorized_data_filename`: MEMO package format (https://github.com/mandelbrot-project/memo).
 
 [Examples of all these input could be found in `/format_examples`]
 
