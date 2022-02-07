@@ -79,7 +79,7 @@ conda install -c conda-forge scikit-bio
 #### Metadata table:
 The standard format from GNPS is prefered:
 
-    `metadata`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
+- `metadata`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
 
 While creating the 'metadata' there some MANDATORY headers:
 
@@ -98,30 +98,33 @@ While creating the 'metadata' there some MANDATORY headers:
 
 #### sirius_class_results_filename:
 
-    `canopus_npc_summary_filename` : Sirius CANOPUS output format. 
+- `canopus_npc_summary_filename` : Sirius CANOPUS output format. 
 
 This output needs an additional step after runnign sirius, please follow the next instructions:
 
 - if you don't have Sirius, please install it from here (https://bio.informatik.uni-jena.de/software/sirius/), and run it in your set. 
 - clone the following repository `https://github.com/kaibioinfo/canopus_treemap`
-- Recompute your project space from Sirius using the following code: 
-                `from canopus import Canopus
-                C = Canopus(sirius="sirius_projectspace")
-                C.npcSummary().to_csv("npc_summary.tsv")`
+- Recompute your project space from Sirius using the following code:
+
+``` 
+        from canopus import Canopus
+        C = Canopus(sirius="sirius_projectspace")
+        C.npcSummary().to_csv("npc_summary.tsv")
+```
+
 - the output `canopus_npc_summary.tsv` corresponds to the file nedded for running Inventa
 
 #### sirius_annotations_filename: 
 
-  sirius_annotations_filename` : Sirius annotations output format. Containing Zodiac and Cosmic results. 
+- `sirius_annotations_filename` : Sirius annotations output format. Containing Zodiac and Cosmic results. 
 
 
 
 #### Other tables:
 
-    `clusterinfosummary` : GNPS format as downloaded from the job.
-    `reponderation_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
-    `vectorized_data_filename` : MEMO package format (https://github.com/mandelbrot-project/memo).
-    `sirius_annotations_filename` : CANOPUS/SIRIUS format. npc_summary_network (https://bio.informatik.uni-jena.de/software/sirius/)
+- `clusterinfosummary` : GNPS format as downloaded from the job.
+- `reponderation_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
+- `vectorized_data_filename` : MEMO package format (https://github.com/mandelbrot-project/memo).
 
 [Examples of all these input could be found in `/format_examples`]
 
@@ -144,25 +147,34 @@ There are some parameters that need to be fixed by the user before launching the
 GO TO `src/inventa.py` and cange accordingly: 
 #### Feature component
 
+```
         FC_component = True                          #FC will be calculated
         min_specificity = 90                         #minimun feature specificity to consider
         only_feature_specificity = False             #True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
         only_gnps_annotations = False                #only the annotations from gpns will be considered 
         only_ms2_annotations = False                 #False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
         annotation_preference = 0                     #Only Annotated nodes: '1' /  Only Not annotated: '0'
+```
 
 #### Literature component 
 
+```
         LC_component = True                         #LC will be calculated
         max_comp_reported = 40                      #more than this value, the plant is considered no interesting LC =0
         min_comp_reported = 10                      #less than this value, the plant is consireded very interesintg LC =1, a sample with x between both values gets a LC=0.5
         family_compounds = False                    #True is the nomber of reported in the family should be retreived
+```
 
 ### Class component+
-        `CC_component = True  #CC will be calculated`
+```
+        CC_component = True  #CC will be calculated
+```
 
 ### Similarity component
-        `SC_component = True  #SC will be calculated`
+
+```
+        SC_component = True  #SC will be calculated
+```
 
 
 ### ENJOY!!! 
