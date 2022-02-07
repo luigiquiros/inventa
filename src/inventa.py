@@ -1,31 +1,9 @@
 
-#Feature component
-FC_component = True  #FC will be calculated
-min_specificity = 90  #minimun feature specificity to consider
-only_feature_specificity = False  #True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
-only_gnps_annotations = True #only the annotations from gpns will be considered 
-only_ms2_annotations = False  #False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
-annotation_preference= 0  #Only Annotated nodes: '1' 
-                          #Only Not annotated: '0'
-
-#Literature component 
-LC_component = True  #LC will be calculated
-max_comp_reported = 40  #more than this value, the plant is considered no interesting LC =0
-min_comp_reported = 10  #less than this value, the plant is consireded very interesintg LC =1
-                        #a sample with x between both values gets a LC=0.5
-
-#Class component+
-CC_component = True  #CC will be calculated
-
-#Similarity component
-SC_component = True  #SC will be calculated
-
-# dependencies 
-
 import pandas as pd
 import numpy as np
 import zipfile
 import os
+import yaml
 
 from sklearn.metrics import pairwise_distances
 from sklearn.neighbors import LocalOutlierFactor
@@ -34,6 +12,39 @@ from sklearn.ensemble import IsolationForest
 from sklearn import preprocessing
 from skbio.stats.ordination import pcoa
 from skbio import OrdinationResults
+
+
+#loading parameters from yaml file
+
+if not os.path.exists('../configs/user_defined/default.yaml'):
+    print('No configs/user_defined/default.yaml: copy from configs/default/default.yaml and modifiy according to your needs')
+
+with open (r'../configs/user_defined/default.yaml') as file:    
+    params_list = yaml.load(file, Loader=yaml.FullLoader)
+
+FC_component = params_list['Feature_component'][0]['calculate_FC']
+min_specificity = params_list['Feature_component'][1]['min_specificity']
+only_feature_specificity = params_list['Feature_component'][2]['only_feature_specificity']
+only_gnps_annotations = params_list['Feature_component'][3]['only_gnps_annotations']
+only_ms2_annotations = params_list['Feature_component'][4]['only_ms2_annotations']
+annotation_preference= params_list['Feature_component'][5]['annotation_preference']
+
+LC_component = params_list['Literature_component'][0]['calculate_LC']
+max_comp_reported = params_list['Literature_component'][1]['max_comp_reported']
+min_comp_reported  = params_list['Literature_component'][2]['min_comp_reported']
+
+CC_component = params_list['Class_component'][0]['calculate_CC']
+
+SC_component = params_list['Similarity_component'][0]['calculate_SC']
+
+metadata_filename = params_list['paths'][0]['metadata_filename']
+quantitative_data_filename = params_list['paths'][1]['quantitative_data_filename']
+tima_results_filename = params_list['paths'][2]['tima_results_filename']
+vectorized_data_filename = params_list['paths'][3]['vectorized_data_filename']
+canopus_npc_summary_filename = params_list['paths'][4]['canopus_npc_summary_filename']
+sirius_annotations_filename = params_list['paths'][5]['sirius_annotations_filename']
+LotusDB_filename = params_list['paths'][6]['LotusDB_filename']
+
 
 
 #general treatment 
@@ -274,7 +285,7 @@ def literature_component(df):
     if LC_component == False:
         print('Literature component not calculated')
     else:
-        LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv', 
+        LotusDB = pd.read_csv(LotusDB_filename, 
                        sep=',').dropna()
 
         #create a set of species from the metadata table
@@ -407,7 +418,7 @@ def search_reported_class(df):
         Returns:
         None
     """
-    LotusDB = pd.read_csv('../data/LotusDB_inhouse_metadata.csv',
+    LotusDB = pd.read_csv(LotusDB_filename,
                        sep=',').dropna()
     
     #create a set of species present in the metatada and reduce the lotus DB to it
