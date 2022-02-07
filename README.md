@@ -71,17 +71,18 @@ If you have an error, try installing `scikit-bio` from `conda-forge` before crea
 conda install -c conda-forge scikit-bio
 ```
 
-# In both cases, running INVENTA with Binder or locally, the following formats and parameters are necesary:
+## In both cases, running INVENTA with Binder or locally, the following formats and parameters are necesary:
 
 ## Checking the necessary inputs! 
 ### The format of the imput tables is critical!
+
 #### please read carefully the following lines:
 #### Metadata table:
 The standard format from GNPS is prefered:
 
 - `metadata`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
 
-While creating the 'metadata' there some MANDATORY headers:
+While creating the 'metadata' there are some MANDATORY headers:
 
 - `ATTRIBUTE_Species` : The species should be cleaned to uptoday recognized names, you can use the Open Tree of Life to do so (https://opentree.readthedocs.io/en/latest/readme.html).
 - `ATTRIBUTE_Organe`  : This column correpond to the part of the plant or organism.
@@ -89,7 +90,7 @@ While creating the 'metadata' there some MANDATORY headers:
 
 #### Feature quantitative table:
 
-- `quantitative_data` = MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
+- `quantitative_data`: MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
 
 - if you prefer 'Peak Height', go to `src/inventa.py`and change it inside the function quand_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
 
@@ -98,12 +99,12 @@ While creating the 'metadata' there some MANDATORY headers:
 
 #### sirius_class_results_filename:
 
-- `canopus_npc_summary_filename` : Sirius CANOPUS output format. 
+- `canopus_npc_summary_filename`: Sirius CANOPUS output format. 
 
 This output needs an additional step after runnign sirius, please follow the next instructions:
 
 - if you don't have Sirius, please install it from here (https://bio.informatik.uni-jena.de/software/sirius/), and run it in your set. 
-- clone the following repository `https://github.com/kaibioinfo/canopus_treemap`
+- clone the following repository https://github.com/kaibioinfo/canopus_treemap
 - Recompute your project space from Sirius using the following code:
 
 ``` 
@@ -116,15 +117,15 @@ This output needs an additional step after runnign sirius, please follow the nex
 
 #### sirius_annotations_filename: 
 
-- `sirius_annotations_filename` : Sirius annotations output format. Containing Zodiac and Cosmic results. 
+- `sirius_annotations_filename`: Sirius annotations output format. Containing Zodiac and Cosmic results. 
 
 
 
 #### Other tables:
 
-- `clusterinfosummary` : GNPS format as downloaded from the job.
+- `clusterinfosummary`: GNPS format as downloaded from the job.
 - `reponderation_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
-- `vectorized_data_filename` : MEMO package format (https://github.com/mandelbrot-project/memo).
+- `vectorized_data_filename`: MEMO package format (https://github.com/mandelbrot-project/memo).
 
 [Examples of all these input could be found in `/format_examples`]
 
@@ -133,12 +134,14 @@ This output needs an additional step after runnign sirius, please follow the nex
 Drop your files in the data folder and change the names in the notebook to march them:
 
 ### Input filenames: drag them in the data folder
+
 ```
-    metadata_filename = '../data/Celastraceae_Set_metadata_pos.tsv'
-    quantitative_data_filename = '../data/Celastraceae_pos_quant.csv'
-    isdb_results_filename = '../data/Celastraceae_pos_spectral_match_results_repond.tsv'
-    vectorized_data_filename = '../data/Celastraceae_memomatrix.csv'
-    sirius_results_filename = '../data/canopus_npc_summary_CANOPUS_network.txt'
+        metadata_filename = '../data/Celastraceae_Set_metadata_pos.tsv'
+        quantitative_data_filename = '../data/Celastraceae_pos_quant.csv'
+        tima_results_filename = '../data/Celastraceae_pos_spectral_match_results_repond.tsv'
+        vectorized_data_filename = '../data/Celastraceae_memomatrix.csv'
+        canopus_npc_summary_filename = '../data/canopus_npc_summary.tsv'
+        sirius_annotations_filename = '../data/canopus_npc_summary.tsv'
 ```
 
 ## Parameter to be fixed before running INVENTA
