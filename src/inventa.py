@@ -326,11 +326,10 @@ def similarity_component(df):
     if SC_component == False:
         print('Similarity component not calculated')
     else:
+        df1 = df.copy()
+        df1.set_index('filename', inplace=True)
         df2 = df.copy()
-        df2.rename(columns = {'Unnamed: 0': 'filename'}, inplace=True)
-        columns_to_model=df2.columns[1:91861] #specify the X metrics column names to be modelled (THIS CORRESPOND TO THE SIZE OF THE FEATURES)
-        df1 = df2[columns_to_model].astype(np.uint8)
-    
+        
         #specify the parameters of the individual classification algorithms
         clf = IsolationForest(n_estimators=100, 
                     max_samples='auto', 
@@ -368,8 +367,7 @@ def similarity_component(df):
 
         #recover and print the results
         df1.reset_index(inplace=True)
-        df2.reset_index(inplace=True)
-        df = pd.merge(df1,df2, how='left', left_on='index', right_on='index')
+        df = pd.merge(df1,df2, how='left', left_on='filename', right_on='filename')
         df = df[['filename', 'anomaly_IF', 'anomaly_LOF', 'anomaly_OCSVM']]
 
         def similarity_conditions(df):
