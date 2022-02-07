@@ -1,6 +1,17 @@
 # default.yaml
 
 ---
+
+
+paths:
+  - metadata_filename: ../data/Celastraceae_Set_metadata_pos.tsv # The path were you want your folder to be placed
+  - quantitative_data_filename: ../data/Celastraceae_pos_quant.csv # The path were you want your GNPS job folder to be placed
+  - tima_results_filename: ../data/Celastraceae_pos_spectral_match_results_repond.tsv #ISDB_annot_LP_plantfungi_set # The name you want to give to your project, output resulst in data_out/project_name
+  - vectorized_data_filename: ../data/Celastraceae_memomatrix.csv # the path for your output to be stored in
+  - canopus_npc_summary_filename: ../data/canopus_npc_summary.tsv  # Path to your spectral library file
+  - sirius_annotations_filename: ../data/canopus_npc_summary.tsv # Path to the metadata of the spectral file
+
+
 # parameters
 
 Feature_component:
@@ -23,12 +34,3 @@ Class_component:
 
 Similarity_component:
   - calculate_SC: True #SC will be calculated
-
-paths:
-  - metadata_filename: '../data/Celastraceae_Set_metadata_pos.tsv' # The path were you want your folder to be placed
-  - quantitative_data_filename: ../data/Celastraceae_Set_metadata_pos.tsv # The path were you want your GNPS job folder to be placed
-  - tima_results_filename: ../data/Celastraceae_pos_spectral_match_results_repond.tsv #ISDB_annot_LP_plantfungi_set # The name you want to give to your project, output resulst in data_out/project_name
-  - vectorized_data_filename: ../data/Celastraceae_memomatrix.csv # the path for your output to be stored in
-  - canopus_npc_summary_filename: ../data/canopus_npc_summary.tsv  # Path to your spectral library file
-  - sirius_annotations_filename: ../data/canopus_npc_summary.tsv # Path to the metadata of the spectral file
-  - LotusDB_filename: ../data_loc/LotusDB_inhouse_metadata.csv

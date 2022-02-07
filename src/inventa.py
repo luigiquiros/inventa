@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import zipfile
 import os
-import yaml
 
 from sklearn.metrics import pairwise_distances
 from sklearn.neighbors import LocalOutlierFactor
@@ -12,40 +11,6 @@ from sklearn.ensemble import IsolationForest
 from sklearn import preprocessing
 from skbio.stats.ordination import pcoa
 from skbio import OrdinationResults
-
-
-#loading parameters from yaml file
-
-if not os.path.exists('../configs/user_defined/default.yaml'):
-    print('No configs/user_defined/default.yaml: copy from configs/default/default.yaml and modifiy according to your needs')
-
-with open (r'../configs/user_defined/default.yaml') as file:    
-    params_list = yaml.load(file, Loader=yaml.FullLoader)
-
-FC_component = params_list['Feature_component'][0]['calculate_FC']
-min_specificity = params_list['Feature_component'][1]['min_specificity']
-only_feature_specificity = params_list['Feature_component'][2]['only_feature_specificity']
-only_gnps_annotations = params_list['Feature_component'][3]['only_gnps_annotations']
-only_ms2_annotations = params_list['Feature_component'][4]['only_ms2_annotations']
-annotation_preference= params_list['Feature_component'][5]['annotation_preference']
-
-LC_component = params_list['Literature_component'][0]['calculate_LC']
-max_comp_reported = params_list['Literature_component'][1]['max_comp_reported']
-min_comp_reported  = params_list['Literature_component'][2]['min_comp_reported']
-
-CC_component = params_list['Class_component'][0]['calculate_CC']
-
-SC_component = params_list['Similarity_component'][0]['calculate_SC']
-
-metadata_filename = params_list['paths'][0]['metadata_filename']
-quantitative_data_filename = params_list['paths'][1]['quantitative_data_filename']
-tima_results_filename = params_list['paths'][2]['tima_results_filename']
-vectorized_data_filename = params_list['paths'][3]['vectorized_data_filename']
-canopus_npc_summary_filename = params_list['paths'][4]['canopus_npc_summary_filename']
-sirius_annotations_filename = params_list['paths'][5]['sirius_annotations_filename']
-LotusDB_filename = params_list['paths'][6]['LotusDB_filename']
-
-
 
 #general treatment 
 
@@ -161,7 +126,7 @@ def top_ions(df1, df2):
     return df
 
 
-def annotations(df1, df2):
+def annotations(df1, df2, only_gnps_annotations, only_ms2_annotations):
     """ function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
     Args:
         df1 = cluster summary results file from GNPS
@@ -233,8 +198,23 @@ def annotations(df1, df2):
         df['annotation'] = df.apply(annotations_conditions, axis=1)
     return df
 
+def annotations_conditions(df):
+            """ function to classify the annotations results 
+             Args:
+            df = treated and combinend table with the gnps and insilico results
+            Returns:
+            None
+            """
+            if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
+                return 1
+            else: 
+                return 0
 
-def feature_component(df1,df2,df3):
+            df['annotation'] = df.apply(annotations_conditions, axis=1)
+            return df
+
+
+def feature_component(df1,df2,df3, FC_component, only_feature_specificity, min_specificity):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
     Args:
         df1 = specificity_df, calculated with the top_ions function 
@@ -271,10 +251,9 @@ def feature_component(df1,df2,df3):
             df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']], df, how='left', on='filename')
             df = df.sort_values(by=['FC'], ascending=False)
     return df
-
 #literature component
  
-def literature_component(df):
+def literature_component(df, LC_component, min_comp_reported, max_comp_reported):
     """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
     Args:
         df2 = metadata_df
@@ -285,7 +264,7 @@ def literature_component(df):
     if LC_component == False:
         print('Literature component not calculated')
     else:
-        LotusDB = pd.read_csv(LotusDB_filename, 
+        LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv', 
                        sep=',').dropna()
 
         #create a set of species from the metadata table
@@ -326,7 +305,7 @@ def literature_component(df):
 
 #similarity component: 
 
-def similarity_component(df):
+def similarity_component(df, SC_component):
     """ function to compute the similarity component based on the MEMO matrix and machine learning unsupervised clustering methods 
     Args:
         df = meme matrix
@@ -418,7 +397,7 @@ def search_reported_class(df):
         Returns:
         None
     """
-    LotusDB = pd.read_csv(LotusDB_filename,
+    LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',
                        sep=',').dropna()
     
     #create a set of species present in the metatada and reduce the lotus DB to it
@@ -436,7 +415,7 @@ def search_reported_class(df):
     df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
     return df
 
-def class_component(df1, df2):
+def class_component(df1, df2, CC_component):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
         df1 = reported_classes_df 
