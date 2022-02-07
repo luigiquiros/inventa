@@ -71,17 +71,18 @@ If you have an error, try installing `scikit-bio` from `conda-forge` before crea
 conda install -c conda-forge scikit-bio
 ```
 
-# In both cases, running INVENTA with Binder or locally, the following formats and parameters are necesary:
+## In both cases, running INVENTA with Binder or locally, the following formats and parameters are necesary:
 
 ## Checking the necessary inputs! 
 ### The format of the imput tables is critical!
+
 #### please read carefully the following lines:
 #### Metadata table:
 The standard format from GNPS is prefered:
 
-    `metadata`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
+`metadata`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
 
-While creating the 'metadata' there some MANDATORY headers:
+While creating the 'metadata' there are some MANDATORY headers:
 
 - `ATTRIBUTE_Species` : The species should be cleaned to uptoday recognized names, you can use the Open Tree of Life to do so (https://opentree.readthedocs.io/en/latest/readme.html).
 - `ATTRIBUTE_Organe`  : This column correpond to the part of the plant or organism.
@@ -89,19 +90,44 @@ While creating the 'metadata' there some MANDATORY headers:
 
 #### Feature quantitative table:
 
-- `quantitative_data` = MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
+`quantitative_data`: MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
 
 - if you prefer 'Peak Height', go to `src/inventa.py`and change it inside the function quand_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
 
 - if you did export any other column, like identities, etc,  please remove manually or add the corresponding lines in the funcion quand_table(), `df.drop('name of the colum', axis=1, inplace=True)`.
 - Usualy there are columns with the header 'Unkown: number' at the very end of the quantitative table, the scrip takes care of theses columns, you do not need to erase them
 
+#### sirius_class_results_filename:
+
+`canopus_npc_summary_filename`: Sirius CANOPUS recomputated output format.
+
+This output needs an additional step after runnign sirius, please follow the next instructions:
+
+- if you don't have Sirius, please install it from here (https://bio.informatik.uni-jena.de/software/sirius/), and run it in your set. 
+- clone the following repository https://github.com/kaibioinfo/canopus_treemap
+- Recompute your project space from Sirius using the following code:
+
+``` 
+        from canopus import Canopus
+        C = Canopus(sirius="sirius_projectspace")
+        C.npcSummary().to_csv("npc_summary.tsv")
+```
+
+- the output `canopus_npc_summary.tsv` corresponds to the file nedded for running Inventa
+
+- given that the Lotus Dabase (https://lotus.naturalproducts.net/) uses the NPClassifyre ontology and Sirius uses the Classifyre ontology, performing this step is absolutley necesary for a proper comparison of the propsed chemical classes.
+
+#### sirius_annotations_filename: 
+
+`sirius_annotations_filename`: Sirius annotations output format. Containing Zodiac and Cosmic results.
+
+
+
 #### Other tables:
 
-    `clusterinfosummary` : GNPS format as downloaded from the job.
-    `reponderation_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
-    `vectorized_data_filename` : MEMO package format (https://github.com/mandelbrot-project/memo).
-    `sirius_results_filename` : CANOPUS/SIRIUS format. npc_summary_network (https://bio.informatik.uni-jena.de/software/sirius/)
+`clusterinfosummary`: GNPS format as downloaded from the job.
+`reponderation_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
+`vectorized_data_filename`: MEMO package format (https://github.com/mandelbrot-project/memo).
 
 [Examples of all these input could be found in `/format_examples`]
 
@@ -110,12 +136,14 @@ While creating the 'metadata' there some MANDATORY headers:
 Drop your files in the data folder and change the names in the notebook to march them:
 
 ### Input filenames: drag them in the data folder
+
 ```
-    metadata_filename = '../data/Celastraceae_Set_metadata_pos.tsv'
-    quantitative_data_filename = '../data/Celastraceae_pos_quant.csv'
-    isdb_results_filename = '../data/Celastraceae_pos_spectral_match_results_repond.tsv'
-    vectorized_data_filename = '../data/Celastraceae_memomatrix.csv'
-    sirius_results_filename = '../data/canopus_npc_summary_CANOPUS_network.txt'
+        metadata_filename = '../data/Celastraceae_Set_metadata_pos.tsv'
+        quantitative_data_filename = '../data/Celastraceae_pos_quant.csv'
+        tima_results_filename = '../data/Celastraceae_pos_spectral_match_results_repond.tsv'
+        vectorized_data_filename = '../data/Celastraceae_memomatrix.csv'
+        canopus_npc_summary_filename = '../data/canopus_npc_summary.tsv'
+        sirius_annotations_filename = '../data/canopus_npc_summary.tsv'
 ```
 
 ## Parameter to be fixed before running INVENTA
@@ -124,25 +152,34 @@ There are some parameters that need to be fixed by the user before launching the
 GO TO `src/inventa.py` and cange accordingly: 
 #### Feature component
 
+```
         FC_component = True                          #FC will be calculated
         min_specificity = 90                         #minimun feature specificity to consider
         only_feature_specificity = False             #True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
         only_gnps_annotations = False                #only the annotations from gpns will be considered 
         only_ms2_annotations = False                 #False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
         annotation_preference = 0                     #Only Annotated nodes: '1' /  Only Not annotated: '0'
+```
 
 #### Literature component 
 
+```
         LC_component = True                         #LC will be calculated
         max_comp_reported = 40                      #more than this value, the plant is considered no interesting LC =0
         min_comp_reported = 10                      #less than this value, the plant is consireded very interesintg LC =1, a sample with x between both values gets a LC=0.5
         family_compounds = False                    #True is the nomber of reported in the family should be retreived
+```
 
 ### Class component+
-        `CC_component = True  #CC will be calculated`
+```
+        CC_component = True  #CC will be calculated
+```
 
 ### Similarity component
-        `SC_component = True  #SC will be calculated`
+
+```
+        SC_component = True  #SC will be calculated
+```
 
 
 ### ENJOY!!! 

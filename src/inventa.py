@@ -1,27 +1,4 @@
 
-#Feature component
-FC_component = True  #FC will be calculated
-min_specificity = 90  #minimun feature specificity to consider
-only_feature_specificity = False  #True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
-only_gnps_annotations = True #only the annotations from gpns will be considered 
-only_ms2_annotations = False  #False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
-annotation_preference= 0  #Only Annotated nodes: '1' 
-                          #Only Not annotated: '0'
-
-#Literature component 
-LC_component = True  #LC will be calculated
-max_comp_reported = 40  #more than this value, the plant is considered no interesting LC =0
-min_comp_reported = 10  #less than this value, the plant is consireded very interesintg LC =1
-                        #a sample with x between both values gets a LC=0.5
-
-#Class component+
-CC_component = True  #CC will be calculated
-
-#Similarity component
-SC_component = True  #SC will be calculated
-
-# dependencies 
-
 import pandas as pd
 import numpy as np
 import zipfile
@@ -34,7 +11,6 @@ from sklearn.ensemble import IsolationForest
 from sklearn import preprocessing
 from skbio.stats.ordination import pcoa
 from skbio import OrdinationResults
-
 
 #general treatment 
 
@@ -150,7 +126,7 @@ def top_ions(df1, df2):
     return df
 
 
-def annotations(df1, df2):
+def annotations(df1, df2, only_gnps_annotations, only_ms2_annotations):
     """ function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
     Args:
         df1 = cluster summary results file from GNPS
@@ -223,7 +199,7 @@ def annotations(df1, df2):
     return df
 
 
-def feature_component(df1,df2,df3):
+def feature_component(df1,df2,df3, FC_component, only_feature_specificity, min_specificity, annotation_preference):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
     Args:
         df1 = specificity_df, calculated with the top_ions function 
@@ -260,10 +236,9 @@ def feature_component(df1,df2,df3):
             df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']], df, how='left', on='filename')
             df = df.sort_values(by=['FC'], ascending=False)
     return df
-
 #literature component
  
-def literature_component(df):
+def literature_component(df, LC_component, min_comp_reported, max_comp_reported):
     """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
     Args:
         df2 = metadata_df
@@ -315,7 +290,7 @@ def literature_component(df):
 
 #similarity component: 
 
-def similarity_component(df):
+def similarity_component(df, SC_component):
     """ function to compute the similarity component based on the MEMO matrix and machine learning unsupervised clustering methods 
     Args:
         df = meme matrix
@@ -386,7 +361,7 @@ def sirius_classes(df1,df2,df3):
     Args:
         df1 = specificity_df
         df2 = metadata_df
-        df3 = output from SIRIUS and Canopus 
+        df3 = output from SIRIUS + Canopus 
 
     Returns:
         None
@@ -407,7 +382,7 @@ def search_reported_class(df):
         Returns:
         None
     """
-    LotusDB = pd.read_csv('../data/LotusDB_inhouse_metadata.csv',
+    LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',
                        sep=',').dropna()
     
     #create a set of species present in the metatada and reduce the lotus DB to it
@@ -425,7 +400,7 @@ def search_reported_class(df):
     df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
     return df
 
-def class_component(df1, df2):
+def class_component(df1, df2, CC_component):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
         df1 = reported_classes_df 
