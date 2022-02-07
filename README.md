@@ -96,12 +96,32 @@ While creating the 'metadata' there some MANDATORY headers:
 - if you did export any other column, like identities, etc,  please remove manually or add the corresponding lines in the funcion quand_table(), `df.drop('name of the colum', axis=1, inplace=True)`.
 - Usualy there are columns with the header 'Unkown: number' at the very end of the quantitative table, the scrip takes care of theses columns, you do not need to erase them
 
+#### sirius_class_results_filename:
+
+    `canopus_npc_summary_filename` : Sirius CANOPUS output format. 
+
+This output needs an additional step after runnign sirius, please follow the next instructions:
+
+- if you don't have Sirius, please install it from here (https://bio.informatik.uni-jena.de/software/sirius/), and run it in your set. 
+- clone the following repository `https://github.com/kaibioinfo/canopus_treemap`
+- Recompute your project space from Sirius using the following code: 
+                `from canopus import Canopus
+                C = Canopus(sirius="sirius_projectspace")
+                C.npcSummary().to_csv("npc_summary.tsv")`
+- the output `canopus_npc_summary.tsv` corresponds to the file nedded for running Inventa
+
+#### sirius_annotations_filename: 
+
+  sirius_annotations_filename` : Sirius annotations output format. Containing Zodiac and Cosmic results. 
+
+
+
 #### Other tables:
 
     `clusterinfosummary` : GNPS format as downloaded from the job.
     `reponderation_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
     `vectorized_data_filename` : MEMO package format (https://github.com/mandelbrot-project/memo).
-    `sirius_results_filename` : CANOPUS/SIRIUS format. npc_summary_network (https://bio.informatik.uni-jena.de/software/sirius/)
+    `sirius_annotations_filename` : CANOPUS/SIRIUS format. npc_summary_network (https://bio.informatik.uni-jena.de/software/sirius/)
 
 [Examples of all these input could be found in `/format_examples`]
 

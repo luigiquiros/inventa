@@ -386,7 +386,7 @@ def sirius_classes(df1,df2,df3):
     Args:
         df1 = specificity_df
         df2 = metadata_df
-        df3 = output from SIRIUS and Canopus 
+        df3 = output from SIRIUS + Canopus 
 
     Returns:
         None
