@@ -80,7 +80,7 @@ conda install -c conda-forge scikit-bio
 #### Metadata table:
 The standard format from GNPS is prefered:
 
-`metadata`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
+`metadata_filename`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
 
 While creating the 'metadata' there are some MANDATORY headers:
 
@@ -90,14 +90,20 @@ While creating the 'metadata' there are some MANDATORY headers:
 
 #### Feature quantitative table:
 
-`quantitative_data`: MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
+`quantitative_data_filename`: MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
 
 - if you prefer 'Peak Height', go to `src/inventa.py`and change it inside the function quand_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
 
 - if you did export any other column, like identities, etc,  please remove manually or add the corresponding lines in the funcion quand_table(), `df.drop('name of the colum', axis=1, inplace=True)`.
 - Usualy there are columns with the header 'Unkown: number' at the very end of the quantitative table, the scrip takes care of theses columns, you do not need to erase them
 
-#### sirius_class_results_filename:
+#### In silico annotation usign timaR:
+
+`tima_results_filename`: timaR reponderated output format.
+
+- for performing in silico annotations and taxonomically informed reponderation, please follow https://taxonomicallyinformedannotation.github.io/tima-r/index.html
+
+#### Chemical ontology results:
 
 `canopus_npc_summary_filename`: Sirius CANOPUS recomputated output format.
 
@@ -117,25 +123,26 @@ This output needs an additional step after runnign sirius, please follow the nex
 
 - given that the Lotus Dabase (https://lotus.naturalproducts.net/) uses the NPClassifyre ontology and Sirius uses the Classifyre ontology, performing this step is absolutley necesary for a proper comparison of the propsed chemical classes.
 
-#### sirius_annotations_filename: 
+#### Annotations with Sirius: 
 
-`sirius_annotations_filename`: Sirius annotations output format. Containing Zodiac and Cosmic results.
+`sirius_annotations_filename`: Sirius annotations output format. Containing Zodiac and Cosmic results (https://bio.informatik.uni-jena.de/software/sirius/).
 
+- this file should correspond to `compound_identification.tsv`
+- make sure the Zodiac and Cosmic scores are present ().
 
+#### Memo dissimilarity matrix:
 
-#### Other tables:
-
-`clusterinfosummary`: GNPS format as downloaded from the job.
-`reponderation_results_filename` : format from TimaR (https://taxonomicallyinformedannotation.github.io/tima-r/).
 `vectorized_data_filename`: MEMO package format (https://github.com/mandelbrot-project/memo).
 
 [Examples of all these input could be found in `/format_examples`]
 
-## Once the input files have the right format 
+## Parameter to be fixed before running INVENTA
 
-Drop your files in the data folder and change the names in the notebook to march them:
+There are some parameters that need to be fixed by the user before launching the job. You will find them in the jupyter notebook 'Paths and parameters to define'
 
-### Input filenames: drag them in the data folder
+#### paths 
+
+Each path corresponds to the files mentiones above. Just drop your files in the `/data` folder and change the names accordingly: 
 
 ```
         metadata_filename = '../data/Celastraceae_Set_metadata_pos.tsv'
@@ -145,40 +152,32 @@ Drop your files in the data folder and change the names in the notebook to march
         canopus_npc_summary_filename = '../data/canopus_npc_summary.tsv'
         sirius_annotations_filename = '../data/canopus_npc_summary.tsv'
 ```
-
-## Parameter to be fixed before running INVENTA
-
-There are some parameters that need to be fixed by the user before launching the job. 
-GO TO `src/inventa.py` and cange accordingly: 
-#### Feature component
+#### Parameters
+##### Feature component
 
 ```
-        FC_component = True                          #FC will be calculated
-        min_specificity = 90                         #minimun feature specificity to consider
-        only_feature_specificity = False             #True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
-        only_gnps_annotations = False                #only the annotations from gpns will be considered 
-        only_ms2_annotations = False                 #False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
-        annotation_preference = 0                     #Only Annotated nodes: '1' /  Only Not annotated: '0'
+        FC_component = True                # FC will be calculated
+        min_specificity = 90               # minimun feature specificity to consider
+        only_feature_specificity = False   # True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
+        only_gnps_annotations = True       # only the annotations from gpns will be considered
+        only_ms2_annotations = False       # False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
+        annotation_preference = 0          # Only Annotated nodes: '1' 
+                                           # Only Not annotated: '0'
 ```
-
-#### Literature component 
-
+##### Literature_component
 ```
-        LC_component = True                         #LC will be calculated
-        max_comp_reported = 40                      #more than this value, the plant is considered no interesting LC =0
-        min_comp_reported = 10                      #less than this value, the plant is consireded very interesintg LC =1, a sample with x between both values gets a LC=0.5
-        family_compounds = False                    #True is the nomber of reported in the family should be retreived
+        LC_component = True                # LC will be calculated
+        max_comp_reported = 40             # more than this value, the plant is considered no interesting LC =0
+        min_comp_reported = 10             # less than this value, the plant is consireded very interesintg LC =1
+                                           # a sample with x between both values gets a LC=0.5
 ```
-
-### Class component+
+##### Class_component
 ```
-        CC_component = True  #CC will be calculated
+        CC_component = True                # CC will be calculated
 ```
-
-### Similarity component
-
+##### Similarity_component
 ```
-        SC_component = True  #SC will be calculated
+        SC_component = True                # SC will be calculated
 ```
 
 
