@@ -3,3 +3,4 @@ jupyter nbextension enable --py widgetsnbextension
 jupyter labextension install lineup_widget
 jupyter labextension install @jupyter-widgets/jupyterlab-manager --minimize=False
 jupyter labextension install jupyterlab-plotly
+jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget
