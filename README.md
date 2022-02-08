@@ -147,39 +147,54 @@ There are some parameters that need to be fixed by the user before launching the
 Each path corresponds to the files mentiones above. Just drop your files in the `/data` folder and change the names accordingly: 
 
 ```
-        metadata_filename = '../data/Celastraceae_Set_metadata_pos.tsv'
-        quantitative_data_filename = '../data/Celastraceae_pos_quant.csv'
-        tima_results_filename = '../data/Celastraceae_pos_spectral_match_results_repond.tsv'
-        vectorized_data_filename = '../data/Celastraceae_memomatrix.csv'
-        canopus_npc_summary_filename = '../data/canopus_npc_summary.tsv'
-        sirius_annotations_filename = '../data/canopus_npc_summary.tsv'
+metadata_filename = '../data/Celastraceae_Set_metadata_pos.tsv'
+quantitative_data_filename = '../data/Celastraceae_pos_quant.csv'
+tima_results_filename = '../data/Celastraceae_pos_spectral_match_results_repond.tsv'
+vectorized_data_filename = '../data/Celastraceae_memomatrix.csv'
+canopus_npc_summary_filename = '../data/canopus_npc_summary.tsv'
+sirius_annotations_filename = '../data/canopus_npc_summary.tsv'
 ```
 #### Parameters
-##### Feature component
+
+#### Feature_component
 
 ```
-        FC_component = True                # FC will be calculated
-        min_specificity = 90               # minimun feature specificity to consider
-        only_feature_specificity = False   # True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
-        only_gnps_annotations = True       # only the annotations from gpns will be considered
-        only_ms2_annotations = False       # False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
-        annotation_preference = 0          # Only Annotated nodes: '1' 
-                                           # Only Not annotated: '0'
+FC_component = True                # FC will be calculated
+min_specificity = 90               # minimun feature specificity to consider
+only_feature_specificity = False   # True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
+
+#inputs to use: 
+
+isbd_annotations = True             # True: the tima_results_filename will be considered in the calculations
+sirius_annotations = True           #True: the sirius_annotations_filename will be considered in the calculations
+
+#cut-offs: 
+
+min_score_final = 0.0               #cut-off filter for considering an isdb annotation valable. You must be extremenly carefull with this parameter, '0.0' as default.
+min_ZodiacScore = 0.9               #cut-off filter for considering a sirius annotation valable. It is used in combination with min_ConfidenceScore.
+min_ConfidenceScore = 0.0           #cut-off filter for considering a sirius annotation valable. '0.0' as default.
+
+#other: 
+
+only_ms2_annotations = False       # False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
+annotation_preference = 0          # Only Annotated nodes: '1' 
+                                   # Only Not annotated: '0'
+
 ```
 ##### Literature_component
 ```
-        LC_component = True                # LC will be calculated
-        max_comp_reported = 40             # more than this value, the plant is considered no interesting LC =0
-        min_comp_reported = 10             # less than this value, the plant is consireded very interesintg LC =1
-                                           # a sample with x between both values gets a LC=0.5
+LC_component = True                # LC will be calculated
+max_comp_reported = 40             # more than this value, the plant is considered no interesting LC =0
+min_comp_reported = 10             # less than this value, the plant is consireded very interesintg LC =1
+                                   # a sample with x between both values gets a LC=0.5
 ```
 ##### Class_component
 ```
-        CC_component = True                # CC will be calculated
+CC_component = True                # CC will be calculated
 ```
 ##### Similarity_component
 ```
-        SC_component = True                # SC will be calculated
+SC_component = True                # SC will be calculated
 ```
 
 
