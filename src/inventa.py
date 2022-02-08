@@ -126,16 +126,197 @@ def top_ions(df1, df2):
     return df
 
 
-def annotations(df1, df2, only_gnps_annotations, only_ms2_annotations):
-    """ function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
-    Args:
-        df1 = cluster summary results file from GNPS
-        df2 = in silico dereplication results file
+def annotations(df1, df2, df3,
+                only_ms2_annotations, sirius_annotations, isbd_annotations,
+                min_score_final, min_ConfidenceScore, min_ZodiacScore):
+
+    """ 
+        function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
+        
+        Args:
+        df1 = clusterinfosummary # mandatory 
+        df2 = tima_results_filename
+        df3 = sirius_annotations_filename
+        
+        only_ms2_annotations =
+        sirius_annotations = 
+        isbd_annotations = 
+        min_score_final =
+        min_ConfidenceScore = 
+        min_ZodiacScore  =
+
         Returns:
         None
     """
-    if only_gnps_annotations == True:
+
+    if (isbd_annotations == True and sirius_annotations == True):
+        #GNPS + ISDB + SIRIUS
         #work on gnps annotations
+
+        #find null values (non annotated)
+        df1['Annotated'] = pd.isnull(df1['SpectrumID'])
+            #lets replace the booleans 
+        bD = {True: '0', False: '1'}
+        df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
+
+            # work on df2 (isdb annotations)
+
+        df2 = pd.merge(left=df1[['cluster index']], 
+                        right=df2, 
+                        how='left', left_on= 'cluster index', right_on='feature_id')
+        df2.drop('feature_id', axis=1, inplace=True)
+        df2['final_score'] = df2['final_score'].str.split('|').str[-1].astype(float)
+
+        def score_final_isdb(final_score):
+            if final_score >= min_score_final:
+                annotated=1 #good annotation
+            else:
+                annotated=0 #'bad annotation'
+            return annotated   
+
+        df2['Annotated_ISDB'] = df2.apply(lambda x: score_final_isdb(x['final_score']), axis=1)
+                    
+        if only_ms2_annotations == True:
+            df2.loc[df2['libname']== 'MS1_match', 'Annotated_ISDB'] = 0
+        else:
+            df2
+            # work on df3 (sirius annotations)
+            #get the feature id 
+        df3['shared name'] = df3['id'].str.split('_').str[-1].astype(int)
+        df3 = pd.merge(left=df1[['cluster index']], 
+                    right=df3[['shared name','ConfidenceScore','ZodiacScore']], 
+                    how='left', left_on= 'cluster index', right_on='shared name')
+
+        df3['ConfidenceScore'] = df3['ConfidenceScore'].fillna(0)
+
+        def Sirius_annotation(ConfidenceScore, ZodiacScore):
+            if ConfidenceScore >= min_ConfidenceScore and ZodiacScore >= min_ZodiacScore:
+                annotated=1 #good annotation
+            else:
+                annotated=0 #'bad annotation'
+            return annotated
+
+        df3['Annotated_Sirius'] = df3.apply(lambda x: Sirius_annotation(x['ConfidenceScore'], x['ZodiacScore']), axis=1)
+            #df3.head(2)
+
+        #merge the information 
+        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], right=df2[['cluster index','Annotated_ISDB']], 
+                        how='left', on= 'cluster index')
+        df = pd.merge(left=df, right=df3[['cluster index','Annotated_Sirius']], 
+                        how='left',on= 'cluster index')
+
+        def annotations_conditions(df):
+            """ function to classify the annotations results 
+                Args:
+                df = treated and combinend table with the gnps and insilico results
+                Returns:
+                None
+            """
+            if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1') | (df['Annotated_Sirius'] == '1'):
+                return 1
+            else: 
+                return 0
+
+        df['annotation'] = df.apply(annotations_conditions, axis=1)
+
+    elif(isbd_annotations == True and sirius_annotations == False):
+        #GNPS + ISDB
+        #work on gnps annotations
+
+        #find null values (non annotated)
+        df1['Annotated'] = pd.isnull(df1['SpectrumID'])
+            #lets replace the booleans 
+        bD = {True: '0', False: '1'}
+        df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
+
+            # work on df2 (isdb annotations)
+
+        df2 = pd.merge(left=df1[['cluster index']], 
+                        right=df2, 
+                        how='left', left_on= 'cluster index', right_on='feature_id')
+        df2.drop('feature_id', axis=1, inplace=True)
+        df2['final_score'] = df2['final_score'].str.split('|').str[-1].astype(float)
+
+        def score_final_isdb(final_score):
+            if final_score >= min_score_final:
+                annotated=1 #good annotation
+            else:
+                annotated=0 #'bad annotation'
+            return annotated   
+
+        df2['Annotated_ISDB'] = df2.apply(lambda x: score_final_isdb(x['final_score']), axis=1)
+                    
+        if only_ms2_annotations == True:
+            df2.loc[df2['libname']== 'MS1_match', 'Annotated_ISDB'] = 0
+        else:
+            df2
+
+        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], right=df2[['cluster index','Annotated_ISDB']], 
+                        how='left', on= 'cluster index')
+        def annotations_conditions(df):
+            """ function to classify the annotations results 
+                Args:
+                df = treated and combinend table with the gnps and insilico results
+                Returns:
+                None
+            """
+            if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
+                return 1
+            else: 
+                return 0
+
+        df['annotation'] = df.apply(annotations_conditions, axis=1) 
+
+    elif(isbd_annotations == False and sirius_annotations == True):
+        #GNPS + SIRIUS
+        #work on gnps annotations
+
+        #find null values (non annotated)
+        df1['Annotated'] = pd.isnull(df1['SpectrumID'])
+            #lets replace the booleans 
+        bD = {True: '0', False: '1'}
+        df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
+
+        # work on df3 (sirius annotations)
+            #get the feature id 
+        df3['shared name'] = df3['id'].str.split('_').str[-1].astype(int)
+        df3 = pd.merge(left=df1[['cluster index']], 
+                    right=df3[['shared name','ConfidenceScore','ZodiacScore']], 
+                    how='left', left_on= 'cluster index', right_on='shared name')
+
+        df3['ConfidenceScore'] = df3['ConfidenceScore'].fillna(0)
+
+        def Sirius_annotation(ConfidenceScore, ZodiacScore):
+            if ConfidenceScore >= min_ConfidenceScore and ZodiacScore >= min_ZodiacScore:
+                annotated=1 #good annotation
+            else:
+                annotated=0 #'bad annotation'
+            return annotated
+
+        df3['Annotated_Sirius'] = df3.apply(lambda x: Sirius_annotation(x['ConfidenceScore'], x['ZodiacScore']), axis=1)
+            #df3.head(2)
+
+        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], right=df3[['cluster index','Annotated_Sirius']], 
+                        how='left',on= 'cluster index')
+
+        def annotations_conditions(df):
+            """ function to classify the annotations results 
+                Args:
+                df = treated and combinend table with the gnps and insilico results
+                Returns:
+                None
+            """
+            if (df['Annotated_GNPS'] == '1') | (df['Annotated_Sirius'] == '1'):
+                return 1
+            else: 
+                return 0
+
+        df['annotation'] = df.apply(annotations_conditions, axis=1)
+
+    elif(isbd_annotations == False and sirius_annotations == False):
+        #ONLY GNPS
+        #work on gnps annotations
+        
         #find null values (non annotated)
         df1['Annotated'] = pd.isnull(df1['SpectrumID'])
         #lets replace the booleans 
@@ -158,46 +339,10 @@ def annotations(df1, df2, only_gnps_annotations, only_ms2_annotations):
                 return 0
 
         df['annotation'] = df.apply(annotations_gnps, axis=1)
-
     else:
-        #work on gnps annotations
-        #find null values (non annotated)
-        df1['Annotated'] = pd.isnull(df1['SpectrumID'])
-        #lets replace the booleans 
-        bD = {True: '0', False: '1'}
-        df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
+        print("INVALID INPUT")
 
-        #work on isdb annotations
-        if only_ms2_annotations == True:
-            df2 = df2[~df2.libname.str.contains('MS1_match', na=False)]
-            df2['Annotated'] = pd.isnull(df2['short_inchikey'])
-            df2['Annotated_ISDB'] = df2['Annotated'].replace(bD)
-        else:
-            df2['Annotated'] = pd.isnull(df2['short_inchikey'])
-            df2['Annotated_ISDB'] = df2['Annotated'].replace(bD)
-    
-        #merge the information 
-        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], 
-                  right=df2[['feature_id','Annotated_ISDB']], 
-                  how='left', left_on= 'cluster index', right_on='feature_id')
-        df.drop('feature_id', axis=1, inplace=True)
-        df = df.fillna({'Annotated_ISDB':0})
-
-        def annotations_conditions(df):
-            """ function to classify the annotations results 
-             Args:
-            df = treated and combinend table with the gnps and insilico results
-            Returns:
-            None
-            """
-            if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
-                return 1
-            else: 
-                return 0
-
-        df['annotation'] = df.apply(annotations_conditions, axis=1)
     return df
-
 
 def feature_component(df1,df2,df3, FC_component, only_feature_specificity, min_specificity, annotation_preference):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
