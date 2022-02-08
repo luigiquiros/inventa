@@ -23,7 +23,7 @@ The combined score (adition of the four components) can be modulated acording to
 
 Binder allows to run INVENTA on the cloud with a Binder instance, which is really convenient but you need to save the parameters and results locally as these instance are shutting down after 15 min of inactivity.
 
--> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/INVENTA/main?urlpath=lab/tree/notebooks/INVENTA_v7.ipynb)
+-> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/INVENTA/main?urlpath=lab/tree/notebook/INVENTA_v7.ipynb)
 
 <- this may take several minutes to build Jupyter assets ... please wait.
 
