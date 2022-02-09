@@ -422,7 +422,7 @@ def literature_component(df, LC_component, min_comp_reported, max_comp_reported)
         
         df = pd.merge(df[['filename', 'ATTRIBUTE_Family', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Species']],
                 LotusDB[['organism_taxonomy_09species', 'Reported_comp_Family','Reported_comp_Genus', 'Reported_comp_Species']],
-                how= 'left', left_on='ATTRIBUTE_Species', right_on='organism_taxonomy_09species')
+                how= 'left', left_on='ATTRIBUTE_Species', right_on='organism_taxonomy_09species').drop_duplicates(subset=['filename'])
         df.drop('organism_taxonomy_09species', axis=1, inplace=True)
         df = df.fillna(0) #assumign species not present in LotusDB the number of reported compounds is set to 0
         df['Reported_comp_Species'] = df['Reported_comp_Species'].astype(int) 
@@ -450,7 +450,7 @@ def literature_component(df, LC_component, min_comp_reported, max_comp_reported)
 def similarity_component(df, SC_component):
     """ function to compute the similarity component based on the MEMO matrix and machine learning unsupervised clustering methods 
     Args:
-        df = meme matrix
+        df = memo matrix
 
     Returns:
         None
@@ -557,11 +557,12 @@ def search_reported_class(df):
     df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
     return df
 
-def class_component(df1, df2, CC_component):
+def class_component(df1, df2, df3, CC_component):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
         df1 = reported_classes_df 
         df2 = sirius_classes_df
+        df3 = metadata_df
         Returns:
         None
     """
@@ -591,6 +592,11 @@ def class_component(df1, df2, CC_component):
                 return 0
 
         df['CC'] = df['New_in_species'].apply(is_empty)
+
+        df = pd.merge(df3[['filename']],
+                df,
+                how= 'left', on='filename')
+        df = df.fillna(0) #assumign species not present in LotusDB the number of reported compounds is set to 0
     return df
 
 def priority_rank(df1, df2, df3, df4, LC_component, SC_component, CC_component, w1, w2, w3, w4):
