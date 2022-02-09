@@ -3,6 +3,12 @@ import pandas as pd
 import numpy as np
 import zipfile
 import os
+import scipy as sp
+import matplotlib.pyplot as plt
+import plotly.express as px
+import zipfile
+
+
 
 from sklearn.metrics import pairwise_distances
 from sklearn.neighbors import LocalOutlierFactor
@@ -159,14 +165,17 @@ def annotations(df1, df2, df3,
         bD = {True: '0', False: '1'}
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
 
-            # work on df2 (isdb annotations)
+        # work on df2 (isdb annotations)
 
         df2 = pd.merge(left=df1[['cluster index']], 
                         right=df2, 
                         how='left', left_on= 'cluster index', right_on='feature_id')
-        df2.drop('feature_id', axis=1, inplace=True)
-        df2['final_score'] = df2['final_score'].str.split('|').str[-1].astype(float)
-
+        #recover one value from multiple options:
+        df2['score_final'] = df2['score_final'].str.split('|').str[-1].astype(float)
+        df2['lib_type'] = df2['score_initialNormalized'].str.split('|').str[-1].astype(float)
+        df2.drop('score_initialNormalized', axis=1, inplace=True)
+        df2['molecular_formula'] = df2['molecular_formula'].str.split('|').str[-1].astype(str)
+        
         def score_final_isdb(final_score):
             if final_score >= min_score_final:
                 annotated=1 #good annotation
@@ -174,14 +183,16 @@ def annotations(df1, df2, df3,
                 annotated=0 #'bad annotation'
             return annotated   
 
-        df2['Annotated_ISDB'] = df2.apply(lambda x: score_final_isdb(x['final_score']), axis=1)
+        df2['Annotated_ISDB'] = df2.apply(lambda x: score_final_isdb(x['score_final']), axis=1)
                     
         if only_ms2_annotations == True:
-            df2.loc[df2['libname']== 'MS1_match', 'Annotated_ISDB'] = 0
+            df2.loc[df2['lib_type']== 'MS1_match', 'Annotated_ISDB'] = 0
         else:
             df2
+
             # work on df3 (sirius annotations)
             #get the feature id 
+
         df3['shared name'] = df3['id'].str.split('_').str[-1].astype(int)
         df3 = pd.merge(left=df1[['cluster index']], 
                     right=df3[['shared name','ConfidenceScore','ZodiacScore']], 
@@ -229,14 +240,17 @@ def annotations(df1, df2, df3,
         bD = {True: '0', False: '1'}
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
 
-            # work on df2 (isdb annotations)
+        # work on df2 (isdb annotations)
 
         df2 = pd.merge(left=df1[['cluster index']], 
                         right=df2, 
                         how='left', left_on= 'cluster index', right_on='feature_id')
-        df2.drop('feature_id', axis=1, inplace=True)
-        df2['final_score'] = df2['final_score'].str.split('|').str[-1].astype(float)
-
+        #recover one value from multiple options:
+        df2['score_final'] = df2['score_final'].str.split('|').str[-1].astype(float)
+        df2['lib_type'] = df2['score_initialNormalized'].str.split('|').str[-1].astype(float)
+        df2.drop('score_initialNormalized', axis=1, inplace=True)
+        df2['molecular_formula'] = df2['molecular_formula'].str.split('|').str[-1].astype(str)
+        
         def score_final_isdb(final_score):
             if final_score >= min_score_final:
                 annotated=1 #good annotation
@@ -244,13 +258,13 @@ def annotations(df1, df2, df3,
                 annotated=0 #'bad annotation'
             return annotated   
 
-        df2['Annotated_ISDB'] = df2.apply(lambda x: score_final_isdb(x['final_score']), axis=1)
+        df2['Annotated_ISDB'] = df2.apply(lambda x: score_final_isdb(x['score_final']), axis=1)
                     
         if only_ms2_annotations == True:
-            df2.loc[df2['libname']== 'MS1_match', 'Annotated_ISDB'] = 0
+            df2.loc[df2['lib_type']== 'MS1_match', 'Annotated_ISDB'] = 0
         else:
             df2
-
+            
         df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], right=df2[['cluster index','Annotated_ISDB']], 
                         how='left', on= 'cluster index')
         def annotations_conditions(df):
