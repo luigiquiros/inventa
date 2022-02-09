@@ -157,10 +157,11 @@ def annotations(df1, df2, df3,
 
     if (isbd_annotations == True and sirius_annotations == True):
         #GNPS + ISDB + SIRIUS
+        
         #work on gnps annotations
 
         #find null values (non annotated)
-        df1['Annotated'] = pd.isnull(df1['SpectrumID'])
+        df1['Annotated'] = pd.isnull(df1['GNPS_INCHI_MF'])
             #lets replace the booleans 
         bD = {True: '0', False: '1'}
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
@@ -235,7 +236,7 @@ def annotations(df1, df2, df3,
         #work on gnps annotations
 
         #find null values (non annotated)
-        df1['Annotated'] = pd.isnull(df1['SpectrumID'])
+        df1['Annotated'] = pd.isnull(df1['GNPS_INCHI_MF'])
             #lets replace the booleans 
         bD = {True: '0', False: '1'}
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
@@ -286,7 +287,7 @@ def annotations(df1, df2, df3,
         #work on gnps annotations
 
         #find null values (non annotated)
-        df1['Annotated'] = pd.isnull(df1['SpectrumID'])
+        df1['Annotated'] = pd.isnull(df1['GNPS_INCHI_MF'])
             #lets replace the booleans 
         bD = {True: '0', False: '1'}
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
@@ -332,7 +333,7 @@ def annotations(df1, df2, df3,
         #work on gnps annotations
         
         #find null values (non annotated)
-        df1['Annotated'] = pd.isnull(df1['SpectrumID'])
+        df1['Annotated'] = pd.isnull(df1['GNPS_INCHI_MF'])
         #lets replace the booleans 
         bD = {True: '0', False: '1'}
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
@@ -602,7 +603,7 @@ def process_gnps_results(gnps_folder_path):
         Returns: pandas table (deactivated here) and path
     """
 
-    try :
+    try:
         path = [x for x in os.listdir(gnps_folder_path+'/result_specnets_DB')][0]
         df_annotations = pd.read_csv(gnps_folder_path+'/result_specnets_DB/'+path, sep='\t')
         print('==================')
@@ -647,3 +648,34 @@ def process_gnps_results(gnps_folder_path):
             print('==================')
             print('   Number of network nodes in the job = '+str(df_network.shape[0]))
             return clusterinfosummary
+
+def get_gnp_db_results(gnps_folder_path):
+    """ function to compute the class component based on the possible presence of new chemical classes 
+    Args:
+        gnps_folder_path
+        Returns: pandas table (deactivated here) and path
+    """
+
+    try:
+        path = [x for x in os.listdir(gnps_folder_path+'/result_specnets_DB')][0]
+        df_annotations = pd.read_csv(gnps_folder_path+'/result_specnets_DB/'+path, sep='\t')
+        path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID')][0]
+     
+    except: 
+        try: 
+            path = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
+            df_annotations = pd.read_csv(gnps_folder_path+'/DB_result/'+path, sep='\t')
+            
+            path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
+            db_results = gnps_folder_path+'/DB_result/'+path_networkinfo
+            df_network = pd.read_csv(db_results, sep='\t')
+            return db_results
+
+        except:
+            path = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
+            df_annotations = pd.read_csv(gnps_folder_path+'/DB_result/'+path, sep='\t')
+            
+            path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID')][0]
+            clusterinfosummary = gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID/'+path_networkinfo
+            df_network = pd.read_csv(clusterinfosummary, sep='\t')
+            return clusterinfosummary    
