@@ -27,7 +27,7 @@ def pcoa_2d(filename_col, group_col, title, matrix, data, metric = 'braycurtis',
         None
     """
     #prepare table and calculate pcoa: 
-    #matrix.set_index('filename', inplace=True)
+    matrix= matrix.iloc[: , 1:]
     dist_matrix = sp.spatial.distance.pdist(matrix, 'braycurtis')
 
     pcoa_results = pcoa(dist_matrix)
