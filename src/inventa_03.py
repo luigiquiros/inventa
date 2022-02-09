@@ -1,14 +1,31 @@
 
+#Feature component
+FC_component = True  #FC will be calculated
+min_specificity = 90  #minimun feature specificity to consider
+only_feature_specificity = False  #True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
+only_gnps_annotations = True #only the annotations from gpns will be considered 
+only_ms2_annotations = False  #False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
+annotation_preference= 0  #Only Annotated nodes: '1' 
+                          #Only Not annotated: '0'
+
+#Literature component 
+LC_component = True  #LC will be calculated
+max_comp_reported = 40  #more than this value, the plant is considered no interesting LC =0
+min_comp_reported = 10  #less than this value, the plant is consireded very interesintg LC =1
+                        #a sample with x between both values gets a LC=0.5
+
+#Class component+
+CC_component = True  #CC will be calculated
+
+#Similarity component
+SC_component = True  #SC will be calculated
+
+# dependencies 
+
 import pandas as pd
 import numpy as np
 import zipfile
 import os
-import scipy as sp
-import matplotlib.pyplot as plt
-import plotly.express as px
-import zipfile
-
-
 
 from sklearn.metrics import pairwise_distances
 from sklearn.neighbors import LocalOutlierFactor
@@ -17,6 +34,7 @@ from sklearn.ensemble import IsolationForest
 from sklearn import preprocessing
 from skbio.stats.ordination import pcoa
 from skbio import OrdinationResults
+
 
 #general treatment 
 
@@ -132,208 +150,18 @@ def top_ions(df1, df2):
     return df
 
 
-def annotations(df1, df2, df3,
-                only_ms2_annotations, sirius_annotations, isbd_annotations,
-                min_score_final, min_ConfidenceScore, min_ZodiacScore):
-
-    """ 
-        function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
-        
-        Args:
-        df1 = clusterinfosummary # mandatory 
-        df2 = tima_results_filename
-        df3 = sirius_annotations_filename
-        
-        only_ms2_annotations =
-        sirius_annotations = 
-        isbd_annotations = 
-        min_score_final =
-        min_ConfidenceScore = 
-        min_ZodiacScore  =
-
+def annotations(df1, df2):
+    """ function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
+    Args:
+        df1 = cluster summary results file from GNPS
+        df2 = in silico dereplication results file
         Returns:
         None
     """
-
-    if (isbd_annotations == True and sirius_annotations == True):
-        #GNPS + ISDB + SIRIUS
-        
+    if only_gnps_annotations == True:
         #work on gnps annotations
-
         #find null values (non annotated)
-        df1['Annotated'] = pd.isnull(df1['GNPS_INCHI_MF'])
-            #lets replace the booleans 
-        bD = {True: '0', False: '1'}
-        df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
-
-        # work on df2 (isdb annotations)
-
-        df2 = pd.merge(left=df1[['cluster index']], 
-                        right=df2, 
-                        how='left', left_on= 'cluster index', right_on='feature_id')
-        #recover one value from multiple options:
-        df2['score_final'] = df2['score_final'].str.split('|').str[-1].astype(float)
-        df2['lib_type'] = df2['score_initialNormalized'].str.split('|').str[-1].astype(float)
-        df2.drop('score_initialNormalized', axis=1, inplace=True)
-        df2['molecular_formula'] = df2['molecular_formula'].str.split('|').str[-1].astype(str)
-        
-        def score_final_isdb(final_score):
-            if final_score >= min_score_final:
-                annotated=1 #good annotation
-            else:
-                annotated=0 #'bad annotation'
-            return annotated   
-
-        df2['Annotated_ISDB'] = df2.apply(lambda x: score_final_isdb(x['score_final']), axis=1)
-                    
-        if only_ms2_annotations == True:
-            df2.loc[df2['lib_type']== 'MS1_match', 'Annotated_ISDB'] = 0
-        else:
-            df2
-
-            # work on df3 (sirius annotations)
-            #get the feature id 
-
-        df3['shared name'] = df3['id'].str.split('_').str[-1].astype(int)
-        df3 = pd.merge(left=df1[['cluster index']], 
-                    right=df3[['shared name','ConfidenceScore','ZodiacScore']], 
-                    how='left', left_on= 'cluster index', right_on='shared name')
-
-        df3['ConfidenceScore'] = df3['ConfidenceScore'].fillna(0)
-
-        def Sirius_annotation(ConfidenceScore, ZodiacScore):
-            if ConfidenceScore >= min_ConfidenceScore and ZodiacScore >= min_ZodiacScore:
-                annotated=1 #good annotation
-            else:
-                annotated=0 #'bad annotation'
-            return annotated
-
-        df3['Annotated_Sirius'] = df3.apply(lambda x: Sirius_annotation(x['ConfidenceScore'], x['ZodiacScore']), axis=1)
-            #df3.head(2)
-
-        #merge the information 
-        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], right=df2[['cluster index','Annotated_ISDB']], 
-                        how='left', on= 'cluster index')
-        df = pd.merge(left=df, right=df3[['cluster index','Annotated_Sirius']], 
-                        how='left',on= 'cluster index')
-
-        def annotations_conditions(df):
-            """ function to classify the annotations results 
-                Args:
-                df = treated and combinend table with the gnps and insilico results
-                Returns:
-                None
-            """
-            if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1') | (df['Annotated_Sirius'] == '1'):
-                return 1
-            else: 
-                return 0
-
-        df['annotation'] = df.apply(annotations_conditions, axis=1)
-
-    elif(isbd_annotations == True and sirius_annotations == False):
-        #GNPS + ISDB
-        #work on gnps annotations
-
-        #find null values (non annotated)
-        df1['Annotated'] = pd.isnull(df1['GNPS_INCHI_MF'])
-            #lets replace the booleans 
-        bD = {True: '0', False: '1'}
-        df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
-
-        # work on df2 (isdb annotations)
-
-        df2 = pd.merge(left=df1[['cluster index']], 
-                        right=df2, 
-                        how='left', left_on= 'cluster index', right_on='feature_id')
-        #recover one value from multiple options:
-        df2['score_final'] = df2['score_final'].str.split('|').str[-1].astype(float)
-        df2['lib_type'] = df2['score_initialNormalized'].str.split('|').str[-1].astype(float)
-        df2.drop('score_initialNormalized', axis=1, inplace=True)
-        df2['molecular_formula'] = df2['molecular_formula'].str.split('|').str[-1].astype(str)
-        
-        def score_final_isdb(final_score):
-            if final_score >= min_score_final:
-                annotated=1 #good annotation
-            else:
-                annotated=0 #'bad annotation'
-            return annotated   
-
-        df2['Annotated_ISDB'] = df2.apply(lambda x: score_final_isdb(x['score_final']), axis=1)
-                    
-        if only_ms2_annotations == True:
-            df2.loc[df2['lib_type']== 'MS1_match', 'Annotated_ISDB'] = 0
-        else:
-            df2
-            
-        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], right=df2[['cluster index','Annotated_ISDB']], 
-                        how='left', on= 'cluster index')
-        def annotations_conditions(df):
-            """ function to classify the annotations results 
-                Args:
-                df = treated and combinend table with the gnps and insilico results
-                Returns:
-                None
-            """
-            if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
-                return 1
-            else: 
-                return 0
-
-        df['annotation'] = df.apply(annotations_conditions, axis=1) 
-
-    elif(isbd_annotations == False and sirius_annotations == True):
-        #GNPS + SIRIUS
-        #work on gnps annotations
-
-        #find null values (non annotated)
-        df1['Annotated'] = pd.isnull(df1['GNPS_INCHI_MF'])
-            #lets replace the booleans 
-        bD = {True: '0', False: '1'}
-        df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
-
-        # work on df3 (sirius annotations)
-            #get the feature id 
-        df3['shared name'] = df3['id'].str.split('_').str[-1].astype(int)
-        df3 = pd.merge(left=df1[['cluster index']], 
-                    right=df3[['shared name','ConfidenceScore','ZodiacScore']], 
-                    how='left', left_on= 'cluster index', right_on='shared name')
-
-        df3['ConfidenceScore'] = df3['ConfidenceScore'].fillna(0)
-
-        def Sirius_annotation(ConfidenceScore, ZodiacScore):
-            if ConfidenceScore >= min_ConfidenceScore and ZodiacScore >= min_ZodiacScore:
-                annotated=1 #good annotation
-            else:
-                annotated=0 #'bad annotation'
-            return annotated
-
-        df3['Annotated_Sirius'] = df3.apply(lambda x: Sirius_annotation(x['ConfidenceScore'], x['ZodiacScore']), axis=1)
-            #df3.head(2)
-
-        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], right=df3[['cluster index','Annotated_Sirius']], 
-                        how='left',on= 'cluster index')
-
-        def annotations_conditions(df):
-            """ function to classify the annotations results 
-                Args:
-                df = treated and combinend table with the gnps and insilico results
-                Returns:
-                None
-            """
-            if (df['Annotated_GNPS'] == '1') | (df['Annotated_Sirius'] == '1'):
-                return 1
-            else: 
-                return 0
-
-        df['annotation'] = df.apply(annotations_conditions, axis=1)
-
-    elif(isbd_annotations == False and sirius_annotations == False):
-        #ONLY GNPS
-        #work on gnps annotations
-        
-        #find null values (non annotated)
-        df1['Annotated'] = pd.isnull(df1['GNPS_INCHI_MF'])
+        df1['Annotated'] = pd.isnull(df1['SpectrumID'])
         #lets replace the booleans 
         bD = {True: '0', False: '1'}
         df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
@@ -354,12 +182,48 @@ def annotations(df1, df2, df3,
                 return 0
 
         df['annotation'] = df.apply(annotations_gnps, axis=1)
-    else:
-        print("INVALID INPUT")
 
+    else:
+        #work on gnps annotations
+        #find null values (non annotated)
+        df1['Annotated'] = pd.isnull(df1['SpectrumID'])
+        #lets replace the booleans 
+        bD = {True: '0', False: '1'}
+        df1['Annotated_GNPS'] = df1['Annotated'].replace(bD)
+
+        #work on isdb annotations
+        if only_ms2_annotations == True:
+            df2 = df2[~df2.libname.str.contains('MS1_match', na=False)]
+            df2['Annotated'] = pd.isnull(df2['short_inchikey'])
+            df2['Annotated_ISDB'] = df2['Annotated'].replace(bD)
+        else:
+            df2['Annotated'] = pd.isnull(df2['short_inchikey'])
+            df2['Annotated_ISDB'] = df2['Annotated'].replace(bD)
+    
+        #merge the information 
+        df = pd.merge(left=df1[['cluster index', 'componentindex', 'Annotated_GNPS']], 
+                  right=df2[['feature_id','Annotated_ISDB']], 
+                  how='left', left_on= 'cluster index', right_on='feature_id')
+        df.drop('feature_id', axis=1, inplace=True)
+        df = df.fillna({'Annotated_ISDB':0})
+
+        def annotations_conditions(df):
+            """ function to classify the annotations results 
+             Args:
+            df = treated and combinend table with the gnps and insilico results
+            Returns:
+            None
+            """
+            if (df['Annotated_GNPS'] == '1') | (df['Annotated_ISDB'] == '1'):
+                return 1
+            else: 
+                return 0
+
+        df['annotation'] = df.apply(annotations_conditions, axis=1)
     return df
 
-def feature_component(df1,df2,df3, only_feature_specificity, min_specificity, annotation_preference):
+
+def feature_component(df1,df2,df3):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
     Args:
         df1 = specificity_df, calculated with the top_ions function 
@@ -368,34 +232,38 @@ def feature_component(df1,df2,df3, only_feature_specificity, min_specificity, an
     Returns:
         None
     """
-    df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
+    if FC_component == False:
+        print('Feature component not calculated')
+    else:
+        df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
 
-    if only_feature_specificity == True:
-        #Computation of the general specificity 
-        df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
-        df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
-        df = pd.DataFrame(df5)
-        df.rename(columns={0: 'Sample_specificity'}, inplace=True)
+        if only_feature_specificity == True:
+            #Computation of the general specificity 
+            df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+            df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
+            df = pd.DataFrame(df5)
+            df.rename(columns={0: 'Sample_specificity'}, inplace=True)
 
-    else: 
-    #Computation of the general specificity 
-        df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
-        df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
-        df5 = pd.DataFrame(df5)
-        df5.rename(columns={0: 'Sample_specificity'}, inplace=True)
+        else: 
+            #Computation of the general specificity 
+            df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+            df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
+            df5 = pd.DataFrame(df5)
+            df5.rename(columns={0: 'Sample_specificity'}, inplace=True)
 
-    #Computation of the feature component 
-    df6 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
-    df6 = df6.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
-    df6 = pd.DataFrame(df6)
-    df6.rename(columns={0: 'FC'}, inplace=True)
-    df = pd.merge(df5, df6, how='left', on='filename')
-    df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']], df, how='left', on='filename')
-    df = df.sort_values(by=['FC'], ascending=False)
+            #Computation of the feature component 
+            df6 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
+            df6 = df6.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
+            df6 = pd.DataFrame(df6)
+            df6.rename(columns={0: 'FC'}, inplace=True)
+            df = pd.merge(df5, df6, how='left', on='filename')
+            df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']], df, how='left', on='filename')
+            df = df.sort_values(by=['FC'], ascending=False)
     return df
+
 #literature component
  
-def literature_component(df, LC_component, min_comp_reported, max_comp_reported):
+def literature_component(df):
     """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
     Args:
         df2 = metadata_df
@@ -447,7 +315,7 @@ def literature_component(df, LC_component, min_comp_reported, max_comp_reported)
 
 #similarity component: 
 
-def similarity_component(df, SC_component):
+def similarity_component(df):
     """ function to compute the similarity component based on the MEMO matrix and machine learning unsupervised clustering methods 
     Args:
         df = meme matrix
@@ -458,10 +326,11 @@ def similarity_component(df, SC_component):
     if SC_component == False:
         print('Similarity component not calculated')
     else:
-        df1 = df.copy()
-        df1.set_index('filename', inplace=True)
         df2 = df.copy()
-        
+        df2.rename(columns = {'Unnamed: 0': 'filename'}, inplace=True)
+        columns_to_model=df2.columns[1:91861] #specify the X metrics column names to be modelled (THIS CORRESPOND TO THE SIZE OF THE FEATURES)
+        df1 = df2[columns_to_model].astype(np.uint8)
+    
         #specify the parameters of the individual classification algorithms
         clf = IsolationForest(n_estimators=100, 
                     max_samples='auto', 
@@ -499,7 +368,8 @@ def similarity_component(df, SC_component):
 
         #recover and print the results
         df1.reset_index(inplace=True)
-        df = pd.merge(df1,df2, how='left', left_on='filename', right_on='filename')
+        df2.reset_index(inplace=True)
+        df = pd.merge(df1,df2, how='left', left_on='index', right_on='index')
         df = df[['filename', 'anomaly_IF', 'anomaly_LOF', 'anomaly_OCSVM']]
 
         def similarity_conditions(df):
@@ -518,7 +388,7 @@ def sirius_classes(df1,df2,df3):
     Args:
         df1 = specificity_df
         df2 = metadata_df
-        df3 = output from SIRIUS + Canopus 
+        df3 = output from SIRIUS and Canopus 
 
     Returns:
         None
@@ -539,7 +409,7 @@ def search_reported_class(df):
         Returns:
         None
     """
-    LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',
+    LotusDB = pd.read_csv('../data/LotusDB_inhouse_metadata.csv',
                        sep=',').dropna()
     
     #create a set of species present in the metatada and reduce the lotus DB to it
@@ -557,7 +427,7 @@ def search_reported_class(df):
     df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
     return df
 
-def class_component(df1, df2, CC_component):
+def class_component(df1, df2):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
         df1 = reported_classes_df 
@@ -593,61 +463,6 @@ def class_component(df1, df2, CC_component):
         df['CC'] = df['New_in_species'].apply(is_empty)
     return df
 
-def priority_rank(df1, df2, df3, df4, LC_component, SC_component, CC_component, w1, w2, w3, w4):
-    df = df1
-    if LC_component == True: 
-        df =pd.merge(
-                    left=df,
-                    right=df2[['filename', 'Reported_comp_Species', 'Reported_comp_Genus', 'LC', 'ATTRIBUTE_Family']], 
-                    how='left', 
-                    left_on='filename', 
-                    right_on='filename')
-    else:
-        df
-
-    if SC_component == True:
-        df =pd.merge(
-                    left=df,
-                    right=df3[['filename', 'SC']], 
-                    how='left', 
-                    left_on='filename', 
-                    right_on='filename')
-    else:
-        df
-
-    if CC_component == True: 
-        df =pd.merge(
-                        left=df,
-                        right=df4[['filename', 'New_in_species', 'New_in_genus', 'CC']], 
-                        how='left', 
-                        left_on='filename', 
-                        right_on='filename')
-    else: 
-        df
-
-    def priority(df):
-        df['PR'] = w1*df['FC']
-    
-        if LC_component == True: 
-            df['PR'] = w1*df['FC'] + w2*df['LC']
-        else:
-            df
-
-        if SC_component == True:
-            df['PR'] = w1*df['FC'] + w2*df['LC'] + w3*df['SC']
-        else:
-            df
-
-        if CC_component == True: 
-            df['PR'] = w1*df['FC'] + w2*df['LC'] + w3*df['SC'] + w4*df['CC']
-        else: 
-            df
-        return df
-
-    df = priority(df)
-    
-    return df
-
 def process_gnps_results(gnps_folder_path):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
@@ -655,7 +470,7 @@ def process_gnps_results(gnps_folder_path):
         Returns: pandas table (deactivated here) and path
     """
 
-    try:
+    try :
         path = [x for x in os.listdir(gnps_folder_path+'/result_specnets_DB')][0]
         df_annotations = pd.read_csv(gnps_folder_path+'/result_specnets_DB/'+path, sep='\t')
         print('==================')
@@ -700,34 +515,3 @@ def process_gnps_results(gnps_folder_path):
             print('==================')
             print('   Number of network nodes in the job = '+str(df_network.shape[0]))
             return clusterinfosummary
-
-def get_gnp_db_results(gnps_folder_path):
-    """ function to compute the class component based on the possible presence of new chemical classes 
-    Args:
-        gnps_folder_path
-        Returns: pandas table (deactivated here) and path
-    """
-
-    try:
-        path = [x for x in os.listdir(gnps_folder_path+'/result_specnets_DB')][0]
-        df_annotations = pd.read_csv(gnps_folder_path+'/result_specnets_DB/'+path, sep='\t')
-        path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID')][0]
-     
-    except: 
-        try: 
-            path = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
-            df_annotations = pd.read_csv(gnps_folder_path+'/DB_result/'+path, sep='\t')
-            
-            path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
-            db_results = gnps_folder_path+'/DB_result/'+path_networkinfo
-            df_network = pd.read_csv(db_results, sep='\t')
-            return db_results
-
-        except:
-            path = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
-            df_annotations = pd.read_csv(gnps_folder_path+'/DB_result/'+path, sep='\t')
-            
-            path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID')][0]
-            clusterinfosummary = gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID/'+path_networkinfo
-            df_network = pd.read_csv(clusterinfosummary, sep='\t')
-            return clusterinfosummary    
