@@ -2,7 +2,7 @@
 
 
 ## Description 
-
+#
 This is a workflow to explore the potential of a set of samples to contain not previously reported compounds. It is based on the results from data treatment usign MZmine, spectral organization through Molecular Networking, in-silico dereplication and prediction. 
 It is composed of 4 independend components: 
 
@@ -16,11 +16,11 @@ The **Similarity Component (SC)** is a score based on the spectral similarity of
 
 The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .csv file with all the information generared along the final rank of the samples.
 
-
+#
 ## Running INVENTA 
-
+#
 ## A) Running INVENTA with Binder:
-
+#
 Binder allows to run INVENTA on the cloud with a Binder instance, which is really convenient but you need to save the parameters and results locally as these instance are shutting down after 15 min of inactivity.
 
 -> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/INVENTA/main?urlpath=lab/tree/notebook/INVENTA_v7.ipynb)
@@ -33,9 +33,9 @@ Binder allows to run INVENTA on the cloud with a Binder instance, which is reall
 - The output can be found in the folder`results/` as a TAB separated file.
 - If needed, you can modify the jupyter notebook directly in the browser (make sure to save it locally).
 - As explain below, if needed, you can modify the `inventa.py` parameters inside `src/inventa.py`, this can be done as well directly in the browser.
-
+#
 ## B) Running INVENTA locally:
-
+#
 ### Install the conda environment
 
 First make sure to have [anaconda](https://www.anaconda.com/products/individual) installed.
@@ -72,13 +72,24 @@ If you have an error, try installing `scikit-bio` from `conda-forge` before crea
 ```
 conda install -c conda-forge scikit-bio
 ```
-
+#
 ## In both cases, running INVENTA with Binder or locally, the following formats and parameters are necesary:
+#
+### IMPORTANT!
+### The FC component is by default calculated, 
 
+In order to run the notebook at the minimun inputs are:
+- GNPS job 
+- Metadata table
+- Quantification table 
+ 
+#
 ## Checking the necessary inputs! 
+
 ### The format of the imput tables is critical!
 
 #### please read carefully the following lines:
+#
 #### Metadata table:
 The standard format from GNPS is prefered:
 
@@ -138,12 +149,13 @@ This output needs an additional step after runnign sirius, please follow the nex
 
 [Examples of all these input could be found in `/format_examples`]
 
+#
 ## Parameter to be fixed before running INVENTA
-
+#
 There are some parameters that need to be fixed by the user before launching the job. You will find them in the jupyter notebook 'Paths and parameters to define'
-
-#### paths 
-
+#
+## paths 
+#
 Each path corresponds to the files mentiones above. Just drop your files in the `/data` folder and change the names accordingly: 
 
 ```
@@ -154,12 +166,22 @@ vectorized_data_filename = '../data/Celastraceae_memomatrix.csv'
 canopus_npc_summary_filename = '../data/canopus_npc_summary.tsv'
 sirius_annotations_filename = '../data/canopus_npc_summary.tsv'
 ```
-#### Parameters
+#
+## Parameters
+#
 
-#### Feature_component
-
+### For cleaning-up annotations from GNPS 
+#
 ```
-FC_component = True                # FC will be calculated
+ppm_error = 5                     # min error in ppm to consider an annotation valable
+shared_peaks = 10                 # min number of shared peaks between the MS2 experimental and MS2 fro, the database, to consider an annotation valable
+cosine = 0.7                      # min cosine score to consider an annotation valable
+ionisation_mode = 'pos'           # ionisation mode according to experimental conditions
+```
+#
+### Feature_component
+#
+```
 min_specificity = 90               # minimun feature specificity to consider
 only_feature_specificity = False   # True if annotations should be ignore and the FC should be calculated based on the features specificity. If False it will compute both The Sample specifity adn the FC
 
@@ -181,21 +203,35 @@ annotation_preference = 0          # Only Annotated nodes: '1'
                                    # Only Not annotated: '0'
 
 ```
-##### Literature_component
+#
+### Literature_component
+#
 ```
 LC_component = True                # LC will be calculated
 max_comp_reported = 40             # more than this value, the plant is considered no interesting LC =0
 min_comp_reported = 10             # less than this value, the plant is consireded very interesintg LC =1
                                    # a sample with x between both values gets a LC=0.5
 ```
-##### Class_component
+#
+### Class_component
+#
 ```
 CC_component = True                # CC will be calculated
 ```
-##### Similarity_component
+#
+### Similarity_component
+#
 ```
 SC_component = True                # SC will be calculated
 ```
-
-
+#
+### specify the weight to modulate each component 
+#
+```
+w1 = 1           # 1 means the value itself is taken into account. A 0.5 means onle half of the calculated value is taken into account
+w2 = 1
+w3 = 1
+w4 = 1
+```
+#
 ### ENJOY!!! 
