@@ -74,7 +74,7 @@ conda install -c conda-forge scikit-bio
 ```
 #
 
-## Workflow 
+# Workflow 
 
 To run the repository the minimun inputs needed are:
 
@@ -163,9 +163,9 @@ GNPS clean-up results
 #
 ## Third: Open the notebook 'inventa' 
 #
-### Set the parameters according to your inputs and needs:
+Set the parameters according to your inputs and needs:
 
-### 3.1 paths 
+#### 3.1 paths 
 #
 Each path corresponds to the files mentiones above. Just drop your files in the `/data` folder and change the names accordingly: 
 
@@ -178,10 +178,10 @@ canopus_npc_summary_filename = '../data/canopus_npc_summary.tsv'
 sirius_annotations_filename = '../data/canopus_npc_summary.tsv'
 ```
 #
-### 3.2 Parameters
+#### 3.2 Parameters
 #
 
-### 3.2.1 For cleaning-up annotations from GNPS 
+#### 3.2.1 For cleaning-up annotations from GNPS 
 
 ```
 ppm_error = 5                     # min error in ppm to consider an annotation valable
@@ -190,7 +190,7 @@ cosine = 0.7                      # min cosine score to consider an annotation v
 ionisation_mode = 'pos'           # ionisation mode according to experimental conditions
 ```
 
-### 3.2.1 Feature_component
+#### 3.2.1 Feature_component
 
 ```
 min_specificity = 90               # minimun feature specificity to consider
@@ -215,7 +215,7 @@ annotation_preference = 0          # Only Annotated nodes: '1'
 
 ```
 
-### 3.2.2 Literature_component
+#### 3.2.2 Literature_component
 
 ```
 LC_component = True                # LC will be calculated
@@ -223,21 +223,21 @@ max_comp_reported = 40             # more than this value, the plant is consider
 min_comp_reported = 10             # less than this value, the plant is consireded very interesintg LC =1
                                    # a sample with x between both values gets a LC=0.5
 ```
-### 3.2.3 Similarity_component
+#### 3.2.3 Similarity_component
 
 ```
 SC_component = True                # SC will be calculated
 
 ```
 
-### 3.2.4 Class_component
+#### 3.2.4 Class_component
 
 ```
 CC_component = True                # CC will be calculated
 min_recurrence = 10                # minimun recurrence of a chemical class to considered it valable.
 ```
 
-### 3.2.5 specify the weight to modulate each component 
+#### 3.2.5 specify the weight to modulate each component 
 
 ```
 w1 = 1           # 1 means the value itself is taken into account. A 0.5 means onle half of the calculated value is taken into account
