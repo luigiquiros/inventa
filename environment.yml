@@ -6,7 +6,7 @@ channels:
   - defaults
   - anaconda
 dependencies:
-  - python==3.9.9
+  - python==3.8.*
   - numpy==1.10.*
   - pip==21.3.1
   - pandas==1.4.0
