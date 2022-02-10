@@ -513,7 +513,7 @@ def similarity_component(df, SC_component):
 
 #Class component:
 
-def sirius_classes(df1,df2,df3): 
+def sirius_classes(df1,df2,df3, min_recurrence): 
     """ function to find the chemical classes proposed by sirius and assign them to a specific species based on the top specificity of the feature
     Args:
         df1 = specificity_df
@@ -529,7 +529,13 @@ def sirius_classes(df1,df2,df3):
 
     df3 = pd.merge(left=df1[['row ID', 'filename', 'ATTRIBUTE_Sppart']], right=df3[['shared name', 'classe']], how='left', left_on='row ID', right_on='shared name').dropna()
     df3.drop('shared name', axis=1, inplace=True)
-    df4 = df3[['filename', 'classe']].groupby('filename').agg(set)
+
+    df4= df3[['filename', 'classe']].groupby(['filename','classe']).size().reset_index()
+    df4.rename(columns={0: 'recurrence'}, inplace=True)
+
+    df4 = df4[df4['recurrence'] >= min_recurrence].groupby('filename').agg(set)
+    df4.drop ('recurrence', axis=1, inplace=True)
+    
     df = pd.merge(left=df2[['filename', 'ATTRIBUTE_Species']], right=df4, how='left', left_on='filename', right_on='filename').dropna()
     df.drop('ATTRIBUTE_Species', axis=1, inplace=True)
     return df
