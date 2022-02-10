@@ -525,6 +525,8 @@ def sirius_classes(df1,df2,df3):
     """
     # merge with top filename with iones 
     df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int)
+        #the specificity_df is used to assign the main biological source to each feature. 
+
     df3 = pd.merge(left=df1[['row ID', 'filename', 'ATTRIBUTE_Sppart']], right=df3[['shared name', 'classe']], how='left', left_on='row ID', right_on='shared name').dropna()
     df3.drop('shared name', axis=1, inplace=True)
     df4 = df3[['filename', 'classe']].groupby('filename').agg(set)
