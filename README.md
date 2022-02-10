@@ -217,6 +217,7 @@ min_comp_reported = 10             # less than this value, the plant is consired
 #
 ```
 CC_component = True                # CC will be calculated
+min_recurrence = 10                # minimun recurrence of a chemical class to considered it valable.
 ```
 #
 ### Similarity_component
