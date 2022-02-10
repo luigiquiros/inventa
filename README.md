@@ -232,9 +232,10 @@ SC_component = True                # SC will be calculated
 
 #### 3.2.4 Class_component
 
-- CC_component = True                # CC will be calculated
-- min_recurrence = 10                # minimun recurrence of a chemical class to considered it valable.
-
+```
+CC_component = True                # CC will be calculated
+min_recurrence = 10                # minimun recurrence of a chemical class to considered it valable.
+```
 
 #### 3.2.5 specify the weight to modulate each component 
 
