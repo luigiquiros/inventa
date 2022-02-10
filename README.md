@@ -15,10 +15,10 @@ The **Class Component (CC)** is a score based on the presence of possible new ch
 The **Similarity Component (SC)** is a score based on the spectral similarity of the sample within the set. Multiple outlier detection machine learning algorithms are implemented to spot the dissimilar samples. A weight of ‘1’ is given to the sample considered anomalies in at least one detection method.
 
 The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .csv file with all the information generared along the final rank of the samples.
-
+#
 
 ## Installation
-#
+
 ### A) Running inventa with Binder:
 #
 Binder allows to run inventa on the cloud with a Binder instance, which is really convenient but you need to save the parameters and results locally as these instance are shutting down after 15 min of inactivity.
@@ -76,7 +76,7 @@ conda install -c conda-forge scikit-bio
 
 ## Workflow 
 
-To run the repository the minimun inputs are:
+To run the repository the minimun inputs needed are:
 
 - GNPS job
 - Metadata table (the same used for the FBMN)
@@ -96,7 +96,7 @@ Optionally, the following inputs can be added:
 
 ## First: Check the inputs 
 #
-#### Metadata table:
+#### 1.1 Metadata table:
 The standard format from GNPS is prefered:
 
 `metadata_filename`: GNPS format ([https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0)).
@@ -107,7 +107,7 @@ While creating the 'metadata' there are some MANDATORY headers:
 - `ATTRIBUTE_Organe`  : This column correpond to the part of the plant or organism.
 - `ATTRIBUTE_Sppart` is generated in the notebook from the ATTRIBUTE_Species and ATTRIBUTE_organe colums, if you already have this column in your metadata be sure the header match properly and ignore the line in the data preparation section. 
 
-#### Feature quantitative table:
+#### 1.2 Feature quantitative table:
 
 `quantitative_data_filename`: MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
 
@@ -116,13 +116,13 @@ While creating the 'metadata' there are some MANDATORY headers:
 - if you did export any other column, like identities, etc,  please remove manually or add the corresponding lines in the funcion quand_table(), `df.drop('name of the colum', axis=1, inplace=True)`.
 - Usualy there are columns with the header 'Unkown: number' at the very end of the quantitative table, the scrip takes care of theses columns, you do not need to erase them
 
-#### In silico annotation usign timaR:
+#### 1.3 In silico annotation usign timaR:
 
 `tima_results_filename`: timaR reponderated output format.
 
 - for performing in silico annotations and taxonomically informed reponderation, please follow https://taxonomicallyinformedannotation.github.io/tima-r/index.html
 
-#### Chemical ontology results:
+#### 1.4 Chemical ontology results:
 
 `canopus_npc_summary_filename`: Sirius CANOPUS recomputated output format.
 
@@ -142,30 +142,30 @@ This output needs an additional step after runnign sirius, please follow the nex
 
 - given that the Lotus Dabase (https://lotus.naturalproducts.net/) uses the NPClassifyre ontology and Sirius uses the Classifyre ontology, performing this step is absolutley necesary for a proper comparison of the propsed chemical classes.
 
-#### Annotations with Sirius: 
+#### 1.5 Annotations with Sirius: 
 
 `sirius_annotations_filename`: Sirius annotations output format. Containing Zodiac and Cosmic results (https://bio.informatik.uni-jena.de/software/sirius/).
 
 - this file should correspond to `compound_identification.tsv`
 - make sure the Zodiac and Cosmic scores are present ().
 
-#### Memo dissimilarity matrix:
+#### 1.6 Memo dissimilarity matrix:
 
 `vectorized_data_filename`: MEMO package format (https://github.com/mandelbrot-project/memo).
 
 [Examples of all these input could be found in `/format_examples`]
 #
 
-## Secod: Run the notebook: 
+## Secod: Open and Run the notebook 'XXXX' 
 #
 GNPS clean-up results 
 
 #
-## Third: Open the notebook: inventa 
+## Third: Open the notebook 'inventa' 
 #
 ### Set the parameters according to your inputs and needs:
 
-## paths 
+### 3.1 paths 
 #
 Each path corresponds to the files mentiones above. Just drop your files in the `/data` folder and change the names accordingly: 
 
@@ -178,10 +178,10 @@ canopus_npc_summary_filename = '../data/canopus_npc_summary.tsv'
 sirius_annotations_filename = '../data/canopus_npc_summary.tsv'
 ```
 #
-## Parameters
+### 3.2 Parameters
 #
 
-### For cleaning-up annotations from GNPS 
+### 3.2.1 For cleaning-up annotations from GNPS 
 
 ```
 ppm_error = 5                     # min error in ppm to consider an annotation valable
@@ -190,7 +190,7 @@ cosine = 0.7                      # min cosine score to consider an annotation v
 ionisation_mode = 'pos'           # ionisation mode according to experimental conditions
 ```
 
-### Feature_component
+### 3.2.1 Feature_component
 
 ```
 min_specificity = 90               # minimun feature specificity to consider
@@ -215,7 +215,7 @@ annotation_preference = 0          # Only Annotated nodes: '1'
 
 ```
 
-### Literature_component
+### 3.2.2 Literature_component
 
 ```
 LC_component = True                # LC will be calculated
@@ -223,21 +223,21 @@ max_comp_reported = 40             # more than this value, the plant is consider
 min_comp_reported = 10             # less than this value, the plant is consireded very interesintg LC =1
                                    # a sample with x between both values gets a LC=0.5
 ```
-### Similarity_component
+### 3.2.3 Similarity_component
 
 ```
 SC_component = True                # SC will be calculated
 
 ```
 
-### Class_component
+### 3.2.4 Class_component
 
 ```
 CC_component = True                # CC will be calculated
 min_recurrence = 10                # minimun recurrence of a chemical class to considered it valable.
 ```
 
-### specify the weight to modulate each component 
+### 3.2.5 specify the weight to modulate each component 
 
 ```
 w1 = 1           # 1 means the value itself is taken into account. A 0.5 means onle half of the calculated value is taken into account
@@ -247,4 +247,4 @@ w4 = 1
 ```
 #
 
-# ENJOY!
+## Fourth: Run the notebook 'inventa' and ENJOY! 
