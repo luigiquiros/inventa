@@ -6,22 +6,22 @@
 This is a workflow to explore the potential of a set of samples to contain not previously reported compounds. It is based on the results from data treatment usign MZmine, spectral organization through Molecular Networking, in-silico dereplication and prediction. 
 It is composed of 4 independend components: 
 
-The **Feature Component (FC)** is a ratio that considers compounds with a specificity higher than, for instance, 90% per sample (specified by the user), and without putative annotation. Results: 1 Column with  FC ratio and 1 column with the sample specificity (ratio of peaks higher thant the specificied % wth or without annotations).
+The **Feature Component (FC)** is a ratio that considers compounds with a specificity higher than, for instance, 90% per sample (specified by the user), and without putative annotation. Results: one column with the FC ratio and one column with the sample specificity (ratio of peaks higher thant the specificied % with or without annotations).
 
-The **Literature Component (LC)** is a score based on the number of compounds reported in the literature for the taxon. The output includes one column with the LC score and at least two additional columns of metadata containing the number of reported compounds at the species and genus levels. 
-
-The **Class Component (CC)** is a score based on the presence of possible new chemical classes in the taxon, not previously reported before. The CC will be considered an integer ‘1’ if there are new chemical classes at the species level, and an additional ‘1’ if those new chemical classes are not present in the genus either.
+The **Literature Component (LC)** is a score based on the number of compounds reported in the literature for the taxon. The output includes one column with the LC score and at least two additional columns of metadata containing the number of reported compounds at the species and genus levels.
 
 The **Similarity Component (SC)** is a score based on the spectral similarity of the sample within the set. Multiple outlier detection machine learning algorithms are implemented to spot the dissimilar samples. A weight of ‘1’ is given to the sample considered anomalies in at least one detection method.
 
-The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .csv file with all the information generared along the final rank of the samples.
+The **Class Component (CC)** is a score based on the presence of possible new chemical classes in the taxon, not previously reported before. The CC will be considered an integer ‘1’ if there are new chemical classes at the species level, and an additional ‘1’ if those new chemical classes are not present in the genus either.
+
+The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .tsv file with all the information generared along the final rank of the samples.
 #
 
 ## Installation
 
 ### A) Running inventa with Binder:
 #
-Binder allows to run inventa on the cloud with a Binder instance, which is really convenient but you need to save the parameters and results locally as these instance are shutting down after 15 min of inactivity.
+Binder allows to run inventa on the cloud with a Binder instance, which is really convenient but you need to save the parameters and results locally as these instances are shutting down after 15 min of inactivity.
 
 -> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/inventa/main?urlpath=lab/tree/notebook/inventa.ipynb)
 
@@ -94,7 +94,7 @@ Optionally, the following inputs can be added:
 # Where to start? 
 #
 
-## First: Check the inputs 
+## 1. Check the inputs 
 #
 #### 1.1 Metadata table:
 The standard format from GNPS is prefered:
@@ -156,12 +156,12 @@ This output needs an additional step after runnign sirius, please follow the nex
 [Examples of all these input could be found in `/format_examples`]
 #
 
-## Secod: Open and Run the notebook 'XXXX' 
+## 2. Clean GNPS annotations 
 #
 GNPS clean-up results 
 
 #
-## Third: Open the notebook 'inventa' 
+## 3. Open the notebook 'inventa' 
 #
 Set the parameters according to your inputs and needs:
 
@@ -247,4 +247,4 @@ w4 = 1
 ```
 #
 
-## Fourth: Run the notebook 'inventa' and ENJOY! 
+## 4. Run the notebook 'inventa' and ENJOY! 
