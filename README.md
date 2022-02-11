@@ -105,7 +105,6 @@ While creating the 'metadata' there are some MANDATORY headers:
 
 - `ATTRIBUTE_Species` : The species should be cleaned to uptoday recognized names, you can use the Open Tree of Life to do so (https://opentree.readthedocs.io/en/latest/readme.html).
 - `ATTRIBUTE_Organe`  : This column correpond to the part of the plant or organism.
-- `ATTRIBUTE_Sppart` is generated in the notebook from the ATTRIBUTE_Species and ATTRIBUTE_organe colums, if you already have this column in your metadata be sure the header match properly and ignore the line in the data preparation section. 
 
 #### 1.2 Feature quantitative table:
 
