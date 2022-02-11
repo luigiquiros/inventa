@@ -161,7 +161,7 @@ def annotations(df1, df2, df3,
     #ONLY GNPS        
     #find null values (non annotated)
     df =df1
-    df['Annotated'] = pd.isnull(df['GNPS_INCHI_MF'])
+    df['Annotated'] = pd.isnull(df['Consol_InChI'])
     #lets replace the booleans 
     bD = {True: '0', False: '1'}
     df['Annotated_GNPS'] = df['Annotated'].replace(bD)
@@ -263,7 +263,7 @@ def annotations(df1, df2, df3,
  
     return df 
 
-def feature_component(df1,df2,df3, only_feature_specificity, min_specificity, annotation_preference):
+def feature_component(df1,df2,df3, only_feature_specificity, min_specificity, annotation_preference, col_id_unique):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
     Args:
         df1 = specificity_df, calculated with the top_ions function 
