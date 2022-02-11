@@ -7,6 +7,7 @@ import scipy as sp
 import matplotlib.pyplot as plt
 import plotly.express as px
 import zipfile
+import pathlib
 
 
 
@@ -311,9 +312,7 @@ def literature_component(df, LC_component, min_comp_reported, max_comp_reported)
     Returns:
         None
     """
-    if LC_component == False:
-        print('Literature component not calculated')
-    else:
+    if LC_component == True:
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv', 
                        sep=',').dropna()
 
@@ -351,7 +350,11 @@ def literature_component(df, LC_component, min_comp_reported, max_comp_reported)
                 return 0
 
         df['LC'] = df.apply(literature_report, axis=1)
-    return df
+        return df
+
+    else:
+        print('Literature component not calculated')
+        
 
 #similarity component: 
 
@@ -363,9 +366,7 @@ def similarity_component(df, SC_component):
     Returns:
         None
     """
-    if SC_component == False:
-        print('Similarity component not calculated')
-    else:
+    if SC_component == True:
         df1 = df.copy()
         df1.set_index('filename', inplace=True)
         df2 = df.copy()
@@ -416,12 +417,15 @@ def similarity_component(df, SC_component):
             else: 
                 return 0 
 
-    df['SC'] = df.apply(similarity_conditions, axis=1)
-    return df
+        df['SC'] = df.apply(similarity_conditions, axis=1)
+        return df
+    else:
+        print('Similarity component not calculated')
+        
 
 #Class component:
 
-def sirius_classes(df1,df2,df3, min_recurrence): 
+def sirius_classes(df1,df2,df3, min_recurrence, CC_component): 
     """ function to find the chemical classes proposed by sirius and assign them to a specific species based on the top specificity of the feature
     Args:
         df1 = specificity_df
@@ -431,48 +435,54 @@ def sirius_classes(df1,df2,df3, min_recurrence):
     Returns:
         None
     """
-    # merge with top filename with iones 
-    df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int)
-        #the specificity_df is used to assign the main biological source to each feature. 
+    if CC_component == True:
+        # merge with top filename with iones 
+        df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int)
+            #the specificity_df is used to assign the main biological source to each feature. 
 
-    df3 = pd.merge(left=df1[['row ID', 'filename']], right=df3[['shared name', 'classe']], how='left', left_on='row ID', right_on='shared name').dropna()
-    df3.drop('shared name', axis=1, inplace=True)
+        df3 = pd.merge(left=df1[['row ID', 'filename']], right=df3[['shared name', 'classe']], how='left', left_on='row ID', right_on='shared name').dropna()
+        df3.drop('shared name', axis=1, inplace=True)
 
-    df4= df3[['filename', 'classe']].groupby(['filename','classe']).size().reset_index()
-    df4.rename(columns={0: 'recurrence'}, inplace=True)
+        df4= df3[['filename', 'classe']].groupby(['filename','classe']).size().reset_index()
+        df4.rename(columns={0: 'recurrence'}, inplace=True)
 
-    df4 = df4[df4['recurrence'] >= min_recurrence].groupby('filename').agg(set)
-    df4.drop ('recurrence', axis=1, inplace=True)
-    
-    df = pd.merge(left=df2[['filename', 'ATTRIBUTE_Species']], right=df4, how='left', left_on='filename', right_on='filename').dropna()
-    df.drop('ATTRIBUTE_Species', axis=1, inplace=True)
-    return df
+        df4 = df4[df4['recurrence'] >= min_recurrence].groupby('filename').agg(set)
+        df4.drop ('recurrence', axis=1, inplace=True)
+        
+        df = pd.merge(left=df2[['filename', 'ATTRIBUTE_Species']], right=df4, how='left', left_on='filename', right_on='filename').dropna()
+        df.drop('ATTRIBUTE_Species', axis=1, inplace=True)
+        return df
+    else:
+        print ('No search was done because the Class component is not going to be calculated')
 
-def search_reported_class(df):
+def search_reported_class(df, CC_component):
     """ function to search the reported chemical classes in each species of the set 
     Args:
         df = metadata_df
         Returns:
         None
     """
-    LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',
-                       sep=',').dropna()
-    
-    #create a set of species present in the metatada and reduce the lotus DB to it
-    set_sp = set(df['ATTRIBUTE_Species'].dropna())
-    LotusDB= LotusDB[LotusDB['organism_taxonomy_09species'].isin(set_sp)]
+    if CC_component == True:
+        LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',
+                        sep=',').dropna()
+        
+        #create a set of species present in the metatada and reduce the lotus DB to it
+        set_sp = set(df['ATTRIBUTE_Species'].dropna())
+        LotusDB= LotusDB[LotusDB['organism_taxonomy_09species'].isin(set_sp)]
 
-    #retrieve the chemical classes associated to the species and genus
-    df4 = LotusDB[['organism_taxonomy_09species', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_09species').agg(set)
-    df4.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_species'}, inplace=True)
-    df5 = LotusDB[['organism_taxonomy_08genus', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_08genus').agg(set)
-    df5.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
+        #retrieve the chemical classes associated to the species and genus
+        df4 = LotusDB[['organism_taxonomy_09species', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_09species').agg(set)
+        df4.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_species'}, inplace=True)
+        df5 = LotusDB[['organism_taxonomy_08genus', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_08genus').agg(set)
+        df5.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
 
-    #merge into a single dataframe
+        #merge into a single dataframe
 
-    df = pd.merge(df[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Family', 'ATTRIBUTE_Family']],df4,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
-    df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
-    return df
+        df = pd.merge(df[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Family', 'ATTRIBUTE_Family']],df4,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
+        df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
+        return df
+    else:
+        print ('No search was done because the Class component is not going to be calculated')
 
 def class_component(df1, df2, df3, CC_component):
     """ function to compute the class component based on the possible presence of new chemical classes 
@@ -483,10 +493,8 @@ def class_component(df1, df2, df3, CC_component):
         Returns:
         None
     """
-    if CC_component == False:
-        print ('Similarit Class component not calculated')
-    else:
-        #merge the both tables
+    if CC_component == True:
+    #merge the both tables
         df = pd.merge(df1,df2,on='filename', how='left').dropna()
 
         #get the difference between sets 
@@ -514,7 +522,11 @@ def class_component(df1, df2, df3, CC_component):
                 df,
                 how= 'left', on='filename')
         df = df.fillna(0) #assumign species not present in LotusDB the number of reported compounds is set to 0
-    return df
+        return df
+        
+    else:
+        print ('Similarity Class component not calculated')
+        
 
 def priority_rank(df1, df2, df3, df4, LC_component, SC_component, CC_component, w1, w2, w3, w4):
     df = df1
@@ -571,113 +583,6 @@ def priority_rank(df1, df2, df3, df4, LC_component, SC_component, CC_component, 
     
     return df
 
-
-def get_isdb_annotations(path_isdb, isdb_annotations): 
-    if isdb_annotations == True:
-
-        df = pd.read_csv(path_isdb,
-                                sep='\t', 
-                                usecols =['feature_id','molecular_formula','score_final','score_initialNormalized'], 
-                                low_memory=False)
-    else: 
-        print ('The isdb output will be not used')
-    return df
-
-def get_sirius_annotations(path_sirius, sirius_annotations): 
-    if sirius_annotations == True:
-
-        df = pd.read_csv(path_sirius,
-                                sep='\t', 
-                                usecols =['id','ConfidenceScore','ZodiacScore'], 
-                                low_memory=False)
-    else: 
-        print ('The sirius output will be not used')
-    return df
-
-
-def process_gnps_results(gnps_folder_path):
-    """ function to compute the class component based on the possible presence of new chemical classes 
-    Args:
-        gnps_folder_path
-        Returns: pandas table (deactivated here) and path
-    """
-
-    try:
-        path = [x for x in os.listdir(gnps_folder_path+'/result_specnets_DB')][0]
-        df_annotations = pd.read_csv(gnps_folder_path+'/result_specnets_DB/'+path, sep='\t')
-        print('==================')
-        print('Classical MN job detected')
-        print('==================')
-        print('   Number of spectral library annotations in the job = '+str(df_annotations.shape[0]))
-        
-        path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID')][0]
-        #df_network = pd.read_csv(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID/'+path_networkinfo, sep='\t')
-        print('==================')
-        print('   Number of network nodes in the job = '+str(df_network.shape[0]))
-    
-    
-    except: 
-        print('==================')
-        try: 
-            path = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
-            df_annotations = pd.read_csv(gnps_folder_path+'/DB_result/'+path, sep='\t')
-            print('==================')
-            print('FBMN job detected')
-            print('==================')
-            print('   Number of spectral library annotations in job = '+str(df_annotations.shape[0]))
-            
-            path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfo_summary')][0]
-            clusterinfosummary = gnps_folder_path+'/clusterinfo_summary/'+path_networkinfo
-            df_network = pd.read_csv(clusterinfosummary, sep='\t')
-            print('==================')
-            print('   Number of network nodes in the job = '+str(df_network.shape[0]))
-            return clusterinfosummary
-
-        except:
-            path = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
-            df_annotations = pd.read_csv(gnps_folder_path+'/DB_result/'+path, sep='\t')
-            print('==================')
-            print('FBMN job detected')
-            print('==================')
-            print('   Number of spectral library annotations in job = '+str(df_annotations.shape[0]))
-            
-            path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID')][0]
-            clusterinfosummary = gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID/'+path_networkinfo
-            df_network = pd.read_csv(clusterinfosummary, sep='\t')
-            print('==================')
-            print('   Number of network nodes in the job = '+str(df_network.shape[0]))
-            return clusterinfosummary
-
-def get_gnp_db_results(gnps_folder_path):
-    """ function to compute the class component based on the possible presence of new chemical classes 
-    Args:
-        gnps_folder_path
-        Returns: pandas table (deactivated here) and path
-    """
-
-    try:
-        path = [x for x in os.listdir(gnps_folder_path+'/result_specnets_DB')][0]
-        df_annotations = pd.read_csv(gnps_folder_path+'/result_specnets_DB/'+path, sep='\t')
-        path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID')][0]
-     
-    except: 
-        try: 
-            path = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
-            df_annotations = pd.read_csv(gnps_folder_path+'/DB_result/'+path, sep='\t')
-            
-            path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
-            db_results = gnps_folder_path+'/DB_result/'+path_networkinfo
-            df_network = pd.read_csv(db_results, sep='\t')
-            return db_results
-
-        except:
-            path = [x for x in os.listdir(gnps_folder_path+'/DB_result')][0]
-            df_annotations = pd.read_csv(gnps_folder_path+'/DB_result/'+path, sep='\t')
-            
-            path_networkinfo = [x for x in os.listdir(gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID')][0]
-            clusterinfosummary = gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID/'+path_networkinfo
-            df_network = pd.read_csv(clusterinfosummary, sep='\t')
-            return clusterinfosummary    
 
 
 

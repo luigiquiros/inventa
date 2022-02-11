@@ -12,8 +12,7 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 
 ## visualization for the similarity component
 
-def pcoa_2d(filename_col, group_col, title, matrix, data, metric = 'braycurtis', 
-    ):
+def pcoa_2d(filename_col, group_col, title, matrix, data, metric = 'braycurtis'):
     """ Simple 2D PCoA plot of a MEMO matrix using Plotly showing the anomalies
 
     Args:
@@ -37,23 +36,22 @@ def pcoa_2d(filename_col, group_col, title, matrix, data, metric = 'braycurtis',
     data['anomaly_IF'] = data['anomaly_IF'].astype(str)
     data['anomaly_LOF'] = data['anomaly_LOF'].astype(str)
     data['anomaly_OCSVM'] = data['anomaly_OCSVM'].astype(str)
-    
-    #figure parameters
+        
+     #figure parameters
     fig = px.scatter(x=pcoa_results.samples['PC1'],
     y=pcoa_results.samples['PC2'],
     color=data[group_col],
     labels={'x': f"PC1 ({pc1_perc_var_exp} %)",
-            'y': f"PC2 ({pc2_perc_var_exp} %)",
-            'color': group_col
-            },
+                'y': f"PC2 ({pc2_perc_var_exp} %)",
+                'color': group_col
+                },
     title=title,
     hover_name=data[filename_col],
     template="simple_white",
-        )
+            )
     #fig.update_layout({'width':700, 'height':650})
     fig.update_traces(marker=dict(size=10,
-                                line=dict(width=1,
-                                color='DarkSlateGrey'))
+                                    line=dict(width=1,
+                                    color='DarkSlateGrey'))
         )
     fig.show()
-    return None
