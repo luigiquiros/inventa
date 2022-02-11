@@ -70,7 +70,7 @@ def drop_samples_based_on_string(df,list_of_strings_for_QC_Blank_filter,column):
 
     return df
 
-def reduce_df(df, metadata_df, column):
+def reduce_df(df, metadata_df, col_id_unique):
     """ Reduce the full df to minimal info
 
     Args:
@@ -80,12 +80,12 @@ def reduce_df(df, metadata_df, column):
         reduced_df
     """
     reduced_df = df
-    reduced_df.set_index(column, inplace=True)
+    reduced_df.set_index(col_id_unique, inplace=True)
     reduced_df = reduced_df.iloc[:,len(metadata_df.columns)-1:]
     return reduced_df
 
 
-def top_ions(df1, df2):
+def top_ions(df1, df2, col_id_unique):
     """ function to compute the top species, top filename and top species/plant part for each ion 
     Args:
         df1 = reduced_df, table of with index on sp/part column and features only.
@@ -115,20 +115,24 @@ def top_ions(df1, df2):
     df2['filename'] = pd.DataFrame(df2[0].values.tolist(), index= df2.index)
     df2 = df2.drop([0], axis=1)
 
-    #computes the top species/part for each feature 
-    df3 = df1.copy().transpose()
-    df3 = df3.astype(float)
-    df3 = df3.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
-    df3 = df3.to_frame()
-    df3[['ATTRIBUTE_Sppart']] = pd.DataFrame(df3[0].values.tolist(),index= df3.index)
-    df3 = df3.drop([0], axis=1)
-    df3.reset_index(inplace=True)
-    df3.rename(columns={'index': 'row ID'}, inplace=True)
-    df3['row ID'] = df3['row ID'].astype(int)
-    
-    #merge all the data 
-    df = pd.merge(left=df3,right=dfA, how='left', on='row ID')
-    df = pd.merge(left=df2,right=df, how='left',on='row ID')
+    df = pd.merge(left=dfA,right=df2, how='left',on='row ID')
+
+    if col_id_unique != 'filename':
+        #computes the top species/part for each feature 
+        df3 = df1.copy().transpose()
+        df3 = df3.astype(float)
+        df3 = df3.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
+        df3 = df3.to_frame()
+        df3[[col_id_unique]] = pd.DataFrame(df3[0].values.tolist(),index= df3.index)
+        df3 = df3.drop([0], axis=1)
+        df3.reset_index(inplace=True)
+        df3.rename(columns={'index': 'row ID'}, inplace=True)
+        df3['row ID'] = df3['row ID'].astype(int)
+        
+        #merge all the data 
+        df = pd.merge(left=df3, right=df, how='left', on='row ID')
+    else: 
+        df
     return df
 
 
@@ -290,7 +294,11 @@ def feature_component(df1,df2,df3, only_feature_specificity, min_specificity, an
     df6 = pd.DataFrame(df6)
     df6.rename(columns={0: 'FC'}, inplace=True)
     df = pd.merge(df5, df6, how='left', on='filename')
-    df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Sppart']], df, how='left', on='filename')
+
+    if col_id_unique != 'filename':
+        df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', col_id_unique]], df, how='left', on='filename')
+    else:
+        df
     df = df.sort_values(by=['FC'], ascending=False)
     return df
 #literature component
@@ -427,7 +435,7 @@ def sirius_classes(df1,df2,df3, min_recurrence):
     df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int)
         #the specificity_df is used to assign the main biological source to each feature. 
 
-    df3 = pd.merge(left=df1[['row ID', 'filename', 'ATTRIBUTE_Sppart']], right=df3[['shared name', 'classe']], how='left', left_on='row ID', right_on='shared name').dropna()
+    df3 = pd.merge(left=df1[['row ID', 'filename']], right=df3[['shared name', 'classe']], how='left', left_on='row ID', right_on='shared name').dropna()
     df3.drop('shared name', axis=1, inplace=True)
 
     df4= df3[['filename', 'classe']].groupby(['filename','classe']).size().reset_index()
@@ -461,7 +469,8 @@ def search_reported_class(df):
     df5.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
 
     #merge into a single dataframe
-    df = pd.merge(df[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Family', 'ATTRIBUTE_Family', 'ATTRIBUTE_Sppart']],df4,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
+
+    df = pd.merge(df[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Family', 'ATTRIBUTE_Family']],df4,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
     df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
     return df
 
@@ -562,6 +571,30 @@ def priority_rank(df1, df2, df3, df4, LC_component, SC_component, CC_component, 
     
     return df
 
+
+def get_isdb_annotations(path_isdb, isdb_annotations): 
+    if isdb_annotations == True:
+
+        df = pd.read_csv(path_isdb,
+                                sep='\t', 
+                                usecols =['feature_id','molecular_formula','score_final','score_initialNormalized'], 
+                                low_memory=False)
+    else: 
+        print ('The isdb output will be not used')
+    return df
+
+def get_sirius_annotations(path_sirius, sirius_annotations): 
+    if sirius_annotations == True:
+
+        df = pd.read_csv(path_sirius,
+                                sep='\t', 
+                                usecols =['id','ConfidenceScore','ZodiacScore'], 
+                                low_memory=False)
+    else: 
+        print ('The sirius output will be not used')
+    return df
+
+
 def process_gnps_results(gnps_folder_path):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
@@ -645,3 +678,6 @@ def get_gnp_db_results(gnps_folder_path):
             clusterinfosummary = gnps_folder_path+'/clusterinfosummarygroup_attributes_withIDs_withcomponentID/'+path_networkinfo
             df_network = pd.read_csv(clusterinfosummary, sep='\t')
             return clusterinfosummary    
+
+
+
