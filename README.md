@@ -156,16 +156,12 @@ This output needs an additional step after runnign sirius, please follow the nex
 [Examples of all these input could be found in `/format_examples`]
 #
 
-## 2. Clean GNPS annotations 
 #
-GNPS clean-up results 
-
-#
-## 3. Open the notebook 'inventa' 
+## 2. Open the notebook 'inventa' 
 #
 Set the parameters according to your inputs and needs:
 
-#### 3.1 paths 
+#### 2.1 paths 
 #
 Each path corresponds to the files mentiones above. Just drop your files in the `/data` folder and change the names accordingly: 
 
@@ -176,12 +172,17 @@ tima_results_filename = '../data/Celastraceae_pos_spectral_match_results_repond.
 vectorized_data_filename = '../data/Celastraceae_memomatrix.csv'
 canopus_npc_summary_filename = '../data/canopus_npc_summary.tsv'
 sirius_annotations_filename = '../data/canopus_npc_summary.tsv'
+
+#GNPS job id
+
+job_id= "yourjobidgoeshere"  #for example: job_id="4c919fcbc83d487493a487012afb920a"
+
 ```
 #
-#### 3.2 Parameters
+#### 2.2 Parameters
 #
 
-#### 3.2.1 For cleaning-up annotations from GNPS 
+#### 2.2.1 For cleaning-up annotations from GNPS 
 
 ```
 ppm_error = 5                     # min error in ppm to consider an annotation valable
@@ -190,7 +191,7 @@ cosine = 0.7                      # min cosine score to consider an annotation v
 ionisation_mode = 'pos'           # ionisation mode according to experimental conditions
 ```
 
-#### 3.2.1 Feature_component
+#### 2.2.1 Feature_component
 
 ```
 min_specificity = 90               # minimun feature specificity to consider
@@ -215,7 +216,7 @@ annotation_preference = 0          # Only Annotated nodes: '1'
 
 ```
 
-#### 3.2.2 Literature_component
+#### 2.2.2 Literature_component
 
 ```
 LC_component = True                # LC will be calculated
@@ -223,21 +224,21 @@ max_comp_reported = 40             # more than this value, the plant is consider
 min_comp_reported = 10             # less than this value, the plant is consireded very interesintg LC =1
                                    # a sample with x between both values gets a LC=0.5
 ```
-#### 3.2.3 Similarity_component
+#### 2.2.3 Similarity_component
 
 ```
 SC_component = True                # SC will be calculated
 
 ```
 
-#### 3.2.4 Class_component
+#### 2.2.4 Class_component
 
 ```
 CC_component = True                # CC will be calculated
 min_recurrence = 10                # minimun recurrence of a chemical class to considered it valable.
 ```
 
-#### 3.2.5 specify the weight to modulate each component 
+#### 2.2.5 specify the weight to modulate each component 
 
 ```
 w1 = 1           # 1 means the value itself is taken into account. A 0.5 means onle half of the calculated value is taken into account
@@ -247,4 +248,4 @@ w4 = 1
 ```
 #
 
-## 4. Run the notebook 'inventa' and ENJOY! 
+## 3. Run the notebook 'inventa' and ENJOY! 
