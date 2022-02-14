@@ -1,5 +1,6 @@
 # INVENTA: Prioritization of natural extracts for chemical originality discovery
 
+![graphical abstract](/docs/assets/graphical_abstract.png) 
 
 ## Description 
 
@@ -15,6 +16,8 @@ The **Similarity Component (SC)** is a score based on the spectral similarity of
 The **Class Component (CC)** is a score based on the presence of possible new chemical classes in the taxon, not previously reported before. The CC will be considered an integer ‘1’ if there are new chemical classes at the species level, and an additional ‘1’ if those new chemical classes are not present in the genus either.
 
 The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .tsv file with all the information generared along the final rank of the samples.
+
+![Priority Rank](/docs/assets/priority_rank.png)
 
 ## Installation
 
