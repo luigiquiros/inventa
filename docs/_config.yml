@@ -15,7 +15,7 @@ nav:
 
         
 #Theming
-theme: 
+theme: jekyll-theme-cayman
     name: jekyll-theme-cayman
     #logo: docs/assets/logo.png
     #favicon: 'assets/images/favicon.ico'
