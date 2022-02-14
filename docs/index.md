@@ -1,6 +1,6 @@
 # INVENTA: Prioritization of natural extracts for chemical originality discovery
 
-![Graphical abstract](https://github.com/luigiquiros/inventa/blob/main/docs/assets/graphical_abstract.png)
+![Graphical abstract](/luigiquiros/inventa/blob/main/docs/assets/graphical_abstract.png)
 
 ## Description 
 
@@ -24,9 +24,9 @@ The combined score (adition of the four components) can be modulated acording to
 
 Binder allows to run inventa on the cloud with a Binder instance, which is really convenient but you need to save the parameters and results locally as these instances are shutting down after 15 min of inactivity.
 
--> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/inventa/main?urlpath=lab/tree/notebook/inventa.ipynb)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/inventa/main?urlpath=lab/tree/notebook/inventa.ipynb)
 
-<- this may take several minutes to build Jupyter assets ... please wait.
+(this may take several minutes to build Jupyter assets ... please wait).
 
 #### how to use Binder?
 
