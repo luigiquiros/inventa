@@ -11,11 +11,9 @@ show_excerpts: true
 #Menu 
 
 navigation:
-  -{file: "home.html", title: "Home", icon: home}
+  -{file: "index.html", title: "Home", icon: home}
   -{file: "Worflow.md", title: "Workflow", icon: address-card}
 
 external:
   -{title: Mail, icon: envelope, url: "luis.guerrero@unige.ch"}
   -{title: Github, icon: github, url: "https://github.com/luigiquiros/inventa"}
-  
- 
