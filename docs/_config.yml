@@ -1,16 +1,16 @@
 # Site settings
-title: Inventa
+title: [Inventa]
 author:
   name: Luis Quiros-Guerrero   
   email: luis.guerrero@unige.ch
-description: "Workflow of prioritization of natural extracts for chemical originality discovery"
+description: ["Workflow of prioritization of natural extracts for chemical originality discovery"]
 
 # Build settings
-theme: jekyll-theme-minimal
+remote_theme: Bilal2453/cayman-docs
 
 
     
-nav:
+navigation:
     - Home: "index.md"
     - Installation: "installation.md" 
     - User-guide:
