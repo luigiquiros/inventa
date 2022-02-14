@@ -15,7 +15,7 @@ extra:
 theme: jekyll-theme-cayman
     name: cayman 
     logo: docs/assets/logo.png
-    favicon: 'assets/images/favicon.ico'
+    favicon: 'docs/assets/logo.png'
 
     feature:
         tabs: true    
@@ -80,7 +80,7 @@ nav:
     #    - Android : 
      #       - tab_blogs/android/world_of_videos.md
       #      - Misc:    
-                - tab_blogs/android/enums_and_intDefs.md
+       #         - tab_blogs/android/enums_and_intDefs.md
        # - Web:
         #    - Mkdocs:
          #       - tab_blogs/web/basic_syntax.md
