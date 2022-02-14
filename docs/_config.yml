@@ -6,7 +6,7 @@ author:
 description: "Workflow of prioritization of natural extracts for chemical originality discovery"
 
 # Build settings
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal
 
 
     
