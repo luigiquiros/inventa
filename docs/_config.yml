@@ -1,8 +1,9 @@
 remote_theme: pages-themes/cayman@v0.2.0
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
+- jekyll-feed
 
-author" 'Luis Quiros-Guerrero'
+author: "Luis Quiros-Guerrero"
 
 #layout 
 show_excerpts: true 
@@ -10,6 +11,11 @@ show_excerpts: true
 #Menu 
 
 navigation:
-  -{file: 'readme.md', title: 'Home', icon: home}
-  -{file: 'Worflow.md', titel: 'Workflow', icon: address-card}
+  -{file: "readme.md", title: "Home", icon: home}
+  -{file: "Worflow.md", title: "Workflow", icon: address-card}
 
+external:
+  -{title: Mail, icon: envelope, url: "luis.guerrero@unige.ch"}
+  -{title: Github, icon: github, url: "https://github.com/luigiquiros/inventa"}
+  
+ 
