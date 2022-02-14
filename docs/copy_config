@@ -1,0 +1,93 @@
+site_author: Luis Quiros-Guerrero
+site_url: https://luigiquiros.github.io/inventa/
+
+#Footer
+extra:
+  social:
+    - type: 'github'
+      link: 'https://github.com/root-ansh'
+    - type: 'twitter'
+      link: 'https://twitter.com/root_ansh'
+    - type: 'linkedin'
+      link: 'https://linkedin.com/in/anshsachdevaprofessional/'
+
+copyright: Copyright &copy; 2019 <a href="https://www.linkedin.com/in/anshsachdevaprofessional/">Ansh Sachdeva</a>
+
+#Theming
+theme: jekyll-theme-cayman
+    name: cayman 
+    logo: docs/assets/logo.png
+    favicon: 'assets/images/favicon.ico'
+
+    feature:
+        tabs: true    
+
+    language: 'en'    
+    extra:
+        search:
+            language: 'en'
+            tokenizer: '[\s\-\.]+'
+    
+    #custom_dir: no_toc #not working
+        
+    #toc:
+        # disable: true # todo, this is not working. expected this to remove table of contents
+#extra_css:
+#    - 'stylesheets/extra.css' # for disabling toc # not working
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.codehilite:
+      guess_lang: false
+  - markdown.extensions.def_list
+  - markdown.extensions.footnotes
+  - markdown.extensions.meta
+  - markdown.extensions.toc:
+      permalink: true
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+        
+
+nav:
+    - Home: index.md
+    
+    - Education Details:
+        - Introduction: tab_edu/edu_details.md
+        
+    - Work Experience: 
+        - Introduction: tab_work_exp/work_exp.md
+
+    - Portfolio:
+        - Introduction: tab_projects/project_summary.md
+        - SelfNotes : tab_projects/project_selfnotes.md
+
+    - Blogs:
+        - Introduction : tab_blogs/blog_summary.md
+        - Android : 
+            - tab_blogs/android/world_of_videos.md
+            - Misc:    
+                - tab_blogs/android/enums_and_intDefs.md
+        - Web:
+            - Mkdocs:
+                - tab_blogs/web/basic_syntax.md
+            
+        #- Misc:
+        
+
