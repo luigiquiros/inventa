@@ -1,18 +1,18 @@
 
     
-nav:
-    - Home: "index.md"
-    - Installation: "installation.md"
+#nav:
+ #   - Home: "index.md"
+ #   - Installation: "installation.md"
     
     
-    - User-guide:
-        - 0. Workflow: "workflow.md"
-        - 1. Getting started: 'getting-started.md'
-        - 2. Configuration: 'confguration_options.md'
+ #   - User-guide:
+ #       - 0. Workflow: "workflow.md"
+  #      - 1. Getting started: 'getting-started.md'
+  #      - 2. Configuration: 'confguration_options.md'
 
         
 #Theming
-theme: jekyll-theme-cayman
+#theme: jekyll-theme-cayman
 
  # Welcome to Beautiful Jekyll!
 # This config file is meant for settings that affect your entire website. When you first
