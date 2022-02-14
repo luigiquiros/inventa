@@ -1,5 +1,6 @@
 ---
-#
+layout: template
+title: 1. Getting started
 ---
 
 # Where to start? 
