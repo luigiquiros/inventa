@@ -1,5 +1,6 @@
 ---
-#
+layout: default
+title: Home
 ---
 
 # INVENTA: Prioritization of natural extracts for chemical originality discovery
