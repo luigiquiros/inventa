@@ -4,4 +4,4 @@ plugins:
 gem "github-pages", group: :jekyll_plugins
 title: [INVENTA]
 
-theme: jekyll-theme-minimal
+theme: jekyll-theme-cayman
