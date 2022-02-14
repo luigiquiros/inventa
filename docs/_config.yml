@@ -12,7 +12,7 @@ remote_theme: Bilal2453/cayman-docs
 
 
     
-navigation:
+nav:
     - Home: index.md
     - Installation: installation.md 
     - User-guide:
