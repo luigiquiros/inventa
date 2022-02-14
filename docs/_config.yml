@@ -66,8 +66,7 @@ markdown_extensions:
 nav:
     - Home: index.md
     
-    - Worflow:
-        - Workflow: docs/workflow.md
+    - Worflow: /docs/workflow.md
         
     #- Work Experience: 
     #    - Introduction: tab_work_exp/work_exp.md
