@@ -1,15 +1,15 @@
 #https://www.mkdocs.org/user-guide/writing-your-docs/#internal-links
 
-site_author: Luis Quiros-Guerrero
-site_url: https://luigiquiros.github.io/inventa/
+#site_author: Luis Quiros-Guerrero
+#site_url: https://luigiquiros.github.io/inventa/
 
 #Footer
-extra:
-  social:
-    - type: 'github'
-      link: 'https://github.com/luigiquiros'
-    - type: 'linkedin'
-      link: 'https://www.linkedin.com/in/luisquirosg/'
+#extra:
+#  social:
+#    - type: 'github'
+#      link: 'https://github.com/luigiquiros'
+#    - type: 'linkedin'
+#      link: 'https://www.linkedin.com/in/luisquirosg/'
 
 #copyright: Copyright &copy; 2019 <a href="https://www.linkedin.com/in/anshsachdevaprofessional/">Ansh Sachdeva</a>
 
@@ -19,8 +19,8 @@ theme: jekyll-theme-cayman
 #    logo: docs/assets/logo.png
 #    favicon: 'docs/assets/logo.png'
 
-    feature:
-        tabs: true    
+ #   feature:
+ #       tabs: true    
 
 #    language: 'en'    
 #    extra:
@@ -36,35 +36,33 @@ theme: jekyll-theme-cayman
 #    - 'stylesheets/extra.css' # for disabling toc # not working
 
 # Extensions
-markdown_extensions:
-  - markdown.extensions.admonition
-  - markdown.extensions.codehilite:
-      guess_lang: false
-  - markdown.extensions.def_list
-  - markdown.extensions.footnotes
-  - markdown.extensions.meta
-  - markdown.extensions.toc:
-      permalink: true
-  - pymdownx.arithmatex
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.critic
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_svg
-  - pymdownx.inlinehilite
-  - pymdownx.keys
+#markdown_extensions:
+#  - markdown.extensions.admonition
+#  - markdown.extensions.codehilite:
+ #     guess_lang: false
+  #- markdown.extensions.def_list
+#  - markdown.extensions.footnotes
+#  - markdown.extensions.meta
+#  - markdown.extensions.toc:
+ #     permalink: true
+ # - pymdownx.arithmatex
+ # - pymdownx.betterem:
+  #    smart_enable: all
+  #- pymdownx.caret
+  #- pymdownx.critic
+  #- pymdownx.details
+  #- pymdownx.emoji:
+   #   emoji_generator: !!python/name:pymdownx.emoji.to_svg
+ # - pymdownx.inlinehilite
+ # - pymdownx.keys
   
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-
-        
-
+  #- pymdownx.mark
+  #- pymdownx.smartsymbols
+  #- pymdownx.superfences
+  #- pymdownx.tasklist:
+  #    custom_checkbox: true
+  #- pymdownx.tilde
+  
 nav:
     - Home: 'index.md'
     
