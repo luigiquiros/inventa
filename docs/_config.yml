@@ -5,13 +5,11 @@ site_url: https://luigiquiros.github.io/inventa/
 extra:
   social:
     - type: 'github'
-      link: 'https://github.com/root-ansh'
-    - type: 'twitter'
-      link: 'https://twitter.com/root_ansh'
+      link: 'https://github.com/luigiquiros'
     - type: 'linkedin'
-      link: 'https://linkedin.com/in/anshsachdevaprofessional/'
+      link: 'https://www.linkedin.com/in/luisquirosg/'
 
-copyright: Copyright &copy; 2019 <a href="https://www.linkedin.com/in/anshsachdevaprofessional/">Ansh Sachdeva</a>
+#copyright: Copyright &copy; 2019 <a href="https://www.linkedin.com/in/anshsachdevaprofessional/">Ansh Sachdeva</a>
 
 #Theming
 theme: jekyll-theme-cayman
@@ -68,25 +66,25 @@ markdown_extensions:
 nav:
     - Home: index.md
     
-    - Education Details:
-        - Introduction: tab_edu/edu_details.md
+    - Worflow:
+        - Workflow: docs/workflow.md
         
-    - Work Experience: 
-        - Introduction: tab_work_exp/work_exp.md
+    #- Work Experience: 
+    #    - Introduction: tab_work_exp/work_exp.md
 
-    - Portfolio:
-        - Introduction: tab_projects/project_summary.md
-        - SelfNotes : tab_projects/project_selfnotes.md
+    #- Portfolio:
+    #    - Introduction: tab_projects/project_summary.md
+    #    - SelfNotes : tab_projects/project_selfnotes.md
 
-    - Blogs:
-        - Introduction : tab_blogs/blog_summary.md
-        - Android : 
-            - tab_blogs/android/world_of_videos.md
-            - Misc:    
+    #- Blogs:
+    #    - Introduction : tab_blogs/blog_summary.md
+    #    - Android : 
+     #       - tab_blogs/android/world_of_videos.md
+      #      - Misc:    
                 - tab_blogs/android/enums_and_intDefs.md
-        - Web:
-            - Mkdocs:
-                - tab_blogs/web/basic_syntax.md
+       # - Web:
+        #    - Mkdocs:
+         #       - tab_blogs/web/basic_syntax.md
             
         #- Misc:
         
