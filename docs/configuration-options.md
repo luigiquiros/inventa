@@ -1,5 +1,5 @@
 ---
-layout: template
+layout: default
 title: 2. Configuration
 ---
 
