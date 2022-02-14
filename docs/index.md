@@ -1,6 +1,6 @@
 # INVENTA: Prioritization of natural extracts for chemical originality discovery
 
-![Workflow](/docs/assets/graphical_abstract.jpeg)
+![Workflow](/docs/assets/graphical_abstract.png)
 
 ## Description 
 
@@ -17,7 +17,7 @@ The **Class Component (CC)** is a score based on the presence of possible new ch
 
 The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .tsv file with all the information generared along the final rank of the samples.
 
-![Priority Rank](/docs/assets/priority_rank.jpeg)
+![Priority Rank](/docs/assets/priority_rank.png)
 
 ## Installation
 
