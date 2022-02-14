@@ -11,7 +11,7 @@ theme: jekyll-theme-cayman
 
     
 nav:
-    - Home: "index.md"
+    - Inventa: "index.md"
     - Installation: "installation.md" 
     - User-guide:
         - 0. Workflow: "workflow.md"
