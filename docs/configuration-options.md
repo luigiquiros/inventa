@@ -1,5 +1,8 @@
 ---
-#
+---
+layout: template
+title: 2. Configuration
+---
 ---
 
 ## 2. Open the notebook 'inventa' 
