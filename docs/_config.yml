@@ -11,7 +11,7 @@ show_excerpts: true
 #Menu 
 
 navigation:
-  -{file: "readme.md", title: "Home", icon: home}
+  -{file: "home.html", title: "Home", icon: home}
   -{file: "Worflow.md", title: "Workflow", icon: address-card}
 
 external:
