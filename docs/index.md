@@ -16,6 +16,9 @@ The **Class Component (CC)** is a score based on the presence of possible new ch
 
 The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .tsv file with all the information generared along the final rank of the samples.
 
+![Schematic representation of the Priority Rank](/docs/assets/priority_rank.png)
+
+
 ## Installation
 
 ### A) Running inventa with Binder:
