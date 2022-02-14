@@ -244,5 +244,4 @@ w3 = 1
 w4 = 1
 ```
 
-
 ## 3. Run the notebook 'inventa' and ENJOY! 
