@@ -13,18 +13,18 @@ extra:
 
 #Theming
 theme: jekyll-theme-cayman
-    name: cayman 
-    logo: docs/assets/logo.png
-    favicon: 'docs/assets/logo.png'
+#    name: cayman 
+#    logo: docs/assets/logo.png
+#    favicon: 'docs/assets/logo.png'
 
     feature:
         tabs: true    
 
-    language: 'en'    
-    extra:
-        search:
-            language: 'en'
-            tokenizer: '[\s\-\.]+'
+#    language: 'en'    
+#    extra:
+ #       search:
+  #          language: 'en'
+   #         tokenizer: '[\s\-\.]+'
     
     #custom_dir: no_toc #not working
         
@@ -66,7 +66,7 @@ markdown_extensions:
 nav:
     - Home: index.md
     
-    - Worflow: /docs/workflow.md
+#    - Worflow: /docs/workflow.md
         
     #- Work Experience: 
     #    - Introduction: tab_work_exp/work_exp.md
