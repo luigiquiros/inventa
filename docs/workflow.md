@@ -1,5 +1,6 @@
 ---
-#
+layout: template
+title: 0. Workflow
 ---
 
 # Workflow 
