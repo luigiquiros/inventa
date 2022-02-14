@@ -1,7 +1,6 @@
 # INVENTA: Prioritization of natural extracts for chemical originality discovery
 
-
-## Description 
+![logo](/docs/assets/logo.png)## Description 
 
 This is a workflow to explore the potential of a set of samples to contain not previously reported compounds. It is based on the results from data treatment usign MZmine, spectral organization through Molecular Networking, in-silico dereplication and prediction. 
 It is composed of 4 independend components: 
