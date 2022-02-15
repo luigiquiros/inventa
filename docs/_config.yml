@@ -25,13 +25,13 @@ include: ["_pages"]
 #      icon: "fab fa-fw fa-github"
  #     url: "https://github.com/luigiquiros"
 
-defaults:
-   _pages
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: single
+#defaults:
+ #  _pages
+ # - scope:
+ #     path: ""
+ #     type: pages
+ #   values:
+ #     layout: single
   # _foo
 #  - scope:
 #      path: ""
@@ -39,5 +39,5 @@ defaults:
  #   values:
  #     layout: single
       
-plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
+#plugins:
+#- jekyll-remote-theme # add this line to the plugins list if you already have one
