@@ -23,5 +23,4 @@ The combined score (adition of the four components) can be modulated acording to
 
 ![Rank conception](/docs/assets/img/priority_rank.png)
 
-[Link to another page](./another-page.html).
-[**Installation**](https://github.com/luigiquiros/inventa/blob/main/docs/installation.md)
+Go to [Installation page](installation.md)

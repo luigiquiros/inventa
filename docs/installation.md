@@ -1,7 +1,8 @@
 ---
-layout: default
-title: Installation
----
+title: Installation page
+layout: template
+filename: installation.md
+--- 
 
 ## Installation
 
