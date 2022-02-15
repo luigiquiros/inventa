@@ -2,7 +2,7 @@
 
 
 ## Description 
-#
+
 This is a workflow to explore the potential of a set of samples to contain not previously reported compounds. It is based on the results from data treatment usign MZmine, spectral organization through Molecular Networking, in-silico dereplication and prediction. 
 It is composed of 4 independend components: 
 
@@ -15,12 +15,12 @@ The **Similarity Component (SC)** is a score based on the spectral similarity of
 The **Class Component (CC)** is a score based on the presence of possible new chemical classes in the taxon, not previously reported before. The CC will be considered an integer ‘1’ if there are new chemical classes at the species level, and an additional ‘1’ if those new chemical classes are not present in the genus either.
 
 The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .tsv file with all the information generared along the final rank of the samples.
-#
+
 
 ## Installation
 
 ### A) Running inventa with Binder:
-#
+
 Binder allows to run inventa on the cloud with a Binder instance, which is really convenient but you need to save the parameters and results locally as these instances are shutting down after 15 min of inactivity.
 
 -> [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/luigiquiros/inventa/main?urlpath=lab/tree/notebook/inventa.ipynb)
@@ -33,9 +33,9 @@ Binder allows to run inventa on the cloud with a Binder instance, which is reall
 - The output can be found in the folder`results/` as a TAB separated file.
 - If needed, you can modify the jupyter notebook directly in the browser (make sure to save it locally).
 - As explain below, if needed, you can modify the `inventa.py` parameters inside `src/inventa.py`, this can be done as well directly in the browser.
-#
+
 ### B) Running inventa locally:
-#
+
 ### Install the conda environment
 
 First make sure to have [anaconda](https://www.anaconda.com/products/individual) installed.
@@ -72,7 +72,7 @@ If you have an error, try installing `scikit-bio` from `conda-forge` before crea
 ```
 conda install -c conda-forge scikit-bio
 ```
-#
+
 
 # Workflow 
 
@@ -90,12 +90,12 @@ Optionally, the following inputs can be added:
 - Canopus file (chemical ontology)
 - vectorized dissimilarity matrix file (MEMO)
 
-#
+
 # Where to start? 
-#
+
 
 ## 1. Check the inputs 
-#
+
 #### 1.1 Metadata table:
 The standard format from GNPS is prefered:
 
@@ -153,15 +153,15 @@ This output needs an additional step after runnign sirius, please follow the nex
 `vectorized_data_filename`: MEMO package format (https://github.com/mandelbrot-project/memo).
 
 [Examples of all these input could be found in `/format_examples`]
-#
 
-#
+
+
 ## 2. Open the notebook 'inventa' 
-#
+
 Set the parameters according to your inputs and needs:
 
 #### 2.1 paths 
-#
+
 Each path corresponds to the files mentiones above. Just drop your files in the `/data` folder and change the names accordingly: 
 
 ```
@@ -177,9 +177,9 @@ sirius_annotations_filename = '../data/canopus_npc_summary.tsv'
 job_id= "yourjobidgoeshere"  #for example: job_id="4c919fcbc83d487493a487012afb920a"
 
 ```
-#
+
 #### 2.2 Parameters
-#
+
 
 #### 2.2.1 For cleaning-up annotations from GNPS 
 
@@ -245,6 +245,6 @@ w2 = 1
 w3 = 1
 w4 = 1
 ```
-#
+
 
 ## 3. Run the notebook 'inventa' and ENJOY! 
