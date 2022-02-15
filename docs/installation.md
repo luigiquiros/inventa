@@ -1,6 +1,6 @@
 <h1>Installation</h1>
  
-## Installation
+There are two way to work with inventa: 
 
 ### A) Running inventa with Binder:
 
