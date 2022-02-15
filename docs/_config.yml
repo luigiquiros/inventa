@@ -7,7 +7,7 @@ description: "Workflow of prioritization of natural extracts for chemical origin
 
 
 # Build settings 
-theme: minima
+theme: jekyll/minima
 markdown: kramdown
 #nav:
  #   - Home: index.md
