@@ -1,5 +1,5 @@
 ---
-title:  "Home"
+#title:  "Home"
 layout: default
 #permalink: /docs/index/
 ---
