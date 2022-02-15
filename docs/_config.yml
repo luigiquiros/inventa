@@ -7,12 +7,12 @@ description: "Workflow of prioritization of natural extracts for chemical origin
 
 
 # Build settings 
-theme: jekyll-theme-minimal
+theme: minima
 markdown: kramdown
-nav:
-    - Home: index.md
-    - Installation: installation.md 
-    - User-guide:
-        - 0. Workflow: workflow.md
-        - 1. Getting started: getting-started.md
-        - 2. Configuration: confguration_options.md
+#nav:
+ #   - Home: index.md
+ #   - Installation: installation.md 
+ #   - User-guide:
+ #       - 0. Workflow: workflow.md
+ #       - 1. Getting started: getting-started.md
+ #       - 2. Configuration: confguration_options.md
