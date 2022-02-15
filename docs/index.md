@@ -1,37 +1,26 @@
-## Welcome to GitHub Pages
+---
+title:  "Home"
+layout: default
+permalink: /docs/index/
+---
 
-You can use the [editor on GitHub](https://github.com/luigiquiros/inventa/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+# INVENTA: Prioritization of natural extracts for chemical originality discovery
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+![Graphical abstract](/docs/assets/img/graphical_abstract.png)
 
-### Markdown
+## Description 
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+This is a workflow to explore the potential of a set of samples to contain not previously reported compounds. It is based on the results from data treatment usign MZmine, spectral organization through Molecular Networking, in-silico dereplication and prediction. 
+It is composed of 4 independend components: 
 
-```markdown
-Syntax highlighted code block
+The **Feature Component (FC)** is a ratio that considers compounds with a specificity higher than, for instance, 90% per sample (specified by the user), and without putative annotation. Results: one column with the FC ratio and one column with the sample specificity (ratio of peaks higher thant the specificied % with or without annotations).
 
-# Header 1
-## Header 2
-### Header 3
+The **Literature Component (LC)** is a score based on the number of compounds reported in the literature for the taxon. The output includes one column with the LC score and at least two additional columns of metadata containing the number of reported compounds at the species and genus levels.
 
-- Bulleted
-- List
+The **Similarity Component (SC)** is a score based on the spectral similarity of the sample within the set. Multiple outlier detection machine learning algorithms are implemented to spot the dissimilar samples. A weight of ‘1’ is given to the sample considered anomalies in at least one detection method.
 
-1. Numbered
-2. List
+The **Class Component (CC)** is a score based on the presence of possible new chemical classes in the taxon, not previously reported before. The CC will be considered an integer ‘1’ if there are new chemical classes at the species level, and an additional ‘1’ if those new chemical classes are not present in the genus either.
 
-**Bold** and _Italic_ and `Code` text
+The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .tsv file with all the information generared along the final rank of the samples.
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/luigiquiros/inventa/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+![Rank conception](/docs/assets/img/priority_rank.png)
