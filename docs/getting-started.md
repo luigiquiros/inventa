@@ -1,7 +1,20 @@
----
-layout: default
-title: 1. Getting started
----
+<h1>Getting started</h1>
+
+
+To run the repository the minimun inputs needed are:
+
+- GNPS job
+- Metadata table (the same used for the FBMN)
+- Quantification table
+
+This will run at least the Feature component (FC).
+
+Optionally, the following inputs can be added: 
+
+- Annotations files (ISDB and/or SIRIUS)
+- Canopus file (chemical ontology)
+- vectorized dissimilarity matrix file (MEMO)
+
 
 # Where to start? 
 
@@ -66,3 +79,5 @@ This output needs an additional step after runnign sirius, please follow the nex
 `vectorized_data_filename`: MEMO package format (https://github.com/mandelbrot-project/memo).
 
 [Examples of all these input could be found in `/format_examples`]
+
+[Back to home page](index.md)

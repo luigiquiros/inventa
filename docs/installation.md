@@ -1,11 +1,5 @@
 <h1>Installation</h1>
-
-#---
-#title: Installation page
-#layout: template
-#filename: installation.md
-#--- 
-
+ 
 ## Installation
 
 ### A) Running inventa with Binder:

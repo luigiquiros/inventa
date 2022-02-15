@@ -1,7 +1,4 @@
----
-layout: default
-title: 2. Configuration
----
+<h1>Configurations and running</h1>
 
 ## 2. Open the notebook 'inventa' 
 
@@ -95,3 +92,5 @@ w4 = 1
 
 
 ## 3. Run the notebook 'inventa' and ENJOY! 
+
+[Back to home page](index.md)
