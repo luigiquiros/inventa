@@ -1,8 +1,10 @@
----
-title: Installation page
-layout: template
-filename: installation.md
---- 
+<h1>Installation</h1>
+
+#---
+#title: Installation page
+#layout: template
+#filename: installation.md
+#--- 
 
 ## Installation
 
