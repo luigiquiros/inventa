@@ -1,13 +1,12 @@
 title: "INVENTA"
 description: "Workflow of prioritization of natural extracts for chemical originality discovery"
 logo: /assets/img/logo.png
-#subtitle: "Version 1.0"
-#name: Luis Quiros-Guerrero
+subtitle: "Version 1.0"
+name: Luis Quiros-Guerrero
 
-#url: "https://luigiquiros.github.io"
-#baseurl: "/inventa/docs"
 repository: "luigiquiros/inventa"
 
+#building 
 theme: jekyll-theme-minimal
 plugins:
   - jekyll-relative-links

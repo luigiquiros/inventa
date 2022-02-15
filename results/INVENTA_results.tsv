@@ -23,7 +23,7 @@
 21	LQ-01-61-19_pos.mzXML	Euonymus bockii	Euonymus bockii|Leaves	0.6525974025974026	0.6201298701298701	0	0.0	1	Celastraceae	1	0	0	0.0	2.62012987012987
 22	LQ-01-61-69_pos.mzXML	Salacia cochinchinensis	Salacia cochinchinensis|Branche	0.7433628318584071	0.6194690265486725	0	0.0	1	Celastraceae	0	0	0	0.0	1.6194690265486726
 23	LQ-01-61-15_pos.mzXML	Euonymus alatus	Euonymus alatus|Stems	0.7096774193548387	0.6129032258064516	92	440.0	0	Celastraceae	0	0	0	0.0	0.6129032258064516
-24	LQ-01-61-73_pos.mzXML	Tripterygium hypoglaucum	Tripterygium hypoglaucum|Roots	0.6137724550898204	0.6047904191616766	162	1353.0	0	Celastraceae	0	set()	set()	0.0	0.6047904191616766
+24	LQ-01-61-73_pos.mzXML	Tripterygium hypoglaucum	Tripterygium hypoglaucum|Roots	0.6137724550898204	0.6047904191616766	162	1353.0	0	Celastraceae	1	set()	set()	0.0	1.6047904191616766
 25	LQ-01-61-58_pos.mzXML	Microtropis triflora	Microtropis triflora|Stems	0.6519607843137255	0.6029411764705882	14	211.0	0	Celastraceae	0	{'Agarofuran sesquiterpenoids'}	{'Agarofuran sesquiterpenoids'}	1.0	1.6029411764705883
 26	LQ-01-61-51_pos.mzXML	Gymnosporia graciliramula	Gymnosporia graciliramula|Aerial_parts	0.6504065040650406	0.5975609756097561	0	0.0	1	Celastraceae	0	0	0	0.0	1.5975609756097562
 27	LQ-01-61-14_pos.mzXML	Evonymopsis sp	Evonymopsis sp|Underground_parts	0.6206030150753769	0.585427135678392	0	0.0	1	Celastraceae	1	0	0	0.0	2.585427135678392
@@ -65,7 +65,7 @@
 63	LQ-01-61-36_pos.mzXML	Euonymus myrianthus	Euonymus myrianthus|Leaves	0.40816326530612246	0.3979591836734694	0	0.0	1	Celastraceae	0	0	0	0.0	1.3979591836734695
 64	LQ-01-61-17_pos.mzXML	Euonymus bockii	Euonymus bockii|Roots	0.4	0.38235294117647056	0	0.0	1	Celastraceae	0	0	0	0.0	1.3823529411764706
 65	LQ-01-61-26_pos.mzXML	Euonymus dielsianus	Euonymus dielsianus|Leaves	0.4230769230769231	0.375	0	0.0	1	Celastraceae	0	0	0	0.0	1.375
-66	LQ-01-61-75_pos.mzXML	Tripterygium wilfordii	Tripterygium wilfordii|Stems	0.40816326530612246	0.37142857142857144	1011	1353.0	0	Celastraceae	1	{'Pregnane steroids'}	{'Pregnane steroids'}	1.0	2.3714285714285714
+66	LQ-01-61-75_pos.mzXML	Tripterygium wilfordii	Tripterygium wilfordii|Stems	0.40816326530612246	0.37142857142857144	1011	1353.0	0	Celastraceae	0	{'Pregnane steroids'}	{'Pregnane steroids'}	1.0	1.3714285714285714
 67	LQ-01-61-39_pos.mzXML	Euonymus sanguineus	Euonymus sanguineus|Leaves	0.38144329896907214	0.3711340206185567	1	440.0	1	Celastraceae	0	0	0	0.0	1.3711340206185567
 68	LQ-01-61-50_pos.mzXML	Gymnosporia buxifolia	Gymnosporia buxifolia|Roots	0.40609137055837563	0.37055837563451777	0	0.0	1	Celastraceae	0	0	0	0.0	1.3705583756345177
 69	LQ-01-61-13_pos.mzXML	Evonymopsis sp	Evonymopsis sp|Stems	0.4186046511627907	0.3643410852713178	0	0.0	1	Celastraceae	0	0	0	0.0	1.3643410852713178
