@@ -61,3 +61,5 @@ If you have an error, try installing `scikit-bio` from `conda-forge` before crea
 ```
 conda install -c conda-forge scikit-bio
 ```
+
+[Back to home page](index.md)
