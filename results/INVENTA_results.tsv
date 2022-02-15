@@ -1,10 +1,10 @@
 	filename	ATTRIBUTE_Species	ATTRIBUTE_Sppart	Sample_specificity	FC	Reported_comp_Species	Reported_comp_Genus	LC	ATTRIBUTE_Family	SC	New_in_species	New_in_genus	CC	PR
 0	LQ-01-61-06_pos.mzXML	Celastrus orbiculatus	Celastrus orbiculatus|Roots	0.86328125	0.828125	212	732.0	0	Celastraceae	1	set()	set()	0.0	1.828125
-1	LQ-01-61-78_pos.mzXML	Pristimera indica	Pristimera indica|Roots	0.8416666666666667	0.8166666666666667	2	8.0	1	Celastraceae	1	{'Agarofuran sesquiterpenoids', 'Primary amides'}	{'Agarofuran sesquiterpenoids', 'Primary amides'}	1.0	3.8166666666666664
+1	LQ-01-61-78_pos.mzXML	Pristimera indica	Pristimera indica|Roots	0.8416666666666667	0.8166666666666667	2	8.0	1	Celastraceae	1	{'Primary amides', 'Agarofuran sesquiterpenoids'}	{'Primary amides', 'Agarofuran sesquiterpenoids'}	1.0	3.8166666666666664
 2	LQ-01-61-60_pos.mzXML	Mystroxylon aethiopicum	Mystroxylon aethiopicum|Bark	0.8210526315789474	0.8052631578947368	0	0.0	1	Celastraceae	1	0	0	0.0	2.805263157894737
 3	LQ-01-61-27_pos.mzXML	Euonymus fortunei	Euonymus fortunei|Aerial_parts	0.9032258064516129	0.7903225806451613	11	440.0	0	Celastraceae	0	0	0	0.0	0.7903225806451613
 4	LQ-01-61-23_pos.mzXML	Euonymus cochinchinensis	Euonymus cochinchinensis|Leaves	0.8050314465408805	0.7704402515723271	0	0.0	1	Celastraceae	1	0	0	0.0	2.770440251572327
-5	LQ-01-61-37_pos.mzXML	Euonymus sanguineus	Euonymus sanguineus|Roots	0.8385321100917431	0.7577981651376147	1	440.0	1	Celastraceae	0	{'Isoquinoline alkaloids', 'Chromones', 'Quinoline alkaloids', 'Simple coumarins', 'Furocoumarins'}	{'Isoquinoline alkaloids', 'Chromones', 'Quinoline alkaloids', 'Simple coumarins', 'Furocoumarins'}	1.0	2.757798165137615
+5	LQ-01-61-37_pos.mzXML	Euonymus sanguineus	Euonymus sanguineus|Roots	0.8385321100917431	0.7577981651376147	1	440.0	1	Celastraceae	1	{'Quinoline alkaloids', 'Furocoumarins', 'Isoquinoline alkaloids', 'Chromones', 'Simple coumarins'}	{'Quinoline alkaloids', 'Furocoumarins', 'Isoquinoline alkaloids', 'Chromones', 'Simple coumarins'}	1.0	3.757798165137615
 6	LQ-01-61-47_pos.mzXML	Maytenus inermis	Maytenus inermis|Underground_parts	0.805	0.75	0	0.0	1	Celastraceae	1	0	0	0.0	2.75
 7	LQ-01-61-28_pos.mzXML	Euonymus grandiflorus	Euonymus grandiflorus|Bark	0.810126582278481	0.7468354430379747	1	440.0	1	Celastraceae	0	0	0	0.0	1.7468354430379747
 8	LQ-01-61-05_pos.mzXML	Celastrus orbiculatus	Celastrus orbiculatus|Stems	0.7623762376237624	0.7277227722772277	212	732.0	0	Celastraceae	1	{'Pyridine alkaloids'}	{'Pyridine alkaloids'}	1.0	2.727722772277228
@@ -13,17 +13,17 @@
 11	LQ-01-61-09_pos.mzXML	Celastrus paniculatus	Celastrus paniculatus|Bark	0.7	0.6857142857142857	71	732.0	0	Celastraceae	0	0	0	0.0	0.6857142857142857
 12	LQ-01-61-41_pos.mzXML	Loeseneriella concinna	Loeseneriella concinna|Stems	0.7777777777777778	0.6794871794871795	0	0.0	1	Celastraceae	1	0	0	0.0	2.6794871794871797
 13	LQ-01-61-62_pos.mzXML	Pleurostylia africana	Pleurostylia africana|Leaves	0.7440476190476191	0.6785714285714286	3	50.0	1	Celastraceae	0	{'Flavonols', 'Dipeptides'}	{'Flavonols', 'Dipeptides'}	1.0	2.678571428571429
-14	LQ-01-61-07_pos.mzXML	Celastrus paniculatus	Celastrus paniculatus|Seeds	0.7134502923976608	0.6783625730994152	71	732.0	0	Celastraceae	1	{'Diacylglycerols', 'Labdane diterpenoids', 'Daucane sesquiterpenoids', 'Tetracyclic diterpenoids', 'Dicarboxylic acids', 'Neutral glycosphingolipids', 'Paraliane diterpenoids', 'Monoacylglycerols', 'Trichothecane sesquiterpenoids'}	{'Monoacylglycerols', 'Trichothecane sesquiterpenoids', 'Diacylglycerols', 'Tetracyclic diterpenoids', 'Neutral glycosphingolipids', 'Paraliane diterpenoids', 'Daucane sesquiterpenoids', 'Dicarboxylic acids'}	1.0	2.678362573099415
+14	LQ-01-61-07_pos.mzXML	Celastrus paniculatus	Celastrus paniculatus|Seeds	0.7134502923976608	0.6783625730994152	71	732.0	0	Celastraceae	1	{'Trichothecane sesquiterpenoids', 'Tetracyclic diterpenoids', 'Dicarboxylic acids', 'Monoacylglycerols', 'Diacylglycerols', 'Labdane diterpenoids', 'Neutral glycosphingolipids', 'Daucane sesquiterpenoids', 'Paraliane diterpenoids'}	{'Trichothecane sesquiterpenoids', 'Tetracyclic diterpenoids', 'Dicarboxylic acids', 'Diacylglycerols', 'Monoacylglycerols', 'Neutral glycosphingolipids', 'Daucane sesquiterpenoids', 'Paraliane diterpenoids'}	1.0	2.678362573099415
 15	LQ-01-61-70_pos.mzXML	Salacia cochinchinensis	Salacia cochinchinensis|Underground_parts	0.6829268292682927	0.6585365853658537	0	0.0	1	Celastraceae	0	0	0	0.0	1.6585365853658538
 16	LQ-01-61-68_pos.mzXML	Salacia cochinchinensis	Salacia cochinchinensis|Leaves	0.6578947368421053	0.6447368421052632	0	0.0	1	Celastraceae	0	0	0	0.0	1.6447368421052633
 17	LQ-01-61-08_pos.mzXML	Celastrus paniculatus	Celastrus paniculatus|Leaves	0.696969696969697	0.6363636363636364	71	732.0	0	Celastraceae	0	0	0	0.0	0.6363636363636364
 18	LQ-01-61-40_pos.mzXML	Loeseneriella urceolus	Loeseneriella urceolus|Leaves	0.6525821596244131	0.6338028169014085	0	0.0	1	Celastraceae	0	0	0	0.0	1.6338028169014085
 19	LQ-01-61-33_pos.mzXML	Euonymus frigidus	Euonymus frigidus|Leaves	0.6844262295081968	0.6229508196721312	0	0.0	1	Celastraceae	0	0	0	0.0	1.6229508196721312
-20	LQ-01-61-56_pos.mzXML	Maytenus undata	Maytenus undata|Roots	0.6613272311212814	0.620137299771167	14	338.0	0	Celastraceae	1	{'Agarofuran sesquiterpenoids', 'Paraliane diterpenoids', 'Drimane sesquiterpenoids', 'Daucane sesquiterpenoids'}	{'Agarofuran sesquiterpenoids', 'Paraliane diterpenoids', 'Drimane sesquiterpenoids', 'Daucane sesquiterpenoids'}	1.0	2.620137299771167
+20	LQ-01-61-56_pos.mzXML	Maytenus undata	Maytenus undata|Roots	0.6613272311212814	0.620137299771167	14	338.0	0	Celastraceae	1	{'Agarofuran sesquiterpenoids', 'Drimane sesquiterpenoids', 'Daucane sesquiterpenoids', 'Paraliane diterpenoids'}	{'Agarofuran sesquiterpenoids', 'Drimane sesquiterpenoids', 'Daucane sesquiterpenoids', 'Paraliane diterpenoids'}	1.0	2.620137299771167
 21	LQ-01-61-19_pos.mzXML	Euonymus bockii	Euonymus bockii|Leaves	0.6525974025974026	0.6201298701298701	0	0.0	1	Celastraceae	1	0	0	0.0	2.62012987012987
 22	LQ-01-61-69_pos.mzXML	Salacia cochinchinensis	Salacia cochinchinensis|Branche	0.7433628318584071	0.6194690265486725	0	0.0	1	Celastraceae	0	0	0	0.0	1.6194690265486726
 23	LQ-01-61-15_pos.mzXML	Euonymus alatus	Euonymus alatus|Stems	0.7096774193548387	0.6129032258064516	92	440.0	0	Celastraceae	0	0	0	0.0	0.6129032258064516
-24	LQ-01-61-73_pos.mzXML	Tripterygium hypoglaucum	Tripterygium hypoglaucum|Roots	0.6137724550898204	0.6047904191616766	162	1353.0	0	Celastraceae	1	set()	set()	0.0	1.6047904191616766
+24	LQ-01-61-73_pos.mzXML	Tripterygium hypoglaucum	Tripterygium hypoglaucum|Roots	0.6137724550898204	0.6047904191616766	162	1353.0	0	Celastraceae	0	set()	set()	0.0	0.6047904191616766
 25	LQ-01-61-58_pos.mzXML	Microtropis triflora	Microtropis triflora|Stems	0.6519607843137255	0.6029411764705882	14	211.0	0	Celastraceae	0	{'Agarofuran sesquiterpenoids'}	{'Agarofuran sesquiterpenoids'}	1.0	1.6029411764705883
 26	LQ-01-61-51_pos.mzXML	Gymnosporia graciliramula	Gymnosporia graciliramula|Aerial_parts	0.6504065040650406	0.5975609756097561	0	0.0	1	Celastraceae	0	0	0	0.0	1.5975609756097562
 27	LQ-01-61-14_pos.mzXML	Evonymopsis sp	Evonymopsis sp|Underground_parts	0.6206030150753769	0.585427135678392	0	0.0	1	Celastraceae	1	0	0	0.0	2.585427135678392
@@ -42,11 +42,11 @@
 40	LQ-01-61-54_pos.mzXML	Maytenus undata	Maytenus undata|Leaves	0.5665236051502146	0.4978540772532189	14	338.0	0	Celastraceae	1	{'Trichothecane sesquiterpenoids'}	{'Trichothecane sesquiterpenoids'}	1.0	2.497854077253219
 41	LQ-01-61-67_pos.mzXML	Salacia chinensis	Salacia chinensis|Roots	0.5688622754491018	0.49700598802395207	313	514.0	0	Celastraceae	0	0	0	0.0	0.49700598802395207
 42	LQ-01-61-03_pos.mzXML	Catha edulis	Catha edulis|Roots	0.5093167701863354	0.484472049689441	126	126.0	0	Celastraceae	1	{'Tetraketide meroterpenoids'}	{'Tetraketide meroterpenoids'}	1.0	2.4844720496894412
-43	LQ-01-61-55_pos.mzXML	Maytenus undata	Maytenus undata|Stems	0.5218579234972678	0.48360655737704916	14	338.0	0	Celastraceae	1	{'Agarofuran sesquiterpenoids', 'Trichothecane sesquiterpenoids'}	{'Agarofuran sesquiterpenoids', 'Trichothecane sesquiterpenoids'}	1.0	2.4836065573770494
+43	LQ-01-61-55_pos.mzXML	Maytenus undata	Maytenus undata|Stems	0.5218579234972678	0.48360655737704916	14	338.0	0	Celastraceae	1	{'Trichothecane sesquiterpenoids', 'Agarofuran sesquiterpenoids'}	{'Trichothecane sesquiterpenoids', 'Agarofuran sesquiterpenoids'}	1.0	2.4836065573770494
 44	LQ-01-61-72_pos.mzXML	Salacighia letestuana	Salacighia letestuana|Fruits	0.5033557046979866	0.47651006711409394	0	0.0	1	Celastraceae	1	0	0	0.0	2.476510067114094
 45	LQ-01-61-02_pos.mzXML	Catha edulis	Catha edulis|Stems	0.49514563106796117	0.47572815533980584	126	126.0	0	Celastraceae	1	0	0	0.0	1.4757281553398058
 46	LQ-01-61-61_pos.mzXML	Mystroxylon aethiopicum	Mystroxylon aethiopicum|Leaves	0.5178571428571429	0.4732142857142857	0	0.0	1	Celastraceae	0	0	0	0.0	1.4732142857142856
-47	LQ-01-61-01_pos.mzXML	Catha edulis	Catha edulis|Leaves	0.49242424242424243	0.4621212121212121	126	126.0	0	Celastraceae	1	set()	set()	0.0	1.4621212121212122
+47	LQ-01-61-01_pos.mzXML	Catha edulis	Catha edulis|Leaves	0.49242424242424243	0.4621212121212121	126	126.0	0	Celastraceae	0	set()	set()	0.0	0.4621212121212121
 48	LQ-01-61-66_pos.mzXML	Salacia chinensis	Salacia chinensis|Branche	0.5238095238095238	0.4603174603174603	313	514.0	0	Celastraceae	0	0	0	0.0	0.4603174603174603
 49	LQ-01-61-10_pos.mzXML	Elaeodendron schweinfurthianum	Elaeodendron schweinfurthianum|Leaves	0.5043478260869565	0.4434782608695652	0	0.0	1	Celastraceae	0	0	0	0.0	1.4434782608695653
 50	LQ-01-61-04_pos.mzXML	Catha edulis	Catha edulis|Aerial_parts	0.4632768361581921	0.4406779661016949	126	126.0	0	Celastraceae	1	set()	set()	0.0	1.4406779661016949
@@ -65,7 +65,7 @@
 63	LQ-01-61-36_pos.mzXML	Euonymus myrianthus	Euonymus myrianthus|Leaves	0.40816326530612246	0.3979591836734694	0	0.0	1	Celastraceae	0	0	0	0.0	1.3979591836734695
 64	LQ-01-61-17_pos.mzXML	Euonymus bockii	Euonymus bockii|Roots	0.4	0.38235294117647056	0	0.0	1	Celastraceae	0	0	0	0.0	1.3823529411764706
 65	LQ-01-61-26_pos.mzXML	Euonymus dielsianus	Euonymus dielsianus|Leaves	0.4230769230769231	0.375	0	0.0	1	Celastraceae	0	0	0	0.0	1.375
-66	LQ-01-61-75_pos.mzXML	Tripterygium wilfordii	Tripterygium wilfordii|Stems	0.40816326530612246	0.37142857142857144	1011	1353.0	0	Celastraceae	0	{'Pregnane steroids'}	{'Pregnane steroids'}	1.0	1.3714285714285714
+66	LQ-01-61-75_pos.mzXML	Tripterygium wilfordii	Tripterygium wilfordii|Stems	0.40816326530612246	0.37142857142857144	1011	1353.0	0	Celastraceae	1	{'Pregnane steroids'}	{'Pregnane steroids'}	1.0	2.3714285714285714
 67	LQ-01-61-39_pos.mzXML	Euonymus sanguineus	Euonymus sanguineus|Leaves	0.38144329896907214	0.3711340206185567	1	440.0	1	Celastraceae	0	0	0	0.0	1.3711340206185567
 68	LQ-01-61-50_pos.mzXML	Gymnosporia buxifolia	Gymnosporia buxifolia|Roots	0.40609137055837563	0.37055837563451777	0	0.0	1	Celastraceae	0	0	0	0.0	1.3705583756345177
 69	LQ-01-61-13_pos.mzXML	Evonymopsis sp	Evonymopsis sp|Stems	0.4186046511627907	0.3643410852713178	0	0.0	1	Celastraceae	0	0	0	0.0	1.3643410852713178
