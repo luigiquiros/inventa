@@ -7,11 +7,7 @@ github: https://github.com/luigiquiros/
 description: "Workflow of prioritization of natural extracts for chemical originality discovery"
 
 
-# Build settings
-remote_theme: Bilal2453/cayman-docs
-
-
-    
+# Build settings 
 nav:
     - Home: index.md
     - Installation: installation.md 
