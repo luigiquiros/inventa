@@ -23,4 +23,4 @@ The combined score (adition of the four components) can be modulated acording to
 
 ![Rank conception](/docs/assets/img/priority_rank.png)
 
-[INSTALLATION](/docs/installation.md) 
+[INSTALLATION](installation.md) 
