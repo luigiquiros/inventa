@@ -2,8 +2,6 @@
 layout: default
 ---
 
-# INVENTA: Prioritization of natural extracts for chemical originality discovery
-
 ![Graphical abstract](/assets/img/graphical_abstract.png)
 
 ## Description 
