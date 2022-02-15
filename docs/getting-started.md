@@ -85,3 +85,5 @@ This output needs an additional step after runnign sirius, please follow the nex
 [Examples of all these input could be found in `/format_examples`]
 
 [Back to home page](index.md)
+
+[Continue to Configurations and running](configuration-options.md)
