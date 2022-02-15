@@ -9,7 +9,7 @@ repository: "luigiquiros/inventa"
 
 #building
 
-theme: minimal-mistakes-jekyll
+theme: minimal-jekyll #minimal-mistakes-jekyll
 #minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 #teaser: /assets/images/graphical_abstract.png
