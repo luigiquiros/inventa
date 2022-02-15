@@ -1,12 +1,12 @@
 ---
-#title:  "Home"
 layout: default
 #permalink: /docs/index/
 ---
 
 # INVENTA: Prioritization of natural extracts for chemical originality discovery
 
-![Graphical abstract](https://luigiquiros.github.io/inventa/blob/main/docs/assets/img/graphical_abstract.png)
+#![Graphical abstract](https://luigiquiros.github.io/inventa/blob/main/docs/assets/img/graphical_abstract.png)
+[**Content**](https://luigiquiros.github.io/inventa/blob/main/docs/assets/img/graphical_abstract.png)
 
 ## Description 
 
