@@ -1,10 +1,10 @@
 # Site settings
-title: [Inventa]
+title: Inventa
 author:
   name: Luis Quiros-Guerrero   
   email: luis.guerrero@unige.ch
 github: https://github.com/luigiquiros/
-description: ["Workflow of prioritization of natural extracts for chemical originality discovery"]
+description: "Workflow of prioritization of natural extracts for chemical originality discovery"
 
 
 # Build settings
