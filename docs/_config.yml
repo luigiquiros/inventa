@@ -9,3 +9,9 @@ logo: /assets/img/logo.png
 repository: "luigiquiros/inventa"
 
 theme: jekyll-theme-minimal
+
+include:
+  - installation.md
+  - configuration-options.md
+  - workflow.md
+  - getting-started.md
