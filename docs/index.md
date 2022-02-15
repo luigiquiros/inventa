@@ -1,11 +1,11 @@
 ---
-layout: default
+layout: page
 title: INVENTA
 ---
 
 # INVENTA: Prioritization of natural extracts for chemical originality discovery
 
-![Graphical abstract](/docs/assets/graphical_abstract.png)
+![Graphical abstract](https://github.com/luigiquiros/inventa/blob/main/docs/assets/images/logo.png)
 
 ## Description 
 
