@@ -19,3 +19,5 @@ nav:
         - 0. Workflow: workflow.md
         - 1. Getting started: getting-started.md
         - 2. Configuration: confguration_options.md
+
+theme: jekyll-theme-minimal
