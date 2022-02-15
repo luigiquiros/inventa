@@ -1,6 +1,6 @@
 <h1>Installation</h1>
  
-There are two way to work with inventa: 
+There are two ways to work with inventa: 
 
 ### A) Running inventa with Binder:
 
@@ -13,9 +13,9 @@ Binder allows to run inventa on the cloud with a Binder instance, which is reall
 #### how to use Binder?
 
 - All the necessary tables described below can be 'drag & drop' in the folder `data/` direclty in the browser, you'll find the folder in the left side.
-- The output can be found in the folder`results/` as a TAB separated file.
+- The output can be found in the folder `results/` as a TAB separated file.
 - If needed, you can modify the jupyter notebook directly in the browser (make sure to save it locally).
-- As explain below, if needed, you can modify the `inventa.py` parameters inside `src/inventa.py`, this can be done as well directly in the browser.
+- As explained below, if needed, you can modify the `inventa.py` parameters inside `src/inventa.py`, this can be done as well directly in the browser.
 
 ### B) Running inventa locally:
 
