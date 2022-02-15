@@ -23,11 +23,20 @@ The combined score (adition of the four components) can be modulated acording to
 
 ![Rank conception](/assets/img/priority_rank.png)
 
+
+
+
 ## [**Installation**](installation.md) 
+
 
 ## [**Getting started**](getting-started.md) 
 
+
 ## [**Configurations and running**](configuration-options.md) 
+
+
+
+
 
 ### Credits
 Images were created by Luis Quiros-Guerrero using [bioRender](https://biorender.com/) (© BioRender 2022)
