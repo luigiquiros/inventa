@@ -1,7 +1,7 @@
 ---
 title:  "Workflow"
 layout: default
-permalink: /docs/
+permalink: /docs/workflow/
 ---
 
 # Workflow 

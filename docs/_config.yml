@@ -18,19 +18,20 @@ theme: minimal-jekyll #minimal-mistakes-jekyll
 
 #logo: "/assets/images/logo.png"
 
+include: ["_pages"]
 #footer:
 #  links:
 #    - label: "GitHub"
 #      icon: "fab fa-fw fa-github"
  #     url: "https://github.com/luigiquiros"
 
-#defaults:
-  # _pages
-#  - scope:
-#      path: ""
-#      type: pages
-#    values:
- #     layout: single
+defaults:
+   _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
   # _foo
 #  - scope:
 #      path: ""

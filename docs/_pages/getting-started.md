@@ -1,7 +1,7 @@
 ---
 title:  "Getting started"
 layout: default
-permalink: /docs/
+permalink: /docs/getting-started/
 ---
 
 # Where to start? 

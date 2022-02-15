@@ -1,7 +1,7 @@
 ---
 title:  "User guide"
 layout: default
-permalink: /docs/
+permalink: /docs/configuration-options/
 ---
 
 ## 2. Open the notebook 'inventa' 
