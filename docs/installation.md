@@ -58,4 +58,4 @@ conda install -c conda-forge scikit-bio
 
 [Back to home page](index.md)
 
-[Continue to Getting Started](getting-started.md)
+[Continue to Getting Started](getting-started.md) 
