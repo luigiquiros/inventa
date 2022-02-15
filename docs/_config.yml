@@ -1,13 +1,14 @@
 # Site settings
 title: Inventa
-author:
-  name: Luis Quiros-Guerrero   
-  email: luis.guerrero@unige.ch
+author: Luis Quiros-Guerrero   
+email: luis.guerrero@unige.ch
 github: https://github.com/luigiquiros/
 description: "Workflow of prioritization of natural extracts for chemical originality discovery"
 
 
 # Build settings 
+theme: jekyll-theme-minimal
+markdown: kramdown
 nav:
     - Home: index.md
     - Installation: installation.md 
@@ -15,5 +16,3 @@ nav:
         - 0. Workflow: workflow.md
         - 1. Getting started: getting-started.md
         - 2. Configuration: confguration_options.md
-
-theme: jekyll-theme-minimal
