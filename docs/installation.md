@@ -1,6 +1,7 @@
 ---
+title:  "Installation"
 layout: default
-title: Installation
+permalink: /docs/
 ---
 
 ## Installation

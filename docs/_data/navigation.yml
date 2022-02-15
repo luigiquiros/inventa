@@ -1,0 +1,11 @@
+main:
+  - title: "Home"
+    url: /docs/
+  - title: "Installation"
+    url: /docs/
+  - title: "Workflow"
+    url: /docs/
+  - title: "Getting started"
+    url: /docs/
+  - title: "User guide"
+    url: /docs/

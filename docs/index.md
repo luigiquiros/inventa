@@ -1,6 +1,7 @@
 ---
+title:  "Home"
 layout: default
-title: INVENTA
+permalink: /docs/
 ---
 
 # INVENTA: Prioritization of natural extracts for chemical originality discovery
