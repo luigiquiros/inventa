@@ -10,7 +10,7 @@ repository: "luigiquiros/inventa"
 #building
 
 theme: minimal-mistakes-jekyll
-minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+#minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 #teaser: /assets/images/graphical_abstract.png
 #header:
@@ -18,25 +18,25 @@ minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "n
 
 #logo: "/assets/images/logo.png"
 
-footer:
-  links:
-    - label: "GitHub"
-      icon: "fab fa-fw fa-github"
-      url: "https://github.com/luigiquiros"
+#footer:
+#  links:
+#    - label: "GitHub"
+#      icon: "fab fa-fw fa-github"
+ #     url: "https://github.com/luigiquiros"
 
-defaults:
+#defaults:
   # _pages
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: single
+#  - scope:
+#      path: ""
+#      type: pages
+#    values:
+ #     layout: single
   # _foo
-  - scope:
-      path: ""
-      type: foo
-    values:
-      layout: single
+#  - scope:
+#      path: ""
+#      type: foo
+ #   values:
+ #     layout: single
       
 plugins:
 - jekyll-remote-theme # add this line to the plugins list if you already have one
