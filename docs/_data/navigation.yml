@@ -1,11 +1,11 @@
 main:
   - title: "Home"
-    url: /docs/
+    url: /docs/index/
   - title: "Installation"
-    url: /docs/
+    url: /docs/_data/installation/
   - title: "Workflow"
-    url: /docs/
+    url: /docs/_data/workflow
   - title: "Getting started"
-    url: /docs/
+    url: /docs/_data/getting-started/
   - title: "User guide"
-    url: /docs/
+    url: /docs/configuration-options
