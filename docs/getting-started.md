@@ -36,7 +36,7 @@ While creating the 'metadata' there are some MANDATORY headers:
 
 `quantitative_data_filename`: MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
 
-- if you prefer 'Peak Height', go to `src/inventa.py`and change it inside the function quand_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
+- if you prefer 'Peak Height', go to `src/inventa.py` and change it inside the function quand_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
 
 - if you did export any other column, like identities, etc,  please remove manually or add the corresponding lines in the funcion quand_table():
 ```
@@ -84,6 +84,8 @@ This output needs an additional step after runnign sirius, please follow the nex
 
 Examples of all these input could be found in [`/format_examples`](https://github.com/luigiquiros/inventa/tree/main/format_examples)
 
-[Back to home page](index.md)
 
-[Continue to Configurations and running](configuration-options.md) 
+
+## [Continue to Configurations and running](configuration-options.md) 
+
+### [Back to home page](index.md)

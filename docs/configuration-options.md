@@ -84,17 +84,20 @@ min_recurrence = 10                # minimun recurrence of a chemical class to c
 ##### specify the weight to modulate each component:
 
     # 1 means the value itself is taken into account. A 0.5 means onle half of the calculated value is taken into account
+
 ```
-w1 = 1   for FC        
-w2 = 1   for LC
-w3 = 1   for SC
-w4 = 1   for CC
+w1 = 1   #for FC        
+w2 = 1   #for LC
+w3 = 1   #for SC
+w4 = 1   #for CC
 ```
 
 
-# Run the notebook 'inventa' and ENJOY! 
+## Once you set the parameter to your preference, Run the notebook!
 
-[Back to home page](index.md)
+# ENJOY! 
 
-[Back to Getting Started](getting-started.md) 
+
+### [Back to Getting Started](getting-started.md)
+### [Back to home page](index.md)
 

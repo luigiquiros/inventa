@@ -1,9 +1,9 @@
 ---
 layout: default
 ---
-
-![Graphical abstract](/assets/img/graphical_abstract.png)
 >  Graphical abstract
+![Graphical abstract](/assets/img/graphical_abstract.png)
+
 
 ## Description 
 
@@ -21,7 +21,7 @@ The **Class Component (CC)** is a score based on the presence of possible new ch
 The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .tsv file with all the information generared along the final rank of the samples.
 
 ![Rank conception](/assets/img/priority_rank.png)
-> Conceptual overview of the Priority rank and its individual components. FC: Feature Component. LC: Literature Component. CC: Class Component. SC: Similarity Component. A modulating factor (wn) allows to give a relative weight to each component according to the user preferences.
+> Figure 1. Conceptual overview of the Priority rank and its individual components. FC: Feature Component. LC: Literature Component. CC: Class Component. SC: Similarity Component. A modulating factor (wn) allows to give a relative weight to each component according to the user preferences.
 
 ## [**Installation**](installation.md) 
 
