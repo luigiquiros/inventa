@@ -1,1 +1,14 @@
-theme: jekyll-theme-minimal
+title: "INVENTA"
+description: "Workflow of prioritization of natural extracts for chemical originality discovery"
+#subtitle: "Version 1.0"
+#name: Luis Quiros-Guerrero
+
+#url: "https://luigiquiros.github.io"
+#baseurl: "/inventa/docs"
+repository: "luigiquiros/inventa"
+
+
+#theme: jekyll-theme-minimal
+remote_theme: pages-themes/minimal@v0.2.0
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one
