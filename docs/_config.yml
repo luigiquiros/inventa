@@ -16,7 +16,7 @@ minimal_mistakes_skin: "default" # "air", "aqua", "contrast", "dark", "dirt", "n
 #header:
 #  teaser: /assets/images/my-awesome-post-teaser.jpg
 
-logo: "/assets/images/logo.png"
+#logo: "/assets/images/logo.png"
 
 footer:
   links:
