@@ -11,7 +11,7 @@ import pathlib
 
 #Class component:
 
-def sirius_classes1(df1,df2,df3, min_recurrence, CC_component): 
+def sirius_classes(df3, min_recurrence, min_class_confidence,  CC_component): 
     """ function to find the chemical classes proposed by sirius and assign them to a specific species based on the top specificity of the feature
     Args:
         df1 = specificity_df
@@ -21,7 +21,10 @@ def sirius_classes1(df1,df2,df3, min_recurrence, CC_component):
     Returns:
         None
     """
+    
     if CC_component == True:
+        df1 = pd.read_csv('../data_out/specificity_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+        df2 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         # merge with top filename with iones 
         #df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int) #use this line if you don't have a column with the name/shared name
         
@@ -42,11 +45,12 @@ def sirius_classes1(df1,df2,df3, min_recurrence, CC_component):
         
         df = pd.merge(left=df2[['filename', 'ATTRIBUTE_Species']], right=df4, how='left', left_on='filename', right_on='filename').dropna()
         df.drop('ATTRIBUTE_Species', axis=1, inplace=True)
+        df.to_csv('../data_out/sirus_classes_df.tsv', sep='\t')
         return df
     else:
         print ('No search was done because the Class component is not going to be calculated')
 
-def search_reported_class(df, CC_component):
+def search_reported_class(CC_component):
     """ function to search the reported chemical classes in each species of the set 
     Args:
         df = metadata_df
@@ -54,6 +58,7 @@ def search_reported_class(df, CC_component):
         None
     """
     if CC_component == True:
+        df = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',
                         sep=',').dropna()
         
@@ -70,12 +75,13 @@ def search_reported_class(df, CC_component):
         #merge into a single dataframe
 
         df = pd.merge(df[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Family', 'ATTRIBUTE_Family']],df4,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
-        df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left') 
+        df = pd.merge(df,df5,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left')
+        df.to_csv('../data_out/reported_classes_df.tsv', sep='\t')
         return df
     else:
         print ('No search was done because the Class component is not going to be calculated')
 
-def class_component(df1, df2, df3, CC_component):
+def class_component(CC_component):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
         df1 = reported_classes_df 
@@ -86,6 +92,9 @@ def class_component(df1, df2, df3, CC_component):
     """
     if CC_component == True:
     #merge the both tables
+        df1 = pd.read_csv('../data_out/reported_classes_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+        df2 = pd.read_csv('../data_out/sirus_classes_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+        df3 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df = pd.merge(df1,df2,on='filename', how='left').dropna()
 
         #get the difference between sets 

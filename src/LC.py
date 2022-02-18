@@ -10,7 +10,7 @@ import pathlib
 
 #literature component
  
-def literature_component(df, LC_component, min_comp_reported, max_comp_reported):
+def literature_component(LC_component, min_comp_reported, max_comp_reported):
     """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
     Args:
         df2 = metadata_df
@@ -19,6 +19,7 @@ def literature_component(df, LC_component, min_comp_reported, max_comp_reported)
         None
     """
     if LC_component == True:
+        df = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv', 
                        sep=',').dropna()
 

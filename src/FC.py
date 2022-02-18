@@ -8,7 +8,7 @@ import plotly.express as px
 import zipfile
 import pathlib
 
-def top_ions(df1, df2, col_id_unique):
+def top_ions(col_id_unique):
     """ function to compute the top species, top filename and top species/plant part for each ion 
     Args:
         df1 = reduced_df, table of with index on sp/part column and features only.
@@ -17,7 +17,8 @@ def top_ions(df1, df2, col_id_unique):
         None
     """
     #computes the % for each feature
-    dfA = df1.copy().transpose()
+    dfA = pd.read_csv('../data_out/reduced_df.tsv', sep='\t', index_col=[0])
+    dfA = dfA.copy().transpose()
     dfA = dfA.div(dfA.sum(axis=1), axis=0)*100
     dfA.reset_index(inplace=True)
     dfA.rename(columns={'index': 'row ID'}, inplace=True)
@@ -27,9 +28,10 @@ def top_ions(df1, df2, col_id_unique):
     dfA.reset_index(inplace=True)
     #df1 = df1.drop([0], axis=1)
     dfA = dfA[['row ID', 'Feature_specificity']]
+    dfA['row ID']=dfA['row ID'].astype(int)
 
     #computes the top filename for each ion 
-    #df2 = quant_df
+    df2 = pd.read_csv('../data_out/quant_df.tsv', sep='\t', index_col=[0])
     df2 = df2.div(df2.sum(axis=1), axis=0)*100
     df2 = df2.copy()
     df2 = df2.astype(float)
@@ -42,7 +44,8 @@ def top_ions(df1, df2, col_id_unique):
 
     if col_id_unique != 'filename':
         #computes the top species/part for each feature 
-        df3 = df1.copy().transpose()
+        df3 = pd.read_csv('../data_out/reduced_df.tsv', sep='\t', index_col=[0])
+        df3 = df3.transpose()
         df3 = df3.astype(float)
         df3 = df3.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
         df3 = df3.to_frame()
@@ -56,10 +59,11 @@ def top_ions(df1, df2, col_id_unique):
         df = pd.merge(left=df3, right=df, how='left', on='row ID')
     else: 
         df
+    df.to_csv('../data_out/specificity_df.tsv', sep='\t')
     return df
 
 
-def annotations(df1, df2, df3,
+def annotations(df2, df3,
                 only_ms2_annotations, sirius_annotations, isbd_annotations,
                 min_score_final, min_ConfidenceScore, min_ZodiacScore):
 
@@ -83,7 +87,8 @@ def annotations(df1, df2, df3,
     """
     #ONLY GNPS        
     #find null values (non annotated)
-    df =df1
+    df1 = pd.read_csv('../data_out/annot_gnps_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+    df = df1.copy()
     df['Annotated'] = pd.isnull(df['Consol_InChI'])
     #lets replace the booleans 
     bD = {True: '0', False: '1'}
@@ -183,10 +188,10 @@ def annotations(df1, df2, df3,
                 else: 
                     return 0
     df['annotation'] = df.apply(annotations_gnps, axis=1)  
- 
+    df.to_csv('../data_out/annotations_df.tsv', sep='\t')
     return df 
 
-def feature_component(df1,df2,df3, only_feature_specificity, min_specificity, annotation_preference, col_id_unique):
+def feature_component(only_feature_specificity, min_specificity, annotation_preference, col_id_unique):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
     Args:
         df1 = specificity_df, calculated with the top_ions function 
@@ -195,6 +200,9 @@ def feature_component(df1,df2,df3, only_feature_specificity, min_specificity, an
     Returns:
         None
     """
+    df1 = pd.read_csv('../data_out/specificity_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+    df2 = pd.read_csv('../data_out/annotations_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+    
     df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
 
     if only_feature_specificity == True:
@@ -219,6 +227,7 @@ def feature_component(df1,df2,df3, only_feature_specificity, min_specificity, an
     df = pd.merge(df5, df6, how='left', on='filename')
 
     if col_id_unique != 'filename':
+        df3 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', col_id_unique]], df, how='left', on='filename')
     else:
         df

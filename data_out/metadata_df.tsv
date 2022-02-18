@@ -1,0 +1,77 @@
+	filename	ATTRIBUTE_Code	ATTRIBUTE_Type	ATTRIBUTE_Family	ATTRIBUTE_Genus	ATTRIBUTE_Species	ATTRIBUTE_Organe	ATTRIBUTE_Broad_organ	ATTRIBUTE_Tissue	ATTRIBUTE_Subsystem	ATTRIBUTE_Sppart
+0	LQ-01-61-01_pos.mzXML	V107694	Sample	Celastraceae	Catha	Catha edulis	Leaves	photosynthetic	green tissue	aboveground	Catha edulis|Leaves
+1	LQ-01-61-02_pos.mzXML	V107695	Sample	Celastraceae	Catha	Catha edulis	Stems	woody vegetative	woody tissue	aboveground	Catha edulis|Stems
+2	LQ-01-61-03_pos.mzXML	V107696	Sample	Celastraceae	Catha	Catha edulis	Roots	roots	root tissue	belowground	Catha edulis|Roots
+3	LQ-01-61-04_pos.mzXML	V114502	Sample	Celastraceae	Catha	Catha edulis	Aerial_parts	multiple	multiple	aboveground	Catha edulis|Aerial_parts
+4	LQ-01-61-05_pos.mzXML	V103080	Sample	Celastraceae	Celastrus	Celastrus orbiculatus	Stems	woody vegetative	woody tissue	aboveground	Celastrus orbiculatus|Stems
+5	LQ-01-61-06_pos.mzXML	V111863	Sample	Celastraceae	Celastrus	Celastrus orbiculatus	Roots	roots	root tissue	belowground	Celastrus orbiculatus|Roots
+6	LQ-01-61-07_pos.mzXML	V100029	Sample	Celastraceae	Celastrus	Celastrus paniculatus	Seeds	reproductive	green tissue	aboveground	Celastrus paniculatus|Seeds
+7	LQ-01-61-08_pos.mzXML	V105603	Sample	Celastraceae	Celastrus	Celastrus paniculatus	Leaves	photosynthetic	green tissue	aboveground	Celastrus paniculatus|Leaves
+8	LQ-01-61-09_pos.mzXML	V105604	Sample	Celastraceae	Celastrus	Celastrus paniculatus	Bark	woody vegetative	woody tissue	aboveground	Celastrus paniculatus|Bark
+9	LQ-01-61-10_pos.mzXML	V108295	Sample	Celastraceae	Elaeodendron	Elaeodendron schweinfurthianum	Leaves	photosynthetic	green tissue	aboveground	Elaeodendron schweinfurthianum|Leaves
+10	LQ-01-61-11_pos.mzXML	V108296	Sample	Celastraceae	Elaeodendron	Elaeodendron schweinfurthianum	Stems	woody vegetative	woody tissue	aboveground	Elaeodendron schweinfurthianum|Stems
+11	LQ-01-61-12_pos.mzXML	V113977	Sample	Celastraceae	Evonymopsis	Evonymopsis sp	Leaves	photosynthetic	green tissue	aboveground	Evonymopsis sp|Leaves
+12	LQ-01-61-13_pos.mzXML	V113978	Sample	Celastraceae	Evonymopsis	Evonymopsis sp	Stems	woody vegetative	woody tissue	aboveground	Evonymopsis sp|Stems
+13	LQ-01-61-14_pos.mzXML	V113979	Sample	Celastraceae	Evonymopsis	Evonymopsis sp	Underground_parts	multiple	multiple	belowground	Evonymopsis sp|Underground_parts
+14	LQ-01-61-15_pos.mzXML	V104538	Sample	Celastraceae	Euonymus	Euonymus alatus	Stems	woody vegetative	woody tissue	aboveground	Euonymus alatus|Stems
+15	LQ-01-61-16_pos.mzXML	V104539	Sample	Celastraceae	Euonymus	Euonymus alatus	Leaves	photosynthetic	green tissue	aboveground	Euonymus alatus|Leaves
+16	LQ-01-61-17_pos.mzXML	V110858	Sample	Celastraceae	Euonymus	Euonymus bockii	Roots	roots	root tissue	belowground	Euonymus bockii|Roots
+17	LQ-01-61-18_pos.mzXML	V110859	Sample	Celastraceae	Euonymus	Euonymus bockii	Stems	woody vegetative	woody tissue	aboveground	Euonymus bockii|Stems
+18	LQ-01-61-19_pos.mzXML	V110860	Sample	Celastraceae	Euonymus	Euonymus bockii	Leaves	photosynthetic	green tissue	aboveground	Euonymus bockii|Leaves
+19	LQ-01-61-20_pos.mzXML	V105442	Sample	Celastraceae	Euonymus	Euonymus maackii	Stems	woody vegetative	woody tissue	aboveground	Euonymus maackii|Stems
+20	LQ-01-61-21_pos.mzXML	V116403	Sample	Celastraceae	Euonymus	Euonymus cochinchinensis	Branche	woody vegetative	woody tissue	aboveground	Euonymus cochinchinensis|Branche
+21	LQ-01-61-22_pos.mzXML	V116404	Sample	Celastraceae	Euonymus	Euonymus cochinchinensis	Roots	roots	root tissue	belowground	Euonymus cochinchinensis|Roots
+22	LQ-01-61-23_pos.mzXML	V116406	Sample	Celastraceae	Euonymus	Euonymus cochinchinensis	Leaves	photosynthetic	green tissue	aboveground	Euonymus cochinchinensis|Leaves
+23	LQ-01-61-24_pos.mzXML	V110861	Sample	Celastraceae	Euonymus	Euonymus dielsianus	Roots	roots	root tissue	belowground	Euonymus dielsianus|Roots
+24	LQ-01-61-25_pos.mzXML	V110862	Sample	Celastraceae	Euonymus	Euonymus dielsianus	Stems	woody vegetative	woody tissue	aboveground	Euonymus dielsianus|Stems
+25	LQ-01-61-26_pos.mzXML	V110863	Sample	Celastraceae	Euonymus	Euonymus dielsianus	Leaves	photosynthetic	green tissue	aboveground	Euonymus dielsianus|Leaves
+26	LQ-01-61-27_pos.mzXML	V105253	Sample	Celastraceae	Euonymus	Euonymus fortunei	Aerial_parts	multiple	multiple	aboveground	Euonymus fortunei|Aerial_parts
+27	LQ-01-61-28_pos.mzXML	V113153	Sample	Celastraceae	Euonymus	Euonymus grandiflorus	Bark	woody vegetative	woody tissue	aboveground	Euonymus grandiflorus|Bark
+28	LQ-01-61-29_pos.mzXML	V114337	Sample	Celastraceae	Euonymus	Euonymus alatus	Bark	woody vegetative	woody tissue	aboveground	Euonymus alatus|Bark
+29	LQ-01-61-30_pos.mzXML	V114338	Sample	Celastraceae	Euonymus	Euonymus alatus	Leaves	photosynthetic	green tissue	aboveground	Euonymus alatus|Leaves
+30	LQ-01-61-31_pos.mzXML	V110309	Sample	Celastraceae	Euonymus	Euonymus frigidus	Roots	roots	root tissue	belowground	Euonymus frigidus|Roots
+31	LQ-01-61-32_pos.mzXML	V110310	Sample	Celastraceae	Euonymus	Euonymus frigidus	Stems	woody vegetative	woody tissue	aboveground	Euonymus frigidus|Stems
+32	LQ-01-61-33_pos.mzXML	V110311	Sample	Celastraceae	Euonymus	Euonymus frigidus	Leaves	photosynthetic	green tissue	aboveground	Euonymus frigidus|Leaves
+33	LQ-01-61-34_pos.mzXML	V111793	Sample	Celastraceae	Euonymus	Euonymus myrianthus	Roots	roots	root tissue	belowground	Euonymus myrianthus|Roots
+34	LQ-01-61-35_pos.mzXML	V111794	Sample	Celastraceae	Euonymus	Euonymus myrianthus	Stems	woody vegetative	woody tissue	aboveground	Euonymus myrianthus|Stems
+35	LQ-01-61-36_pos.mzXML	V111795	Sample	Celastraceae	Euonymus	Euonymus myrianthus	Leaves	photosynthetic	green tissue	aboveground	Euonymus myrianthus|Leaves
+36	LQ-01-61-37_pos.mzXML	V111409	Sample	Celastraceae	Euonymus	Euonymus sanguineus	Roots	roots	root tissue	belowground	Euonymus sanguineus|Roots
+37	LQ-01-61-38_pos.mzXML	V111410	Sample	Celastraceae	Euonymus	Euonymus sanguineus	Stems	woody vegetative	woody tissue	aboveground	Euonymus sanguineus|Stems
+38	LQ-01-61-39_pos.mzXML	V111411	Sample	Celastraceae	Euonymus	Euonymus sanguineus	Leaves	photosynthetic	green tissue	aboveground	Euonymus sanguineus|Leaves
+39	LQ-01-61-40_pos.mzXML	V114012	Sample	Celastraceae	Loeseneriella	Loeseneriella urceolus	Leaves	photosynthetic	green tissue	aboveground	Loeseneriella urceolus|Leaves
+40	LQ-01-61-41_pos.mzXML	V107269	Sample	Celastraceae	Loeseneriella	Loeseneriella concinna	Stems	woody vegetative	woody tissue	aboveground	Loeseneriella concinna|Stems
+41	LQ-01-61-42_pos.mzXML	V108472	Sample	Celastraceae	Loeseneriella	Loeseneriella concinna	Leaves	photosynthetic	green tissue	aboveground	Loeseneriella concinna|Leaves
+42	LQ-01-61-43_pos.mzXML	V108332	Sample	Celastraceae	Gymnosporia	Gymnosporia buchananii	Leaves	photosynthetic	green tissue	aboveground	Gymnosporia buchananii|Leaves
+43	LQ-01-61-44_pos.mzXML	V108333	Sample	Celastraceae	Gymnosporia	Gymnosporia buchananii	Stems	woody vegetative	woody tissue	aboveground	Gymnosporia buchananii|Stems
+44	LQ-01-61-45_pos.mzXML	V101528	Sample	Celastraceae	Gymnosporia	Gymnosporia buxifolia	Bark	woody vegetative	woody tissue	aboveground	Gymnosporia buxifolia|Bark
+45	LQ-01-61-46_pos.mzXML	V113998	Sample	Celastraceae	Maytenus	Maytenus inermis	Leaves	photosynthetic	green tissue	aboveground	Maytenus inermis|Leaves
+46	LQ-01-61-47_pos.mzXML	V113999	Sample	Celastraceae	Maytenus	Maytenus inermis	Underground_parts	multiple	multiple	belowground	Maytenus inermis|Underground_parts
+47	LQ-01-61-48_pos.mzXML	V105100	Sample	Celastraceae	Gymnosporia	Gymnosporia buxifolia	Leaves	photosynthetic	green tissue	aboveground	Gymnosporia buxifolia|Leaves
+48	LQ-01-61-49_pos.mzXML	V105101	Sample	Celastraceae	Gymnosporia	Gymnosporia buxifolia	Stems	woody vegetative	woody tissue	aboveground	Gymnosporia buxifolia|Stems
+49	LQ-01-61-50_pos.mzXML	V105102	Sample	Celastraceae	Gymnosporia	Gymnosporia buxifolia	Roots	roots	root tissue	belowground	Gymnosporia buxifolia|Roots
+50	LQ-01-61-51_pos.mzXML	V106281	Sample	Celastraceae	Gymnosporia	Gymnosporia graciliramula	Aerial_parts	multiple	multiple	aboveground	Gymnosporia graciliramula|Aerial_parts
+51	LQ-01-61-52_pos.mzXML	V116016	Sample	Celastraceae	Gymnosporia	Gymnosporia senegalensis	Leaves	photosynthetic	green tissue	aboveground	Gymnosporia senegalensis|Leaves
+52	LQ-01-61-53_pos.mzXML	V116017	Sample	Celastraceae	Gymnosporia	Gymnosporia senegalensis	Stems	woody vegetative	woody tissue	aboveground	Gymnosporia senegalensis|Stems
+53	LQ-01-61-54_pos.mzXML	V105698	Sample	Celastraceae	Maytenus	Maytenus undata	Leaves	photosynthetic	green tissue	aboveground	Maytenus undata|Leaves
+54	LQ-01-61-55_pos.mzXML	V105699	Sample	Celastraceae	Maytenus	Maytenus undata	Stems	woody vegetative	woody tissue	aboveground	Maytenus undata|Stems
+55	LQ-01-61-56_pos.mzXML	V109319	Sample	Celastraceae	Maytenus	Maytenus undata	Roots	roots	root tissue	belowground	Maytenus undata|Roots
+56	LQ-01-61-57_pos.mzXML	V107914	Sample	Celastraceae	Microtropis	Microtropis triflora	Roots	roots	root tissue	belowground	Microtropis triflora|Roots
+57	LQ-01-61-58_pos.mzXML	V107915	Sample	Celastraceae	Microtropis	Microtropis triflora	Stems	woody vegetative	woody tissue	aboveground	Microtropis triflora|Stems
+58	LQ-01-61-59_pos.mzXML	V107916	Sample	Celastraceae	Microtropis	Microtropis triflora	Leaves	photosynthetic	green tissue	aboveground	Microtropis triflora|Leaves
+59	LQ-01-61-60_pos.mzXML	V102807	Sample	Celastraceae	Mystroxylon	Mystroxylon aethiopicum	Bark	woody vegetative	woody tissue	aboveground	Mystroxylon aethiopicum|Bark
+60	LQ-01-61-61_pos.mzXML	V103478	Sample	Celastraceae	Mystroxylon	Mystroxylon aethiopicum	Leaves	photosynthetic	green tissue	aboveground	Mystroxylon aethiopicum|Leaves
+61	LQ-01-61-62_pos.mzXML	V107716	Sample	Celastraceae	Pleurostylia	Pleurostylia africana	Leaves	photosynthetic	green tissue	aboveground	Pleurostylia africana|Leaves
+62	LQ-01-61-63_pos.mzXML	V100713	Sample	Celastraceae	Pleurostylia	Pleurostylia pachyphloea	Stems	woody vegetative	woody tissue	aboveground	Pleurostylia pachyphloea|Stems
+63	LQ-01-61-64_pos.mzXML	V100727	Sample	Celastraceae	Pleurostylia	Pleurostylia pachyphloea	Leaves	photosynthetic	green tissue	aboveground	Pleurostylia pachyphloea|Leaves
+64	LQ-01-61-65_pos.mzXML	V113494	Sample	Celastraceae	Salacia	Salacia chinensis	Leaves	photosynthetic	green tissue	aboveground	Salacia chinensis|Leaves
+65	LQ-01-61-66_pos.mzXML	V113495	Sample	Celastraceae	Salacia	Salacia chinensis	Branche	woody vegetative	woody tissue	aboveground	Salacia chinensis|Branche
+66	LQ-01-61-67_pos.mzXML	V113496	Sample	Celastraceae	Salacia	Salacia chinensis	Roots	roots	root tissue	belowground	Salacia chinensis|Roots
+67	LQ-01-61-68_pos.mzXML	V114998	Sample	Celastraceae	Salacia	Salacia cochinchinensis	Leaves	photosynthetic	green tissue	aboveground	Salacia cochinchinensis|Leaves
+68	LQ-01-61-69_pos.mzXML	V114999	Sample	Celastraceae	Salacia	Salacia cochinchinensis	Branche	woody vegetative	woody tissue	aboveground	Salacia cochinchinensis|Branche
+69	LQ-01-61-70_pos.mzXML	V115000	Sample	Celastraceae	Salacia	Salacia cochinchinensis	Underground_parts	multiple	multiple	belowground	Salacia cochinchinensis|Underground_parts
+70	LQ-01-61-71_pos.mzXML	V102387	Sample	Celastraceae	Salacia	Salacia chinensis	Indeterminated	multiple	multiple	multiple	Salacia chinensis|Indeterminated
+71	LQ-01-61-72_pos.mzXML	V102634	Sample	Celastraceae	Salacia	Salacighia letestuana	Fruits	reproductive	green tissue	aboveground	Salacighia letestuana|Fruits
+72	LQ-01-61-73_pos.mzXML	V109564	Sample	Celastraceae	Tripterygium	Tripterygium hypoglaucum	Roots	roots	root tissue	belowground	Tripterygium hypoglaucum|Roots
+73	LQ-01-61-74_pos.mzXML	V107005	Sample	Celastraceae	Tripterygium	Tripterygium wilfordii	Roots	roots	root tissue	belowground	Tripterygium wilfordii|Roots
+74	LQ-01-61-75_pos.mzXML	V107006	Sample	Celastraceae	Tripterygium	Tripterygium wilfordii	Stems	woody vegetative	woody tissue	aboveground	Tripterygium wilfordii|Stems
+76	LQ-01-61-78_pos.mzXML	V113570	Sample	Celastraceae	Pristimera	Pristimera indica	Roots	roots	root tissue	belowground	Pristimera indica|Roots
