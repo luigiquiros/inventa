@@ -41,6 +41,7 @@ def full_data(df1, df2):
     df2.reset_index(inplace=True)
     df2.set_index('filename', inplace=True)
     df = pd.merge(df1, df2, how='outer', on='filename')
+    df.to_csv('../data_out/full_metadata.tsv', sep='\t')
     return df
 
 def drop_samples_based_on_string(df,list_of_strings_for_QC_Blank_filter,column):
@@ -128,7 +129,7 @@ def priority_rank(df1, df2, df3, df4, LC_component, SC_component, CC_component, 
         return df
 
     df = priority(df)
-    
+    df.to_csv('../data_out/Priority_rank_results.tsv', sep='\t')
     return df
 
 
