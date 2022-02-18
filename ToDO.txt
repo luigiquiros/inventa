@@ -1,4 +1,0 @@
--% of new MF with no annotations from ZODIAC
--Filter for Canopus coinfidence classes
--canopus filter coinfidence
--Zodiac % of predicted MF non annotated 
