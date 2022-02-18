@@ -425,7 +425,7 @@ def similarity_component(df, SC_component):
 
 #Class component:
 
-def sirius_classes(df1,df2,df3, min_recurrence, CC_component): 
+def sirius_classes1(df1,df2,df3, min_recurrence, CC_component): 
     """ function to find the chemical classes proposed by sirius and assign them to a specific species based on the top specificity of the feature
     Args:
         df1 = specificity_df
@@ -437,13 +437,18 @@ def sirius_classes(df1,df2,df3, min_recurrence, CC_component):
     """
     if CC_component == True:
         # merge with top filename with iones 
-        df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int)
-            #the specificity_df is used to assign the main biological source to each feature. 
-
-        df3 = pd.merge(left=df1[['row ID', 'filename']], right=df3[['shared name', 'classe']], how='left', left_on='row ID', right_on='shared name').dropna()
+        #df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int) #use this line if you don't have a column with the name/shared name
+        
+        #the specificity_df is used to assign the main biological source to each feature. 
+        df3.rename(columns={'name': 'shared name'}, inplace=True)
+        df3 = pd.merge(left=df1[['row ID', 'filename']], right=df3[['shared name', 'class', 'classProbability']], how='left', left_on='row ID', right_on='shared name').dropna()
         df3.drop('shared name', axis=1, inplace=True)
 
-        df4= df3[['filename', 'classe']].groupby(['filename','classe']).size().reset_index()
+        #filter based on min_class_probability
+        df3.drop(df3[df3.classProbability < min_class_confidence].index, inplace=True)
+
+        #calculare recurrence of each class 
+        df4= df3[['filename', 'class']].groupby(['filename','class']).size().reset_index()
         df4.rename(columns={0: 'recurrence'}, inplace=True)
 
         df4 = df4[df4['recurrence'] >= min_recurrence].groupby('filename').agg(set)
@@ -499,7 +504,7 @@ def class_component(df1, df2, df3, CC_component):
 
         #get the difference between sets 
 
-        df['New_in_species'] = df["classe"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species
+        df['New_in_species'] = df["class"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species
         df['New_in_genus'] = df["New_in_species"] - df["Chemical_class_reported_in_genus"]  #check if the NEW chemical classes in the species are reported in the genus
 
         #Add the weight accordingly to the results 
