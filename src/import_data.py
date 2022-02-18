@@ -18,7 +18,7 @@ def get_gnps_annotations(df):
                                 sep='\t', 
                                 usecols =['cluster index', 'componentindex'])
     df = pd.merge(df_network[['cluster index', 'componentindex']], df,left_on= 'cluster index', right_on='#Scan#', how='left')
-    
+    df.to_csv('../data_out/annot_gnps_df.tsv', sep='\t')
     return df
 
 def get_isdb_annotations(path_isdb, isdb_annotations): 
