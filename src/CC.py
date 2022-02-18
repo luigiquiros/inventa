@@ -23,7 +23,6 @@ def class_component(df3, min_class_confidence, min_recurrence, CC_component):
     if CC_component == True:
         df1 = pd.read_csv('../data_out/specificity_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df2 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-        df3 = canopus_npc_df
         df6 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',sep=',').dropna()
         # merge with top filename with iones 

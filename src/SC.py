@@ -78,7 +78,7 @@ def similarity_component(df, SC_component):
                 return 0 
 
         df['SC'] = df.apply(similarity_conditions, axis=1)
-        return df
         df.to_csv('../data_out/SC_results.tsv', sep='\t')
+        return df
     else:
         print('Similarity component not calculated')
