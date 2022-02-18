@@ -83,10 +83,10 @@ def reduce_df(col_id_unique):
 
 
 def priority_rank(LC_component, SC_component, CC_component, w1, w2, w3, w4):
-    df= pd.read_csv('../data_out/FC_results.tsv', sep='\t')
+    df= pd.read_csv('../data_out/FC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
     
     if LC_component == True: 
-        df2 = pd.read_csv('../data_out/LC_results.tsv', sep='\t')
+        df2 = pd.read_csv('../data_out/LC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df =pd.merge(
                     left=df,
                     right=df2[['filename', 'Reported_comp_Species', 'Reported_comp_Genus', 'LC', 'ATTRIBUTE_Family']], 
@@ -97,7 +97,7 @@ def priority_rank(LC_component, SC_component, CC_component, w1, w2, w3, w4):
         df
 
     if SC_component == True:
-        df3 = pd.read_csv('../data_out/SC_results.tsv', sep='\t')
+        df3 = pd.read_csv('../data_out/SC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df =pd.merge(
                     left=df,
                     right=df3[['filename', 'SC']], 
@@ -108,7 +108,7 @@ def priority_rank(LC_component, SC_component, CC_component, w1, w2, w3, w4):
         df
 
     if CC_component == True:
-        df2 = pd.read_csv('../data_out/CC_results.tsv', sep='\t') 
+        df4 = pd.read_csv('../data_out/CC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df =pd.merge(
                         left=df,
                         right=df4[['filename', 'New_in_species', 'New_in_genus', 'CC']], 
