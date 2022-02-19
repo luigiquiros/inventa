@@ -19,7 +19,7 @@ def top_ions(col_id_unique):
     #computes the % for each feature
     dfA = pd.read_csv('../data_out/reduced_df.tsv', sep='\t', index_col=[0])
     dfA = dfA.copy().transpose()
-    dfA = dfA.div(dfA.sum(axis=1), axis=0)*100
+    dfA = dfA.div(dfA.sum(axis=1), axis=0)
     dfA.reset_index(inplace=True)
     dfA.rename(columns={'index': 'row ID'}, inplace=True)
     dfA.set_index('row ID', inplace=True)
@@ -32,7 +32,7 @@ def top_ions(col_id_unique):
 
     #computes the top filename for each ion 
     df2 = pd.read_csv('../data_out/quant_df.tsv', sep='\t', index_col=[0])
-    df2 = df2.div(df2.sum(axis=1), axis=0)*100
+    df2 = df2.div(df2.sum(axis=1), axis=0)
     df2 = df2.copy()
     df2 = df2.astype(float)
     df2 = df2.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
@@ -191,7 +191,7 @@ def annotations(df2, df3,
     df.to_csv('../data_out/annotations_df.tsv', sep='\t')
     return df 
 
-def feature_component(only_feature_specificity, min_specificity, annotation_preference, col_id_unique):
+def feature_component(min_specificity, annotation_preference, col_id_unique):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
     Args:
         df1 = specificity_df, calculated with the top_ions function 
@@ -205,19 +205,12 @@ def feature_component(only_feature_specificity, min_specificity, annotation_pref
     
     df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
 
-    if only_feature_specificity == True:
-        #Computation of the general specificity 
-        df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
-        df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
-        df = pd.DataFrame(df5)
-        df.rename(columns={0: 'Sample_specificity'}, inplace=True)
 
-    else: 
     #Computation of the general specificity 
-        df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
-        df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
-        df5 = pd.DataFrame(df5)
-        df5.rename(columns={0: 'Sample_specificity'}, inplace=True)
+    df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+    df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
+    df5 = pd.DataFrame(df5)
+    df5.rename(columns={0: 'Feature_specificity'}, inplace=True)
 
     #Computation of the feature component 
     df6 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)

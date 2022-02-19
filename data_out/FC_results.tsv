@@ -1,4 +1,4 @@
-	filename	ATTRIBUTE_Species	ATTRIBUTE_Sppart	Sample_specificity	FC
+	filename	ATTRIBUTE_Species	ATTRIBUTE_Sppart	Feature_specificity	FC
 5	LQ-01-61-06_pos.mzXML	Celastrus orbiculatus	Celastrus orbiculatus|Roots	0.86328125	0.828125
 75	LQ-01-61-78_pos.mzXML	Pristimera indica	Pristimera indica|Roots	0.8416666666666667	0.8166666666666667
 59	LQ-01-61-60_pos.mzXML	Mystroxylon aethiopicum	Mystroxylon aethiopicum|Bark	0.8210526315789474	0.8052631578947368

@@ -10,7 +10,7 @@ import pathlib
 
 #literature component
  
-def literature_component(LC_component, min_comp_reported, max_comp_reported):
+def literature_component(LC_component, max_comp_reported):
     """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
     Args:
         df2 = metadata_df
@@ -42,21 +42,21 @@ def literature_component(LC_component, min_comp_reported, max_comp_reported):
         df['Reported_comp_Species'] = df['Reported_comp_Species'].astype(int) 
 
         
-        def literature_report(df):
-            """ function to give a weigth to the counts of the reported compouds according to the used
-            Args:
-                df = Literature_component output
-            Returns:
-                None
-            """
-            if (df['Reported_comp_Species'] <= min_comp_reported):
-                return 1
-            elif (df['Reported_comp_Species'] <= max_comp_reported & df['Reported_comp_Species'] >= min_comp_reported): 
-                return 0.5
-            else:
-                return 0
-
-        df['LC'] = df.apply(literature_report, axis=1)
+        #def literature_report(df):
+        #    """ function to give a weigth to the counts of the reported compouds according to the used
+        #    Args:
+        #        df = Literature_component output
+        #    Returns:
+        #        None
+        #    """
+        #    if (df['Reported_comp_Species'] <= min_comp_reported):
+        #        return 1
+        #   elif (df['Reported_comp_Species'] <= max_comp_reported & df['Reported_comp_Species'] >= min_comp_reported): 
+        #        return 0.5
+        #    else:
+        #        return 0
+        df['LC'] = 1-df['Reported_comp_Species'].div(max_comp_reported*100)
+        #df['LC'] = df.apply(literature_report, axis=1)
         df.to_csv('../data_out/LC_results.tsv', sep='\t')
         return df
 
