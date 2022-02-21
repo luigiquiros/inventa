@@ -64,7 +64,7 @@ def top_ions(col_id_unique):
 
 
 def annotations(df2, df3,
-                only_ms2_annotations, sirius_annotations, isbd_annotations,
+                sirius_annotations, isbd_annotations,
                 min_score_final, min_ConfidenceScore, min_ZodiacScore):
 
     """ 
