@@ -8,11 +8,14 @@ repository: "luigiquiros/inventa"
 
 #building 
 theme: jekyll-theme-minimal
+
 plugins:
   - jekyll-relative-links
+
 relative_links:
   enabled: true
   collections: true
+
 include:
   - installation.md
   - configuration-options.md
