@@ -6,7 +6,7 @@
 This workflow explores the potential of a set of samples to contain novel compounds. 
 It is composed of 4 independent components:
 
-The **Feature Component (FC)** considers compounds with a specificity higher than, for instance, 90% per sample (specified by the user), and without putative annotation. Results: one column with the FC ratio and one column with the sample specificity (ratio of peaks higher than the specified % with or without annotations).
+The **Feature Component (FC)** is a percentage indicating the proportion of specific non annotated features by sample. A user-defined `minimum specificity` value is used to designate the minimum percentage at which a feature is considered specific, by default the value is set to 0.9 (90%). Additionally, a column wiht the Feature specificity (not considering the annotations) is calculated. This allows a direct visualization of the proportion of specific features that were annotated. A ratio of non annotated specific features with a hihg quality Molecular formula predictions is calculated if the Zodiac MF prediction from Sirius is included in the input.
 
 The **Literature Component (LC)** is based on the number of compounds reported in the literature for the taxon. The output includes one column with the LC score and at least two additional columns of metadata containing the number of reported compounds at the species and genus levels.
 
