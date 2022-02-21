@@ -199,9 +199,8 @@ def feature_component(min_specificity, annotation_preference, col_id_unique):
     """
     df1 = pd.read_csv('../data_out/specificity_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
     df2 = pd.read_csv('../data_out/annotations_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-    
+    df3 = pd.read_csv('../data_out/mf_prediction_rate_df.tsv', sep='\t')#.drop(['Unnamed: 0'],axis=1)
     df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
-
 
     #Computation of the general specificity 
     df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
@@ -216,6 +215,9 @@ def feature_component(min_specificity, annotation_preference, col_id_unique):
     df6.rename(columns={0: 'FC'}, inplace=True)
     df = pd.merge(df5, df6, how='left', on='filename')
 
+    #add the mf_prediction rate
+    df = pd.merge(df3,df, how='left', on='filename')
+
     if col_id_unique != 'filename':
         df3 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', col_id_unique]], df, how='left', on='filename')
@@ -224,3 +226,34 @@ def feature_component(min_specificity, annotation_preference, col_id_unique):
     df = df.sort_values(by=['FC'], ascending=False)
     df.to_csv('../data_out/FC_results.tsv', sep='\t')
     return df
+
+def mf_rate(df, sirius_annotations, min_ZodiacScore, min_specificity, annotation_preference):
+    """ function to calculate a rate of non annotated specific features with a predicte MF of good quality 
+            Args:
+            df = annotations from Sirius
+            Returns: dataframe with the rate
+            None
+    """
+    if sirius_annotations == True: 
+        df1 = pd.read_csv('../data_out/annot_gnps_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+        df2 = df.copy()
+        df2['shared name'] = df2['id'].str.split('_').str[-1].astype(int)
+        df3 = pd.read_csv('../data_out/specificity_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+        df4 = pd.read_csv('../data_out/annotations_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+        df5 = pd.merge(left=df1[['cluster index']],right=df2[['shared name','ZodiacScore']], how='left', left_on= 'cluster index', right_on='shared name')
+        df5 = pd.merge(df3,df5, how='left', left_on='row ID', right_on='cluster index')
+        df5 = pd.merge(df4[['cluster index','annotation']],df5, how='left', on='cluster index')
+        df5.drop('shared name', axis=1, inplace=True)
+        df5.drop('cluster index', axis=1, inplace=True)
+        df5['ZodiacScore'] = df5['ZodiacScore'].fillna(0)
+
+        #get ration of specific/non annotated/ with MF predicted compounds for each sample
+        df = df5.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity) & (x['ZodiacScore'] >= min_ZodiacScore) & (x['annotation'] == annotation_preference)])).sort_values(ascending=False)
+        df = df.div(df5.groupby('filename').Feature_specificity.count(), axis=0)
+        df = pd.DataFrame(df)
+        df.rename(columns={0: 'MF_prediction_ratio'}, inplace=True)
+        df = df.sort_values(by=['MF_prediction_ratio'], ascending=False)
+        df.to_csv('../data_out/mf_prediction_ratio_df.tsv', sep='\t')
+        return df
+    else:
+        print('Sirius annotations are not used')
