@@ -118,11 +118,8 @@ def annotations(df2, df3,
             return annotated   
 
         df2['Annotated_ISDB'] = df2.apply(lambda x: score_final_isdb(x['score_final']), axis=1)
-                    
-        if only_ms2_annotations == True:
-            df2.loc[df2['lib_type']== 'MS1_match', 'Annotated_ISDB'] = 0
-        else:
-            df2
+        df2.loc[df2['lib_type']== 'MS1_match', 'Annotated_ISDB'] = 0
+     
         #merge the information 
         df = pd.merge(left=df, right=df2[['cluster index','Annotated_ISDB']], 
                         how='left', on= 'cluster index')    
