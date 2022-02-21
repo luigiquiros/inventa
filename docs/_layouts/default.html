@@ -24,6 +24,7 @@
         <p>{{ site.description | default: site.github.project_tagline }}</p>
 
         {% if site.github.is_project_page %}
+        <p>Version 1.0 </a></p>
         <p class="view"><a href="{{ site.github.repository_url }}">View the Project on GitHub <small>{{ site.github.repository_nwo }}</small></a></p>
         {% endif %}
 
@@ -45,13 +46,11 @@
 
       </section>
       <footer>
-        <p>Version 1.0 </a></p>
-
+        
         {% if site.github.is_project_page %}
-        <p>This project is maintained by <a href="{{site.email}}">{{ site.github.owner_name }}</a></p>
+        <p>This project is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></p>
         {% endif %}
-
-        <p>Write me if you have a question: <a href="{{ site.github.owner_url }}">email</a></p>
+                
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
