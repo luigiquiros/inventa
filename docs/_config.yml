@@ -8,7 +8,7 @@ email: luis.guerrero@unige.ch
 repository: "luigiquiros/inventa"
 
 #building 
-theme: jekyll-theme-cayman
+theme: jekyll-theme-minimal
 
 plugins:
   - jekyll-relative-links
