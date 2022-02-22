@@ -23,15 +23,18 @@ The combined score (adition of the four components) can be modulated acording to
 
 ![Rank conception](/assets/img/priority_rank.png)
 > Figure 1. Conceptual overview of the Priority rank and its individual components. FC: Feature Component. LC: Literature Component. CC: Class Component. SC: Similarity Component. A modulating factor (wn) allows to give a relative weight to each component according to the user preferences.
+> 
 
 
 <!-- toc -->
+
 ## Table of contents
+
 ### 1.[**Installation**](installation.md) 
 
 ### 2.[**Getting started**](getting-started.md) 
 
-### 3.[**Configurations and running**](configuration-options.md) 
+### 3.[**Configurations and running**](configuration-options.md)
 
 <!-- tocstop -->
 
