@@ -150,7 +150,7 @@ def annotations(df2, df3,
         df = pd.merge(left=df, right=df3[['cluster index','Annotated_Sirius']], 
                         how='left',on= 'cluster index')
     else:
-        df
+            df
 
     def annotations_gnps(df):
             """ function to classify the annotations results 
@@ -188,45 +188,6 @@ def annotations(df2, df3,
     df.to_csv('../data_out/annotations_df.tsv', sep='\t')
     return df 
 
-def feature_component(min_specificity, annotation_preference, col_id_unique):
-    """ function to calculate the feature specificity and feature component, as default both columns are added. 
-    Args:
-        df1 = specificity_df, calculated with the top_ions function 
-        df2 = annotation_df, calculated with the annotations function
-        df3 = metadata_df
-    Returns:
-        None
-    """
-    df1 = pd.read_csv('../data_out/specificity_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-    df2 = pd.read_csv('../data_out/annotations_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-    df3 = pd.read_csv('../data_out/mf_prediction_rate_df.tsv', sep='\t')#.drop(['Unnamed: 0'],axis=1)
-    df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
-
-    #Computation of the general specificity 
-    df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
-    df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
-    df5 = pd.DataFrame(df5)
-    df5.rename(columns={0: 'Feature_specificity'}, inplace=True)
-
-    #Computation of the feature component 
-    df6 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
-    df6 = df6.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
-    df6 = pd.DataFrame(df6)
-    df6.rename(columns={0: 'FC'}, inplace=True)
-    df = pd.merge(df5, df6, how='left', on='filename')
-
-    #add the mf_prediction rate
-    df = pd.merge(df3,df, how='left', on='filename')
-
-    if col_id_unique != 'filename':
-        df3 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-        df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', col_id_unique]], df, how='left', on='filename')
-    else:
-        df
-    df = df.sort_values(by=['FC'], ascending=False)
-    df.to_csv('../data_out/FC_results.tsv', sep='\t')
-    return df
-
 def mf_rate(df, sirius_annotations, min_ZodiacScore, min_specificity, annotation_preference):
     """ function to calculate a rate of non annotated specific features with a predicte MF of good quality 
             Args:
@@ -257,3 +218,42 @@ def mf_rate(df, sirius_annotations, min_ZodiacScore, min_specificity, annotation
         return df
     else:
         print('Sirius annotations are not used')
+
+def feature_component(min_specificity, annotation_preference, col_id_unique):
+    """ function to calculate the feature specificity and feature component, as default both columns are added. 
+    Args:
+        df1 = specificity_df, calculated with the top_ions function 
+        df2 = annotation_df, calculated with the annotations function
+        df3 = metadata_df
+    Returns:
+        None
+    """
+    df1 = pd.read_csv('../data_out/specificity_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+    df2 = pd.read_csv('../data_out/annotations_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+    df3 = pd.read_csv('../data_out/mf_prediction_ratio_df.tsv', sep='\t')#.drop(['Unnamed: 0'],axis=1)
+    df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
+
+    #Computation of the general specificity 
+    df5 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+    df5 = df5.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
+    df5 = pd.DataFrame(df5)
+    df5.rename(columns={0: 'Feature_specificity'}, inplace=True)
+
+    #Computation of the feature component 
+    df6 = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
+    df6 = df6.div(df4.groupby('filename').Feature_specificity.count(), axis=0)
+    df6 = pd.DataFrame(df6)
+    df6.rename(columns={0: 'FC'}, inplace=True)
+    df = pd.merge(df5, df6, how='left', on='filename')
+
+    #add the mf_prediction rate
+    df = pd.merge(df3,df, how='left', on='filename')
+
+    if col_id_unique != 'filename':
+        df3 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+        df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', col_id_unique]],how='left', on='filename')
+    else:
+        df
+    df = df.sort_values(by=['FC'], ascending=False)
+    df.to_csv('../data_out/FC_results.tsv', sep='\t')
+    return df
