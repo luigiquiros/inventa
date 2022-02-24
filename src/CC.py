@@ -72,8 +72,8 @@ def class_component(df3, min_class_confidence, min_recurrence, CC_component):
         #df10.tail(5)
         #df10.to_csv('../data_out/predicted_and_reported_classes_df.tsv', sep='\t')
 
-        df['New_in_species'] = df["class"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species
-        df['New_in_genus'] = df["New_in_species"] - df["Chemical_class_reported_in_genus"]
+        df['New_CC_in_sp'] = df["class"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species
+        df['New_CC_in_genus'] = df["New_CC_in_sp"] - df["Chemical_class_reported_in_genus"]
 
         def is_empty(df):
             """ function to check if the sets are empty or not 
@@ -87,7 +87,7 @@ def class_component(df3, min_class_confidence, min_recurrence, CC_component):
             else:
                 return 0
 
-        df['CC'] = df['New_in_species'].apply(is_empty)
+        df['CC'] = df['New_CC_in_sp'].apply(is_empty)
 
         df = pd.merge(df2[['filename']], df,how= 'left', on='filename')
         df = df.fillna(0)

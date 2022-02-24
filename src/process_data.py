@@ -111,7 +111,7 @@ def priority_rank(LC_component, SC_component, CC_component, w1, w2, w3, w4):
         df4 = pd.read_csv('../data_out/CC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df =pd.merge(
                         left=df,
-                        right=df4[['filename', 'New_in_species', 'New_in_genus', 'CC']], 
+                        right=df4[['filename', 'New_CC_in_sp', 'New_CC_in_genus', 'CC']], 
                         how='left', 
                         left_on='filename', 
                         right_on='filename')

@@ -247,11 +247,11 @@ def feature_component(min_specificity, annotation_preference, col_id_unique):
     df = pd.merge(df5, df6, how='left', on='filename')
 
     #add the mf_prediction rate
-    df = pd.merge(df3,df, how='left', on='filename')
+    df = pd.merge(df,df3, how='left', on='filename')
 
     if col_id_unique != 'filename':
-        df3 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-        df = pd.merge(df3[['filename', 'ATTRIBUTE_Species', col_id_unique]],how='left', on='filename')
+        dfx = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+        df = pd.merge(dfx[['filename', 'ATTRIBUTE_Species', col_id_unique]], df, how='left', on='filename')
     else:
         df
     df = df.sort_values(by=['FC'], ascending=False)
