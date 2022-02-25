@@ -32,6 +32,9 @@ def literature_component(LC_component, max_comp_reported):
             'organism_taxonomy_06family', 'organism_taxonomy_08genus',
             'organism_taxonomy_09species', 'Reported_comp_Family',
             'Reported_comp_Genus', 'Reported_comp_Species']].drop_duplicates()
+        LotusDB['Reported_comp_Species'] =LotusDB['Reported_comp_Species'].astype(int)
+        LotusDB['Reported_comp_Genus'] =LotusDB['Reported_comp_Genus'].astype(int)
+        LotusDB['Reported_comp_Family'] =LotusDB['Reported_comp_Family'].astype(int)
         #LotusDB.head()
         
         df = pd.merge(df[['filename', 'ATTRIBUTE_Family', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Species']],
@@ -39,22 +42,6 @@ def literature_component(LC_component, max_comp_reported):
                 how= 'left', left_on='ATTRIBUTE_Species', right_on='organism_taxonomy_09species').drop_duplicates(subset=['filename'])
         df.drop('organism_taxonomy_09species', axis=1, inplace=True)
         df = df.fillna(0) #assumign species not present in LotusDB the number of reported compounds is set to 0
-        df['Reported_comp_Species'] = df['Reported_comp_Species'].astype(int) 
-
-        
-        #def literature_report(df):
-        #    """ function to give a weigth to the counts of the reported compouds according to the used
-        #    Args:
-        #        df = Literature_component output
-        #    Returns:
-        #        None
-        #    """
-        #    if (df['Reported_comp_Species'] <= min_comp_reported):
-        #        return 1
-        #   elif (df['Reported_comp_Species'] <= max_comp_reported & df['Reported_comp_Species'] >= min_comp_reported): 
-        #        return 0.5
-        #    else:
-        #        return 0
         df['LC'] = 1-df['Reported_comp_Species'].div(max_comp_reported*100)
         #df['LC'] = df.apply(literature_report, axis=1)
         df.to_csv('../data_out/LC_results.tsv', sep='\t')
