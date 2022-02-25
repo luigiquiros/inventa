@@ -140,3 +140,40 @@ def priority_rank(LC_component, SC_component, CC_component, w1, w2, w3, w4):
     df = priority(df)
     df.to_csv('../data_out/Priority_rank_results.tsv', sep='\t')
     return df
+
+
+def Cyt_format(col_id_unique): 
+
+    #load red dataframe 
+    df = pd.read_csv('/mnt/c/Users/quirosgu/Documents/GitHub/inventa/data_out/reduced_df.tsv', sep='\t')#.drop(['Unnamed: 0'],axis=1)
+    df.set_index(col_id_unique, inplace=True)
+    df = df.transpose()
+
+    #normalize values row-wise 
+    norm = df.copy()
+    norm['Total'] = norm.sum(axis=1)
+    norm = norm.drop(norm[norm.Total == 0].index)
+    norm = norm.div(norm.Total, axis=0)
+    norm = norm*100
+    norm.drop('Total', axis=1, inplace=True)
+    norm.head()
+    df = norm.transpose()
+
+    #load the final PR values 
+    PR = pd.read_csv('/mnt/c/Users/quirosgu/Documents/GitHub/inventa/data_out/Priority_rank_results.tsv', sep='\t', 
+                        usecols =[col_id_unique, 'PR'])#.drop(['Unnamed: 0'],axis=1)
+
+    #merge both df 
+    df2 = pd.merge(df, PR, how ='left', on = 'ATTRIBUTE_Sppart')
+    df2.set_index(col_id_unique, inplace=True)
+    df3 = df2.multiply(df2.PR, axis=0)
+    df3.drop('PR', axis=1, inplace=True)
+    df3.loc['Score_Total']= df3.sum()
+
+    #recover the usuful info 
+    df = df3.transpose()
+    df.reset_index(inplace=True)
+    df = df[['index','Score_Total']]
+    df = df.astype(int)
+    df.to_csv('../data_out/PR_cyto_visualization.tsv', sep='\t')
+    return df
