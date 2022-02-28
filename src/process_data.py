@@ -145,7 +145,7 @@ def priority_rank(LC_component, SC_component, CC_component, w1, w2, w3, w4):
 def Cyt_format(col_id_unique): 
 
     #load red dataframe 
-    df = pd.read_csv('/mnt/c/Users/quirosgu/Documents/GitHub/inventa/data_out/reduced_df.tsv', sep='\t')#.drop(['Unnamed: 0'],axis=1)
+    df = pd.read_csv('../data_out/reduced_df.tsv', sep='\t')#.drop(['Unnamed: 0'],axis=1)
     df.set_index(col_id_unique, inplace=True)
     df = df.transpose()
 
@@ -160,7 +160,7 @@ def Cyt_format(col_id_unique):
     df = norm.transpose()
 
     #load the final PR values 
-    PR = pd.read_csv('/mnt/c/Users/quirosgu/Documents/GitHub/inventa/data_out/Priority_rank_results.tsv', sep='\t', 
+    PR = pd.read_csv('../data_out/Priority_rank_results.tsv', sep='\t', 
                         usecols =[col_id_unique, 'PR'])#.drop(['Unnamed: 0'],axis=1)
 
     #merge both df 
