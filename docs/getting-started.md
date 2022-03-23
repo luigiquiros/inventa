@@ -30,21 +30,22 @@ The standard format from GNPS is prefered:
 While creating the 'metadata' there are some MANDATORY headers:
 
 - `ATTRIBUTE_Species` : The species should be cleaned to uptoday recognized names, you can use the [Open Tree of Life](https://opentree.readthedocs.io/en/latest/readme.html).
-- `ATTRIBUTE_Organe`  : This column correpond to the part of the plant or organism.
+
+- `ATTRIBUTE_Organe`  : This column correponds to the part of the plant or organism, if you want to show only the filename, you can select the option later in the script directly.
 
 #### 1.2 Feature quantitative table:
 
 `quantitative_data_filename`: MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
 
-- if you prefer 'Peak Height', go to `src/inventa.py` and change it inside the function quand_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
+- if you prefer 'Peak Height', go to `src/process_data.py` and change it inside the function quant_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
 
-- if you did export any other column, like identities, etc,  please remove manually or add the corresponding lines in the funcion quand_table():
+- if you did export any other column, like identities, etc,  please remove manually or add the corresponding lines in the funcion quant_table():
 
 ```
         df.drop('name of the colum', axis=1, inplace=True)
 ```
 
-- Usualy there are columns with the header 'Unkown: number' at the very end of the quantitative table, the scrip takes care of theses columns, you do not need to erase them
+- Usualy there are columns with the header 'Unkown: number' at the very end of the quantitative table, the script takes care of theses columns, you do not need to erase them
 
 #### 1.3 In silico annotation usign timaR:
 
@@ -52,7 +53,7 @@ While creating the 'metadata' there are some MANDATORY headers:
 
 - for performing in silico annotations and taxonomically informed reponderation.
 
-#### 1.4 Chemical ontology results:
+#### 1.4 Chemical taxonomy results:
 
 `canopus_npc_summary_filename`: Sirius CANOPUS recomputated output format.
 

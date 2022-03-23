@@ -56,6 +56,7 @@ If you have an error, try installing `scikit-bio` from `conda-forge` before crea
 conda install -c conda-forge scikit-bio
 ```
 
+Also, is possible to have the following error: 'Microsoft Visual C++ 14.0 or greater is required (install Microsoft C++ Build Toold from https://visualstudio.microsoft.com/visual-cpp-build-tools/)'. To solve it please make sure you include the installation of the workload Desktop development with C++
 
 
 ## [Continue to Getting Started](getting-started.md) 
