@@ -49,7 +49,10 @@ If you need to update the environment run:
 ```
 conda env update --file environment.yml
 ```
-
+and the submodules
+```
+git pull --recurse-submodules
+```
 If you have an error, try installing `scikit-bio` from `conda-forge` before create the environment:
 
 ```
