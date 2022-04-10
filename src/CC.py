@@ -14,16 +14,14 @@ import pathlib
 def class_component(df3, min_class_confidence, min_recurrence, CC_component):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
-        df1 = reported_classes_df 
-        df2 = sirius_classes_df
-        df3 = metadata_df
+        df3: canopus_sunmmary
         Returns:
         None
     """
+
     if CC_component == True:
         df1 = pd.read_csv('../data_out/specificity_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df2 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-        df6 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',sep=',').dropna()
         # merge with top filename with iones 
         #df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int) #use this line if you don't have a column with the name/shared name
@@ -62,13 +60,13 @@ def class_component(df3, min_class_confidence, min_recurrence, CC_component):
         df8.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
 
         #merge into a single dataframe
-        df9 = pd.merge(df6[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Family', 'ATTRIBUTE_Family']],df7,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
-        df9 = pd.merge(df9,df8,left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left')
+        df9 = pd.merge(df2[['filename', 'ATTRIBUTE_Species', 'ATTRIBUTE_Genus', 'ATTRIBUTE_Family', 'ATTRIBUTE_Family']],df7,left_on= 'ATTRIBUTE_Species', right_on='organism_taxonomy_09species', how='left')
+        df9 = pd.merge(df9,df8, left_on= 'ATTRIBUTE_Genus', right_on='organism_taxonomy_08genus', how='left')
         #df9.head(5)
         #df9.to_csv('../data_out/reported_classes_df.tsv', sep='\t')
 
         #obtain the difference between the predicted and reported compounds
-        df = pd.merge(df5,df9,on='filename', how='left').dropna()
+        df = pd.merge(df5[['filename', 'class']],df9,on='filename', how='left').dropna()
         #df10.tail(5)
         #df10.to_csv('../data_out/predicted_and_reported_classes_df.tsv', sep='\t')
 
