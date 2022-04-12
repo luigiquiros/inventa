@@ -1,11 +1,11 @@
 	filename	anomaly_IF	anomaly_LOF	anomaly_OCSVM	SC
-0	LQ-01-61-01_pos.mzXML	1	1	1	0
+0	LQ-01-61-01_pos.mzXML	-1	1	1	1
 1	LQ-01-61-02_pos.mzXML	-1	1	1	1
 2	LQ-01-61-03_pos.mzXML	-1	1	1	1
 3	LQ-01-61-04_pos.mzXML	-1	1	1	1
 4	LQ-01-61-05_pos.mzXML	-1	1	1	1
 5	LQ-01-61-06_pos.mzXML	-1	1	1	1
-6	LQ-01-61-07_pos.mzXML	-1	-1	-1	1
+6	LQ-01-61-07_pos.mzXML	1	-1	-1	1
 7	LQ-01-61-08_pos.mzXML	1	1	1	0
 8	LQ-01-61-09_pos.mzXML	1	1	1	0
 9	LQ-01-61-10_pos.mzXML	1	1	1	0
@@ -72,6 +72,6 @@
 70	LQ-01-61-71_pos.mzXML	1	1	1	0
 71	LQ-01-61-72_pos.mzXML	1	-1	1	1
 72	LQ-01-61-73_pos.mzXML	-1	1	1	1
-73	LQ-01-61-74_pos.mzXML	1	1	1	0
+73	LQ-01-61-74_pos.mzXML	-1	1	1	1
 74	LQ-01-61-75_pos.mzXML	1	1	1	0
-75	LQ-01-61-78_pos.mzXML	-1	-1	-1	1
+75	LQ-01-61-78_pos.mzXML	1	-1	-1	1
