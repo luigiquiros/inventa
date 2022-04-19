@@ -73,7 +73,7 @@ def pcoa_3d(filename_col, group_col, title, matrix, data, metric = 'braycurtis')
         None
     """
     #prepare table and calculate pcoa: 
-    matrix= matrix.iloc[: , 1:]
+    matrix= matrix.iloc[:, 1:]
     dist_matrix = sp.spatial.distance.pdist(matrix, metric)
     pcoa_results = pcoa(dist_matrix)
 
@@ -96,9 +96,11 @@ def pcoa_3d(filename_col, group_col, title, matrix, data, metric = 'braycurtis')
     hover_name=data[filename_col],
     template="simple_white"
     )
-    fig.update_layout({'width':1000, 'height':650})
-    fig.update_traces(marker=dict(size=10,
+    fig.update_layout(autosize = True, width=800, height=800)
+    fig.update_layout(font_family="Times New Roman")
+    fig.update_traces(marker=dict(size=8,
                                     line=dict(width=1,
-                                    color='DarkSlateGrey'))
+                                    color='DarkSlateGrey')
+                                    )
         )
     fig.show()
