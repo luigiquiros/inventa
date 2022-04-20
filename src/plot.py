@@ -487,7 +487,7 @@ def pcoa_umap_2d(matrix, data, metric, metadata):
                     colorscale='YlOrRd',
                     showscale=False,
                 ),
-            name = '[-1]',
+            name = ' ',
             legendgrouptitle_text="Anomaly",
             showlegend=True,
             hovertext=results_umap['filename']),
