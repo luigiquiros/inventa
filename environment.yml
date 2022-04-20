@@ -23,3 +23,4 @@ dependencies:
     - cimcb_lite
     - lineup_widget
     - jupyter_contrib_nbextensions
+    - umap-learn
