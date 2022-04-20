@@ -29,13 +29,13 @@
 27	LQ-01-61-28_pos.mzXML	1	1	1	0
 28	LQ-01-61-29_pos.mzXML	1	1	1	0
 29	LQ-01-61-30_pos.mzXML	1	1	1	0
-30	LQ-01-61-31_pos.mzXML	-1	1	1	1
+30	LQ-01-61-31_pos.mzXML	1	1	1	0
 31	LQ-01-61-32_pos.mzXML	1	1	1	0
 32	LQ-01-61-33_pos.mzXML	1	1	1	0
 33	LQ-01-61-34_pos.mzXML	1	1	1	0
 34	LQ-01-61-35_pos.mzXML	1	1	1	0
 35	LQ-01-61-36_pos.mzXML	1	1	1	0
-36	LQ-01-61-37_pos.mzXML	1	1	1	0
+36	LQ-01-61-37_pos.mzXML	-1	1	1	1
 37	LQ-01-61-38_pos.mzXML	1	1	1	0
 38	LQ-01-61-39_pos.mzXML	1	1	1	0
 39	LQ-01-61-40_pos.mzXML	1	1	1	0
@@ -48,7 +48,7 @@
 46	LQ-01-61-47_pos.mzXML	1	-1	1	1
 47	LQ-01-61-48_pos.mzXML	1	1	1	0
 48	LQ-01-61-49_pos.mzXML	1	1	1	0
-49	LQ-01-61-50_pos.mzXML	1	1	1	0
+49	LQ-01-61-50_pos.mzXML	-1	1	1	1
 50	LQ-01-61-51_pos.mzXML	1	1	1	0
 51	LQ-01-61-52_pos.mzXML	1	1	1	0
 52	LQ-01-61-53_pos.mzXML	1	1	1	0
@@ -71,7 +71,7 @@
 69	LQ-01-61-70_pos.mzXML	1	1	1	0
 70	LQ-01-61-71_pos.mzXML	1	1	1	0
 71	LQ-01-61-72_pos.mzXML	1	-1	1	1
-72	LQ-01-61-73_pos.mzXML	-1	1	1	1
+72	LQ-01-61-73_pos.mzXML	1	1	1	0
 73	LQ-01-61-74_pos.mzXML	-1	1	1	1
 74	LQ-01-61-75_pos.mzXML	1	1	1	0
 75	LQ-01-61-78_pos.mzXML	1	-1	-1	1
