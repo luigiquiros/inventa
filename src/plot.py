@@ -137,7 +137,8 @@ def pcoa_2d(matrix, data, metric):
         color="black"
         )    
     )
-    fig.update_annotations(font_size=20)    
+    fig.update_annotations(font_size=20)
+    fig.write_html("../data_out/PCoA_2D.html")    
     fig.show()
 
 def pcoa_3d(matrix, data, metric = 'braycurtis'):
@@ -260,7 +261,7 @@ def pcoa_3d(matrix, data, metric = 'braycurtis'):
         )    
     )
     fig.update_annotations(font_size=20)    
-    
+    fig.write_html("../data_out/PCoA_3D.html") 
     fig.show()
 
 def umap_2d(matrix, data, metadata):
@@ -366,11 +367,12 @@ def umap_2d(matrix, data, metadata):
         color="black"
         )    
     )
-    fig.update_annotations(font_size=20)    
+    fig.update_annotations(font_size=20)
+    fig.write_html("../data_out/UMAP_2D.html")     
     fig.show()
 
     
-def pcoa_umap_2d(matrix, data, metric, metadata):
+def pcoa_umap_2d(matrix, data, metric):
     fig = make_subplots(rows=2, cols=3,
                     shared_xaxes=False,
                     vertical_spacing=0.12,
@@ -464,7 +466,7 @@ def pcoa_umap_2d(matrix, data, metric, metadata):
     memo_aligned_matrix = memo_aligned_matrix.div(memo_aligned_matrix.sum(axis=1), axis=0)
 
 
-    results_umap = metadata.copy()
+    results_umap = data.copy()
     results_umap = results_umap.dropna()
     metric ='MEMO aligned (Bray-Curtis)'
     matrix = memo_aligned_matrix
@@ -553,5 +555,6 @@ def pcoa_umap_2d(matrix, data, metric, metadata):
         color="black"
         )    
     )
-    fig.update_annotations(font_size=20)    
+    fig.update_annotations(font_size=20)
+    fig.write_html("../data_out/PCoA_UMAP_2D.html")     
     fig.show()
