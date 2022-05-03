@@ -280,6 +280,7 @@ def umap_2d(matrix, data, metadata):
     embedding = reducer.fit_transform(matrix.values)
     results_umap[metric+'_x'] = embedding[:, 0]
     results_umap[metric+'_y'] = embedding[:, 1]
+    colors = 'YlOrRd_r'
 
     fig = make_subplots(rows=1, cols=3,
                     shared_xaxes=False,
@@ -297,11 +298,11 @@ def umap_2d(matrix, data, metadata):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_IF'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
-            name='[-1]',
-            legendgrouptitle_text="Anomaly",
+            name='Anomaly [-1]',
+            #legendgrouptitle_text="Anomaly",
             hovertext=results_umap['filename']),
             row=1, col=1)
 
@@ -316,11 +317,12 @@ def umap_2d(matrix, data, metadata):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_LOF'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
-            legendgrouptitle_text="normal",
-            showlegend=False,
+            name = 'Normal [1]',
+            #legendgrouptitle_text="Normal",
+            showlegend=True,
             hovertext=results_umap['filename']),
             row=1, col=2)
 
@@ -335,7 +337,7 @@ def umap_2d(matrix, data, metadata):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_OCSVM'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False
                 ),
             legendgrouptitle_text="Anomaly",
@@ -379,7 +381,7 @@ def pcoa_umap_2d(matrix, data, metric):
                     subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO unaligned (OCSVM)', 'UMAP MEMO aligned (IF)', 'UMAP MEMO aligned (LOF)', 'UMAP MEMO unaligned (OCSVM)')
     )
 
-
+    colors = 'YlOrRd_r'
     #prepare table and calculate pcoa: 
     matrix= matrix.iloc[:, 1:]
     dist_matrix = sp.spatial.distance.pdist(matrix, metric)
@@ -400,11 +402,11 @@ def pcoa_umap_2d(matrix, data, metric):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_IF'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
             showlegend=False,
-            legendgrouptitle_text="Anomaly",
+            #legendgrouptitle_text="Anomaly",
             hovertext=data['filename']),
             row=1, col=1)
 
@@ -419,11 +421,11 @@ def pcoa_umap_2d(matrix, data, metric):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_LOF'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
-            name='[-1]',
-            legendgrouptitle_text="normal",
+            #name='Anomaly [-1]',
+            #legendgrouptitle_text="normal",
             showlegend=False,
             hovertext=data['filename']),
             row=1, col=2)
@@ -439,10 +441,10 @@ def pcoa_umap_2d(matrix, data, metric):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_OCSVM'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False
                 ),
-            legendgrouptitle_text="Anomaly",
+            #legendgrouptitle_text="Anomaly",
             showlegend=False,
             hovertext=data['filename']),
             row=1, col=3)
@@ -486,12 +488,11 @@ def pcoa_umap_2d(matrix, data, metric):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_IF'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
-            name = ' ',
-            legendgrouptitle_text="Anomaly",
-            showlegend=True,
+            name='Outlier [-1]',
+            #legendgrouptitle_text="Anomaly",
             hovertext=results_umap['filename']),
             row=2, col=1)
 
@@ -506,11 +507,12 @@ def pcoa_umap_2d(matrix, data, metric):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_LOF'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
-            legendgrouptitle_text="normal",
-            showlegend=False,
+                name='Normal [1]',
+            #legendgrouptitle_text="normal",
+            showlegend=True,
             hovertext=results_umap['filename']),
             row=2, col=2)
 
@@ -525,7 +527,7 @@ def pcoa_umap_2d(matrix, data, metric):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_OCSVM'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False
                 ),
             legendgrouptitle_text="Anomaly",

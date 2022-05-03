@@ -51,3 +51,14 @@ def get_canopus_pred_classes(path_canopus, CC_component):
     else: 
         print('The canopus classes will be not used')
 
+def get_metadata(repository_path, metadata_sample_suffix):
+    """
+    Function to recover the metadata from individual files, used for calculation of inventa non aligned data
+    """
+    df= pd.DataFrame()
+    for r, d, f in os.walk(repository_path):
+        for file in (f for f in f if f.endswith(metadata_sample_suffix)):
+                complete_file_path =r+'/'+file 
+                read_file = pd.read_csv(complete_file_path, sep = '\t')
+                df = df.append(read_file, ignore_index=True)
+    return df

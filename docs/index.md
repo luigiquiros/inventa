@@ -38,7 +38,18 @@ The combined score (adition of the four components) can be modulated acording to
 
 <!-- tocstop -->
 
+<!-- toc -->
 
+## Publication interactive figures
+
+### Fig 1.[**Conceptual overview of Inventa**](/assets/img/Detailed_priority_rank.png) 
+
+### Fig 2.A. [**Celastraceae Library Chemical Space TMAP**](/assets/img/Celastraceae_annotation_vs_lotusdnp_tmap.html)
+### Fig 2.B. [**Celastraceae Library Chemical Coverage**](/assets/img/Chemical_class_Celastraceae.html)  
+
+### Fig 3.[**PCoA & UMAP projections for the Celastraceae library**](/assets/img/PCoA_UMAP_2D.html)
+
+<!-- tocstop -->
 
 #### Credits
 Images were created by Luis Quiros-Guerrero using [bioRender](https://biorender.com/) (© BioRender 2022)
