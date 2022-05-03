@@ -7,22 +7,20 @@ layout: default
 
 ## Description 
 
-This is a workflow to explore the potential of a set of samples to contain not previously reported compounds. It is based on the results from the data treatment usign MZmine, spectral organization through Molecular Networking, in-silico dereplication and prediction. 
+Here, we introduce Inventa, an untargeted mass spectrometry-based prioritization workflow for natural products extract libraries. The bioinformatic workflow is composed of four components that aim at estimating the potential of natural extracts for chemical novelty: 
 
-It is composed of 4 independend components: 
+"The feature component" considers the presence (intensity/area) and specificity of the mass spectrometric features along with their annotation status (annotated/ unannotated) with experimental and/or in silico databases. The postulate of this score is that the presence of a highly specific and non annotated metabolome is an indication of a particular chemistry. 
 
-The **Feature Component (FC)** is a percentage indicating the proportion of specific non annotated features by sample. A user-defined `minimum specificity` value is used to designate the minimum percentage at which a feature is considered specific, by default the value is set to 0.9 (90%). Additionally, a column wiht the Feature specificity (not considering the annotations) is calculated. This allows a direct visualization of the proportion of specific features that were annotated. A ratio of non annotated specific features with a hihg quality Molecular formula predictions is calculated if the Zodiac MF prediction from Sirius is included in the input.
+"The literature component" gives a score based on the number of compounds reported in the literature at the species, genus and family level. The more a plant is studied  (species, genus, family), the less likely it is to find structurally new compounds. 
 
-The **Literature Component (LC)** is a score based on the number of compounds reported in the literature for the taxon. The output includes one column with the LC score and at least two additional columns of metadata containing the number of reported compounds at the species and genus levels. As the LC values approaches to 1, the lower number of compounds are reported in the literature.
+"The class component" takes advantage of the prediction capacity of chemical classes based only on the fragmentation pattern without a formal putative structure annotation through [**CANOPUS**](). The predicted chemical classes in each sample are compared against those reported in the literature. The proposition of new chemical classes in particular samples being a potential indication  of new compounds. 
 
-The **Similarity Component (SC)** is a score based on the spectral similarity of the sample within the set. Multiple outlier detection machine learning algorithms are implemented to spot the dissimilar samples. A weight of ‘1’ is given to the sample considered anomalies in at least one detection method.
-
-The **Class Component (CC)** is a score based on the presence of possible known chemical classes not previously reported in the taxon (new for the taxon). The CC will be considered an integer ‘1’ if there are new chemical classes at the species level. Both, not previously reported chemical classes in the species and in the genus are displayed next to the CC.
+"The similarity component" harnesses the spectral diversity of the samples through vectorization of the fragmentation spectra data with [**MEMO**](https://doi.org/10.3389/fbinf.2022.842964) and application of machine learning outliers detectors. This component assumes that samples classified as ‘outlier’ hold a particular pool of metabolites  with a specific particular chemistry.
 
 The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .tsv file with all the information generared along the final rank of the samples.
 
 ![Rank conception](/assets/img/priority_rank.png)
-> Figure 1. Conceptual overview of the Priority rank and its individual components. FC: Feature Component. LC: Literature Component. CC: Class Component. SC: Similarity Component. A modulating factor (wn) allows to give a relative weight to each component according to the user preferences.
+>Figure 1. Conceptual overview of Inventa’s priority rank and its individual components. (A) Feature Component (FC): a ratio from 0 to 1 considering the proportion of features with a ‘specificity’ higher than the minimum specificity value set by the user and lack of annotation per sample. The ‘Feature specificity’ shows the proportion of features with a ‘specificity’ higher than the minimum specificity value set by the user per sample. (B) Literature Component (LC): a ratio from 0 to 1 considering a ‘minimum of reported compounds’ set by the user and the number of compounds reported in the databases for the taxon. The closer the value to ‘1’ the less compounds are reported for the sample. Additional columns show the total number of reported compounds at the species and genus levels. (C) Similarity Component (SC): a score considering the spectral dissimilarity of the samples within the set. A machine learning algorithm is used to detect the outliers (value ‘1’) from the rest (value ‘0’) in the set based on a vectorized matrix. (D) Class Component (CC): a score considering the presence of predicted known chemical classes new to the species (value ‘1’). It is a product of the difference found between the chemical classes predicted by SIRIUS and the ones reported in the databases for a specific species. Additional columns show the specific ‘new’ known chemical classes at the species and genus levels. The Priority rank (PR) is the addition of the four components. A modulating factor (wn) allows to give a relative weight to each component according to the user’s preferences. The higher the value the higher is the rank of the sample. 
 > 
 
 
@@ -40,9 +38,9 @@ The combined score (adition of the four components) can be modulated acording to
 
 <!-- toc -->
 
+##
+##
 ## Publication interactive figures
-
-### Fig 1.[**Conceptual overview of Inventa**](/assets/img/Detailed_priority_rank.png) 
 
 ### Fig 2.A. [**Celastraceae Library Chemical Space TMAP**](/assets/img/Celastraceae_annotation_vs_lotusdnp_tmap.html)
 ### Fig 2.B. [**Celastraceae Library Chemical Coverage**](/assets/img/Chemical_class_Celastraceae.html)  
