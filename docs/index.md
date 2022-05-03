@@ -35,13 +35,7 @@ The combined score (adition of the four components) can be modulated acording to
 
 ### 3.[**Configurations and running**](configuration-options.md)
 
-
-### 4.Publication interactive figures
-
-###### Fig 2.A. [**Celastraceae Library Chemical Space TMAP**](/assets/img/Celastraceae_annotation_vs_lotusdnp_tmap.html)
-
-###### Fig 2.B. [**Celastraceae Library Chemical Coverage**](/assets/img/Chemical_class_Celastraceae.html)  
-###### Fig 3.[**PCoA & UMAP projections for the Celastraceae library**](/assets/img/PCoA_UMAP_2D.html)
+### 4. [**Publication examples**](Publication_images.md)
 
 <!-- tocstop -->
 
