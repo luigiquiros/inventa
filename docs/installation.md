@@ -28,7 +28,7 @@ First make sure to have [anaconda](https://www.anaconda.com/products/individual)
 First clone the repository using git clone in command line. You may need to install the git package (see [here](https://www.atlassian.com/git/tutorials/install-git)):
 
 ```{r}
-git clone https://github.com/luigiquiros/inventa.git
+source(git clone https://github.com/luigiquiros/inventa.git)
 ```
 
 Create a new conda environment to avoid clashes:
