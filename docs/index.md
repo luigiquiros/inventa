@@ -29,15 +29,17 @@ The combined score (adition of the four components) can be modulated acording to
 
 ## Table of contents
 
+
 ### 1. [**Installation**](installation.md) 
 
 ### 2. [**Getting started**](getting-started.md) 
 
 ### 3. [**Configurations and running**](configuration-options.md)
 
-### 4. [**Publication examples**](Publication_images.md)
+### 4. [**Publication images**](Publication_images.md)
 
 <!-- tocstop -->
+
 
 #### Credits
 Images were created by Luis Quiros-Guerrero using [bioRender](https://biorender.com/) (© BioRender 2022)
