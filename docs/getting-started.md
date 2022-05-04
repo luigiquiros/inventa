@@ -4,8 +4,8 @@
 To run the repository the minimun inputs needed are:
 
 - GNPS job
-- Metadata table (the same used for the FBMN)
-- Quantification table
+- Metadata table (the same used for the GNPS job)
+- Quantification table from MZmine or another similar software
 
 This will run at least the Feature component (FC).
 
@@ -27,11 +27,21 @@ The standard format from GNPS is prefered:
 
 `metadata_filename`: it uses the [GNPS format](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0).
 
-While creating the 'metadata' there are some MANDATORY headers:
+While creating the 'metadata' there are some MANDATORY columns:
 
-- `ATTRIBUTE_Species` : The species should be cleaned to uptoday recognized names, you can use the [Open Tree of Life](https://opentree.readthedocs.io/en/latest/readme.html).
+Taxonomy: the species, genus and family are neeeded if the LC and CC want to be computated. The taxonomy should be cleaned to uptoday recognized names, you can use the [Open Tree of Life](https://opentree.readthedocs.io/en/latest/readme.html).
 
-- `ATTRIBUTE_Organe`  : This column correponds to the part of the plant or organism, if you want to show only the filename, you can select the option later in the script directly.
+The headers for each one could follow the GNPS format or the user's preferences, how ever the following parameter need to be indicated:
+
+```
+        species_column = 'yourspeciesnamecolumn'  #ATTRIBUTE_species
+        genus_column =   'yourgenusnamecolumn'    #ATTRIBUTE_genus
+        family_column =  'yourfamilynamecolumn'   #ATTRIBUTE_family
+        organe_column =  'yourorganenamecolumn'   #ATTRIBUTE_organie
+        filename_header = 'yourfilenamecolumn'    #filename
+```
+
+The `organe _colum` should be specified if you have diferent parts (or solvents) from the same species. This column correponds to the part of the plant or organism.
 
 #### 1.2 Feature quantitative table:
 

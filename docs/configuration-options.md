@@ -22,6 +22,16 @@ Each path corresponds to the files mentiones above. Just drop your files in the 
 
 ```
 
+#metadata
+
+```
+    species_column = 'yourspeciesnamecolumn'  #ATTRIBUTE_species
+    genus_column =   'yourgenusnamecolumn'    #ATTRIBUTE_genus
+    family_column =  'yourfamilynamecolumn'   #ATTRIBUTE_family
+    organe_column =  'yourorganenamecolumn'   #ATTRIBUTE_organie
+    filename_header = 'yourfilenamecolumn'    #filename
+```
+
 #### Parameters
 
 
@@ -51,9 +61,6 @@ Each path corresponds to the files mentiones above. Just drop your files in the 
     min_ZodiacScore = 0.9               #cut-off filter for considering a sirius annotation valable. It is used in combination with min_ConfidenceScore.
     min_ConfidenceScore = 0.0           #cut-off filter for considering a sirius annotation valable. '0.0' as default.
 
-    #other: 
-
-    only_ms2_annotations = False       # False to considere both, MS1 & MS2 annotations, False will only considerer MS2 annotations
     annotation_preference = 0          # Only Annotated nodes: '1' 
                                     # Only Not annotated: '0'
 ```
@@ -62,6 +69,7 @@ Each path corresponds to the files mentiones above. Just drop your files in the 
 
 ```
     LC_component = True                # LC will be calculated
+    
     max_comp_reported = 40             # more than this value, the plant is considered no interesting LC =0
     min_comp_reported = 10             # less than this value, the plant is consireded very interesintg LC =1
                                     # a sample with x between both values gets a LC=0.5
@@ -76,8 +84,10 @@ Each path corresponds to the files mentiones above. Just drop your files in the 
 ##### Class_component
 
 ```
-    CC_component = True                # CC will be calculated
-    min_recurrence = 10                # minimun recurrence of a chemical class to considered it valable.
+    
+CC_component = True               # CC will be calculated
+min_class_confidence = 0.8       #cut-off filter for considering a sirius class valable. It is used in combination with min_recurrence.
+min_recurrence = 5               # minimum recurrence of a chemical class to consider it acceptable
 ```
 
 ##### specify the weight to modulate each component:
