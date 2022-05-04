@@ -1,6 +1,6 @@
 	filename	ATTRIBUTE_Family	ATTRIBUTE_Genus	ATTRIBUTE_Species	ATTRIBUTE_Sppart	FC	Feature_specificity	MF_prediction_ratio
 5	LQ-01-61-06_pos.mzXML	Celastraceae	Celastrus	Celastrus orbiculatus	Celastrus orbiculatus|Roots	0.8359375	0.86328125	0.48046875
-75	LQ-01-61-78_pos.mzXML	Celastraceae	Reissantia	Reissantia indica	Reissantia indica|Roots	0.8222222222222222	0.8416666666666667	0.3222222222222222
+75	LQ-01-61-78_pos.mzXML	Celastraceae	Pristimera	Prisitmera indica	Prisitmera indica|Roots	0.8222222222222222	0.8416666666666667	0.3222222222222222
 26	LQ-01-61-27_pos.mzXML	Celastraceae	Euonymus	Euonymus fortunei	Euonymus fortunei|Aerial_parts	0.8145161290322581	0.9032258064516129	0.4919354838709677
 59	LQ-01-61-60_pos.mzXML	Celastraceae	Mystroxylon	Mystroxylon aethiopicum	Mystroxylon aethiopicum|Bark	0.8052631578947368	0.8210526315789474	0.5263157894736842
 36	LQ-01-61-37_pos.mzXML	Celastraceae	Euonymus	Euonymus sanguineus	Euonymus sanguineus|Roots	0.7926605504587156	0.8385321100917431	0.5284403669724771

@@ -41,7 +41,7 @@ The headers for each one could follow the GNPS format or the user's preferences,
         filename_header = 'yourfilenamecolumn'    #filename
 ```
 
-The `organe _colum` should be specified if you have diferent parts (or solvents) from the same species. This column correponds to the part of the plant or organism.
+The `organe _colum` should be specified if you have diferent parts (or solvents) from the same species. If you prefer to use only the filename as identifier for the resuts, it can be specified directly in the notebook.
 
 #### 1.2 Feature quantitative table:
 

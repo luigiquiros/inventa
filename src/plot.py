@@ -34,7 +34,7 @@ def pcoa_2d(matrix, data, metric):
     fig = make_subplots(rows=1, cols=3,
                     shared_xaxes=False,
                     vertical_spacing=0.4,
-                    subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO unaligned (OCSVM)'))
+                    subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO aligned (OCSVM)'))
 
 
     #prepare table and calculate pcoa: 
@@ -147,7 +147,7 @@ def pcoa_3d(matrix, data, metric = 'braycurtis'):
                     shared_xaxes=False,
                     vertical_spacing=0.4,
                     specs=[[{"type": "scene"}, {'type': "scene"}, {'type': "scene"}]],
-                    subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO unaligned (OCSVM)'))
+                    subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO aligned (OCSVM)'))
 
 
     #prepare table and calculate pcoa: 
@@ -285,7 +285,7 @@ def umap_2d(matrix, data, metadata):
     fig = make_subplots(rows=1, cols=3,
                     shared_xaxes=False,
                     vertical_spacing=0.4,
-                    subplot_titles=('UMAP MEMO aligned: Isolation Forest', 'UMAP MEMO aligned: LOF', 'UMAP MEMO unaligned: OCSVM'))
+                    subplot_titles=('UMAP MEMO aligned: Isolation Forest', 'UMAP MEMO aligned: LOF', 'UMAP MEMO aligned: OCSVM'))
 
     # first plot: Isolation Forest 
     fig.add_trace(
@@ -378,7 +378,7 @@ def pcoa_umap_2d(matrix, data, metric):
     fig = make_subplots(rows=2, cols=3,
                     shared_xaxes=False,
                     vertical_spacing=0.12,
-                    subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO unaligned (OCSVM)', 'UMAP MEMO aligned (IF)', 'UMAP MEMO aligned (LOF)', 'UMAP MEMO unaligned (OCSVM)')
+                    subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO aligned (OCSVM)', 'UMAP MEMO aligned (IF)', 'UMAP MEMO aligned (LOF)', 'UMAP MEMO aligned (OCSVM)')
     )
 
     colors = 'YlOrRd_r'
