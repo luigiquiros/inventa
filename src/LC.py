@@ -8,6 +8,7 @@ import plotly.express as px
 import zipfile
 import pathlib
 
+
 #literature component
 def literature_component(LC_component, metadata, filename_header, species_column, genus_column, family_column, 
  max_comp_reported_sp, max_comp_reported_g, max_comp_reported_f):
@@ -65,7 +66,6 @@ def literature_component(LC_component, metadata, filename_header, species_column
         #df['LC'] = df.apply(literature_report, axis=1)
         df.to_csv('../data_out/LC_results.tsv', sep='\t')
         return df
-
     else:
         print('Literature component not calculated')
         

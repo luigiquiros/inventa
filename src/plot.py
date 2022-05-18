@@ -14,7 +14,7 @@ from plotly.subplots import make_subplots
 
 ## visualization for the similarity component
 
-def pcoa_2d(matrix, data, metric):
+def pcoa_2d(matrix, data, metric, filename_header):
     """ Simple 3D PCoA plot of a MEMO matrix using Plotly
 
     Args:
@@ -62,7 +62,7 @@ def pcoa_2d(matrix, data, metric):
                 ),
             name='[-1]',
             legendgrouptitle_text="Anomaly",
-            hovertext=data['filename']),
+            hovertext=data[filename_header]),
             row=1, col=1)
 
     # Secon plot: Local factor outlier
@@ -81,7 +81,7 @@ def pcoa_2d(matrix, data, metric):
                 ),
             legendgrouptitle_text="normal",
             showlegend=False,
-            hovertext=data['filename']),
+            hovertext=data[filename_header]),
             row=1, col=2)
 
     # Third plot: One Class Suport Vector machine
@@ -100,7 +100,7 @@ def pcoa_2d(matrix, data, metric):
                 ),
             legendgrouptitle_text="Anomaly",
             showlegend=False,
-            hovertext=data['filename']),
+            hovertext=data[filename_header]),
             row=1, col=3)
 
     fig.update_layout(height=600, width=1500, template = 'simple_white', title_text="Multiple outlier detection results")
@@ -141,8 +141,8 @@ def pcoa_2d(matrix, data, metric):
     fig.write_html("../data_out/PCoA_2D.html")    
     fig.show()
 
-def pcoa_3d(matrix, data, metric = 'braycurtis'):
-
+def pcoa_3d(matrix, data, metric = 'braycurtis'):#, filename_header):
+    
     fig = make_subplots(rows=1, cols=3,
                     shared_xaxes=False,
                     vertical_spacing=0.4,
@@ -180,7 +180,7 @@ def pcoa_3d(matrix, data, metric = 'braycurtis'):
                 ),
             name='[-1]',
             legendgrouptitle_text="Anomaly",
-            hovertext=data['filename']),
+            hovertext=data[filename_header]),
             row=1, col=1)
 
     # Secon plot: Local factor outlier
@@ -198,7 +198,7 @@ def pcoa_3d(matrix, data, metric = 'braycurtis'):
                     showscale=False,
                 ),
             showlegend=False,
-            hovertext=data['filename']),
+            hovertext=data[filename_header]),
             row=1, col=2)
  
     # Third plot: One Class Suport Vector machine
@@ -217,7 +217,7 @@ def pcoa_3d(matrix, data, metric = 'braycurtis'):
                 ),
             showlegend=False,
             legendgrouptitle_text="Anomaly",
-            hovertext=data['filename']),
+            hovertext=data[filename_header]),
             row=1, col=3)
 
     # Update xaxis properties
@@ -264,7 +264,7 @@ def pcoa_3d(matrix, data, metric = 'braycurtis'):
     fig.write_html("../data_out/PCoA_3D.html") 
     fig.show()
 
-def umap_2d(matrix, data, metadata):
+def umap_2d(matrix, data, metadata, filename_header):
     
     # 1. Generate df used for plotting 
 
@@ -273,7 +273,7 @@ def umap_2d(matrix, data, metadata):
 
 
     results_umap = metadata.copy()
-    results_umap = results_umap.dropna()
+    #results_umap = results_umap.dropna()
     metric ='MEMO aligned (Bray-Curtis)'
     matrix = memo_aligned_matrix
     reducer = umap.UMAP(metric='braycurtis')
@@ -303,7 +303,7 @@ def umap_2d(matrix, data, metadata):
                 ),
             name='Anomaly [-1]',
             #legendgrouptitle_text="Anomaly",
-            hovertext=results_umap['filename']),
+            hovertext=results_umap[filename_header]),
             row=1, col=1)
 
     # Secon plot: Local factor outlier
@@ -323,7 +323,7 @@ def umap_2d(matrix, data, metadata):
             name = 'Normal [1]',
             #legendgrouptitle_text="Normal",
             showlegend=True,
-            hovertext=results_umap['filename']),
+            hovertext=results_umap[filename_header]),
             row=1, col=2)
 
     # Third plot: One Class Suport Vector machine
@@ -342,7 +342,7 @@ def umap_2d(matrix, data, metadata):
                 ),
             legendgrouptitle_text="Anomaly",
             showlegend=False,
-            hovertext=results_umap['filename']),
+            hovertext=results_umap[filename_header]),
             row=1, col=3)
 
     fig.update_layout(height=600, width=1500, template = 'simple_white', title_text="Multiple outlier detection results")
@@ -374,7 +374,7 @@ def umap_2d(matrix, data, metadata):
     fig.show()
 
     
-def pcoa_umap_2d(matrix, data, metric):
+def pcoa_umap_2d(matrix, data, metric, filename_header):
     fig = make_subplots(rows=2, cols=3,
                     shared_xaxes=False,
                     vertical_spacing=0.12,
@@ -407,7 +407,7 @@ def pcoa_umap_2d(matrix, data, metric):
                 ),
             showlegend=False,
             #legendgrouptitle_text="Anomaly",
-            hovertext=data['filename']),
+            hovertext=data[filename_header]),
             row=1, col=1)
 
     # Secon plot: Local factor outlier
@@ -427,7 +427,7 @@ def pcoa_umap_2d(matrix, data, metric):
             #name='Anomaly [-1]',
             #legendgrouptitle_text="normal",
             showlegend=False,
-            hovertext=data['filename']),
+            hovertext=data[filename_header]),
             row=1, col=2)
 
     # Third plot: One Class Suport Vector machine
@@ -446,7 +446,7 @@ def pcoa_umap_2d(matrix, data, metric):
                 ),
             #legendgrouptitle_text="Anomaly",
             showlegend=False,
-            hovertext=data['filename']),
+            hovertext=data[filename_header]),
             row=1, col=3)
 
     fig.update_layout(height=1200, width=1500, template = 'simple_white', title_text="Multiple outlier detection results")
@@ -493,7 +493,7 @@ def pcoa_umap_2d(matrix, data, metric):
                 ),
             name='Outlier [-1]',
             #legendgrouptitle_text="Anomaly",
-            hovertext=results_umap['filename']),
+            hovertext=results_umap[filename_header]),
             row=2, col=1)
 
     # Secon plot: Local factor outlier
@@ -513,7 +513,7 @@ def pcoa_umap_2d(matrix, data, metric):
                 name='Normal [1]',
             #legendgrouptitle_text="normal",
             showlegend=True,
-            hovertext=results_umap['filename']),
+            hovertext=results_umap[filename_header]),
             row=2, col=2)
 
     # Third plot: One Class Suport Vector machine
@@ -532,7 +532,7 @@ def pcoa_umap_2d(matrix, data, metric):
                 ),
             legendgrouptitle_text="Anomaly",
             showlegend=False,
-            hovertext=results_umap['filename']),
+            hovertext=results_umap[filename_header]),
             row=2, col=3)
 
     fig.update_layout(

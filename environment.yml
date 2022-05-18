@@ -24,3 +24,4 @@ dependencies:
     - lineup_widget
     - jupyter_contrib_nbextensions
     - umap-learn
+    - memo-ms

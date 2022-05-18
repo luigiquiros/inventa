@@ -51,7 +51,7 @@ def get_canopus_pred_classes(path_canopus, CC_component):
     else: 
         print('The canopus classes will be not used')
 
-def get_metadata(repository_path, metadata_sample_suffix):
+def get_metadata_ind_files(repository_path, metadata_sample_suffix):
     """
     Function to recover the metadata from individual files, used for calculation of inventa non aligned data
     """

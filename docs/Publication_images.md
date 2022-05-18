@@ -10,8 +10,10 @@ This images and interactive plots are presented in the publication of Iventa.
 
 ### Fig 2.B. [**Celastraceae Library Chemical Coverage**](/assets/img/Chemical_class_Celastraceae.html)  
 
-
 ### Fig 3.[**PCoA & UMAP projections for the Celastraceae library**](/assets/img/PCoA_UMAP_2D.html)
 
+
+### Sup. Fig 78.[**Effect of the 'minimum specificity' threshold on the Feature Specificity ratio**](/assets/img/FS_min_spec.html)
+### Sup. Fig 79.[**Effect of the 'minimum specificity' threshold on the Feature Component ratio**](/assets/img/FC_min_spec.html)
 
 ### [Back to home page](index.md)

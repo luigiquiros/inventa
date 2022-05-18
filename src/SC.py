@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import zipfile
 import pathlib
+import memo_ms as memo 
+import time
 
 from sklearn.metrics import pairwise_distances
 from sklearn.neighbors import LocalOutlierFactor
@@ -34,7 +36,7 @@ def similarity_component(df, SC_component):
         #specify the parameters of the individual classification algorithms
         clf = IsolationForest(n_estimators=100, 
                     max_samples='auto', 
-                    contamination=0.15,
+                    contamination= 'auto', #0.15,
                     max_features=1.0, 
                     bootstrap=False, 
                     n_jobs=None, 
@@ -82,3 +84,23 @@ def similarity_component(df, SC_component):
         return df
     else:
         print('Similarity component not calculated')
+
+def calculate_memo_matrix_ind_files(repository_path, spectra_suffix):
+    
+    # Generating memo matrix
+    memo_unaligned = memo.MemoMatrix()
+
+    start = time.process_time()
+    memo_unaligned.memo_from_unaligned_samples(repository_path,  pattern_to_match =spectra_suffix, min_relative_intensity = 0.01,
+                max_relative_intensity = 1, min_peaks_required=10, losses_from = 10, losses_to = 200, n_decimals = 2)
+    print(f'Computing MEMO matrix from unaligned samples took: {time.process_time() - start} seconds')
+
+    memo_unaligned.memo_matrix.index = memo_unaligned.memo_matrix.index.str.replace(spectra_suffix, "")
+
+    memo_unaligned_filtered = memo_unaligned.filter(samples_pattern='01')
+    memo_unaligned_filtered = memo_unaligned_filtered.filter(samples_pattern='12', max_occurence=0)
+    
+    df = memo_unaligned_filtered.memo_matrix
+    df.reset_index(inplace=True)
+    df.rename(columns={'index': 'filename'}, inplace=True)
+    return df 
