@@ -11,7 +11,7 @@ import pathlib
 
 #literature component
 def literature_component(LC_component, metadata, filename_header, species_column, genus_column, family_column, 
- max_comp_reported_sp, max_comp_reported_g, max_comp_reported_f):
+ max_comp_reported_sp, max_comp_reported_g, max_comp_reported_f, ws, wg, wf):
     """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
     Args:
         df2 = metadata_df
@@ -62,7 +62,8 @@ def literature_component(LC_component, metadata, filename_header, species_column
 
 
         df = df.fillna(0) #assumign species not present in LotusDB the number of reported compounds is set to 0
-        df['LC'] = 1-df['Reported_comp_Species'].div(max_comp_reported_sp*100)-df['Reported_comp_Genus'].div(max_comp_reported_g*100)-df['Reported_comp_Family'].div(max_comp_reported_f*100)
+        df['LC'] = 1-(df['Reported_comp_Species'].div(max_comp_reported_sp*100))*ws - (df['Reported_comp_Genus'].div(max_comp_reported_g*100))*wg - (df['Reported_comp_Family'].div(max_comp_reported_f*100
+        ))*wf
         #df['LC'] = df.apply(literature_report, axis=1)
         df.to_csv('../data_out/LC_results.tsv', sep='\t')
         return df
