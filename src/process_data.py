@@ -177,3 +177,20 @@ def Cyt_format(col_id_unique):
     df = df.astype(int)
     df.to_csv('../data_out/PR_cyto_visualization.tsv', sep='\t')
     return df
+
+def quant_plot(df):
+    """ Cleans up the quantitative table to specific format
+
+    Args:
+        df = quantitative.csv file, output from MZmine
+
+    Returns:
+        None
+    """
+    df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
+    df.rename(columns = lambda x: x.replace('row retention time', 'retention time (min)'),inplace=True)
+    df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+    #df.drop('row m/z', axis=1, inplace=True)
+    #df.drop('row retention time', axis=1, inplace=True)
+    #df.to_csv('../data_out/quant_df.tsv', sep='\t')
+    return df
