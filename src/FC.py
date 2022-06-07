@@ -195,22 +195,20 @@ def feature_component(quant_df, filtered_quant_df, specificity_df, annotation_df
     #1) Feature count by sample before and after filtering
     
     def feature_count(df, header, filename_header):
-        '''count total features more than 0 in each sample
-        '''
-        df = df[df>0.0].count()
+        df =df[df>0.0].count()
         df = pd.DataFrame(df, columns=[header])
         df.reset_index(inplace=True)
         df.rename(columns={'index': filename_header}, inplace=True)
         return df
     
     initial_features_count = feature_count(quant_df, header ='initial_F', filename_header = filename_header)
+
     filtered_features_count = feature_count(filtered_quant_df,  header ='filtered_F', filename_header = filename_header)
 
 
     #2) combine information from specificity and annotation status for each feature
-    df1 = specificity_df
-    df2 = annotation_df
-    #df3 = pd.read_csv('../data_out/mf_prediction_ratio_df.tsv', sep='\t')#.drop(['Unnamed: 0'],axis=1)
+    df1 = specificity_df.copy()
+    df2 = annotation_df.copy()
     df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
     
     #3) calculate the total number of features > min_specificity
@@ -235,6 +233,7 @@ def feature_component(quant_df, filtered_quant_df, specificity_df, annotation_df
     #df.head()
 
     #6) calculate the ratios
+    
     df['FS'] = df['Total_SF']/df['filtered_F']
     df['FS'] =df['FS'].round(decimals = 2)
     df['FC'] = df['Total_SNAF']/df['filtered_F']

@@ -30,6 +30,7 @@ def quant_table(df, filter = True, min_threshold = 0.5):
     df = df.div(df.sum(axis=1), axis=0)*100
     df = df.transpose()
     df.to_csv('../data_out/quant_df.tsv', sep='\t')
+
     return df
 
 def features_filter(df, min_threshold):
@@ -42,7 +43,7 @@ def features_filter(df, min_threshold):
     df.to_csv('../data_out/filtered_quant_df.tsv', sep='\t')
     return df
 
-def full_data(df1, df2):
+def full_data(df1, df2, filename_header):
     """ merge and format the metadata + quantitative information 
 
     Args:
@@ -53,10 +54,10 @@ def full_data(df1, df2):
         None
     """
     df2 = df2.transpose()
-    df2.index.name = 'filename'
+    df2.index.name = filename_header
     df2.reset_index(inplace=True)
-    df2.set_index('filename', inplace=True)
-    df = pd.merge(df1, df2, how='outer', on='filename')
+    df2.set_index(filename_header, inplace=True)
+    df = pd.merge(df1, df2, how='outer', on=filename_header)
     df.to_csv('../data_out/full_metadata.tsv', sep='\t')
     return df
 
@@ -80,7 +81,7 @@ def drop_samples_based_on_string(df,filename,list_of_strings_for_QC_Blank_filter
     df.to_csv(completeName, sep='\t')
     return df
 
-def reduce_df(col_id_unique):
+def reduce_df(full_df, metadata_df, col_id_unique):
     """ Reduce the full df to minimal info
 
     Args:
@@ -89,8 +90,7 @@ def reduce_df(col_id_unique):
     Returns:
             df
     """
-    df= pd.read_csv('../data_out/full_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-    metadata_df= pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+    df= full_df
     df.set_index(col_id_unique, inplace=True)
     df = df.iloc[:,len(metadata_df.columns)-1:]
     df.to_csv('../data_out/reduced_df.tsv', sep='\t')
