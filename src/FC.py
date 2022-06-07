@@ -190,7 +190,7 @@ def annotations(df2, df3,
 
 
 
-def feature_component(quant_df, filtered_quant_df, specificity_df, annotation_df, metadata_df, family_column, genus_column, species_column, col_id_unique, min_specificity, annotation_preference, filename_header, annot_sirius_df, sirius_annotations, annot_gnps_df, min_ZodiacScore):
+def feature_component(quant_df, filtered_quant_df, reduced_df, annotation_df, metadata_df, family_column, genus_column, species_column, col_id_unique, min_specificity, annotation_preference, filename_header, annot_sirius_df, sirius_annotations, annot_gnps_df, min_ZodiacScore):
       
     #1) Feature count by sample before and after filtering
     
@@ -206,24 +206,50 @@ def feature_component(quant_df, filtered_quant_df, specificity_df, annotation_df
     filtered_features_count = feature_count(filtered_quant_df,  header ='filtered_F', filename_header = filename_header)
 
 
-    #2) combine information from specificity and annotation status for each feature
-    df1 = specificity_df.copy()
-    df2 = annotation_df.copy()
-    df4 = pd.merge(df1,df2, how='left', left_on='row ID', right_on='cluster index')
+    #2) normalize the filtered table and combine information from specificity and annotation status for each feature
+    #normalize row-wise the area of features = relative % of each feature in each sample
+
+    filtered_quant_df_norm = reduced_df.copy().transpose()
+    filtered_quant_df_norm = filtered_quant_df_norm.div(filtered_quant_df_norm.sum(axis=1), axis=0).fillna(0)
+    filtered_quant_df_norm.reset_index(inplace=True)
+    filtered_quant_df_norm.rename(columns={'index': 'row ID'}, inplace=True)
+    filtered_quant_df_norm.set_index('row ID', inplace=True)
+    filtered_quant_df_norm = filtered_quant_df_norm.astype(float)
+    #filtered_quant_df_norm.head(2)
+    
+    #add the row ID and annotation status of each ion
+
+    filtered_quant_df_norm = pd.merge(annotation_df[['cluster index', 'annotation']], filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row ID').fillna(0)
+    filtered_quant_df_norm.rename(columns={'cluster index': 'row_ID'}, inplace=True)
+
     
     #3) calculate the total number of features > min_specificity
 
-    specific_features_count = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity)])).sort_values(ascending=False)
+        #to get the number of features with area > min_specificity : 
+        #select only sample columns
+        #check if values in columns >= min_specificity
+        #sum all (boolean) values
+        #transpose your dataframe
+
+    specific_features_count = filtered_quant_df_norm.copy()
+    specific_features_count = specific_features_count.iloc[:,2:].ge(min_specificity).sum().T
     specific_features_count = pd.DataFrame(specific_features_count, columns=['Total_SF'])
     specific_features_count.reset_index(inplace=True)
     specific_features_count.rename(columns={'index': filename_header}, inplace=True)
 
     #4) calculate the total number of features > min_specificity & NON annotated
-
-    specific_non_annotated_features_count = df4.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity) & (x['annotation']== annotation_preference)])).sort_values(ascending=False)
+        #to get the number of features with area > min_specificity and annotation == annotation preference: 
+        #keep only rows where annotation == annotation_preference
+        #select only sample columns
+        #check if values in columns >= min_specificity
+        #sum all (boolean) values
+        #transpose your dataframe
+    specific_non_annotated_features_count = filtered_quant_df_norm.copy()
+    specific_non_annotated_features_count = specific_non_annotated_features_count[specific_non_annotated_features_count['annotation']==annotation_preference].iloc[:,2:].ge(min_specificity).sum().T
     specific_non_annotated_features_count = pd.DataFrame(specific_non_annotated_features_count, columns=['Total_SNAF'])
     specific_non_annotated_features_count.reset_index(inplace=True)
     specific_non_annotated_features_count.rename(columns={'index': filename_header}, inplace=True)
+    specific_non_annotated_features_count
 
     #5) merge the information
      
@@ -244,17 +270,22 @@ def feature_component(quant_df, filtered_quant_df, specificity_df, annotation_df
         df1 = annotation_df.copy() #pd.read_csv('../data_out/annot_gnps_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df2 = annot_sirius_df.copy()
         df2['shared name'] = df2['id'].str.split('_').str[-1].astype(int)
-        df3 = specificity_df.copy() #pd.read_csv('../data_out/specificity_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-        df4 = annotation_df.copy() #pd.read_csv('../data_out/annotations_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df5 = pd.merge(left=df1[['cluster index']],right=df2[['shared name','ZodiacScore']], how='left', left_on= 'cluster index', right_on='shared name')
-        df5 = pd.merge(df3,df5, how='left', left_on='row ID', right_on='cluster index')
-        df5 = pd.merge(df4[['cluster index','annotation']],df5, how='left', on='cluster index')
+        df5 = pd.merge( df5, filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row_ID')
         df5.drop('shared name', axis=1, inplace=True)
         df5.drop('cluster index', axis=1, inplace=True)
         df5['ZodiacScore'] = df5['ZodiacScore'].fillna(0)
-        
-        #calculate the total of features with a good quality MF 
-        GQMF_features_count = df5.copy().groupby('filename').apply(lambda x: len(x[(x['Feature_specificity']>= min_specificity) & (x['ZodiacScore'] >= min_ZodiacScore) & (x['annotation'] == annotation_preference)]))
+
+        #to get the number of features with area > min_specificity and annotation == annotation preference: 
+                #keep only rows where annotation == annotation_preference & ['ZodiacScore'] >= min_ZodiacScore
+                #select only sample columns
+                #check if values in columns >= min_specificity
+                #sum all (boolean) values
+                #transpose your dataframe
+                
+        GQMF_features_count = df5.copy()
+        GQMF_features_count = GQMF_features_count[GQMF_features_count['annotation']==annotation_preference]
+        GQMF_features_count = GQMF_features_count[GQMF_features_count['ZodiacScore']>=min_ZodiacScore].iloc[:,2:].ge(min_specificity).sum().T
         GQMF_features_count = pd.DataFrame(GQMF_features_count, columns=['Total_SNA_GQMFF'])
         GQMF_features_count.reset_index(inplace=True)
         GQMF_features_count.rename(columns={'index': filename_header}, inplace=True)
