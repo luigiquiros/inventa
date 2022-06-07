@@ -11,7 +11,8 @@ import pathlib
 
 #general treatment 
 
-def quant_table(df):
+
+def quant_table(df, filter = True, min_threshold = 0.5):
     """ Cleans up the quantitative table to specific format
 
     Args:
@@ -24,7 +25,21 @@ def quant_table(df):
     df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
     df.drop('row m/z', axis=1, inplace=True)
     df.drop('row retention time', axis=1, inplace=True)
+    # vertical normalization by sample
+    df = df.transpose()
+    df = df.div(df.sum(axis=1), axis=0)*100
+    df = df.transpose()
     df.to_csv('../data_out/quant_df.tsv', sep='\t')
+    return df
+
+def features_filter(df, min_threshold):
+        
+    df[df<min_threshold] = 0 #change all the values lower than x for 0 in the dataframe
+    #once the data was filtered, the table is normalized sample-wise
+    df = df.transpose()
+    df = df.div(df.sum(axis=1), axis=0)*100
+    df = df.transpose()
+    df.to_csv('../data_out/filtered_quant_df.tsv', sep='\t')
     return df
 
 def full_data(df1, df2):
@@ -193,4 +208,14 @@ def quant_plot(df):
     #df.drop('row m/z', axis=1, inplace=True)
     #df.drop('row retention time', axis=1, inplace=True)
     #df.to_csv('../data_out/quant_df.tsv', sep='\t')
+    return df
+
+#Function to count features different from 0 in each sample 
+def feature_count(df, header ='Total features'):
+    '''count total features more than 0 in each sample
+    '''
+    df = df[df>0.0].count()
+    df = pd.DataFrame(df, columns=[header])
+    df.reset_index(inplace=True)
+    df.rename(columns={'index': filename_header}, inplace=True)
     return df

@@ -150,7 +150,7 @@ def annotations(df2, df3,
         df = pd.merge(left=df, right=df3[['cluster index','Annotated_Sirius']], 
                         how='left',on= 'cluster index')
     else:
-            df
+        df
 
     def annotations_gnps(df):
             """ function to classify the annotations results 
@@ -217,7 +217,7 @@ def mf_rate(df, sirius_annotations, min_ZodiacScore, min_specificity, annotation
         df.to_csv('../data_out/mf_prediction_ratio_df.tsv', sep='\t')
         return df
     else:
-        print('Sirius annotations are not used')
+        df
 
 def feature_component(min_specificity, annotation_preference, col_id_unique):
     """ function to calculate the feature specificity and feature component, as default both columns are added. 
