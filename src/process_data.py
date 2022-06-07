@@ -211,7 +211,7 @@ def quant_plot(df):
     return df
 
 #Function to count features different from 0 in each sample 
-def feature_count(df, header ='Total features'):
+def feature_count(df, header, filename_header):
     '''count total features more than 0 in each sample
     '''
     df = df[df>0.0].count()
