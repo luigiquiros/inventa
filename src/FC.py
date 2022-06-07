@@ -201,8 +201,9 @@ def feature_component(quant_df, filtered_quant_df, reduced_df, annotation_df, me
         df.rename(columns={'index': filename_header}, inplace=True)
         return df
     
+    #get the number of features > 0 for each sample
     initial_features_count = feature_count(quant_df, header ='initial_F', filename_header = filename_header)
-
+    #get the number of features > min_specificity for each sample
     filtered_features_count = feature_count(filtered_quant_df,  header ='filtered_F', filename_header = filename_header)
 
 
@@ -220,7 +221,7 @@ def feature_component(quant_df, filtered_quant_df, reduced_df, annotation_df, me
     #add the row ID and annotation status of each ion
 
     filtered_quant_df_norm = pd.merge(annotation_df[['cluster index', 'annotation']], filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row ID').fillna(0)
-    filtered_quant_df_norm.rename(columns={'cluster index': 'row_ID'}, inplace=True)
+    filtered_quant_df_norm.rename(columns={'cluster index': 'row ID'}, inplace=True)
 
     
     #3) calculate the total number of features > min_specificity
@@ -271,7 +272,7 @@ def feature_component(quant_df, filtered_quant_df, reduced_df, annotation_df, me
         df2 = annot_sirius_df.copy()
         df2['shared name'] = df2['id'].str.split('_').str[-1].astype(int)
         df5 = pd.merge(left=df1[['cluster index']],right=df2[['shared name','ZodiacScore']], how='left', left_on= 'cluster index', right_on='shared name')
-        df5 = pd.merge( df5, filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row_ID')
+        df5 = pd.merge( df5, filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row ID')
         df5.drop('shared name', axis=1, inplace=True)
         df5.drop('cluster index', axis=1, inplace=True)
         df5['ZodiacScore'] = df5['ZodiacScore'].fillna(0)
@@ -282,7 +283,7 @@ def feature_component(quant_df, filtered_quant_df, reduced_df, annotation_df, me
                 #check if values in columns >= min_specificity
                 #sum all (boolean) values
                 #transpose your dataframe
-                
+
         GQMF_features_count = df5.copy()
         GQMF_features_count = GQMF_features_count[GQMF_features_count['annotation']==annotation_preference]
         GQMF_features_count = GQMF_features_count[GQMF_features_count['ZodiacScore']>=min_ZodiacScore].iloc[:,2:].ge(min_specificity).sum().T
