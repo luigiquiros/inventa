@@ -90,7 +90,8 @@ def class_component(df3, filename_header, species_column,genus_column,family_col
             else:
                 return 0
 
-        df['CC'] = df['New_CC_in_sp'].apply(is_empty).fillna(1)
+        df['CC'] = df['New_CC_in_sp'].apply(is_empty)
+        df['CC'] = df['CC'].fillna(1)
 
         df = pd.merge(df2[[filename_header]], df,how= 'left', on=filename_header)
         df.to_csv('../data_out/CC_results.tsv', sep='\t')
@@ -162,7 +163,7 @@ def class_component_ind_files(CC_component, repository_path, canopus_sample_suff
             else:
                 return 0
         df['CC'] = df['New_CC_in_sp'].apply(is_empty)
-
+        df.to_csv('../data_out/LC_results.tsv', sep='\t')
         return df
     else:
         print ('No search was done because the Class component is not going to be calculated')

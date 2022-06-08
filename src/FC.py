@@ -308,6 +308,6 @@ def feature_component(quant_df, filtered_quant_df, reduced_df, annotation_df, me
     else:
         df = pd.merge(metadata_df[[filename_header,family_column, genus_column, species_column]], df, how='left', on=filename_header)
         df = df.sort_values(by=['FC'], ascending=False)
-
+    df.to_csv('../data_out/FC_results.tsv', sep='\t')
 
     return df
