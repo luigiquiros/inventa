@@ -198,8 +198,12 @@ def Cyt_format(col_id_unique):
     df.to_csv('../data_out/PR_cyto_visualization.tsv', sep='\t')
     return df
 
+def selection_changed_FC(selection):
+    return FC.iloc[selection]
+
 def selection_changed(selection):
     return df.iloc[selection]
+
 
 def quant_plot(df):
     """ Cleans up the quantitative table to specific format

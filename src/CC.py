@@ -76,7 +76,7 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
                     df
                 return df
         
-        df1 = top_ions(col_id_unique)
+        df1 = top_ions(col_id_unique, reduced_df)
         
         df2 = metadata_df
 
