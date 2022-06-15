@@ -33,7 +33,7 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
             """
             #computes the % for each feature
                 dfA = reduced_df.copy()
-                dfA = dfA.transpose()
+                #dfA = dfA.transpose()
                 dfA = dfA.div(dfA.sum(axis=1), axis=0)
                 dfA.reset_index(inplace=True)
                 dfA.rename(columns={'index': 'row ID'}, inplace=True)
@@ -54,6 +54,8 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
                 df2 = df2.to_frame()
                 df2['filename'] = pd.DataFrame(df2[0].values.tolist(), index= df2.index)
                 df2 = df2.drop([0], axis=1)
+                df2.reset_index(inplace=True)
+                df2.rename(columns={'index': 'row ID'}, inplace=True)
 
                 df = pd.merge(left=dfA,right=df2, how='left',on='row ID')
 
@@ -75,10 +77,11 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
                 else: 
                     df
                 return df
-        
+                
         df1 = top_ions(col_id_unique, reduced_df)
-        
-        df2 = metadata_df
+        df2 = metadata_df.copy()
+
+        df3 = get_canopus_pred_classes(canopus_npc_summary_filename, CC_component)
 
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',sep=',').dropna()
 
@@ -100,11 +103,11 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
 
         df4 = df4[df4['recurrence'] >= min_recurrence].groupby(filename_header).agg(set)
         df4.drop ('recurrence', axis=1, inplace=True)
-                
-        df5 = pd.merge(left=df2[[filename_header, species_column]], right=df4, how='left', left_on=filename_header, right_on=filename_header).dropna()
- 
-        ## Retrieve classes reported in Lotus
             
+        df5 = pd.merge(left=df2[[filename_header, species_column]], right=df4, how='left', left_on=filename_header, right_on=filename_header).dropna()
+
+        ## Retrieve classes reported in Lotus
+
         #create a set of species present in the metatada and reduce the lotus DB to it
         set_sp = set(df5[species_column].dropna())
         LotusDB= LotusDB[LotusDB['organism_taxonomy_09species'].isin(set_sp)]
@@ -122,12 +125,10 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
 
         #obtain the difference between the predicted and reported compounds
         df = pd.merge(df5[[filename_header, 'class']],df9,on=filename_header, how='left').dropna()
-        #df10.tail(5)
-        #df10.to_csv('../data_out/predicted_and_reported_classes_df.tsv', sep='\t')
 
         df['New_CC_in_sp'] = df["class"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species
         df['New_CC_in_genus'] = df["New_CC_in_sp"] - df["Chemical_class_reported_in_genus"]
-        
+
         #change all the NaN with a string to indicate lack of reports in the literature 
         df['Chemical_class_reported_in_species'] = df['Chemical_class_reported_in_species'].fillna('nothing in DB')
         df['Chemical_class_reported_in_genus'] = df['Chemical_class_reported_in_genus'].fillna('nothing in DB')
@@ -135,7 +136,6 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
         df['New_CC_in_sp'] = df['New_CC_in_sp'].fillna('nothing in DB')
         df['New_CC_in_genus'] = df['New_CC_in_genus'].fillna('nothing in DB')
 
-        
         def is_empty(df):
             """ function to check if the sets are empty or not 
                 Args:
@@ -151,8 +151,7 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
         df['CC'] = df['New_CC_in_sp'].apply(is_empty)
         df['CC'] = df['CC'].fillna(1)
 
-        df = pd.merge(df2[[filename_header]], df,how= 'left', on=filename_header)
-        df.to_csv('../data_out/CC_results.tsv', sep='\t')
+        #df = pd.merge(df2[[filename_header]], df,how= 'left', on=filename_header)
         return df
     else:
         print ('No search was done because the Class component is not going to be calculated')
