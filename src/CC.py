@@ -81,8 +81,6 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
         df1 = top_ions(col_id_unique, reduced_df)
         df2 = metadata_df.copy()
 
-        df3 = get_canopus_pred_classes(canopus_npc_summary_filename, CC_component)
-
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',sep=',').dropna()
 
         # merge with top filename with iones 
