@@ -8,60 +8,6 @@ import plotly.express as px
 import zipfile
 import pathlib
 
-def top_ions(col_id_unique):
-    """ function to compute the top species, top filename and top species/plant part for each ion 
-    Args:
-        df1 = reduced_df, table of with index on sp/part column and features only.
-        df2 = quantitative.csv file, output from MZmine
-        Returns:
-        None
-    """
-    #computes the % for each feature
-    dfA = pd.read_csv('../data_out/reduced_df.tsv', sep='\t', index_col=[0])
-    dfA = dfA.copy().transpose()
-    dfA = dfA.div(dfA.sum(axis=1), axis=0)
-    dfA.reset_index(inplace=True)
-    dfA.rename(columns={'index': 'row ID'}, inplace=True)
-    dfA.set_index('row ID', inplace=True)
-    dfA = dfA.astype(float)
-    dfA['Feature_specificity'] = dfA.apply(lambda s: s.abs().nlargest(1).sum(), axis=1)
-    dfA.reset_index(inplace=True)
-    #df1 = df1.drop([0], axis=1)
-    dfA = dfA[['row ID', 'Feature_specificity']]
-    dfA['row ID']=dfA['row ID'].astype(int)
-
-    #computes the top filename for each ion 
-    df2 = pd.read_csv('../data_out/quant_df.tsv', sep='\t', index_col=[0])
-    df2 = df2.div(df2.sum(axis=1), axis=0)
-    df2 = df2.copy()
-    df2 = df2.astype(float)
-    df2 = df2.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
-    df2 = df2.to_frame()
-    df2['filename'] = pd.DataFrame(df2[0].values.tolist(), index= df2.index)
-    df2 = df2.drop([0], axis=1)
-
-    df = pd.merge(left=dfA,right=df2, how='left',on='row ID')
-
-    if col_id_unique != 'filename':
-        #computes the top species/part for each feature 
-        df3 = pd.read_csv('../data_out/reduced_df.tsv', sep='\t', index_col=[0])
-        df3 = df3.transpose()
-        df3 = df3.astype(float)
-        df3 = df3.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
-        df3 = df3.to_frame()
-        df3[[col_id_unique]] = pd.DataFrame(df3[0].values.tolist(),index= df3.index)
-        df3 = df3.drop([0], axis=1)
-        df3.reset_index(inplace=True)
-        df3.rename(columns={'index': 'row ID'}, inplace=True)
-        df3['row ID'] = df3['row ID'].astype(int)
-        
-        #merge all the data 
-        df = pd.merge(left=df3, right=df, how='left', on='row ID')
-    else: 
-        df
-    df.to_csv('../data_out/specificity_df.tsv', sep='\t')
-    return df
-
 
 def annotations(df2, df3,
                 sirius_annotations, isbd_annotations,
@@ -190,7 +136,7 @@ def annotations(df2, df3,
 
 
 
-def feature_component(quant_df, filtered_quant_df, reduced_df, annotation_df, metadata_df, family_column, genus_column, species_column, col_id_unique, min_specificity, annotation_preference, filename_header, annot_sirius_df, sirius_annotations, annot_gnps_df, min_ZodiacScore):
+def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_column, genus_column, species_column, col_id_unique, min_specificity, annotation_preference, filename_header, annot_sirius_df, sirius_annotations, annot_gnps_df, min_ZodiacScore):
       
     #1) Feature count by sample before and after filtering
     
@@ -204,13 +150,13 @@ def feature_component(quant_df, filtered_quant_df, reduced_df, annotation_df, me
     #get the number of features > 0 for each sample
     initial_features_count = feature_count(quant_df, header ='initial_F', filename_header = filename_header)
     #get the number of features > min_specificity for each sample
-    filtered_features_count = feature_count(filtered_quant_df,  header ='filtered_F', filename_header = filename_header)
+    filtered_features_count = feature_count(reduced_df,  header ='filtered_F', filename_header = filename_header)
 
 
     #2) normalize the filtered table and combine information from specificity and annotation status for each feature
     #normalize row-wise the area of features = relative % of each feature in each sample
 
-    filtered_quant_df_norm = reduced_df.copy().transpose()
+    filtered_quant_df_norm = reduced_df.copy()#.transpose()
     filtered_quant_df_norm = filtered_quant_df_norm.div(filtered_quant_df_norm.sum(axis=1), axis=0).fillna(0)
     filtered_quant_df_norm.reset_index(inplace=True)
     filtered_quant_df_norm.rename(columns={'index': 'row ID'}, inplace=True)

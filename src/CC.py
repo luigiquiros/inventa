@@ -12,7 +12,7 @@ from pandas import Series
 
 #Class component:
 
-def class_component(df3, filename_header, species_column,genus_column,family_column, min_class_confidence, min_recurrence, CC_component):
+def class_component(df3, filename_header, species_column, genus_column,family_column, metadata_df, reduced_df, col_id_unique, min_class_confidence, min_recurrence, CC_component):
     """ function to compute the class component based on the possible presence of new chemical classes 
     Args:
         df3: canopus_sunmmary
@@ -21,9 +21,67 @@ def class_component(df3, filename_header, species_column,genus_column,family_col
     """
 
     if CC_component == True:
-        df1 = pd.read_csv('../data_out/specificity_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-        df2 = pd.read_csv('../data_out/metadata_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+
+        def top_ions(col_id_unique, reduced_df):
+
+                """ function to compute the top species, top filename and top species/plant part for each ion 
+            Args:
+                df1 = reduced_df, table of with index on sp/part column and features only.
+                df2 = quantitative.csv file, output from MZmine
+                Returns:
+                None
+            """
+            #computes the % for each feature
+                dfA = reduced_df.copy()
+                dfA = dfA.transpose()
+                dfA = dfA.div(dfA.sum(axis=1), axis=0)
+                dfA.reset_index(inplace=True)
+                dfA.rename(columns={'index': 'row ID'}, inplace=True)
+                dfA.set_index('row ID', inplace=True)
+                dfA = dfA.astype(float)
+                dfA['Feature_specificity'] = dfA.apply(lambda s: s.abs().nlargest(1).sum(), axis=1)
+                dfA.reset_index(inplace=True)
+                #df1 = df1.drop([0], axis=1)
+                dfA = dfA[['row ID', 'Feature_specificity']]
+                dfA['row ID']=dfA['row ID'].astype(int)
+
+                #computes the top filename for each ion 
+                df2 = reduced_df.copy()
+                df2 = df2.div(df2.sum(axis=1), axis=0)
+                df2 = df2.copy()
+                df2 = df2.astype(float)
+                df2 = df2.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
+                df2 = df2.to_frame()
+                df2['filename'] = pd.DataFrame(df2[0].values.tolist(), index= df2.index)
+                df2 = df2.drop([0], axis=1)
+
+                df = pd.merge(left=dfA,right=df2, how='left',on='row ID')
+
+                if col_id_unique != 'filename':
+                    #computes the top species/part for each feature 
+                    df3 = reduced_df.copy()
+                    df3 = df3.transpose()
+                    df3 = df3.astype(float)
+                    df3 = df3.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
+                    df3 = df3.to_frame()
+                    df3[[col_id_unique]] = pd.DataFrame(df3[0].values.tolist(),index= df3.index)
+                    df3 = df3.drop([0], axis=1)
+                    df3.reset_index(inplace=True)
+                    df3.rename(columns={'index': 'row ID'}, inplace=True)
+                    df3['row ID'] = df3['row ID'].astype(int)
+                    
+                    #merge all the data 
+                    df = pd.merge(left=df3, right=df, how='left', on='row ID')
+                else: 
+                    df
+                return df
+        
+        df1 = top_ions(col_id_unique)
+        
+        df2 = metadata_df
+
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',sep=',').dropna()
+
         # merge with top filename with iones 
         #df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int) #use this line if you don't have a column with the name/shared name
 

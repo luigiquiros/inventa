@@ -11,6 +11,7 @@ from matplotlib import pyplot as plt
 from scipy.cluster.hierarchy import dendrogram, linkage
 import umap
 from plotly.subplots import make_subplots
+import ipywidgets as widgets
 
 ## visualization for the similarity component
 
@@ -560,3 +561,69 @@ def pcoa_umap_2d(matrix, data, metric, filename_header):
     fig.update_annotations(font_size=20)
     fig.write_html("../data_out/PCoA_UMAP_2D.html")     
     fig.show()
+
+def hist_to_plot(sample, quantitative_data_filename, annotation_df, reduced_df, min_specificity, annotation_preference):
+
+    # 1) recover row ID, m/z, rt nad add annotation status
+
+    df=pd.read_csv(quantitative_data_filename, sep=',', usecols=['row ID','row m/z', 'row retention time'] ,index_col='row ID')
+    df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
+    df.rename(columns = lambda x: x.replace('row retention time', 'retention time (min)'),inplace=True)
+    #df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+    df.reset_index(inplace=True)
+    df= pd.merge(df, annotation_df[['cluster index', 'annotation']], how='left', right_on='cluster index', left_on='row ID').fillna(0)
+    df.drop('cluster index', axis=1, inplace=True)
+
+    #2) normalize the filtered table and combine information from specificity and annotation status for each feature
+        #normalize row-wise the area of features = relative % of each feature in each sample
+
+    reduced_df_norm = reduced_df.copy()#.transpose()
+    reduced_df_norm = reduced_df_norm.div(reduced_df_norm.sum(axis=1), axis=0).fillna(0)
+    reduced_df_norm.reset_index(inplace=True)
+    reduced_df_norm.rename(columns={'index': 'row ID'}, inplace=True)
+
+    #merge and check status by sample
+    df_check = pd.merge(df, reduced_df_norm[['row ID', sample]], how='left', on= 'row ID')
+    df_check['status'] = np.where(( (df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'interesting', 'not interesting' )
+
+    #plot
+    
+    fig = px.histogram(df_check,
+                            x='retention time (min)', y=sample,
+                            nbins=1000,
+                            #histnorm= 'probability density',
+                            opacity=0.8, 
+                            labels={'retention time (min)':'retention time range (min)'},
+                            title='Pseudo chromatogram of sample',
+                            template="simple_white",
+                            #facet_col="row ID",
+                            color ='status',
+                            color_discrete_map= {'interesting': '#1E88E5', 'not interesting': '#FFC107'},
+                            marginal="rug", # can be 'rug' `box`, `violin`,
+                            hover_data=df_check.columns
+                            )
+                            #, name='row m/z')
+    fig.update_layout( # customize font and legend orientation & position
+        font_family="Times New Roman",
+        legend=dict(
+            title=None, orientation="h", y=1, yanchor="bottom", x=0.5, xanchor="center"
+        ))
+    fig.update_layout(
+    autosize=False,
+    width=1400,
+    height=500)
+    
+    fig.show()
+    
+def drop_selection(quant_df):
+    
+    drop_down = widgets.Dropdown(options=quant_df.columns,
+                                    description='Sample to plot',
+                                    disabled=False)
+    sample = '0'
+    def dropdown_handler(change):
+        global sample
+        print(change.new)
+        sample = change.new  # This line isn't working
+    drop_down.observe(dropdown_handler, names='value')
+    display(drop_down)
