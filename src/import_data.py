@@ -8,6 +8,26 @@ import plotly.express as px
 import zipfile
 import pathlib
 
+def quant_table(df, filter = True, min_threshold = 0.5):
+    """ Cleans up the quantitative table to specific format
+
+    Args:
+        df = quantitative.csv file, output from MZmine
+
+    Returns:
+        None
+    """
+    df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
+    df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+    df.drop('row m/z', axis=1, inplace=True)
+    df.drop('row retention time', axis=1, inplace=True)
+    
+    # vertical normalization by sample
+
+    df = df.apply(lambda x: x/x.max(), axis=0)
+    
+    return df
+    
 def get_gnps_annotations(df):
     #retrive the clusterinfosummary file from the gnps jod downloaded before
     

@@ -12,26 +12,6 @@ import pathlib
 #general treatment 
 
 
-def quant_table(df, filter = True, min_threshold = 0.5):
-    """ Cleans up the quantitative table to specific format
-
-    Args:
-        df = quantitative.csv file, output from MZmine
-
-    Returns:
-        None
-    """
-    df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
-    df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
-    df.drop('row m/z', axis=1, inplace=True)
-    df.drop('row retention time', axis=1, inplace=True)
-    
-    # vertical normalization by sample
-
-    df = df.apply(lambda x: x/x.max(), axis=0)
-    
-    return df
-
 def features_filter(df, min_threshold):
         
     df[df<min_threshold] = 0 #change all the values lower than x for 0 in the dataframe
@@ -203,24 +183,6 @@ def selection_changed_FC(selection):
 
 def selection_changed(selection):
     return df.iloc[selection]
-
-
-def quant_plot(df):
-    """ Cleans up the quantitative table to specific format
-
-    Args:
-        df = quantitative.csv file, output from MZmine
-
-    Returns:
-        None
-    """
-    df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
-    df.rename(columns = lambda x: x.replace('row retention time', 'retention time (min)'),inplace=True)
-    df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
-    #df.drop('row m/z', axis=1, inplace=True)
-    #df.drop('row retention time', axis=1, inplace=True)
-    #df.to_csv('../data_out/quant_df.tsv', sep='\t')
-    return df
 
 #Function to count features different from 0 in each sample 
 def feature_count(df, header, filename_header):

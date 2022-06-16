@@ -585,7 +585,7 @@ def hist_to_plot(sample, quantitative_data_filename, annotation_df, reduced_df, 
     #merge and check status by sample
     df_check = pd.merge(df, reduced_df_norm[['row ID', sample]], how='left', on= 'row ID')
     df_check['status'] = np.where(( (df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'interesting', 'not interesting' )
-
+    df_check['row m/z'].round(decimals = 4)
     #plot
     
     fig = px.histogram(df_check,
@@ -627,3 +627,20 @@ def drop_selection(quant_df):
         sample = change.new  # This line isn't working
     drop_down.observe(dropdown_handler, names='value')
     display(drop_down)
+
+def quant_plot(df):
+        """ Cleans up the quantitative table to specific format
+
+    Args:
+        df = quantitative.csv file, output from MZmine
+
+    Returns:
+        None
+    """
+    df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
+    df.rename(columns = lambda x: x.replace('row retention time', 'retention time (min)'),inplace=True)
+    df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+    #df.drop('row m/z', axis=1, inplace=True)
+    #df.drop('row retention time', axis=1, inplace=True)
+    #df.to_csv('../data_out/quant_df.tsv', sep='\t')
+    return df
