@@ -629,7 +629,7 @@ def drop_selection(quant_df):
     display(drop_down)
 
 def quant_plot(df):
-        """ Cleans up the quantitative table to specific format
+    """ Cleans up the quantitative table to specific format
 
     Args:
         df = quantitative.csv file, output from MZmine
@@ -644,3 +644,38 @@ def quant_plot(df):
     #df.drop('row retention time', axis=1, inplace=True)
     #df.to_csv('../data_out/quant_df.tsv', sep='\t')
     return df
+
+def distribution_to_plot(sample, quant_df, reduced_df):
+    df1 = quant_df.copy()
+    df1.reset_index(inplace=True)
+    df1 = df1.replace(0, np.nan)
+    df2 = reduced_df.copy()
+    df2.reset_index(inplace=True)
+    df2 = df2.replace(0, np.nan)
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Violin(y=df1[sample],
+                            legendgroup='Non-filtered', scalegroup='Non-filtered', name='Non-filtered',
+                            #side='negative',
+                            line_color='lightseagreen')
+                )
+    fig.add_trace(go.Violin(y=df2[sample],
+                            legendgroup='Filtered', scalegroup='Filtered', name='Filtered',
+                            #side='positive',
+                            line_color='mediumpurple')
+                )
+    # update characteristics shared by all traces
+    fig.update_traces(meanline_visible=True,
+                    points='all', # show all points
+                    jitter=0.05,  # add some jitter on points for better visibility
+                    scalemode='count',
+                    box_visible=True) #scale violin plot area with total count
+    fig.update_layout(
+        title_text="Intensity distribution violin plot<br><i>before and post filtering",
+        violinmode='overlay')
+    fig.update_layout(
+        autosize=True,
+        width=900,
+        height=500)
+    fig.show()

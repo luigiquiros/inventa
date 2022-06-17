@@ -21,7 +21,7 @@ def features_filter(df, min_threshold):
     return df
 
 def quantile_filter(df, quantile_threshold):
-    
+    df = df.replace(0, np.nan)
     df.apply(lambda x: np.where(x < x.quantile(quantile_threshold),np.nan,x))
     df = df.fillna(0)
     df = df.apply(lambda x: x/x.max(), axis=0)
