@@ -672,10 +672,10 @@ def distribution_to_plot(sample, quant_df, reduced_df):
                     scalemode='count',
                     box_visible=True) #scale violin plot area with total count
     fig.update_layout(
-        title_text="Intensity distribution violin plot<br><i>before and post filtering",
+        title_text="Intensity distribution<br><i>before and post filtering",
         violinmode='overlay')
     fig.update_layout(
         autosize=True,
-        width=900,
-        height=500)
+        width=700,
+        height=700)
     fig.show()
