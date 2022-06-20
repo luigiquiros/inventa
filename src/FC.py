@@ -136,7 +136,7 @@ def annotations(df2, df3,
 
 
 
-def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_column, genus_column, species_column, col_id_unique, min_specificity, annotation_preference, filename_header, annot_sirius_df, sirius_annotations, annot_gnps_df, min_ZodiacScore):
+def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_column, genus_column, species_column, col_id_unique, min_specificity, annotation_preference, filename_header, annot_sirius_df, sirius_annotations, annot_gnps_df, min_ZodiacScore, multiple_organism_parts, max_parts_per_organism):
       
     #1) Feature count by sample before and after filtering
     
@@ -155,7 +155,7 @@ def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_c
 
     #2) normalize the filtered table and combine information from specificity and annotation status for each feature
     #normalize row-wise the area of features = relative % of each feature in each sample
-
+    
     filtered_quant_df_norm = reduced_df.copy()#.transpose()
     filtered_quant_df_norm = filtered_quant_df_norm.div(filtered_quant_df_norm.sum(axis=1), axis=0).fillna(0)
     filtered_quant_df_norm.reset_index(inplace=True)
@@ -164,10 +164,22 @@ def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_c
     filtered_quant_df_norm = filtered_quant_df_norm.astype(float)
     #filtered_quant_df_norm.head(2)
     
-    #add the row ID and annotation status of each ion
+    if multiple_organism_parts == True:
+        filtered_quant_df_norm['nlargestsum'] = filtered_quant_df_norm.apply(lambda s: s.abs().nlargest(max_parts_per_organism).sum(), axis=1)
+        #df.head(2)
+        df1 = filtered_quant_df_norm.iloc[:,:-1]
+        #compare for greater or equal by division nlargestsum with N and if match replace values
+        filtered_quant_df_norm.update(df1.mask(df1.ge(filtered_quant_df_norm['nlargestsum'].div(max_parts_per_organism), axis=0), filtered_quant_df_norm['nlargestsum'], axis=0))
+        filtered_quant_df_norm.drop('nlargestsum', axis=1, inplace=True)
 
-    filtered_quant_df_norm = pd.merge(annotation_df[['cluster index', 'annotation']], filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row ID').fillna(0)
-    filtered_quant_df_norm.rename(columns={'cluster index': 'row ID'}, inplace=True)
+        #add the row ID and annotation status of each ion
+
+        filtered_quant_df_norm = pd.merge(annotation_df[['cluster index', 'annotation']], filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row ID').fillna(0)
+        filtered_quant_df_norm.rename(columns={'cluster index': 'row ID'}, inplace=True)
+        
+    else:
+        filtered_quant_df_norm = pd.merge(annotation_df[['cluster index', 'annotation']], filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row ID').fillna(0)
+        filtered_quant_df_norm.rename(columns={'cluster index': 'row ID'}, inplace=True)
 
     
     #3) calculate the total number of features > min_specificity
