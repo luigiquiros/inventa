@@ -150,7 +150,9 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
         df['CC'] = df['CC'].fillna(1)
 
         #df = pd.merge(df2[[filename_header]], df,how= 'left', on=filename_header)
+        df.to_csv('../data_out/LC_results.tsv', sep='\t')
         return df
+        
     else:
         print ('No search was done because the Class component is not going to be calculated')
 
