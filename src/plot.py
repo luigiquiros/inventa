@@ -587,7 +587,8 @@ def hist_to_plot(sample, quantitative_data_filename, annotation_df, reduced_df, 
     df_check['status'] = np.where(( (df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'interesting', 'not interesting' )
     df_check['row m/z'].round(decimals = 4)
     #plot
-    
+  
+    df_check.to_csv('../data_out/sample.tsv', sep='\t')
     fig = px.histogram(df_check,
                             x='retention time (min)', y=sample,
                             nbins=1000,

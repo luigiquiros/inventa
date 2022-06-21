@@ -1,13 +1,13 @@
 	filename	ATTRIBUTE_Family	ATTRIBUTE_Genus	ATTRIBUTE_Species	initial_F	filtered_F	Total_SF	Total_SNAF	Total_SNA_GQMFF	MF_prediction_ratio	FS	FC	LC	Reported_comp_Species	Reported_comp_Genus	Reported_comp_Family	SC	CC	New_CC_in_sp	New_CC_in_genus	PR
 0	LQ-01-61-72_pos.mzXML	Celastraceae	Salacia	Salacia letestuana	478.0	120.0	101.0	93.0	84.0	0.7	0.84	0.78	0.7759199999999999	0.0	514.0	6064.0	1.0				
-1	LQ-01-61-07_pos.mzXML	Celastraceae	Celastrus	Celastrus paniculatus	827.0	207.0	161.0	151.0	132.0	0.64	0.78	0.73	0.69682	71.0	732.0	6064.0	1.0	1.0	{'Daucane sesquiterpenoids', 'Tetracyclic diterpenoids', 'Paraliane diterpenoids', 'Labdane diterpenoids', 'Trichothecane sesquiterpenoids'}	{'Trichothecane sesquiterpenoids', 'Daucane sesquiterpenoids', 'Tetracyclic diterpenoids', 'Paraliane diterpenoids'}	3.42682
+1	LQ-01-61-07_pos.mzXML	Celastraceae	Celastrus	Celastrus paniculatus	827.0	207.0	161.0	151.0	132.0	0.64	0.78	0.73	0.69682	71.0	732.0	6064.0	1.0	1.0	{'Paraliane diterpenoids', 'Daucane sesquiterpenoids', 'Tetracyclic diterpenoids', 'Trichothecane sesquiterpenoids', 'Labdane diterpenoids'}	{'Paraliane diterpenoids', 'Daucane sesquiterpenoids', 'Tetracyclic diterpenoids', 'Trichothecane sesquiterpenoids'}	3.42682
 2	LQ-01-61-55_pos.mzXML	Celastraceae	Maytenus	Maytenus undata	690.0	57.0	46.0	40.0	34.0	0.6	0.81	0.7	0.80412	14.0	338.0	6064.0	1.0				
 3	LQ-01-61-56_pos.mzXML	Celastraceae	Maytenus	Maytenus undata	709.0	132.0	111.0	89.0	72.0	0.55	0.84	0.67	0.80412	14.0	338.0	6064.0	1.0	1.0	{'Agarofuran sesquiterpenoids'}	{'Agarofuran sesquiterpenoids'}	3.47412
 4	LQ-01-61-19_pos.mzXML	Celastraceae	Euonymus	Euonymus bockii	768.0	105.0	66.0	66.0	54.0	0.51	0.63	0.63	0.7907200000000001	0.0	440.0	6064.0	1.0				
 5	LQ-01-61-31_pos.mzXML	Celastraceae	Euonymus	Euonymus frigidus	775.0	144.0	99.0	91.0	74.0	0.51	0.69	0.63	0.7907200000000001	0.0	440.0	6064.0	0.0				
 6	LQ-01-61-60_pos.mzXML	Celastraceae	Mystroxylon	Mystroxylon aethiopicum	476.0	76.0	53.0	48.0	38.0	0.5	0.7	0.63	0.87872	0.0	0.0	6064.0	1.0				
 7	LQ-01-61-78_pos.mzXML	Celastraceae	Pristimera	Pristimera indica	680.0	88.0	57.0	55.0	24.0	0.27	0.65	0.62	0.87612	2.0	8.0	6064.0	1.0	1.0	{'Agarofuran sesquiterpenoids'}	{'Agarofuran sesquiterpenoids'}	3.49612
-8	LQ-01-61-06_pos.mzXML	Celastraceae	Celastrus	Celastrus orbiculatus	640.0	160.0	96.0	91.0	67.0	0.42	0.6	0.57	0.62632	212.0	732.0	6064.0	0.0	1.0	{'Tetracyclic diterpenoids'}	{'Tetracyclic diterpenoids'}	2.19632
+8	LQ-01-61-06_pos.mzXML	Celastraceae	Celastrus	Celastrus orbiculatus	640.0	160.0	96.0	91.0	67.0	0.42	0.6	0.57	0.62632	212.0	732.0	6064.0	1.0	1.0	{'Tetracyclic diterpenoids'}	{'Tetracyclic diterpenoids'}	3.19632
 9	LQ-01-61-37_pos.mzXML	Celastraceae	Euonymus	Euonymus sanguineus	876.0	41.0	27.0	23.0	21.0	0.51	0.66	0.56	0.7902200000000001	1.0	440.0	6064.0	0.0				
 10	LQ-01-61-41_pos.mzXML	Celastraceae	Loeseneriella	Loeseneriella concinna	492.0	91.0	64.0	51.0	39.0	0.43	0.7	0.56	0.87872	0.0	0.0	6064.0	1.0				
 11	LQ-01-61-32_pos.mzXML	Celastraceae	Euonymus	Euonymus frigidus	828.0	178.0	113.0	98.0	77.0	0.43	0.63	0.55	0.7907200000000001	0.0	440.0	6064.0	0.0				
@@ -18,7 +18,7 @@
 16	LQ-01-61-23_pos.mzXML	Celastraceae	Euonymus	Euonymus cochinchinensis	712.0	44.0	30.0	21.0	19.0	0.43	0.68	0.48	0.7907200000000001	0.0	440.0	6064.0	1.0				
 17	LQ-01-61-67_pos.mzXML	Celastraceae	Salacia	Salacia chinensis	453.0	60.0	39.0	27.0	26.0	0.43	0.65	0.45	0.6194200000000001	313.0	514.0	6064.0	0.0	1.0	{'Straight chain fatty acids'}	{'Straight chain fatty acids'}	2.06942
 18	LQ-01-61-45_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buxifolia	788.0	150.0	81.0	67.0	54.0	0.36	0.54	0.45	0.8129200000000001	0.0	329.0	6064.0	0.0				
-19	LQ-01-61-04_pos.mzXML	Celastraceae	Catha	Catha edulis	715.0	108.0	49.0	47.0	29.0	0.27	0.45	0.44	0.7905200000000001	126.0	126.0	6064.0	1.0				
+19	LQ-01-61-04_pos.mzXML	Celastraceae	Catha	Catha edulis	715.0	108.0	49.0	47.0	29.0	0.27	0.45	0.44	0.7905200000000001	126.0	126.0	6064.0	0.0				
 20	LQ-01-61-63_pos.mzXML	Celastraceae	Pleurostylia	Pleurostylia pachyphloea	774.0	194.0	100.0	85.0	73.0	0.38	0.52	0.44	0.8687199999999999	0.0	50.0	6064.0	0.0				
 21	LQ-01-61-47_pos.mzXML	Celastraceae	Maytenus	Maytenus inermis	628.0	157.0	82.0	68.0	56.0	0.36	0.52	0.43	0.8111200000000001	0.0	338.0	6064.0	1.0				
 22	LQ-01-61-42_pos.mzXML	Celastraceae	Loeseneriella	Loeseneriella concinna	590.0	60.0	26.0	26.0	16.0	0.27	0.43	0.43	0.87872	0.0	0.0	6064.0	0.0				
