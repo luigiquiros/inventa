@@ -64,7 +64,7 @@ If you need to update the environment run:
 [make sure to run the following to keep the dependencies versions]
 
 ```
-
+conda env update --file environment.yml
 ```
 
 and also the submodules
