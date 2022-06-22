@@ -680,3 +680,106 @@ def distribution_to_plot(sample, quant_df, reduced_df):
         width=700,
         height=700)
     fig.show()
+    
+ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, reduced_df, min_specificity, annotation_preference, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore):
+        
+    dfq=pd.read_csv(quantitative_data_filename, sep=',', usecols=['row ID','row m/z', 'row retention time', sample+' Peak area'] ,index_col='row ID')
+    dfq.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
+    dfq.rename(columns ={'row retention time':'retention time (min)'}, inplace=True)
+    dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the data
+    df = dfq[['row m/z', 'retention time (min)']]
+    df.reset_index(inplace=True)
+    df= pd.merge(df, annotation_df[['cluster index', 'annotation']], how='left', right_on='cluster index', left_on='row ID').fillna(0)
+    df.drop('cluster index', axis=1, inplace=True)
+
+    #2) normalize the filtered table and combine information from specificity and annotation status for each feature
+        #normalize row-wise the area of features = relative % of each feature in each sample
+
+    reduced_df_norm = reduced_df.copy()#.transpose()
+    reduced_df_norm = reduced_df_norm.div(reduced_df_norm.sum(axis=1), axis=0).fillna(0)
+    reduced_df_norm.reset_index(inplace=True)
+    reduced_df_norm.rename(columns={'index': 'row ID'}, inplace=True)
+
+    #merge and check status by sample
+    df_check = pd.merge(df, reduced_df_norm[['row ID', sample]], how='left', on= 'row ID')
+
+    df_check['status'] = np.where(
+        ((df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'specific non annotated', 
+        (np.where (((df_check[sample] > min_specificity) & (df_check['annotation'] != annotation_preference)),'specific annotated', 'not interesting'))
+    )
+    df_check.annotation = df_check.annotation.map({1: 'annotated', 0: 'non anotated'})
+
+
+    #change intensity for the intensity before filtering
+    df_check[sample] = dfq[sample]
+    #erase all zero values (easy to plot)
+    df_check= df_check[df_check[sample] != 0]
+    df_check['retention time (min)'] = df_check['retention time (min)'].round(decimals=2)
+    df_check = df_check.sort_values(by='retention time (min)', ascending=True)
+    #df_check['retention time (min)'] = df_check['retention time (min)'].astype(str)
+    df_check['row m/z'] = df_check['row m/z'].round(decimals=4)
+
+    if sirius_annotations == True:
+
+        annot_sirius_df=pd.read_csv(sirius_annotations_filename,
+                                        sep='\t', 
+                                        usecols =['id','ConfidenceScore','ZodiacScore', 'molecularFormula', 'adduct', 'name'], 
+                                        low_memory=False)
+        annot_sirius_df['shared name'] = annot_sirius_df['id'].str.split('_').str[-1].astype(int)
+        annot_sirius_df.drop('id', axis=1, inplace=True)
+        annot_sirius_df.rename(columns={'shared name': 'row ID', 'adduct': 'adduct (sirius)', 'molecularFormula': 'MF (sirius)', 'name': 'Compound name (sirius)'}, inplace=True) 
+        annot_sirius_df.drop(annot_sirius_df[(annot_sirius_df.ConfidenceScore >= min_ConfidenceScore) & (annot_sirius_df.ZodiacScore >= min_ZodiacScore)].index, inplace=True) 
+        annot_sirius_df.drop('ConfidenceScore', axis=1, inplace=True)         
+        annot_sirius_df.drop('ZodiacScore', axis=1, inplace=True) 
+        annot_sirius_df['adduct (sirius)'] = annot_sirius_df['adduct (sirius)'].astype(str)
+
+        df_check = pd.merge(df_check, annot_sirius_df, how='left', on= 'row ID')
+        df_check.fillna({'MF (sirius)': 'not available', 'adduct (sirius)': 'not available', 'Compound name (sirius)': 'not available'}, inplace=True)
+        #df_check.drop('classProbability', axis=1, inplace=True)
+
+    else:
+        df_check
+
+    if CC_component == True:
+
+        canopus_npc_df=pd.read_csv(canopus_npc_summary_filename, sep=',', usecols=['name', 'pathway', 'superclass', 'class', 'classProbability'])
+        canopus_npc_df.rename(columns={'name': 'row ID'}, inplace=True)
+        #filter by class probability
+        canopus_npc_df.drop(canopus_npc_df[canopus_npc_df.classProbability > min_class_confidence].index, inplace=True)
+        df_check = pd.merge(df_check, canopus_npc_df, how='left', on= 'row ID')
+        df_check.fillna({'pathway': 'not available', 'superclass': 'not available','class': 'not available' }, inplace=True)
+        df_check.drop('classProbability', axis=1, inplace=True)
+    else:
+        df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
+        df_check
+    #plot 
+    fig = px.bar(df_check,
+                            x='retention time (min)', y=sample,
+                            #histnorm= 'probability density',
+                            #opacity=0.8, 
+                            #labels={'retention time (min)':'retention time range (min)'},
+                            title='Pseudo chromatogram for '+sample,
+                            template="simple_white",
+                            color ='status',
+                            color_discrete_map= {'specific non annotated': '#1E88E5', 'not interesting': '#FFC107', 'specific annotated':'#004D40'},
+                            hover_data=df_check.columns,
+                            facet_col_wrap=2
+                            )
+
+    fig.update_layout( # customize font and legend orientation & position
+        font_family="Times New Roman",
+        legend=dict(
+            title=None, orientation="h", y=1, yanchor="bottom", x=0.5, xanchor="center"
+        ))
+    fig.update_layout(
+    autosize=True,
+    #width=1400,
+    #height=500
+    barmode ='overlay',
+    bargap=0.15, # gap between bars of adjacent location coordinates.
+    bargroupgap=0.1
+    )
+    fig.update_xaxes(title_text='retention time (min)',showgrid=False, ticks="outside", tickson="boundaries")
+
+    fig.update_yaxes(title_text='relative intensity')
+    fig.show()
