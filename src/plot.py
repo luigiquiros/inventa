@@ -681,7 +681,7 @@ def distribution_to_plot(sample, quant_df, reduced_df):
         height=700)
     fig.show()
     
-def pseudochromatogram(sample, quantitative_data_filename, annotation_df, reduced_df, min_specificity, annotation_preference, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore):
+def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df, min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore):
         
         dfq=pd.read_csv(quantitative_data_filename, sep=',', usecols=['row ID','row m/z', 'row retention time', sample+' Peak area'] ,index_col='row ID')
         dfq.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
@@ -752,13 +752,19 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, reduce
         else:
             df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
             df_check
+
+        #recover species and organe for the particular sample 
+        species=metadata_df.loc[metadata_df[filename_header] == sample, species_column].item()
+        organism_part = metadata_df.loc[metadata_df[filename_header] == sample, organe_column].item()
+
         #plot 
         fig = px.bar(df_check,
                                 x='retention time (min)', y=sample,
                                 #histnorm= 'probability density',
                                 #opacity=0.8, 
                                 #labels={'retention time (min)':'retention time range (min)'},
-                                title='Pseudo chromatogram for '+sample,
+                                title='Pseudo chromatogram for '+sample+'<br>species: <i>'+species+'<i><br>organism part: '+organism_part+'</sup>',
+
                                 template="simple_white",
                                 color ='status',
                                 color_discrete_map= {'specific non annotated': '#1E88E5', 'not interesting': '#FFC107', 'specific annotated':'#004D40'},
@@ -775,7 +781,7 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, reduce
         autosize=True,
         #width=1400,
         #height=500
-        barmode ='overlay',
+        barmode ='group',
         bargap=0.15, # gap between bars of adjacent location coordinates.
         bargroupgap=0.1
         )

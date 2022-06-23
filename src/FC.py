@@ -83,6 +83,8 @@ def annotations(df2, df3,
 
         df3['ConfidenceScore'] = df3['ConfidenceScore'].fillna(0)
         df3['ZodiacScore'] = df3['ZodiacScore'].fillna(0)
+        df3.drop('shared name', axis=1, inplace = True)
+        df3.astype('int64')
 
         def Sirius_annotation(ConfidenceScore, ZodiacScore):
             if ConfidenceScore >= min_ConfidenceScore and ZodiacScore >= min_ZodiacScore:
