@@ -8,7 +8,7 @@ import plotly.express as px
 import zipfile
 import pathlib
 
-def quant_table(df, filter = True, min_threshold = 0.5):
+def quant_table(quantitative_data_filename, data_process_origin, use_ion_dentity):
     """ Cleans up the quantitative table to specific format
 
     Args:
@@ -17,16 +17,73 @@ def quant_table(df, filter = True, min_threshold = 0.5):
     Returns:
         None
     """
+    #read the file 
+
+    df = pd.read_csv(quantitative_data_filename, sep=',')#,  index_col='row ID')
     df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
     df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
-    df.drop('row m/z', axis=1, inplace=True)
-    df.drop('row retention time', axis=1, inplace=True)
-    
-    # vertical normalization by sample
 
+    if data_process_origin == 'MZMine3':
+
+        if use_ion_dentity == True:
+
+            df.drop(['row ion mobility', 'row m/z', 'row retention time',
+                'row ion mobility unit', 'row CCS', 'best ion',
+                'annotation network number', 'auto MS2 verify',
+                'identified by n=', 'partners', 'neutral M mass'], axis=1, inplace=True)
+
+            #complete correlation groups
+            df['correlation group ID'] = df['correlation group ID'].fillna(df['row ID'].apply(str) + 'x')
+            df.drop('row ID', axis =1, inplace=True)
+            df = df.groupby('correlation group ID', dropna=False).max()
+
+        else:
+            #prepare quant table acordingly 
+
+            df.drop('row m/z', axis=1, inplace=True)
+            df.drop('row retention time', axis=1, inplace=True)
+
+            df.drop(['row ion mobility', 'correlation group ID', 'best ion', 'row ion mobility unit', 'row CCS', 
+            'annotation network number', 'auto MS2 verify', 'identified by n=', 'partners', 'neutral M mass'], axis=1, inplace=True)
+            df.set_index('row ID', inplace=True)
+
+    else:
+        df 
+
+    if data_process_origin == 'MZMine2':  
+
+        df.drop('row m/z', axis=1, inplace=True)
+        df.drop('row retention time', axis=1, inplace=True)
+        df.set_index('row ID', inplace=True)
+
+    else:
+        df
     df = df.apply(lambda x: x/x.max(), axis=0)
-    
+
     return df
+
+def correlation_groups(quantitative_data_filename, use_ion_dentity):
+    #recover metadata information for each correlation group
+    if use_ion_dentity == True:
+        
+        df = pd.read_csv(quantitative_data_filename, sep=',')#,  index_col='row ID')
+        df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
+        df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+        df.drop(['row ion mobility', ''
+            'row ion mobility unit', 'row CCS', 
+            'annotation network number', 'auto MS2 verify',
+            'identified by n=', 'partners'], axis=1, inplace=True)
+        df.rename(columns={'best ion': 'adduct', 'neutral M mass':'neutral mass', 'row retention time':'average retention time (min)' }, inplace=True)
+        #complete correlation groups
+        df['correlation group ID'] = df['correlation group ID'].fillna(df['row ID'].apply(str) + 'x')
+        #df = df.reset_index()
+        #agg_func = {'row retention time': 'mean', 'row m/z': 'max',  'adduct': set, 'row ID': set}
+        #df = df.groupby('correlation group ID', as_index=False).agg(agg_func)  
+        df = df.iloc[:, :6]
+        return df 
+        
+    else: 
+        print('ion identity not used')
     
 def get_gnps_annotations(df):
     #retrive the clusterinfosummary file from the gnps jod downloaded before
