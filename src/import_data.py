@@ -29,13 +29,13 @@ def quant_table(quantitative_data_filename, data_process_origin, use_ion_dentity
 
             df.drop(['row ion mobility', 'row m/z', 'row retention time',
                 'row ion mobility unit', 'row CCS', 'best ion',
-                'annotation network number', 'auto MS2 verify',
+                'correlation group ID', 'auto MS2 verify',
                 'identified by n=', 'partners', 'neutral M mass'], axis=1, inplace=True)
 
             #complete correlation groups
-            df['correlation group ID'] = df['correlation group ID'].fillna(df['row ID'].apply(str) + 'x')
+            df['annotation network number'] = df['annotation network number'].fillna(df['row ID'].apply(str) + 'x')
             df.drop('row ID', axis =1, inplace=True)
-            df = df.groupby('correlation group ID', dropna=False).max()
+            df = df.groupby('annotation network number', dropna=False).max()
 
         else:
             #prepare quant table acordingly 
@@ -71,17 +71,17 @@ def correlation_groups(quantitative_data_filename, use_ion_dentity):
         df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
         df.drop(['row ion mobility', ''
             'row ion mobility unit', 'row CCS', 
-            'annotation network number', 'auto MS2 verify',
+            'correlation group ID', 'auto MS2 verify',
             'identified by n=', 'partners'], axis=1, inplace=True)
-        df.rename(columns={'best ion': 'adduct', 'neutral M mass':'neutral mass', 'row retention time':'average retention time (min)' }, inplace=True)
+        df.rename(columns={'best ion': 'adduct', 'neutral M mass':'neutral mass', 'row retention time':'retention time (min)' }, inplace=True)
         #complete correlation groups
-        df['correlation group ID'] = df['correlation group ID'].fillna(df['row ID'].apply(str) + 'x')
+        df['annotation network number'] = df['annotation network number'].fillna(df['row ID'].apply(str) + 'x')
         #df = df.reset_index()
         #agg_func = {'row retention time': 'mean', 'row m/z': 'max',  'adduct': set, 'row ID': set}
         #df = df.groupby('correlation group ID', as_index=False).agg(agg_func)  
         df = df.iloc[:, :6]
         return df 
-        
+
     else: 
         print('ion identity not used')
     

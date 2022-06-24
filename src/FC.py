@@ -8,10 +8,9 @@ import plotly.express as px
 import zipfile
 import pathlib
 
-
 def annotations(df2, df3,
                 sirius_annotations, isbd_annotations,
-                min_score_final, min_ConfidenceScore, min_ZodiacScore):
+                min_score_final, min_ConfidenceScore, min_ZodiacScore,  correlation_groups_df, use_ion_dentity):
 
     """ 
         function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
@@ -134,12 +133,21 @@ def annotations(df2, df3,
                 else: 
                     return 0
     df['annotation'] = df.apply(annotations_gnps, axis=1)  
-    df.to_csv('../data_out/annotations_df.tsv', sep='\t')
+    df.rename(columns={'cluster index': 'row ID'}, inplace=True)
+    
+    if use_ion_dentity == True: 
+        df = pd.merge(correlation_groups_df[['row ID', 'annotation network number']], df[['row ID', 'annotation']], how ='left', on='row ID')
+        df.drop('row ID', axis = 1, inplace=True)
+        df = df.groupby('annotation network number', as_index=False).agg(max)
+        df.reset_index(inplace=True)
+        df.rename(columns={'index': filename_header}, inplace=True)
+    else: 
+        df
+    #df.to_csv('../data_out/annotations_df.tsv', sep='\t')
     return df 
 
 
-
-def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_column, genus_column, species_column, col_id_unique, min_specificity, annotation_preference, filename_header, annot_sirius_df, sirius_annotations, annot_gnps_df, min_ZodiacScore, multiple_organism_parts, max_parts_per_organism):
+def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_column, genus_column, species_column, col_id_unique, min_specificity, annotation_preference, filename_header, annot_sirius_df, sirius_annotations, annot_gnps_df, min_ZodiacScore, multiple_organism_parts, max_parts_per_organism, use_ion_dentity):
       
     #1) Feature count by sample before and after filtering
     
@@ -155,6 +163,10 @@ def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_c
     #get the number of features > min_specificity for each sample
     filtered_features_count = feature_count(reduced_df,  header ='filtered_F', filename_header = filename_header)
 
+    if use_ion_dentity == True: 
+        row_ID_header = 'annotation network number'
+    else: 
+        row_ID_header = 'row ID'
 
     #2) normalize the filtered table and combine information from specificity and annotation status for each feature
     #normalize row-wise the area of features = relative % of each feature in each sample
@@ -162,9 +174,10 @@ def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_c
     filtered_quant_df_norm = reduced_df.copy()#.transpose()
     filtered_quant_df_norm = filtered_quant_df_norm.div(filtered_quant_df_norm.sum(axis=1), axis=0).fillna(0)
     filtered_quant_df_norm.reset_index(inplace=True)
-    filtered_quant_df_norm.rename(columns={'index': 'row ID'}, inplace=True)
-    filtered_quant_df_norm.set_index('row ID', inplace=True)
+    filtered_quant_df_norm.rename(columns={'index': row_ID_header}, inplace=True)
+    filtered_quant_df_norm.set_index(row_ID_header, inplace=True)
     filtered_quant_df_norm = filtered_quant_df_norm.astype(float)
+
     #filtered_quant_df_norm.head(2)
     
     if multiple_organism_parts == True:
@@ -176,13 +189,12 @@ def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_c
         filtered_quant_df_norm.drop('nlargestsum', axis=1, inplace=True)
 
         #add the row ID and annotation status of each ion
-
-        filtered_quant_df_norm = pd.merge(annotation_df[['cluster index', 'annotation']], filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row ID').fillna(0)
-        filtered_quant_df_norm.rename(columns={'cluster index': 'row ID'}, inplace=True)
-        
+        filtered_quant_df_norm = pd.merge(annotation_df[[row_ID_header, 'annotation']], filtered_quant_df_norm, how='left', left_on=row_ID_header, right_on=row_ID_header).fillna(0)
+        #filtered_quant_df_norm.rename(columns={'cluster index': row_ID_header}, inplace=True)
     else:
-        filtered_quant_df_norm = pd.merge(annotation_df[['cluster index', 'annotation']], filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row ID').fillna(0)
-        filtered_quant_df_norm.rename(columns={'cluster index': 'row ID'}, inplace=True)
+        #add the row ID and annotation status of each ion
+        filtered_quant_df_norm = pd.merge(annotation_df[[row_ID_header, 'annotation']], filtered_quant_df_norm, how='left', left_on=row_ID_header, right_on=row_ID_header).fillna(0)
+        filtered_quant_df_norm.rename(columns={'row ID': row_ID_header}, inplace=True)
 
     
     #3) calculate the total number of features > min_specificity
@@ -228,14 +240,14 @@ def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_c
     df['FC'] = df['FC'].round(decimals = 2)
     df = df.sort_values(by=['FC'], ascending=False)
 
-    if sirius_annotations == True: 
+    if sirius_annotations == True and use_ion_dentity == False: 
         df1 = annotation_df.copy() #pd.read_csv('../data_out/annot_gnps_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df2 = annot_sirius_df.copy()
         df2['shared name'] = df2['id'].str.split('_').str[-1].astype(int)
-        df5 = pd.merge(left=df1[['cluster index']],right=df2[['shared name','ZodiacScore']], how='left', left_on= 'cluster index', right_on='shared name')
-        df5 = pd.merge( df5, filtered_quant_df_norm, how='left', left_on='cluster index', right_on='row ID')
+        df5 = pd.merge(left=df1[[row_ID_header]],right=df2[['shared name','ZodiacScore']], how='left', left_on= row_ID_header, right_on='shared name')
+        df5 = pd.merge( df5, filtered_quant_df_norm, how='left', left_on=row_ID_header, right_on=row_ID_header)
         df5.drop('shared name', axis=1, inplace=True)
-        df5.drop('cluster index', axis=1, inplace=True)
+        df5.drop(row_ID_header, axis=1, inplace=True)
         df5['ZodiacScore'] = df5['ZodiacScore'].fillna(0)
 
         #to get the number of features with area > min_specificity and annotation == annotation preference: 
