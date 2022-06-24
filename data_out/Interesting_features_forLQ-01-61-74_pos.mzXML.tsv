@@ -1,0 +1,1389 @@
+	annotation network number	LQ-01-61-74_pos.mzXML	retention time (min)	row m/z	row ID	adduct (ion identity)	neutral mass (ion identity)	annotation	status
+9424	526x	0.00034700724745360836	0.25	160.0745	{526}	{nan}	0.0	non anotated	not interesting
+2	2.0	0.0003393970533469085	0.32	200.0931	{802, 1475, 1476}	{'[M+ACN+H]+', '[M+NH4]+'}	158.0595	non anotated	not interesting
+3	3.0	0.00022047987809232977	0.32	148.0869	{328, 329, 354}	{'[2M+HFA+2H]2+', '[M+Na]+'}	124.0771	non anotated	not interesting
+7719	306x	0.00014122651402473157	0.32	146.0714	{306}	{nan}	0.0	non anotated	not interesting
+11375	768x	0.0005193190349326575	0.32	175.0979	{768}	{nan}	0.0	non anotated	not interesting
+4	4.0	0.0003193553297604656	0.33	156.0769	{390, 479}	{'[M+NH4]+', '[2M+HFA+2H]2+'}	132.0679	non anotated	not interesting
+6	7.0	0.0002659767940765479	0.34	188.0931	{593, 227, 588, 1101}	{'[M+ACN+H]+', '[2M-H2O+2H]2+', '[M+NH4]+'}	146.0627	non anotated	not interesting
+3152	1116x	0.00013949929069909112	0.35	189.1134	{1116}	{nan}	0.0	non anotated	not interesting
+9	10.0	0.0007676356152407933	0.37	305.0208	{385, 5668}	{'[2M+ACN+H]+', '[M+NH4]+'}	131.4929	non anotated	not interesting
+11	14.0	0.0005873346292115123	0.37	221.9731	{2304, 386}	{'[M+K]+', '[2M-H2O+NH4]+'}	110.9775	non anotated	not interesting
+10	13.0	0.0007030994245285539	0.37	180.9469	{64, 915, 239}	{'[M+HFA+Na]+', '[2M+K]+', '[M+HFA+H]+'}	70.9928	non anotated	not interesting
+14	18.0	0.0003472609888519999	0.38	260.9557	{3496, 2977}	{'[M+K]+', '[M+Na]+'}	221.9921	non anotated	not interesting
+7705	3045x	0.0001015824444467751	0.38	247.0051	{3045}	{nan}	0.0	non anotated	not interesting
+8800	449x	0.00020802725772248052	0.38	153.9934	{449}	{nan}	0.0	non anotated	not interesting
+6903	2051x	0.00016024754953472109	0.38	215.9578	{2051}	{nan}	0.0	non anotated	not interesting
+6820	1965x	0.00034636613798284956	0.38	213.9627	{1965}	{nan}	0.0	non anotated	not interesting
+10413	646x	0.0002709626460479147	0.38	166.5002	{646}	{nan}	0.0	non anotated	not interesting
+19	24.0	0.00036555970922270026	0.38	322.9864	{6766, 503}	{'[2M+ACN+H]+', '[M+NH4]+'}	140.4776	non anotated	not interesting
+2375	1016x	0.00027663079405583745	0.38	184.4948	{1016}	{nan}	0.0	non anotated	not interesting
+8782	447x	0.00030653216426961325	0.38	153.9595	{447}	{nan}	0.0	non anotated	not interesting
+17	22.0	8.821257131406474e-05	0.38	141.0081	{245}	{'[M+Na]+'}	118.0185	non anotated	not interesting
+16	21.0	0.00026253055794419217	0.38	147.984	{347, 220}	{'[2M+H]+', '[M+ACN+Na]+'}	73.4878	non anotated	not interesting
+15	19.0	9.890708800329503e-05	0.38	189.0345	{150, 1111}	{'[2M-CO2+NH4]+', '[M+Na]+'}	107.4968	non anotated	not interesting
+13	16.0	0.0006975981854612989	0.38	136.5	{202}	{'[M+NH4]+'}	118.4668	non anotated	not interesting
+2639	1049x	0.00010803610179547656	0.39	185.9724	{1049}	{nan}	0.0	non anotated	not interesting
+10670	677x	8.110744852306505e-05	0.39	168.4969	{677}	{nan}	0.0	non anotated	not interesting
+7198	241x	0.0010959902096279363	0.39	140.0102	{241}	{nan}	0.0	non anotated	not interesting
+10402	645x	0.0006213405890320195	0.4	166.4892	{645}	{nan}	0.0	non anotated	not interesting
+7549	2851x	0.0003956196438870474	0.4	239.9576	{2851}	{nan}	0.0	non anotated	not interesting
+6996	2160x	0.0027159640624299223	0.4	219.0101	{2160}	{nan}	0.0	non anotated	not interesting
+3435	1153x	0.00026792603634109635	0.43	190.4984	{1153}	{nan}	0.0	non anotated	not interesting
+8791	448x	0.00010236172604196351	0.49	153.9931	{448}	{nan}	0.0	non anotated	not interesting
+8283	383x	4.786773490278147e-05	0.51	149.5259	{383}	{nan}	0.0	non anotated	not interesting
+10658	6768x	7.80834971780581e-05	0.54	322.9868	{6768}	{nan}	0.0	non anotated	not interesting
+8004	346x	0.00012035134238468058	0.59	147.5066	{346}	{nan}	0.0	non anotated	not interesting
+7051	223x	0.0005709086918440409	0.61	138.0585	{223}	{nan}	0.0	non anotated	not interesting
+7703	3043x	7.061025223038152e-05	0.66	247.005	{3043}	{nan}	0.0	non anotated	not interesting
+9765	5666x	0.0002601232682450605	0.76	305.0206	{5666}	{nan}	0.0	non anotated	not interesting
+26	33.0	0.0002245097500629681	0.82	235.058	{2681, 1934}	{'[M+Na]+', '[M+H]+'}	212.0687	non anotated	not interesting
+7999	345x	0.00010533318174044396	0.83	147.5066	{345}	{nan}	0.0	non anotated	not interesting
+9071	4823x	0.00014179320442372196	1.05	291.0863	{4823}	{nan}	0.0	annotated	not interesting
+48	73.0	0.00029461898839026516	1.14	423.199	{1509, 618, 10190, 2807, 2329, 986, 2140}	{'[M+NH4]+', '[2M+Na]+', '[M+Na]+', '[2M+2H]2+', '[M+K]+', '[2M-2H2O+2H]2+', '[M-2H2O+H]+'}	200.1049	non anotated	not interesting
+5727	148x	0.0003554013642996443	1.16	130.1591	{148}	{nan}	0.0	non anotated	not interesting
+10676	678x	0.00019269123324953323	1.18	169.0496	{678}	{nan}	0.0	non anotated	not interesting
+2456	1026x	0.00010413005746457223	1.2	185.0807	{1026}	{nan}	0.0	annotated	not interesting
+61	93.0	0.00011400726579858514	1.22	219.0628	{2161, 1382}	{'[2M+2H]2+', '[M+Na]+'}	196.0736	non anotated	not interesting
+9070	4822x	0.00043288401225778514	1.29	291.0863	{4822}	{nan}	0.0	annotated	not interesting
+8523	413x	0.0005442312804507397	1.44	153.0547	{413}	{nan}	0.0	annotated	not interesting
+100	163.0	0.0006067519897236057	1.49	205.0837	{617, 1618, 988}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	182.0943	non anotated	not interesting
+3886	12178x	0.0001732355646379513	1.5	471.1494	{12178}	{nan}	0.0	non anotated	not interesting
+7262	2500x	0.00030750112033521646	1.51	228.1594	{2500}	{nan}	0.0	non anotated	not interesting
+112	180.0	0.00026737817080554373	1.55	183.0653	{977, 455}	{'[2M+H]+', '[M+HFA+NH4]+'}	91.0301	annotated	not interesting
+115	184.0	0.00013198545057264486	1.57	194.1152	{1293, 727}	{'[M+Na]+', '[M+H]+'}	171.1259	non anotated	not interesting
+11726	814x	7.294205491612232e-05	1.61	177.0545	{814}	{nan}	0.0	non anotated	not interesting
+153	246.0	4.2309083447014257e-05	1.72	302.1963	{3706, 5491}	{'[M+NH4]+', '[M-H2O+H]+'}	284.1621	annotated	not interesting
+160	260.0	0.0001237891230222551	1.75	469.1102	{12073, 11247}	{'[M+Na]+', '[M+H]+'}	446.121	non anotated	not interesting
+12251	881x	0.0004747823477491711	1.84	179.0702	{881}	{nan}	0.0	annotated	not interesting
+6682	1791x	0.000218447726811502	1.87	209.0809	{1791}	{nan}	0.0	annotated	not interesting
+189	312.0	0.00021111232671582232	1.9	307.1517	{3704, 5492, 5797}	{'[M+NH4]+', '[M-H2O+H]+', '[M+Na]+'}	284.1618	non anotated	not interesting
+201	336.0	0.0004963549599097535	1.95	415.1637	{711, 431, 9937, 1874, 1687, 1115}	{'[M+NH4]+', '[2M+K]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	188.1041	annotated	not interesting
+5978	15323x	0.0002221433215710748	2.0	651.1921	{15323}	{nan}	0.0	non anotated	not interesting
+10480	6549x	0.00010380956588703071	2.01	318.2429	{6549}	{nan}	0.0	non anotated	not interesting
+8223	3767x	0.00015404120105431618	2.02	269.136	{3767}	{nan}	0.0	non anotated	not interesting
+220	366.0	6.628009919032519e-05	2.07	443.1682	{11066, 3110}	{'[2M+K]+', '[M+HFA+H]+'}	202.1006	non anotated	not interesting
+7004	2171x	7.757548997983317e-05	2.11	219.1015	{2171}	{nan}	0.0	non anotated	not interesting
+236	395.0	0.00014584859598861397	2.16	195.0996	{743, 1308, 1150, 463}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	172.11	non anotated	not interesting
+7887	32x	6.893162216243574e-05	2.16	109.1012	{32}	{nan}	0.0	non anotated	not interesting
+7811	3199x	0.00011951617567233247	2.19	251.1625	{3199}	{nan}	0.0	non anotated	not interesting
+11919	8396x	0.0007258953465927711	2.39	361.1647	{8396}	{nan}	0.0	annotated	not interesting
+8054	3544x	0.00017717889314582095	2.4	261.5993	{3544}	{nan}	0.0	non anotated	not interesting
+8613	4264x	9.189901775651345e-05	2.4	280.093	{4264}	{nan}	0.0	non anotated	not interesting
+12452	9085x	6.875927590608819e-05	2.41	387.1442	{9085}	{nan}	0.0	non anotated	not interesting
+11171	7429x	6.115603873092517e-05	2.43	335.2219	{7429}	{nan}	0.0	non anotated	not interesting
+3085	11069x	0.00016561941072800362	2.46	443.17	{11069}	{nan}	0.0	non anotated	not interesting
+8709	4392x	0.00011571957047736738	2.5	283.133	{4392}	{nan}	0.0	non anotated	not interesting
+8304	3861x	0.00021501881123771799	2.52	271.0597	{3861}	{nan}	0.0	annotated	not interesting
+6684	1793x	7.497896217353029e-05	2.54	209.0809	{1793}	{nan}	0.0	non anotated	not interesting
+8130	3649x	5.2878739004617874e-05	2.58	265.1222	{3649}	{nan}	0.0	non anotated	not interesting
+8948	467x	0.00029016555699227706	2.58	155.1068	{467}	{nan}	0.0	non anotated	not interesting
+10478	6547x	0.00018902388726836034	2.59	318.2428	{6547}	{nan}	0.0	non anotated	not interesting
+9525	5393x	0.00022647533681041183	2.62	301.0708	{5393}	{nan}	0.0	annotated	not interesting
+354	589.0	0.00017679106382984975	2.69	279.122	{4217, 1950}	{'[M-CO2+H]+', '[M+Na]+'}	256.1311	non anotated	not interesting
+7814	3200x	0.00015183284706128206	2.7	251.1626	{3200}	{nan}	0.0	non anotated	not interesting
+8645	4301x	7.259334135441515e-05	2.74	281.1173	{4301}	{nan}	0.0	non anotated	not interesting
+11113	7341x	0.0002409492950736932	2.82	333.2052	{7341}	{nan}	0.0	non anotated	not interesting
+390	645.0	0.00027188639641258255	2.84	355.245	{6308, 5190, 8184, 7993, 7354}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	332.2556	non anotated	not interesting
+11405	7722x	7.63774585223437e-05	2.88	343.1538	{7722}	{nan}	0.0	non anotated	not interesting
+402	666.0	7.729876295619887e-05	2.89	331.1882	{5923, 7205}	{'[2M+2H]2+', '[M+Na]+'}	308.1986	non anotated	not interesting
+405	671.0	0.0001069703917499798	2.9	203.1039	{946, 1549, 566, 1426}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	180.1147	non anotated	not interesting
+404	668.0	0.0002989293002998559	2.9	353.2301	{6184, 7240, 5066, 8119, 7928, 8122, 7165}	{'[M+NH4]+', '[M+H]+', '[M+Na]+', '[M-H2O+H]+', '[M-H2O+NH4]+', '[M-2H2O+H]+'}	330.2404	annotated	not interesting
+11543	7894x	0.00012717521566807857	2.91	347.183	{7894}	{nan}	0.0	non anotated	not interesting
+6579	1674x	8.209627059949421e-05	2.93	205.6143	{1674}	{nan}	0.0	non anotated	not interesting
+411	680.0	0.00015676152396449717	2.93	195.1378	{731, 1317}	{'[M-H2O+NH4]+', '[M+Na]+'}	172.1475	non anotated	not interesting
+414	686.0	3.9156318820828064e-05	2.94	213.1483	{1952}	{'[M+Na]+'}	190.158	non anotated	not interesting
+3080	11063x	0.00018690078870097678	2.98	443.1492	{11063}	{nan}	0.0	non anotated	not interesting
+443	740.0	9.395846853429896e-05	2.99	331.1889	{7214}	{'[2M+Na]+'}	154.0995	non anotated	not interesting
+442	739.0	6.744426464959067e-05	3.04	155.1065	{459}	{'[M+2H]2+'}	308.1991	non anotated	not interesting
+452	757.0	0.00013397863538137085	3.04	527.3337	{13784, 13900, 12813, 12113, 13400}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	504.3447	annotated	not interesting
+10163	6159x	0.00015255655167300468	3.05	313.1793	{6159}	{nan}	0.0	non anotated	not interesting
+8708	4391x	0.0004305990956542422	3.07	283.1327	{4391}	{nan}	0.0	non anotated	not interesting
+8129	3648x	0.0001678261073062617	3.07	265.1221	{3648}	{nan}	0.0	non anotated	not interesting
+468	791.0	0.00011846541298180205	3.08	854.2461	{15849, 15889}	{'[M+Na]+', '[M+H]+'}	831.2572	non anotated	not interesting
+3081	11064x	0.0002605309233805063	3.08	443.1492	{11064}	{nan}	0.0	non anotated	not interesting
+469	792.0	6.993418585328977e-05	3.09	351.2147	{7874, 4958, 8042}	{'[M+Na]+', '[M+NH4]+', '[M-2H2O+H]+'}	328.2251	annotated	not interesting
+8018	3493x	0.0003912827099918507	3.12	260.5914	{3493}	{nan}	0.0	non anotated	not interesting
+11870	8326x	0.0018494533591570295	3.12	359.149	{8326}	{nan}	0.0	non anotated	specific non annotated
+7802	3184x	0.000134859304445105	3.13	251.0914	{3184}	{nan}	0.0	non anotated	not interesting
+9093	4856x	7.62214624905131e-05	3.13	291.1953	{4856}	{nan}	0.0	non anotated	not interesting
+482	810.0	0.0001473816089627551	3.14	353.1728	{8106, 7212}	{'[M+Na]+', '[M+H]+'}	330.1826	non anotated	not interesting
+3747	11985x	0.0006884153420524998	3.15	466.2952	{11985}	{nan}	0.0	non anotated	not interesting
+4576	1322x	6.868638793342003e-05	3.15	195.1379	{1322}	{nan}	0.0	non anotated	not interesting
+11408	7726x	0.00019275222840994008	3.17	343.1541	{7726}	{nan}	0.0	non anotated	not interesting
+8883	4597x	0.00016915787644241167	3.18	287.1278	{4597}	{nan}	0.0	non anotated	not interesting
+6228	15720x	7.871320761601542e-05	3.18	764.2758	{15720}	{nan}	0.0	non anotated	not interesting
+489	819.0	0.00031127260019394616	3.18	375.2142	{6449, 8787, 7427}	{'[M+Na]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	352.2246	non anotated	not interesting
+492	822.0	9.108897063877907e-05	3.18	299.2007	{5299, 3878}	{'[M-CO2+K]+', '[M+Na]+'}	276.2132	annotated	not interesting
+9342	5164x	8.505715214481347e-05	3.2	297.1849	{5164}	{nan}	0.0	non anotated	not interesting
+504	846.0	0.00017028082280002408	3.2	351.2149	{8038}	{'[M+ACN+K]+'}	271.2254	non anotated	not interesting
+9184	4965x	0.0001452586060890653	3.21	293.2112	{4965}	{nan}	0.0	annotated	not interesting
+4347	12875x	9.442074371627285e-05	3.21	489.3209	{12875}	{nan}	0.0	non anotated	not interesting
+9811	5729x	0.0002087321757482429	3.21	305.2476	{5729}	{nan}	0.0	annotated	not interesting
+10083	6065x	0.00040980782250326416	3.21	311.2218	{6065}	{nan}	0.0	annotated	not interesting
+8911	4631x	0.0004960991323888378	3.22	287.237	{4631}	{nan}	0.0	annotated	not interesting
+13138	9921x	0.0004873391594127934	3.22	414.1471	{9921}	{nan}	0.0	non anotated	not interesting
+7900	3314x	0.00042635475497713413	3.24	255.1015	{3314}	{nan}	0.0	annotated	not interesting
+10260	6284x	0.00015369262720540193	3.24	315.1956	{6284}	{nan}	0.0	annotated	not interesting
+10793	6932x	5.77617470494198e-05	3.24	325.6777	{6932}	{nan}	0.0	non anotated	not interesting
+523	872.0	0.0007258520356269724	3.26	319.2272	{3849, 5194, 6620, 4246}	{'[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-CO2+NH4]+'}	296.236	annotated	not interesting
+11232	7506x	0.0002177786173659471	3.26	337.2355	{7506}	{nan}	0.0	non anotated	not interesting
+521	869.0	6.198729922669372e-05	3.26	317.2112	{6455}	{'[2M+HFA+K]+'}	116.1219	non anotated	not interesting
+4355	12887x	9.686420754552214e-05	3.26	489.357	{12887}	{nan}	0.0	non anotated	not interesting
+530	884.0	6.700418849069676e-05	3.27	331.1887	{3994, 7211}	{'[M+Na]+', '[M-2H2O+H]+'}	308.1991	non anotated	not interesting
+10907	7078x	0.0006283478745905121	3.27	329.1735	{7078}	{nan}	0.0	non anotated	not interesting
+529	883.0	0.00010708970264736801	3.27	309.2061	{5931}	{'[2M+H]+'}	154.1006	annotated	not interesting
+11545	7897x	0.00015278147013083373	3.28	347.1835	{7897}	{nan}	0.0	non anotated	not interesting
+4484	13103x	0.00015537279794181733	3.28	496.2329	{13103}	{nan}	0.0	non anotated	not interesting
+10837	6988x	9.61917717871719e-05	3.29	327.1591	{6988}	{nan}	0.0	non anotated	not interesting
+8710	4393x	4.140174646470124e-05	3.3	283.1332	{4393}	{nan}	0.0	non anotated	not interesting
+10925	7097x	0.00014972628627805523	3.31	329.2113	{7097}	{nan}	0.0	non anotated	not interesting
+546	912.0	0.0007462722469110011	3.32	337.2353	{7504, 5193, 4244, 6239}	{'[M-H2O+NH4]+', '[M+Na]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	314.2458	annotated	not interesting
+2778	10677x	4.1018682694679616e-05	3.33	435.1524	{10677}	{nan}	0.0	non anotated	not interesting
+553	923.0	0.00017639973595243445	3.33	291.1954	{4858}	{'[2M-2H2O+2H]2+'}	308.1989	non anotated	not interesting
+564	948.0	0.008921383357068356	3.36	659.4272	{7463, 7660, 5425, 15377, 6612, 8951}	{'[M+NH4]+', '[2M+Na]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M+ACN+Na]+'}	318.2194	annotated	not interesting
+566	953.0	0.0002814713638613278	3.36	828.2678	{15842, 15796}	{'[M+Na]+', '[M+H]+'}	805.2789	non anotated	not interesting
+7994	3444x	0.0003375511602716281	3.37	259.1237	{3444}	{nan}	0.0	non anotated	not interesting
+8644	4300x	0.000697071984978015	3.37	281.117	{4300}	{nan}	0.0	non anotated	not interesting
+12651	9324x	0.0008324454133622505	3.37	397.2402	{9324}	{nan}	0.0	non anotated	not interesting
+7569	2872x	0.0002953285379908058	3.37	241.1316	{2872}	{nan}	0.0	non anotated	not interesting
+6226	15718x	0.00014675260474425776	3.37	764.2761	{15718}	{nan}	0.0	non anotated	not interesting
+568	957.0	8.099651082388141e-05	3.37	261.1456	{3511, 2826, 2271}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	238.1566	non anotated	not interesting
+7779	3162x	0.00016764315053314932	3.37	249.6352	{3162}	{nan}	0.0	non anotated	not interesting
+11981	8484x	0.0006699144209068705	3.37	364.2843	{8484}	{nan}	0.0	non anotated	not interesting
+7362	2619x	0.0002735685001616121	3.37	232.6412	{2619}	{nan}	0.0	non anotated	not interesting
+8815	4516x	0.000378426759841514	3.38	285.2211	{4516}	{nan}	0.0	annotated	not interesting
+9685	5576x	0.0020403329002574343	3.38	303.232	{5576}	{nan}	0.0	annotated	not interesting
+7554	2856x	0.0010753471660086026	3.38	240.63	{2856}	{nan}	0.0	non anotated	not interesting
+6190	15660x	0.00042432985727829385	3.39	739.347	{15660}	{nan}	0.0	non anotated	not interesting
+4612	13286x	4.06450217870075e-05	3.39	501.3207	{13286}	{nan}	0.0	non anotated	not interesting
+581	974.0	0.00021375658079495437	3.4	349.1988	{7009, 5925, 4861, 7217, 7954, 7797, 7957, 7802, 7803, 7005, 4863}	{'[M+NH4]+', '[M+H]+', '[M+Na]+', '[M-H2O+H]+', '[M-H2O+Na]+', '[M-2H2O+H]+'}	326.2096	non anotated	not interesting
+2775	10674x	0.001374005270380324	3.41	435.1523	{10674}	{nan}	0.0	non anotated	not interesting
+10856	7014x	0.0002332650263925225	3.41	327.2426	{7014}	{nan}	0.0	non anotated	not interesting
+584	979.0	0.00018438433163599617	3.41	830.249	{15712, 15846}	{'[M+HFA+Na]+', '[M+H]+'}	761.2537	annotated	not interesting
+11406	7723x	0.00013581426243718404	3.41	343.1539	{7723}	{nan}	0.0	non anotated	not interesting
+8413	4002x	0.0002572603234536898	3.42	273.2211	{4002}	{nan}	0.0	annotated	not interesting
+7911	3329x	0.00012886685050900724	3.42	255.2104	{3329}	{nan}	0.0	non anotated	not interesting
+7506	2803x	0.0002824047601503273	3.42	238.6105	{2803}	{nan}	0.0	non anotated	not interesting
+6790	1927x	0.00023680889688675445	3.42	212.128	{1927}	{nan}	0.0	non anotated	not interesting
+6375	15919x	0.0004187952785281306	3.42	874.2754	{15919}	{nan}	0.0	non anotated	not interesting
+7286	2527x	0.0008419327349658762	3.42	229.1222	{2527}	{nan}	0.0	non anotated	not interesting
+13134	9918x	0.0004171154522890127	3.43	414.1465	{9918}	{nan}	0.0	non anotated	not interesting
+593	995.0	0.0021195161782637177	3.43	335.2201	{6456, 6188, 7421, 7167}	{'[2M+2H]2+', '[M+NH4]+', '[M-H2O+Na]+', '[M+Na]+'}	312.231	non anotated	not interesting
+7040	2227x	0.0003635541607887396	3.43	220.1169	{2227}	{nan}	0.0	non anotated	not interesting
+8735	4423x	0.0003476538114649119	3.43	283.2059	{4423}	{nan}	0.0	annotated	not interesting
+9262	5067x	0.0004281542557496765	3.43	295.2268	{5067}	{nan}	0.0	annotated	not interesting
+10530	6614x	0.010072120120287558	3.43	319.2269	{6614}	{nan}	0.0	annotated	not interesting
+8531	4155x	6.228435350475791e-05	3.44	277.2162	{4155}	{nan}	0.0	annotated	not interesting
+11651	8030x	2.964232929862346e-05	3.45	351.1846	{8030}	{nan}	0.0	non anotated	not interesting
+13082	9855x	0.00022864555495260606	3.45	413.1391	{9855}	{nan}	0.0	non anotated	not interesting
+8914	4635x	6.583134744115442e-05	3.46	287.2371	{4635}	{nan}	0.0	annotated	not interesting
+606	1017.0	0.000484497209817835	3.47	359.2196	{8336, 5422}	{'[M+Na]+', '[M-2H2O+H]+'}	336.2303	annotated	not interesting
+4607	13280x	0.000109612693677759	3.47	501.3201	{13280}	{nan}	0.0	non anotated	not interesting
+7615	2926x	0.00020353769238572615	3.47	243.1218	{2926}	{nan}	0.0	non anotated	not interesting
+9453	5306x	0.00012385224258266357	3.47	299.2008	{5306}	{nan}	0.0	non anotated	not interesting
+609	1020.0	8.372321650343665e-05	3.47	583.3668	{14751, 5937, 7279}	{'[M-H2O+NH4]+', '[2M-2H2O+H]+', '[M+Na]+'}	309.1867	non anotated	not interesting
+613	1028.0	0.00043421746560294534	3.48	329.1729	{4730, 6851, 7077, 5815}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	306.1834	non anotated	not interesting
+7257	2497x	0.0003512745546172204	3.48	228.1148	{2497}	{nan}	0.0	non anotated	not interesting
+3366	11439x	6.749248470187966e-05	3.48	453.2633	{11439}	{nan}	0.0	non anotated	not interesting
+11554	7905x	0.001780005096311317	3.48	347.2219	{7905}	{nan}	0.0	non anotated	specific non annotated
+12093	8623x	0.0002458757595387084	3.48	369.2037	{8623}	{nan}	0.0	non anotated	not interesting
+3981	12320x	3.912566430296687e-05	3.48	474.1576	{12320}	{nan}	0.0	non anotated	not interesting
+616	1031.0	0.0005243669346950625	3.49	828.2686	{15795, 15844}	{'[M+Na]+', '[M+H]+'}	805.2791	non anotated	not interesting
+4254	12725x	0.00012814845881116253	3.5	485.3261	{12725}	{nan}	0.0	non anotated	not interesting
+11744	8173x	0.00020230093943199095	3.51	355.1883	{8173}	{nan}	0.0	non anotated	not interesting
+6332	15865x	0.0003125993932580202	3.51	842.2858	{15865}	{nan}	0.0	non anotated	not interesting
+11503	7842x	0.0002353616637397057	3.51	345.2059	{7842}	{nan}	0.0	non anotated	not interesting
+4352	12880x	6.636772973345503e-05	3.52	489.3566	{12880}	{nan}	0.0	non anotated	not interesting
+10401	6459x	0.002588647622008583	3.53	317.2113	{6459}	{nan}	0.0	non anotated	not interesting
+629	1056.0	0.000378524903293841	3.53	344.1715	{6289, 3554, 7783}	{'[M+NH4]+', '[M+HFA+H]+', '[M-2H2O+H]+'}	297.1594	annotated	not interesting
+6391	15938x	5.9933203468011384e-05	3.53	884.2969	{15938}	{nan}	0.0	non anotated	not interesting
+628	1055.0	0.00015084374938701485	3.53	341.1729	{5416, 7652, 6597}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	318.1832	non anotated	not interesting
+10926	7098x	0.00018766138131777257	3.54	329.2113	{7098}	{nan}	0.0	non anotated	not interesting
+4316	12820x	0.00040244769515711514	3.55	487.3417	{12820}	{nan}	0.0	annotated	not interesting
+11117	7350x	0.00013838488978833204	3.55	333.2423	{7350}	{nan}	0.0	non anotated	not interesting
+10276	6302x	0.000284924470800896	3.55	315.2321	{6302}	{nan}	0.0	non anotated	not interesting
+634	1067.0	0.0003871512878733873	3.55	351.2145	{7873, 8034, 4966, 7336, 8041, 6062, 7102}	{'[M+NH4]+', '[M+H]+', '[M+Na]+', '[M-H2O+H]+', '[M-H2O+Na]+', '[M-2H2O+H]+'}	328.225	annotated	not interesting
+11108	7332x	0.0003925399911567727	3.56	333.2041	{7332}	{nan}	0.0	non anotated	not interesting
+10746	6871x	0.000137069962742285	3.56	324.6881	{6871}	{nan}	0.0	non anotated	not interesting
+4892	13699x	9.408261387709626e-05	3.57	517.3153	{13699}	{nan}	0.0	non anotated	not interesting
+3371	11444x	0.0001399614242543982	3.57	453.2636	{11444}	{nan}	0.0	non anotated	not interesting
+10792	6931x	0.00030345178426726603	3.58	325.6777	{6931}	{nan}	0.0	non anotated	not interesting
+649	1090.0	3.578063764888644e-05	3.58	509.3234	{13496, 12817, 11387, 13372}	{'[M+Na]+', '[M+NH4]+', '[M+H]+', '[M-2H2O+H]+'}	486.3347	annotated	not interesting
+4348	12876x	0.0005965039606707516	3.58	489.3212	{12876}	{nan}	0.0	non anotated	not interesting
+659	1104.0	0.0004636912572542332	3.59	310.2716	{6000, 4692}	{'[M+Na]+', '[M+H]+'}	287.2824	non anotated	not interesting
+8819	4520x	0.00539961236447486	3.61	285.2213	{4520}	{nan}	0.0	non anotated	not interesting
+7644	2970x	8.152300795761594e-05	3.62	244.2635	{2970}	{nan}	0.0	non anotated	not interesting
+6297	15816x	0.00042211223248020765	3.62	816.2707	{15816}	{nan}	0.0	non anotated	not interesting
+7041	2228x	5.240881406876429e-05	3.63	220.1171	{2228}	{nan}	0.0	non anotated	not interesting
+12295	8874x	0.00022731842504672992	3.63	379.2302	{8874}	{nan}	0.0	non anotated	not interesting
+9610	5501x	0.000400742758892753	3.63	302.2201	{5501}	{nan}	0.0	non anotated	not interesting
+11407	7724x	0.0005008165444104506	3.63	343.1542	{7724}	{nan}	0.0	non anotated	not interesting
+8415	4004x	0.00016517999485559672	3.64	273.2214	{4004}	{nan}	0.0	annotated	not interesting
+7316	2563x	0.00028120841672959584	3.64	230.1303	{2563}	{nan}	0.0	non anotated	not interesting
+4657	13348x	6.659594005434965e-05	3.64	503.3365	{13348}	{nan}	0.0	annotated	not interesting
+7593	2902x	0.0004160369460827855	3.64	241.6383	{2902}	{nan}	0.0	non anotated	not interesting
+681	1135.0	0.0004196225313720042	3.64	473.362	{3408, 12294}	{'[2M-CO2+K]+', '[M+NH4]+'}	239.1935	annotated	not interesting
+683	1138.0	0.0004017934565115716	3.65	333.2039	{4963, 7331, 6063}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	310.2145	annotated	not interesting
+8907	4626x	0.00016216086838662948	3.65	287.2374	{4626}	{nan}	0.0	annotated	not interesting
+684	1140.0	0.00016402555570336566	3.65	457.277	{11417, 11657, 10007}	{'[M+NH4]+', '[M-H2O+H]+', '[M+Na]+'}	434.288	non anotated	not interesting
+13140	9923x	0.00017769342856783463	3.65	414.1473	{9923}	{nan}	0.0	non anotated	not interesting
+9690	5581x	0.009620226747150422	3.66	303.2321	{5581}	{nan}	0.0	annotated	not interesting
+7288	2529x	0.0002307667473016098	3.66	229.1226	{2529}	{nan}	0.0	non anotated	not interesting
+694	1161.0	9.070181692028586e-05	3.66	356.2799	{6310, 5195, 7285, 7511, 8223}	{'[M+ACN+H]+', '[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+'}	314.246	non anotated	not interesting
+699	1169.0	0.0004886232156732313	3.67	449.2686	{11315, 2174}	{'[2M+H]+', '[M-CO2+K]+'}	224.1296	non anotated	not interesting
+7556	2858x	0.0003527349360777927	3.67	240.6305	{2858}	{nan}	0.0	non anotated	not interesting
+3770	12012x	0.0002585224658582551	3.67	467.2792	{12012}	{nan}	0.0	non anotated	not interesting
+6463	16017x	0.00011668907008315119	3.68	926.2707	{16017}	{nan}	0.0	non anotated	not interesting
+703	1174.0	0.00031180725999975896	3.68	335.2196	{5297, 6187, 7414}	{'[M-2H2O+Na]+', '[M+Na]+', '[M+H]+'}	312.231	annotated	not interesting
+707	1183.0	0.005351150781302797	3.68	341.2097	{7659, 7663, 6611, 5434, 5435}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	318.2198	annotated	not interesting
+708	1185.0	0.00017351096343311607	3.68	367.2095	{8560, 7844, 7004, 8428}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	344.2197	non anotated	not interesting
+4345	12873x	0.00024779514537080164	3.68	489.3207	{12873}	{nan}	0.0	non anotated	not interesting
+10169	6164x	0.00019009092937007432	3.69	313.1798	{6164}	{nan}	0.0	non anotated	not interesting
+711	1188.0	0.0003022678236105079	3.69	329.1728	{3600, 7076, 4726}	{'[M-CO2+H]+', '[M-H2O+H]+', '[M+Na]+'}	306.1831	annotated	not interesting
+10263	6287x	0.00032911283293907194	3.69	315.1956	{6287}	{nan}	0.0	non anotated	not interesting
+4305	12805x	0.0002914018620995254	3.7	487.341	{12805}	{nan}	0.0	annotated	not interesting
+714	1193.0	0.0008220523700858625	3.7	310.2714	{4690, 5999}	{'[M+Na]+', '[M+H]+'}	287.2822	non anotated	not interesting
+723	1208.0	5.5037510267163756e-05	3.7	347.1833	{2272, 7896}	{'[M+ACN+NH4]+', '[2M+Na]+'}	162.0951	non anotated	not interesting
+719	1202.0	0.0009468879514963025	3.7	906.2785	{15936, 15981}	{'[M+Na]+', '[M+H]+'}	883.2888	non anotated	not interesting
+728	1215.0	9.142225263542943e-05	3.7	485.3257	{12717}	{'[2M+H]+'}	242.1567	non anotated	not interesting
+7207	2429x	0.00014285409150705287	3.71	226.0984	{2429}	{nan}	0.0	non anotated	not interesting
+7700	3040x	0.00031005430463986464	3.71	246.6122	{3040}	{nan}	0.0	non anotated	not interesting
+6329	15861x	0.00015753481704832968	3.71	840.2696	{15861}	{nan}	0.0	non anotated	not interesting
+727	1214.0	0.0005911605396432565	3.71	343.1903	{7738, 2691}	{'[2M+H]+', '[M+ACN+Na]+'}	171.09	non anotated	not interesting
+7642	2968x	0.00018385663833108955	3.71	244.2634	{2968}	{nan}	0.0	non anotated	not interesting
+733	1223.0	0.00012461050984270084	3.72	469.331	{12111}	{'[2M-CO2+Na]+'}	245.1663	annotated	not interesting
+734	1224.0	8.6663064574866e-05	3.72	304.1742	{5628}	{'[M+Na]+'}	281.1865	non anotated	not interesting
+6126	15571x	0.00021043008809548265	3.73	712.2594	{15571}	{nan}	0.0	non anotated	not interesting
+4294	12792x	0.0001323152110413646	3.74	487.2696	{12792}	{nan}	0.0	non anotated	not interesting
+738	1231.0	0.00388023765556935	3.76	353.1726	{8105, 7213}	{'[M+Na]+', '[M+H]+'}	330.1824	annotated	not interesting
+3982	12321x	0.00016436144056848647	3.77	474.1577	{12321}	{nan}	0.0	non anotated	not interesting
+4487	13107x	0.00010423812626681673	3.77	496.27	{13107}	{nan}	0.0	non anotated	not interesting
+742	1237.0	7.686692411046441e-05	3.77	353.2301	{7245, 6189, 5072, 6450, 7931, 8124}	{'[M-2H2O+Na]+', '[M+NH4]+', '[M+H]+', '[M+Na]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	330.241	annotated	not interesting
+9816	5736x	4.634705875964074e-05	3.78	305.2483	{5736}	{nan}	0.0	non anotated	not interesting
+10745	6870x	0.00018034085202210423	3.78	324.6881	{6870}	{nan}	0.0	non anotated	not interesting
+9536	5403x	0.002504742625764467	3.78	301.1311	{5403}	{nan}	0.0	non anotated	specific non annotated
+4353	12883x	0.00014462147747596718	3.79	489.3568	{12883}	{nan}	0.0	annotated	not interesting
+754	1257.0	0.008084346789944049	3.79	365.1729	{8370, 7739, 8503}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	342.1837	non anotated	not interesting
+2774	10673x	0.0005454500353345513	3.79	435.1522	{10673}	{nan}	0.0	non anotated	not interesting
+8536	4166x	4.337241071953622e-05	3.79	277.2165	{4166}	{nan}	0.0	non anotated	not interesting
+752	1254.0	4.994715886832996e-05	3.79	337.236	{7512, 7286, 5198, 6311}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	314.2461	non anotated	not interesting
+2328	10102x	0.00043811294535005783	3.8	421.2049	{10102}	{nan}	0.0	non anotated	not interesting
+4997	13848x	0.00028378996464507655	3.8	525.2478	{13848}	{nan}	0.0	non anotated	not interesting
+7649	2975x	0.0003863251642151001	3.8	244.6237	{2975}	{nan}	0.0	non anotated	not interesting
+4251	12719x	0.0008150317448264588	3.8	485.326	{12719}	{nan}	0.0	non anotated	not interesting
+9664	5554x	3.840917499575424e-05	3.8	303.1671	{5554}	{nan}	0.0	non anotated	not interesting
+7848	3249x	0.0008917699149858341	3.8	252.6123	{3249}	{nan}	0.0	non anotated	specific non annotated
+767	1273.0	0.00012236532526080983	3.81	435.253	{10690, 4307}	{'[2M+H]+', '[M+ACN+Na]+'}	217.1222	non anotated	not interesting
+10266	6290x	0.00011283452044273654	3.81	315.1956	{6290}	{nan}	0.0	non anotated	not interesting
+4574	13226x	8.422152227498753e-05	3.81	499.3052	{13226}	{nan}	0.0	non anotated	not interesting
+5326	14338x	8.845008306199346e-05	3.82	552.3529	{14338}	{nan}	0.0	non anotated	not interesting
+769	1275.0	0.00021767804329379838	3.82	310.2716	{6001, 4691}	{'[M+Na]+', '[M+H]+'}	287.2824	annotated	not interesting
+768	1274.0	0.0015942752347860075	3.82	880.2629	{15896, 15926}	{'[M+Na]+', '[M+H]+'}	857.274	annotated	not interesting
+10709	6825x	0.00010302130439561925	3.83	323.6776	{6825}	{nan}	0.0	non anotated	not interesting
+11131	7365x	0.00017480120150617132	3.83	333.6939	{7365}	{nan}	0.0	non anotated	not interesting
+7428	2708x	0.00012618023857326633	3.83	235.1692	{2708}	{nan}	0.0	annotated	not interesting
+4895	13700x	0.00011071598837841953	3.83	517.3154	{13700}	{nan}	0.0	non anotated	not interesting
+10791	6930x	4.7508121829354296e-05	3.84	325.6777	{6930}	{nan}	0.0	non anotated	not interesting
+7643	2969x	6.958745889266522e-05	3.84	244.2635	{2969}	{nan}	0.0	non anotated	not interesting
+13083	9856x	0.00015984110013981677	3.84	413.1391	{9856}	{nan}	0.0	non anotated	not interesting
+8908	4627x	0.0009479017687655434	3.84	287.2369	{4627}	{nan}	0.0	annotated	not interesting
+6392	15939x	8.929683828065672e-05	3.84	884.2971	{15939}	{nan}	0.0	non anotated	not interesting
+4308	12808x	0.000597990791868281	3.84	487.3413	{12808}	{nan}	0.0	annotated	not interesting
+4346	12874x	0.00011510933944771321	3.85	489.3208	{12874}	{nan}	0.0	non anotated	not interesting
+8244	3797x	0.00020774339194929125	3.85	269.2263	{3797}	{nan}	0.0	non anotated	not interesting
+3841	12112x	0.00034326060967778045	3.85	469.3311	{12112}	{nan}	0.0	annotated	not interesting
+10128	6114x	5.5957350587504306e-05	3.86	312.1722	{6114}	{nan}	0.0	non anotated	not interesting
+2840	10751x	5.181185575443554e-05	3.86	437.2686	{10751}	{nan}	0.0	non anotated	not interesting
+789	1302.0	3.626573003520202e-05	3.86	273.2064	{2481, 3141, 3999}	{'[M+Na]+', '[M+HFA+H]+', '[M+H]+'}	226.1941	non anotated	not interesting
+3763	12001x	8.217900736712483e-05	3.86	467.2426	{12001}	{nan}	0.0	non anotated	not interesting
+790	1304.0	0.001126219924043764	3.86	828.2681	{15794, 15843}	{'[M+Na]+', '[M+H]+'}	805.2787	non anotated	not interesting
+791	1306.0	0.0003655498527722423	3.86	331.1883	{7206, 5927, 7207, 6956, 5933, 6171, 4862}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[2M-2H2O+2H]2+', '[M-H2O+Na]+'}	308.1993	annotated	not interesting
+4851	13647x	4.9487698994826697e-05	3.86	515.2997	{13647}	{nan}	0.0	non anotated	not interesting
+793	1309.0	0.0004661019345101242	3.86	338.2692	{7532, 4524}	{'[M+NH4]+', '[M-2H2O+H]+'}	320.2353	annotated	not interesting
+6365	15907x	3.783020518197973e-05	3.87	868.3007	{15907}	{nan}	0.0	non anotated	not interesting
+3832	12099x	0.00012991333760530014	3.87	469.2941	{12099}	{nan}	0.0	non anotated	not interesting
+9349	5171x	8.122028478513303e-05	3.87	297.1852	{5171}	{nan}	0.0	non anotated	not interesting
+2776	10675x	0.001731138996756964	3.87	435.1524	{10675}	{nan}	0.0	non anotated	not interesting
+9008	4759x	0.0010460598239502496	3.88	289.2526	{4759}	{nan}	0.0	non anotated	not interesting
+6222	15711x	0.0004479919986584866	3.88	762.2603	{15711}	{nan}	0.0	annotated	not interesting
+799	1320.0	0.00012219252158860607	3.88	467.3152	{12024, 11199, 10415}	{'[2M-2H2O+2H]2+', '[M+Na]+', '[M+H]+'}	444.3249	non anotated	not interesting
+803	1326.0	0.01069296358058046	3.88	335.1621	{7146, 7395, 6156}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	312.1722	non anotated	not interesting
+11051	7261x	0.00016738145698880577	3.88	331.6591	{7261}	{nan}	0.0	non anotated	not interesting
+834	1383.0	0.00012168632874281495	3.89	297.2427	{5196}	{'[M-H2O+H]+'}	0.0	non anotated	not interesting
+808	1337.0	5.814377924142262e-05	3.89	307.1901	{5809, 4515, 3719}	{'[2M-2H2O+2H]2+', '[M+Na]+', '[M+H]+'}	284.1997	non anotated	not interesting
+11231	7505x	0.00016899570625345924	3.89	337.2353	{7505}	{nan}	0.0	non anotated	not interesting
+809	1339.0	0.0013712292728791096	3.89	357.2047	{8082, 6453, 7418, 7419, 8252}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	334.214	annotated	not interesting
+3469	11578x	0.0005591349033990332	3.89	455.3519	{11578}	{nan}	0.0	annotated	not interesting
+10284	6313x	0.0001478909290784585	3.89	315.2533	{6313}	{nan}	0.0	non anotated	not interesting
+7497	2793x	0.0007610844823817474	3.89	237.6068	{2793}	{nan}	0.0	non anotated	not interesting
+12518	9159x	0.0005475166363451351	3.89	391.1936	{9159}	{nan}	0.0	non anotated	not interesting
+4256	12729x	0.0003722668610800633	3.89	485.3262	{12729}	{nan}	0.0	non anotated	not interesting
+4600	13273x	0.0018051635425647221	3.89	501.2843	{13273}	{nan}	0.0	non anotated	not interesting
+7306	2554x	0.0003790199650491732	3.89	229.618	{2554}	{nan}	0.0	non anotated	not interesting
+9686	5577x	0.0031313946932690026	3.89	303.232	{5577}	{nan}	0.0	annotated	not interesting
+8332	3906x	0.0015342035185240165	3.9	271.242	{3906}	{nan}	0.0	annotated	not interesting
+4469	13063x	5.023073373269018e-05	3.9	495.2739	{13063}	{nan}	0.0	non anotated	not interesting
+8601	4249x	8.824044880093283e-05	3.91	279.2321	{4249}	{nan}	0.0	annotated	not interesting
+6462	16016x	0.00013057130830490063	3.91	926.2697	{16016}	{nan}	0.0	non anotated	not interesting
+13081	9854x	6.378879616968807e-05	3.91	413.1391	{9854}	{nan}	0.0	non anotated	not interesting
+819	1361.0	0.0010760489070037321	3.91	383.241	{7758, 8976, 8856, 8412, 6910}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	360.2515	non anotated	not interesting
+6296	15815x	0.0008185448325732799	3.91	816.2699	{15815}	{nan}	0.0	non anotated	not interesting
+2836	10748x	0.0002884123911062564	3.92	437.2681	{10748}	{nan}	0.0	non anotated	not interesting
+6312	15834x	0.0006333267026447565	3.93	826.2899	{15834}	{nan}	0.0	non anotated	not interesting
+3965	12286x	0.0010047097176304528	3.93	473.3263	{12286}	{nan}	0.0	non anotated	not interesting
+828	1374.0	6.0637987522602485e-05	3.93	457.2578	{10696, 11654, 11415}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	434.2679	non anotated	not interesting
+3741	11978x	0.00016120788359851593	3.94	466.1602	{11978}	{nan}	0.0	non anotated	not interesting
+9347	5169x	0.00033540295167900014	3.95	297.1851	{5169}	{nan}	0.0	non anotated	not interesting
+845	1399.0	0.000465113265543605	3.95	496.2415	{13104, 6383}	{'[2M+H]+', '[M+HFA+Na]+'}	247.6176	non anotated	not interesting
+843	1397.0	0.03194022196704112	3.95	993.4964	{13137, 16106, 13731}	{'[2M+H]+', '[M+Na]+', '[M+H]+'}	496.2452	non anotated	not interesting
+10429	6487x	0.00017160696514698055	3.95	317.6804	{6487}	{nan}	0.0	non anotated	not interesting
+10951	7132x	0.001830395366742507	3.95	329.6433	{7132}	{nan}	0.0	non anotated	not interesting
+842	1395.0	0.0010341290212925098	3.95	336.2535	{7464, 6617, 5430}	{'[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	318.2197	annotated	not interesting
+841	1393.0	0.0010911965297323914	3.95	495.2371	{13058}	{'[M+NH4]+'}	477.202	non anotated	not interesting
+11502	7841x	0.0033939423995231178	3.95	345.2057	{7841}	{nan}	0.0	non anotated	specific non annotated
+10651	6760x	0.0004052585251628606	3.95	322.6488	{6760}	{nan}	0.0	non anotated	not interesting
+10846	6999x	0.000928498302977785	3.95	327.1948	{6999}	{nan}	0.0	non anotated	specific non annotated
+6357	15894x	4.874320588507021e-05	3.95	858.2794	{15894}	{nan}	0.0	non anotated	not interesting
+848	1405.0	0.001627692123366426	3.96	623.1892	{14951, 15117, 15151, 5399, 6522, 6781, 7550}	{'[M+NH4]+', '[2M+NH4]+', '[2M+Na]+', '[M+Na]+', '[M+H]+', '[M+K]+', '[2M+H]+'}	300.1004	annotated	not interesting
+851	1414.0	7.469991362088521e-05	3.96	299.2007	{5304, 3477}	{'[2M-2H2O+2H]2+', '[M+Na]+'}	276.2105	non anotated	not interesting
+5141	14063x	0.0004729603398198548	3.96	536.7386	{14063}	{nan}	0.0	non anotated	not interesting
+11234	7510x	0.00011757305589031127	3.96	337.2358	{7510}	{nan}	0.0	non anotated	not interesting
+9539	5406x	0.0004214249412328371	3.96	301.1412	{5406}	{nan}	0.0	non anotated	not interesting
+6366	15909x	4.353970052110514e-05	3.96	868.3018	{15909}	{nan}	0.0	non anotated	not interesting
+4240	12700x	0.0016580633878940734	3.96	485.2528	{12700}	{nan}	0.0	non anotated	not interesting
+855	1418.0	0.00011800911100019309	3.97	295.2271	{5076, 4045}	{'[M+ACN+NH4]+', '[M+K]+'}	236.1657	annotated	not interesting
+11929	8407x	9.29667373695793e-05	3.97	361.237	{8407}	{nan}	0.0	annotated	not interesting
+3821	12088x	0.0005297295518775272	3.97	469.258	{12088}	{nan}	0.0	non anotated	not interesting
+6637	1735x	8.990381381084896e-05	3.97	207.138	{1735}	{nan}	0.0	non anotated	not interesting
+2956	10911x	0.0003402180861006873	3.98	440.1437	{10911}	{nan}	0.0	non anotated	not interesting
+861	1438.0	4.7697725486435705e-05	3.98	467.3153	{12026, 10427}	{'[2M-2H2O+2H]2+', '[M+Na]+'}	444.3258	non anotated	not interesting
+859	1435.0	0.00029197856971437927	3.98	350.233	{4864, 7209, 6958, 5935, 7990}	{'[M+ACN+H]+', '[M+NH4]+', '[M+Na]+', '[M+H]+', '[2M-2H2O+2H]2+'}	308.1992	non anotated	not interesting
+4255	12728x	0.0003456228467858868	3.98	485.3262	{12728}	{nan}	0.0	non anotated	not interesting
+862	1439.0	0.00023467230550854978	3.98	525.3192	{13858, 13859, 11670, 11671, 13754, 10715}	{'[M+HFA+Na]+', '[M-CO2+Na]+', '[M+HFA+NH4]+', '[M+H]+'}	456.3249	annotated	not interesting
+3762	12000x	0.0004011484810155846	3.98	467.2425	{12000}	{nan}	0.0	non anotated	not interesting
+8607	4257x	6.846476133865657e-05	3.99	279.2323	{4257}	{nan}	0.0	annotated	not interesting
+2841	10752x	0.0004313940805845777	3.99	437.2688	{10752}	{nan}	0.0	non anotated	not interesting
+9963	5904x	0.0007438767275362027	3.99	309.1289	{5904}	{nan}	0.0	non anotated	not interesting
+10285	6315x	7.884343907773628e-05	3.99	315.2535	{6315}	{nan}	0.0	non anotated	not interesting
+9366	5205x	8.739032133650125e-05	3.99	297.243	{5205}	{nan}	0.0	non anotated	not interesting
+885	1481.0	0.0008014886565386615	3.99	337.1789	{7491, 6294}	{'[M+Na]+', '[M+H]+'}	314.1881	non anotated	not interesting
+10168	6163x	0.0007183552194086472	4.0	313.1797	{6163}	{nan}	0.0	non anotated	not interesting
+6465	16019x	8.616397985664785e-05	4.01	926.308	{16019}	{nan}	0.0	non anotated	not interesting
+6313	15835x	8.385631686209662e-05	4.01	826.2906	{15835}	{nan}	0.0	non anotated	not interesting
+872	1458.0	0.0005528445358555013	4.01	491.3125	{12122, 12948}	{'[2M+2H]2+', '[M+Na]+'}	468.3238	annotated	not interesting
+11060	726x	0.00017616077922972983	4.01	172.1153	{726}	{nan}	0.0	non anotated	not interesting
+3136	11144x	0.0001117908601381575	4.01	444.1475	{11144}	{nan}	0.0	non anotated	not interesting
+8787	4485x	0.00022137639403175166	4.02	285.0758	{4485}	{nan}	0.0	non anotated	not interesting
+6432	15987x	0.0001091563093995734	4.02	910.2757	{15987}	{nan}	0.0	non anotated	not interesting
+7647	2973x	0.00030299350716781766	4.02	244.5966	{2973}	{nan}	0.0	non anotated	not interesting
+11921	8398x	2.9942223765518646e-05	4.02	361.1652	{8398}	{nan}	0.0	non anotated	not interesting
+5156	14086x	0.00016616295090859798	4.02	538.2432	{14086}	{nan}	0.0	non anotated	not interesting
+880	1472.0	8.360088168532542e-05	4.02	343.1545	{5482, 7732}	{'[M+HFA+NH4]+', '[M+Na]+'}	279.1156	non anotated	not interesting
+8811	4510x	0.0002612226739540064	4.02	285.1851	{4510}	{nan}	0.0	non anotated	not interesting
+6308	15830x	7.281823493188382e-05	4.02	824.276	{15830}	{nan}	0.0	non anotated	not interesting
+883	1478.0	0.00024105991698368743	4.02	333.2056	{4968, 7344}	{'[M-H2O+H]+', '[M+Na]+'}	310.2154	annotated	not interesting
+8733	4421x	0.0001242845101361461	4.03	283.2058	{4421}	{nan}	0.0	annotated	not interesting
+10748	6873x	0.0005758721514910662	4.03	324.6882	{6873}	{nan}	0.0	non anotated	not interesting
+3703	11929x	0.0008104172609418616	4.03	465.2634	{11929}	{nan}	0.0	non anotated	not interesting
+10130	6116x	0.00011772665001042831	4.03	312.1726	{6116}	{nan}	0.0	non anotated	not interesting
+888	1484.0	0.00010409716945589852	4.03	618.2556	{14912, 15123}	{'[M-CO2+Na]+', '[M+H]+'}	617.2487	non anotated	not interesting
+884	1479.0	0.0020078908241966775	4.03	285.2216	{4528, 3135}	{'[M+ACN+NH4]+', '[M+Na]+'}	226.1602	annotated	not interesting
+920	1533.0	0.0002928463966844099	4.04	301.2167	{5436}	{'[M+ACN+H]+'}	259.1828	annotated	not interesting
+892	1490.0	0.000336382797686954	4.04	473.3266	{12288, 11037}	{'[2M-H2O+2H]2+', '[M+Na]+'}	450.3377	non anotated	not interesting
+9732	5627x	0.0002504718128178863	4.04	304.1742	{5627}	{nan}	0.0	non anotated	not interesting
+902	1507.0	0.0008327652216868185	4.05	485.2897	{12713, 3148}	{'[M+NH4]+', '[2M+Na]+'}	231.1507	non anotated	not interesting
+4547	13194x	0.00016884014467099834	4.05	498.2859	{13194}	{nan}	0.0	non anotated	not interesting
+898	1501.0	0.0001939144283207356	4.05	369.2618	{7122, 7914, 8629}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	346.2723	annotated	not interesting
+9656	5546x	0.00023868560333142774	4.05	303.1487	{5546}	{nan}	0.0	non anotated	not interesting
+9212	4999x	4.0958141122381233e-05	4.06	294.1433	{4999}	{nan}	0.0	non anotated	not interesting
+904	1510.0	0.0025610271684019504	4.06	327.1593	{6989, 5711}	{'[M+Na]+', '[M+H]+'}	304.1728	non anotated	not interesting
+2247	10003x	0.0003586884044030499	4.06	417.2634	{10003}	{nan}	0.0	non anotated	not interesting
+10180	6181x	5.876044662891955e-05	4.07	313.2167	{6181}	{nan}	0.0	non anotated	not interesting
+3769	12011x	0.00036793631952361034	4.07	467.279	{12011}	{nan}	0.0	non anotated	not interesting
+10370	6407x	0.0001437136888194196	4.07	316.6997	{6407}	{nan}	0.0	non anotated	not interesting
+916	1528.0	0.00017332924110865329	4.07	503.3363	{13346, 1637, 3590}	{'[M+Na]+', '[2M+Na]+', '[M-2H2O+H]+'}	240.1738	annotated	not interesting
+9005	4755x	0.0001015050665259954	4.07	289.2165	{4755}	{nan}	0.0	annotated	not interesting
+9301	5114x	6.072384964627152e-05	4.07	296.1772	{5114}	{nan}	0.0	non anotated	not interesting
+913	1524.0	0.0002738373803023575	4.07	455.2434	{11316, 11548}	{'[M+NH4]+', '[2M+HFA+2H]2+'}	431.2342	non anotated	not interesting
+908	1518.0	0.0001685513123951026	4.07	339.253	{7584, 4339, 6478}	{'[M+Na]+', '[M+H]+', '[M-2H2O+H]+'}	316.2624	annotated	not interesting
+919	1532.0	0.001567917248942499	4.08	522.3794	{12115, 13788, 12815}	{'[M+NH4]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	504.3452	non anotated	not interesting
+918	1531.0	0.00015835237420715084	4.08	287.2372	{776, 4637}	{'[2M-H2O+H]+', '[M+Na]+'}	152.1214	annotated	not interesting
+3628	11813x	0.0003109539976099196	4.08	461.15	{11813}	{nan}	0.0	non anotated	not interesting
+6358	15897x	0.00033556970750975784	4.08	858.2819	{15897}	{nan}	0.0	annotated	not interesting
+924	1537.0	2.5748482085926624e-05	4.09	335.1855	{6057, 7410}	{'[M+ACN+H]+', '[M+NH4]+'}	293.1519	non anotated	not interesting
+930	1546.0	0.0005085007480199095	4.09	343.2252	{7746, 6716, 5583}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	320.2356	annotated	not interesting
+935	1553.0	0.0003142058224340191	4.1	299.2008	{5305, 5293}	{'[M+ACN+H]+'}	257.1669	non anotated	not interesting
+6193	15664x	0.0003588898396284286	4.1	741.3637	{15664}	{nan}	0.0	non anotated	not interesting
+10278	6304x	0.0005757392520891633	4.1	315.2324	{6304}	{nan}	0.0	annotated	not interesting
+10324	6360x	0.0001950248005269871	4.1	316.1991	{6360}	{nan}	0.0	non anotated	not interesting
+932	1548.0	0.0022914643488451928	4.1	890.2848	{15912, 15956}	{'[M+Na]+', '[M+H]+'}	867.2956	non anotated	not interesting
+934	1551.0	8.578949215546161e-05	4.1	457.2567	{10697, 11652, 10005, 11414}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	434.2674	non anotated	not interesting
+915	1527.0	0.00043959918324668583	4.11	271.2057	{3881}	{'[M+HFA+H]+'}	224.1911	annotated	not interesting
+4136	12553x	7.955103461305024e-05	4.11	481.295	{12553}	{nan}	0.0	non anotated	not interesting
+942	1561.0	4.405816895393264e-05	4.11	483.3458	{10308, 12645, 11103}	{'[M+Na]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	460.3561	annotated	not interesting
+2860	10777x	0.0002337762871763355	4.12	437.3418	{10777}	{nan}	0.0	annotated	not interesting
+6309	15831x	0.00026454479536554683	4.12	824.2762	{15831}	{nan}	0.0	non anotated	not interesting
+10208	6219x	0.0006072825921168028	4.12	314.1388	{6219}	{nan}	0.0	non anotated	not interesting
+9351	5173x	0.00018148176008603667	4.12	297.1852	{5173}	{nan}	0.0	non anotated	not interesting
+10442	6500x	0.00014473604196614455	4.12	317.6986	{6500}	{nan}	0.0	non anotated	not interesting
+10354	6392x	9.4481503470193e-05	4.12	316.69	{6392}	{nan}	0.0	non anotated	not interesting
+3473	11583x	0.0005843284309605731	4.13	455.3522	{11583}	{nan}	0.0	annotated	not interesting
+5051	13929x	0.0002562195588402841	4.13	529.2798	{13929}	{nan}	0.0	non anotated	not interesting
+4779	13536x	0.0002777945250657332	4.14	511.269	{13536}	{nan}	0.0	non anotated	not interesting
+965	1597.0	0.00012573950404175932	4.15	391.3362	{9176, 1747}	{'[2M-CO2+Na]+', '[M+H]+'}	206.1678	non anotated	not interesting
+1138	1865.0	0.00013757689051564428	4.15	333.2043	{7335, 6066, 7053, 7047}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	310.2147	annotated	not interesting
+10751	6876x	0.00036580550804450916	4.15	324.6883	{6876}	{nan}	0.0	non anotated	not interesting
+6498	16062x	5.9740985459216265e-05	4.15	946.3134	{16062}	{nan}	0.0	non anotated	not interesting
+977	1611.0	0.0010308199333620605	4.15	511.3395	{11461, 13413, 13414, 12233, 11469, 13551, 12881, 12882, 13553, 12217, 11485}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	488.3504	annotated	not interesting
+4314	12819x	0.0009458373687099163	4.16	487.3416	{12819}	{nan}	0.0	annotated	not interesting
+10707	6823x	0.00013993300322734953	4.16	323.6622	{6823}	{nan}	0.0	non anotated	not interesting
+983	1619.0	0.0001682694179120049	4.16	525.3196	{13345, 13862, 12732, 13758, 12031}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	502.3298	non anotated	not interesting
+11034	7235x	0.00022728946047950065	4.16	331.2269	{7235}	{nan}	0.0	non anotated	not interesting
+989	1628.0	0.0010062496971055	4.16	351.2147	{4960, 6275, 7108, 7877, 7875, 8039, 8043}	{'[M-2H2O+Na]+', '[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-2H2O+H]+'}	328.2253	annotated	not interesting
+11019	7216x	0.00014607875846086142	4.17	331.1895	{7216}	{nan}	0.0	non anotated	not interesting
+3775	12019x	0.0015146848758064407	4.17	467.2796	{12019}	{nan}	0.0	non anotated	not interesting
+10084	6067x	0.00045424324662000676	4.17	311.2219	{6067}	{nan}	0.0	annotated	not interesting
+969	1603.0	9.495653844929373e-05	4.17	304.1746	{5633}	{'[M+ACN+K]+'}	224.1824	non anotated	not interesting
+4180	12622x	0.0010723016185107863	4.17	483.2742	{12622}	{nan}	0.0	non anotated	not interesting
+991	1630.0	0.0009527212094034501	4.17	473.2173	{12274, 2591}	{'[2M+HFA+H]+', '[M+NH4]+'}	213.1032	non anotated	not interesting
+11501	7838x	6.230357645396176e-05	4.18	345.2031	{7838}	{nan}	0.0	non anotated	not interesting
+994	1635.0	0.00012346496063462073	4.18	339.2518	{5320, 6476, 4338, 7379, 7581}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[2M-2H2O+2H]2+', '[M-2H2O+H]+'}	316.2618	annotated	not interesting
+10341	6379x	9.114750264350836e-05	4.18	316.3214	{6379}	{nan}	0.0	non anotated	not interesting
+993	1634.0	0.0001254930238808508	4.18	309.2056	{3220, 5924}	{'[M+Na]+', '[M-2H2O+H]+'}	286.2151	annotated	not interesting
+8331	3905x	9.743513143352475e-05	4.18	271.2419	{3905}	{nan}	0.0	non anotated	not interesting
+971	1605.0	0.0003309700944251719	4.18	473.3268	{12289}	{'[2M+H]+'}	236.1622	non anotated	not interesting
+996	1644.0	0.0010751127164588745	4.19	409.2564	{9098, 9709, 9518, 8055, 8630, 8631, 8057}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	386.2669	annotated	not interesting
+10430	6488x	9.35818162417597e-05	4.19	317.6806	{6488}	{nan}	0.0	non anotated	not interesting
+3303	11362x	0.00010810600412489919	4.2	451.2487	{11362}	{nan}	0.0	non anotated	not interesting
+3939	1224x	0.000246803490761037	4.2	192.6066	{1224}	{nan}	0.0	non anotated	not interesting
+9475	5338x	0.00011261562111824542	4.2	299.6604	{5338}	{nan}	0.0	non anotated	not interesting
+1001	1650.0	0.0005023557583359478	4.2	445.1552	{11177, 10820}	{'[M+NH4]+', '[2M+HFA+2H]2+'}	421.1432	non anotated	not interesting
+1016	1671.0	0.004288425230727235	4.2	287.2218	{3793, 4625}	{'[2M-H2O+K]+', '[2M+K]+'}	124.1287	non anotated	not interesting
+11680	8077x	0.00025793601662537583	4.2	352.2061	{8077}	{nan}	0.0	non anotated	not interesting
+6456	1600x	0.0002458341901981362	4.2	204.1145	{1600}	{nan}	0.0	non anotated	not interesting
+1009	1661.0	0.00032185458109930696	4.2	366.1952	{8409, 1005, 8535}	{'[M+H+Na]2+', '[M+NH4]+', '[M+Na]+'}	343.2052	non anotated	not interesting
+9893	5831x	0.00041202077744909455	4.21	307.6477	{5831}	{nan}	0.0	non anotated	not interesting
+3365	11438x	0.004973511312618639	4.21	453.2632	{11438}	{nan}	0.0	annotated	not interesting
+1012	1667.0	6.032223469677629e-05	4.21	324.2169	{4509, 6846}	{'[M-CO2+Na]+', '[M+NH4]+'}	306.1844	non anotated	not interesting
+10711	6827x	6.528209626091606e-05	4.22	323.6777	{6827}	{nan}	0.0	non anotated	not interesting
+1022	1680.0	0.0023976150666918453	4.22	490.3898	{12297, 12303, 10771, 12917, 11577}	{'[M+NH4]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	472.3553	annotated	not interesting
+11221	7488x	9.51312253733908e-05	4.22	337.1782	{7488}	{nan}	0.0	non anotated	not interesting
+1021	1679.0	0.001500637883666007	4.22	848.273	{15874, 15837}	{'[M+Na]+', '[M+H]+'}	825.2841	non anotated	specific non annotated
+4630	13307x	0.00015778050869320157	4.22	501.3573	{13307}	{nan}	0.0	non anotated	not interesting
+1025	1684.0	7.848320208142574e-05	4.22	231.1375	{2587}	{'[M+H]+'}	230.1278	annotated	not interesting
+1030	1693.0	9.289544556772316e-05	4.23	306.1968	{5765, 5710}	{'[2M+HFA+2H]2+', '[M+Na]+'}	282.1901	non anotated	not interesting
+6643	1741x	6.167489950789712e-05	4.23	207.1744	{1741}	{nan}	0.0	non anotated	not interesting
+9340	5162x	0.00039300640222019123	4.23	297.1848	{5162}	{nan}	0.0	non anotated	not interesting
+2587	10435x	3.682558790445746e-05	4.23	427.3571	{10435}	{nan}	0.0	non anotated	not interesting
+1037	1701.0	0.002843882990347216	4.24	327.1587	{6985, 3457}	{'[2M+H]+', '[2M+HFA+Na]+'}	129.0817	non anotated	not interesting
+1044	1711.0	0.0002028194040370707	4.24	377.229	{8186, 8830, 8718}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	354.2397	non anotated	not interesting
+6500	16064x	7.200015145774693e-05	4.24	946.3138	{16064}	{nan}	0.0	non anotated	not interesting
+3647	1183x	8.409839894083965e-05	4.24	191.1793	{1183}	{nan}	0.0	annotated	not interesting
+1046	1716.0	0.0003459914588942758	4.25	355.1903	{8177, 6278}	{'[2M-2H2O+2H]2+', '[M+Na]+'}	332.1995	non anotated	not interesting
+1047	1718.0	0.00039353036347104087	4.25	513.3204	{13598, 12287}	{'[M-H2O+H]+', '[M+Na]+'}	490.3304	non anotated	not interesting
+1049	1722.0	6.726191648837063e-05	4.25	337.2357	{6312, 5202, 7288, 7508}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	314.2462	non anotated	not interesting
+4573	13224x	5.617860971848372e-05	4.25	499.305	{13224}	{nan}	0.0	non anotated	not interesting
+1053	1730.0	0.0023409760746126505	4.25	483.2741	{12614}	{'[M+H]+'}	482.2664	non anotated	not interesting
+1078	1774.0	5.1972711112035586e-05	4.25	283.2059	{4424}	{'[M-CO2+K]+'}	288.2326	non anotated	not interesting
+10438	6495x	0.00013159019733991124	4.26	317.6982	{6495}	{nan}	0.0	non anotated	not interesting
+10652	6761x	0.00024798232223580916	4.26	322.6538	{6761}	{nan}	0.0	non anotated	not interesting
+4050	12429x	0.0002741875235278495	4.27	477.2279	{12429}	{nan}	0.0	non anotated	not interesting
+5668	14817x	0.0004650851698751152	4.27	590.2384	{14817}	{nan}	0.0	non anotated	not interesting
+10277	6303x	0.0005345085523604481	4.27	315.2323	{6303}	{nan}	0.0	non anotated	not interesting
+9689	5580x	0.0007434555604511971	4.27	303.232	{5580}	{nan}	0.0	annotated	not interesting
+1070	1758.0	0.00034146673569443155	4.28	485.3257	{2777, 12716}	{'[2M+HFA+H]+', '[M+NH4]+'}	219.1538	annotated	not interesting
+10340	6378x	0.0001762242241486971	4.28	316.3213	{6378}	{nan}	0.0	non anotated	not interesting
+1067	1754.0	0.000328766019854123	4.28	505.2553	{2184, 13393}	{'[2M+HFA+Na]+', '[M+H]+'}	218.1306	non anotated	not interesting
+1064	1746.0	0.0004061856056680716	4.28	301.2163	{5427, 899, 5420}	{'[2M-CO2+Na]+', '[M+NH4]+'}	161.1085	annotated	not interesting
+10913	7083x	0.0015132652407206743	4.28	329.175	{7083}	{nan}	0.0	annotated	not interesting
+6626	1724x	0.00036176956909368603	4.28	207.1378	{1724}	{nan}	0.0	annotated	not interesting
+3922	12219x	0.0028971284926580594	4.28	471.3469	{12219}	{nan}	0.0	annotated	not interesting
+1072	1762.0	0.0001197859017453308	4.28	259.1687	{3458, 2195}	{'[M-H2O+H]+', '[M+Na]+'}	236.1786	annotated	not interesting
+9296	5109x	0.0006433175453262433	4.28	296.177	{5109}	{nan}	0.0	non anotated	not interesting
+1073	1765.0	0.0009619752106429341	4.29	627.392	{4160, 6447, 5008, 6128, 3471, 14359, 15193}	{'[M+NH4]+', '[2M+K]+', '[M+Na]+', '[2M-2H2O+H]+', '[M-H2O+H]+', '[M-H2O+NH4]+', '[M-2H2O+H]+'}	294.2188	annotated	not interesting
+3419	11516x	0.00033486090432002856	4.29	454.3405	{11516}	{nan}	0.0	non anotated	not interesting
+9092	4855x	0.00017151092695591637	4.29	291.1952	{4855}	{nan}	0.0	non anotated	not interesting
+4605	13278x	7.822048844230664e-05	4.29	501.3203	{13278}	{nan}	0.0	non anotated	not interesting
+10238	6252x	0.00010440134908640058	4.29	314.6706	{6252}	{nan}	0.0	non anotated	not interesting
+10352	6390x	0.00013742910117499113	4.29	316.6897	{6390}	{nan}	0.0	non anotated	not interesting
+11755	8194x	0.00014885674639090617	4.29	355.2838	{8194}	{nan}	0.0	annotated	not interesting
+3782	12032x	0.00012047063797107778	4.29	467.3155	{12032}	{nan}	0.0	non anotated	not interesting
+1071	1760.0	0.00017766980179484366	4.3	333.2045	{7329, 7330, 4967, 7337, 6069}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	310.2146	annotated	not interesting
+1090	1792.0	0.0007459104481936082	4.3	311.1645	{5963, 6046}	{'[2M+ACN+2H]2+', '[M+Na]+'}	288.1777	non anotated	not interesting
+1101	1805.0	7.238720756867249e-05	4.31	339.2513	{5322, 6477, 4336, 7378, 5588, 7580}	{'[M-2H2O+Na]+', '[M+NH4]+', '[M+H]+', '[M+Na]+', '[2M-2H2O+2H]2+', '[M-2H2O+H]+'}	316.2621	annotated	not interesting
+3627	11812x	0.007994475483280972	4.31	461.1495	{11812}	{nan}	0.0	non anotated	not interesting
+3912	12205x	0.00012616072854298118	4.31	471.3105	{12205}	{nan}	0.0	non anotated	not interesting
+7646	2972x	0.00030453199382124224	4.32	244.5958	{2972}	{nan}	0.0	non anotated	not interesting
+1091	1793.0	0.00020877229054466987	4.32	485.2888	{12706}	{'[M+NH4]+'}	467.2553	non anotated	not interesting
+9488	5356x	0.00011225508747148421	4.32	300.2037	{5356}	{nan}	0.0	non anotated	not interesting
+1110	1819.0	0.00010679978903273268	4.32	161.1325	{540}	{'[M+NH4]+'}	143.0967	non anotated	not interesting
+1109	1817.0	0.00022360373173975517	4.33	880.261	{15925, 15895}	{'[M+Na]+', '[M+H]+'}	857.2726	annotated	not interesting
+1111	1820.0	0.0002539715034475801	4.33	481.3292	{11756, 10985, 10972, 12564}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	458.3398	annotated	not interesting
+2876	10800x	5.469268761104515e-05	4.34	438.2709	{10800}	{nan}	0.0	non anotated	not interesting
+4132	12549x	0.00010273535824152749	4.34	481.2946	{12549}	{nan}	0.0	non anotated	not interesting
+12191	8748x	0.0004053897403557534	4.34	373.2947	{8748}	{nan}	0.0	non anotated	not interesting
+8726	4413x	0.00027954926032833157	4.34	283.204	{4413}	{nan}	0.0	non anotated	not interesting
+1112	1825.0	0.00011488862959853601	4.34	221.1538	{2282, 1404}	{'[M+HFA+H]+', '[M+Na]+'}	174.1383	non anotated	not interesting
+9436	5283x	0.0008728458746038464	4.35	299.1638	{5283}	{nan}	0.0	non anotated	not interesting
+1113	1827.0	0.00022386216404301517	4.35	339.1935	{5081, 6451, 7571}	{'[M-H+2Na]+', '[M+Na]+', '[M+H]+'}	294.2215	annotated	not interesting
+1116	1833.0	0.002161477480205602	4.36	890.2829	{15906, 15954}	{'[M+Na]+', '[M+H]+'}	867.294	non anotated	not interesting
+1118	1835.0	8.536683224883323e-05	4.36	343.2254	{6713, 7748, 2191}	{'[M+ACN+NH4]+', '[2M+H]+', '[2M+Na]+'}	160.1165	annotated	not interesting
+1120	1837.0	0.005622440489257267	4.36	635.3959	{15241, 3346}	{'[M-CO2+H]+', '[2M+K]+'}	298.2156	annotated	not interesting
+1121	1838.0	0.00040725417886888586	4.36	395.2772	{1649, 9259}	{'[2M-2H2O+Na]+', '[M+H]+'}	204.1532	non anotated	not interesting
+9917	5858x	7.787283708060029e-05	4.36	308.2222	{5858}	{nan}	0.0	non anotated	not interesting
+4178	12620x	0.00037764442561749443	4.36	483.2739	{12620}	{nan}	0.0	non anotated	not interesting
+6189	15659x	0.0002870807559412777	4.36	739.3428	{15659}	{nan}	0.0	non anotated	not interesting
+7492	2789x	0.0009937554691176011	4.37	237.2216	{2789}	{nan}	0.0	non anotated	not interesting
+1102	1806.0	0.001057546416481525	4.37	273.2428	{4009}	{'[2M-H2O+K]+'}	126.1442	annotated	not interesting
+11682	807x	0.00012840091791405757	4.37	176.6116	{807}	{nan}	0.0	non anotated	not interesting
+7350	2605x	0.0005572880151093376	4.37	231.6254	{2605}	{nan}	0.0	non anotated	not interesting
+1130	1849.0	0.0012465824185715162	4.38	509.3248	{12129, 13503, 12811, 12109, 2719, 13374, 11391}	{'[M+NH4]+', '[M+H]+', '[M-H2O+2H]2+', '[M+Na]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	486.335	annotated	not interesting
+3173	1119x	0.0005434415586735614	4.38	189.1273	{1119}	{nan}	0.0	non anotated	not interesting
+10444	6502x	0.000130276839670442	4.38	317.6987	{6502}	{nan}	0.0	non anotated	not interesting
+1129	1848.0	7.791279111162172e-05	4.38	1035.4313	{13928, 14194, 16115, 13429, 13817}	{'[M+NH4]+', '[2M+Na]+', '[M+Na]+', '[M+H]+', '[M+K]+'}	506.22	annotated	not interesting
+8827	4531x	0.0010436196347592011	4.38	285.2218	{4531}	{nan}	0.0	non anotated	not interesting
+3774	12018x	0.010544660364791777	4.39	467.2796	{12018}	{nan}	0.0	non anotated	not interesting
+10234	6249x	0.00047334671267780683	4.39	314.6559	{6249}	{nan}	0.0	non anotated	not interesting
+3519	11653x	0.00013260072274608666	4.39	457.2577	{11653}	{nan}	0.0	non anotated	not interesting
+6480	16040x	0.00024699168197919844	4.39	933.5488	{16040}	{nan}	0.0	non anotated	not interesting
+1140	1867.0	0.00028060223545706186	4.39	334.2386	{6276, 6281, 3402, 4973, 7376, 4081}	{'[M+ACN+H]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	292.2048	annotated	not interesting
+1139	1866.0	0.0007256921123259495	4.39	355.2847	{8200, 7298}	{'[M-H2O+NH4]+', '[M+Na]+'}	332.2944	annotated	not interesting
+1136	1860.0	0.0006677035903610417	4.39	473.3628	{12308, 11447}	{'[M+ACN+NH4]+', '[M+K]+'}	414.3016	annotated	not interesting
+3806	12068x	0.0033527598528611063	4.39	468.2821	{12068}	{nan}	0.0	non anotated	specific non annotated
+1143	1871.0	0.00028061936462824607	4.4	471.3473	{12232, 2214}	{'[2M+HFA+Na]+', '[M+NH4]+'}	201.1766	annotated	not interesting
+1141	1869.0	0.0014249127078101065	4.4	319.226	{6608, 6241, 4259}	{'[M+NH4]+', '[M-H2O+H]+', '[M+Na]+'}	296.236	non anotated	not interesting
+3789	1203x	0.00014851371129298712	4.4	191.1796	{1203}	{nan}	0.0	annotated	not interesting
+8242	3795x	6.745174789644321e-05	4.4	269.2114	{3795}	{nan}	0.0	non anotated	not interesting
+3475	11590x	0.002254179406330295	4.41	455.3524	{11590}	{nan}	0.0	annotated	not interesting
+3135	11143x	7.422796189259767e-05	4.41	444.1474	{11143}	{nan}	0.0	non anotated	not interesting
+2844	10756x	0.001972009708169336	4.41	437.2694	{10756}	{nan}	0.0	non anotated	not interesting
+1155	1890.0	0.00028612483335676555	4.41	423.3623	{5170, 3227, 10223}	{'[M+ACN+Na]+', '[2M-CO2+H]+', '[M+NH4]+'}	233.1696	annotated	not interesting
+5142	14064x	0.00268949499534669	4.41	537.1178	{14064}	{nan}	0.0	non anotated	specific non annotated
+1149	1878.0	8.558504640647698e-05	4.41	439.322	{10871, 1879}	{'[2M+Na]+', '[M-2H2O+K]+'}	208.1675	non anotated	not interesting
+1152	1886.0	7.586044271978756e-05	4.41	291.1956	{4851}	{'[M+Na]+'}	268.2053	non anotated	not interesting
+4246	12711x	0.00024742099451141743	4.42	485.2896	{12711}	{nan}	0.0	non anotated	not interesting
+7152	2367x	0.0002101013611186556	4.42	223.6365	{2367}	{nan}	0.0	non anotated	not interesting
+9007	4758x	0.0001589683736526653	4.42	289.2525	{4758}	{nan}	0.0	non anotated	not interesting
+1158	1896.0	0.0017132788405847961	4.42	519.2722	{13740, 13141, 12485}	{'[2M-2H2O+2H]2+', '[M+Na]+', '[M+H]+'}	496.2825	non anotated	not interesting
+6310	15832x	0.0005605492561929037	4.42	824.2763	{15832}	{nan}	0.0	non anotated	not interesting
+1156	1892.0	7.894833659096936e-05	4.42	391.2471	{9170, 9171, 8633, 8634, 8059}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	368.2575	non anotated	not interesting
+2289	10054x	9.347651490113892e-05	4.42	419.2586	{10054}	{nan}	0.0	non anotated	not interesting
+12498	9139x	0.00011301786381837175	4.43	389.2328	{9139}	{nan}	0.0	non anotated	not interesting
+4835	13623x	0.0006179330322906841	4.43	514.2807	{13623}	{nan}	0.0	non anotated	not interesting
+6499	16063x	0.00025058783185220895	4.43	946.3135	{16063}	{nan}	0.0	non anotated	not interesting
+8738	4427x	0.0016315510672612582	4.44	283.2061	{4427}	{nan}	0.0	non anotated	not interesting
+1166	1909.0	0.000344342426885812	4.44	309.2066	{5936, 5934}	{'[M+H]+'}	308.1996	non anotated	not interesting
+8416	4005x	0.0001498861808709699	4.44	273.2216	{4005}	{nan}	0.0	annotated	not interesting
+1174	1920.0	0.0001831619978080377	4.45	411.2728	{9793, 8139, 8695}	{'[M+Na]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	388.2838	non anotated	not interesting
+1178	1928.0	0.007883044004637503	4.46	301.2164	{3349, 5431}	{'[M+ACN+Na]+', '[M+NH4]+'}	237.1996	annotated	not interesting
+1177	1925.0	0.0004301656989151732	4.46	495.2743	{13067, 1279}	{'[M-CO2+H]+', '[2M+Na]+'}	236.142	non anotated	not interesting
+10181	6182x	0.0012531292069368652	4.46	313.2175	{6182}	{nan}	0.0	non anotated	not interesting
+3675	11883x	4.2515395223027315e-05	4.46	463.285	{11883}	{nan}	0.0	non anotated	not interesting
+1179	1930.0	0.0003891830755181787	4.46	293.2113	{4969, 3298, 3901}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	270.2206	annotated	not interesting
+7701	3041x	0.0009924716425220282	4.46	246.6311	{3041}	{nan}	0.0	non anotated	specific non annotated
+7555	2857x	0.00021761766057303166	4.46	240.6304	{2857}	{nan}	0.0	non anotated	not interesting
+7508	2805x	0.0004562289481818802	4.46	238.6423	{2805}	{nan}	0.0	non anotated	not interesting
+10754	6879x	0.00024485415280279486	4.46	324.6979	{6879}	{nan}	0.0	non anotated	not interesting
+11094	7310x	0.001033386744448701	4.47	332.6861	{7310}	{nan}	0.0	non anotated	not interesting
+10952	7133x	6.147771882414326e-05	4.47	329.6599	{7133}	{nan}	0.0	non anotated	not interesting
+9459	5312x	0.00015344849345386453	4.47	299.2013	{5312}	{nan}	0.0	annotated	not interesting
+11037	7238x	0.010977053277013153	4.47	331.2277	{7238}	{nan}	0.0	non anotated	not interesting
+13150	9955x	0.00044665154053494266	4.47	415.2491	{9955}	{nan}	0.0	non anotated	not interesting
+1184	1936.0	0.0003933607176907315	4.47	333.1881	{7327}	{'[M+ACN+K]+'}	253.1959	non anotated	not interesting
+1185	1937.0	0.004719449914515134	4.47	525.3194	{12036, 13860, 13354, 13755, 12733}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	502.33	non anotated	not interesting
+1186	1938.0	0.002412972373442286	4.47	332.2312	{7282}	{'[M+NH4]+'}	314.1982	non anotated	not interesting
+1187	1940.0	7.80788196703068e-05	4.47	371.1844	{8679, 7963, 7215}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	348.1942	non anotated	not interesting
+4636	13313x	2.9853963557883825e-05	4.48	501.3582	{13313}	{nan}	0.0	non anotated	not interesting
+10129	6115x	0.0002338171675223126	4.48	312.1723	{6115}	{nan}	0.0	non anotated	not interesting
+1196	1959.0	0.0006893804703703522	4.48	453.3364	{9896, 9273, 11466}	{'[M+Na]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	430.346	annotated	not interesting
+8918	4641x	0.00022841973697405562	4.48	287.2374	{4641}	{nan}	0.0	annotated	not interesting
+10596	6690x	0.00021474406507354467	4.48	321.1784	{6690}	{nan}	0.0	non anotated	not interesting
+1201	1968.0	0.00041486906196658025	4.48	325.1443	{6892}	{'[2M+HFA+2H]2+'}	301.1342	non anotated	not interesting
+11070	7281x	6.751997750009881e-05	4.49	332.2117	{7281}	{nan}	0.0	non anotated	not interesting
+11208	7473x	9.395088767987877e-05	4.49	336.6521	{7473}	{nan}	0.0	non anotated	not interesting
+7772	3151x	0.00014416009990084086	4.49	249.1852	{3151}	{nan}	0.0	non anotated	not interesting
+6584	1679x	9.48319050686582e-05	4.49	205.615	{1679}	{nan}	0.0	non anotated	not interesting
+1200	1966.0	0.0013827604778104189	4.49	495.3448	{12301, 11598, 12912, 13086, 10783}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	472.3557	annotated	not interesting
+9552	5438x	0.003219670977444377	4.49	301.2169	{5438}	{nan}	0.0	non anotated	not interesting
+12278	8850x	0.0001446681759985253	4.49	378.223	{8850}	{nan}	0.0	non anotated	not interesting
+4932	1374x	0.0004097070761824667	4.49	196.6094	{1374}	{nan}	0.0	non anotated	not interesting
+2524	1035x	0.0001269898378445139	4.49	185.1016	{1035}	{nan}	0.0	non anotated	not interesting
+1172	1918.0	0.0001698876461204452	4.49	330.216	{7153}	{'[M+NH4]+'}	312.1827	non anotated	not interesting
+6927	2076x	5.709627396422803e-05	4.49	217.123	{2076}	{nan}	0.0	non anotated	not interesting
+9841	5763x	6.32656942482084e-05	4.49	306.191	{5763}	{nan}	0.0	non anotated	not interesting
+4856	13654x	0.00014647322700530615	4.5	515.301	{13654}	{nan}	0.0	non anotated	not interesting
+6433	15988x	0.00023545435265148805	4.5	910.2778	{15988}	{nan}	0.0	non anotated	not interesting
+4183	12625x	0.0003099617114217761	4.5	483.2748	{12625}	{nan}	0.0	non anotated	not interesting
+1207	1981.0	0.0022665175770423996	4.5	533.2519	{12016, 13538, 14011}	{'[M+Na]+', '[M-CO2+H]+', '[M+H]+'}	510.2624	non anotated	not interesting
+10445	6503x	0.0002868120671879199	4.5	317.6988	{6503}	{nan}	0.0	non anotated	not interesting
+1218	1998.0	0.004225856865994874	4.51	397.2018	{7171, 9319, 5065, 4171, 6448, 6194, 7413, 5080, 7422}	{'[M+HFA+K]+', '[M+NH4]+', '[M+Na]+', '[2M+2H]2+', '[M-H2O+H]+', '[M-H2O+Na]+', '[M-2H2O+H]+'}	312.2309	annotated	not interesting
+2567	10408x	0.00020279141554551785	4.51	427.285	{10408}	{nan}	0.0	non anotated	not interesting
+1215	1993.0	0.00010533229944458743	4.51	364.2103	{8345, 6852, 8473, 5767}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	341.2209	non anotated	not interesting
+4848	13641x	0.0003948387642071731	4.52	515.2645	{13641}	{nan}	0.0	non anotated	not interesting
+1222	2002.0	9.80287462101933e-05	4.52	353.1981	{8116, 8115, 772}	{'[2M-H2O+Na]+', '[M+H]+'}	174.1077	non anotated	not interesting
+9727	5622x	0.0003715841631299936	4.53	304.1381	{5622}	{nan}	0.0	non anotated	not interesting
+3873	12164x	0.002390117274397843	4.53	470.2619	{12164}	{nan}	0.0	non anotated	specific non annotated
+3824	12091x	0.007939171801004596	4.53	469.2585	{12091}	{nan}	0.0	non anotated	not interesting
+7022	2198x	0.0002302087784258693	4.53	219.1743	{2198}	{nan}	0.0	annotated	not interesting
+10297	6331x	0.0005009652906880414	4.53	315.6463	{6331}	{nan}	0.0	non anotated	not interesting
+1227	2011.0	0.0006670879162740861	4.53	523.3038	{13284, 13802, 13716, 12632, 2649}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+2H]2+'}	500.3143	annotated	not interesting
+1233	2024.0	0.0002573945051510893	4.54	316.6905	{6400}	{'[M+NH4]+'}	298.6578	non anotated	not interesting
+12984	9733x	0.0001247192810366576	4.54	409.3473	{9733}	{nan}	0.0	non anotated	not interesting
+1230	2018.0	0.00021491295487367337	4.54	539.297	{14116, 13701}	{'[M+Na]+', '[M+H]+'}	516.3081	non anotated	not interesting
+4241	12701x	0.0005157771051065352	4.54	485.2534	{12701}	{nan}	0.0	non anotated	not interesting
+8821	4522x	0.00039094860502943395	4.54	285.2214	{4522}	{nan}	0.0	non anotated	not interesting
+6368	15910x	6.063684685377278e-05	4.54	868.3021	{15910}	{nan}	0.0	non anotated	not interesting
+10415	6471x	0.00012749376083588887	4.54	317.2479	{6471}	{nan}	0.0	non anotated	not interesting
+10849	7000x	0.0008805378485412393	4.55	327.1956	{7000}	{nan}	0.0	non anotated	not interesting
+4654	13341x	0.0002809489911257946	4.55	503.2428	{13341}	{nan}	0.0	non anotated	not interesting
+1236	2028.0	8.90258394815313e-05	4.55	331.1898	{6906, 7219}	{'[M+NH4]+', '[2M+HFA+2H]2+'}	307.1802	non anotated	not interesting
+1237	2029.0	0.0006142252270157867	4.55	485.3261	{12721, 11827}	{'[M+ACN+H]+', '[M+NH4]+'}	443.2925	non anotated	not interesting
+11056	7266x	0.00012405949598462329	4.55	331.6775	{7266}	{nan}	0.0	non anotated	not interesting
+10802	6941x	0.00017745495988296826	4.56	325.6959	{6941}	{nan}	0.0	non anotated	not interesting
+1242	2035.0	0.00021640129803156423	4.56	459.3831	{11785, 10844}	{'[M+ACN+NH4]+', '[M+K]+'}	400.3221	annotated	not interesting
+3708	11933x	0.00020219262182614265	4.56	465.2639	{11933}	{nan}	0.0	non anotated	not interesting
+9295	5108x	8.157127585675182e-05	4.56	296.1769	{5108}	{nan}	0.0	non anotated	not interesting
+1245	2039.0	0.0020807564045404892	4.56	471.3469	{1130, 12221}	{'[2M+Na]+', '[M-2H2O+H]+'}	224.1782	annotated	not interesting
+5847	15098x	0.00014194025500905924	4.57	616.2544	{15098}	{nan}	0.0	non anotated	not interesting
+6471	16028x	0.00011154296179670734	4.57	930.3173	{16028}	{nan}	0.0	non anotated	not interesting
+4631	13309x	0.0001295764001095479	4.57	501.3576	{13309}	{nan}	0.0	non anotated	not interesting
+1246	2041.0	0.00044877636158881397	4.57	293.2102	{3290, 4957, 3895}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	270.2201	annotated	not interesting
+3742	11979x	0.007900178917443353	4.57	466.1602	{11979}	{nan}	0.0	non anotated	not interesting
+1248	2044.0	0.0002431604509780808	4.57	317.2091	{6443, 4163, 6127}	{'[M+NH4]+', '[M-H2O+H]+', '[M+Na]+'}	294.2196	non anotated	not interesting
+1251	2048.0	0.0005995017952928558	4.57	305.1828	{5424, 5709}	{'[M-H2O+Na]+', '[M+H]+'}	300.2065	annotated	not interesting
+1252	2050.0	0.0007234853583314753	4.57	336.252	{7461, 6605}	{'[M+NH4]+', '[M+H]+'}	318.2184	non anotated	not interesting
+1261	2062.0	0.0028987311706412627	4.58	557.455	{7658, 4245, 14423}	{'[M+HFA+K]+', '[2M-H+2Na]+', '[M+Na]+'}	256.2415	non anotated	not interesting
+9344	5166x	0.00017182665872912992	4.58	297.1849	{5166}	{nan}	0.0	non anotated	not interesting
+9451	5302x	0.00035180127184645057	4.58	299.2007	{5302}	{nan}	0.0	non anotated	not interesting
+1258	2058.0	0.00036503322165833515	4.58	327.3052	{7028, 1567}	{'[2M-CO2+H]+', '[M+NH4]+'}	185.1448	annotated	not interesting
+8729	4416x	8.047195244438261e-05	4.58	283.2055	{4416}	{nan}	0.0	annotated	not interesting
+10239	6253x	7.561385920968976e-05	4.59	314.6715	{6253}	{nan}	0.0	non anotated	not interesting
+1269	2077.0	4.243748715918417e-05	4.59	441.3367	{10209, 10981, 9452, 10968, 10073}	{'[M-H2O+Na]+', '[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	418.3465	non anotated	not interesting
+10010	5974x	4.767941354119653e-05	4.59	309.7013	{5974}	{nan}	0.0	non anotated	not interesting
+12650	9323x	7.223573784855708e-05	4.6	397.2383	{9323}	{nan}	0.0	non anotated	not interesting
+6561	1652x	0.00017037697582352078	4.6	205.1949	{1652}	{nan}	0.0	non anotated	not interesting
+13149	9954x	0.0005211379806637734	4.6	415.2476	{9954}	{nan}	0.0	non anotated	not interesting
+9942	5882x	0.00027981536535195777	4.6	308.7015	{5882}	{nan}	0.0	non anotated	not interesting
+1274	2084.0	0.0004846939177747417	4.6	491.2748	{12945, 12100}	{'[M+Na]+', '[M+H]+'}	468.2863	non anotated	not interesting
+3962	12283x	0.00018375878195984384	4.61	473.326	{12283}	{nan}	0.0	non anotated	not interesting
+1277	2088.0	0.00015679319092163843	4.61	435.3265	{10707}	{'[M+ACN+H]+'}	393.2925	non anotated	not interesting
+3984	12323x	0.0001792086425149352	4.62	474.1578	{12323}	{nan}	0.0	non anotated	not interesting
+5550	1464x	0.00013253791897486765	4.62	199.1693	{1464}	{nan}	0.0	annotated	not interesting
+1282	2094.0	8.795801651927618e-05	4.62	255.2319	{3337}	{'[M+ACN+NH4]+'}	196.1739	annotated	not interesting
+1292	2106.0	0.00014464124779309937	4.62	335.1874	{7412, 4134}	{'[M+ACN+NH4]+', '[M+H]+'}	276.13	non anotated	not interesting
+12888	9623x	0.00011105734692282379	4.62	407.3312	{9623}	{nan}	0.0	non anotated	not interesting
+2842	10753x	0.0001431632395541353	4.62	437.2689	{10753}	{nan}	0.0	non anotated	not interesting
+10930	7101x	0.00011158831103818333	4.63	329.2115	{7101}	{nan}	0.0	non anotated	not interesting
+1295	2112.0	0.002439667660417583	4.63	890.2838	{15955, 15908}	{'[M+Na]+', '[M+H]+'}	867.2945	non anotated	specific non annotated
+10979	7162x	0.002008922210828094	4.63	330.2642	{7162}	{nan}	0.0	non anotated	not interesting
+9298	5111x	0.0004027875608798967	4.64	296.1771	{5111}	{nan}	0.0	non anotated	not interesting
+1306	2126.0	7.9289013796274e-05	4.64	233.1535	{2643, 333}	{'[M+ACN+H]+', '[2M+Na]+'}	105.0825	annotated	not interesting
+1305	2125.0	0.0020672214884941394	4.64	459.3464	{11751, 11467, 3887}	{'[2M+K]+', '[M+HFA+NH4]+', '[2M-H+2Na]+'}	207.1872	annotated	not interesting
+8487	4094x	0.00011435834682227609	4.64	275.6639	{4094}	{nan}	0.0	non anotated	not interesting
+3095	11084x	0.00012411792846791107	4.65	443.3159	{11084}	{nan}	0.0	non anotated	not interesting
+2398	10199x	0.0005327258362617924	4.65	423.2895	{10199}	{nan}	0.0	non anotated	not interesting
+1307	2127.0	6.617331842519877e-05	4.65	257.2261	{3405}	{'[M+ACN+NH4]+'}	198.165	non anotated	not interesting
+1309	2131.0	5.971406108153809e-05	4.65	357.2054	{484, 8254}	{'[2M+H]+', '[M-CO2+Na]+'}	178.1002	non anotated	not interesting
+1312	2134.0	0.0008369921269729224	4.65	327.2312	{6754, 7011, 4629, 4630, 3802}	{'[M+NH4]+', '[M+Na]+', '[M-H2O+H]+', '[2M-2H2O+2H]2+', '[M-2H2O+H]+'}	304.2407	annotated	not interesting
+10361	6399x	0.0013169061830214993	4.65	316.6905	{6399}	{nan}	0.0	non anotated	not interesting
+10477	6545x	0.0002811698521710079	4.66	318.2319	{6545}	{nan}	0.0	non anotated	not interesting
+1317	2142.0	9.995564208337331e-05	4.66	491.3132	{12768, 2082, 12950, 2712, 11384}	{'[M+NH4]+', '[M+Na]+', '[M+2H]2+', '[M-2H2O+2H]2+', '[2M-2H2O+2H]2+'}	468.324	annotated	not interesting
+3877	12168x	0.00015533122860124512	4.66	470.3349	{12168}	{nan}	0.0	non anotated	not interesting
+1319	2146.0	0.0004900349273211539	4.66	457.2218	{11641, 1142}	{'[2M+ACN+K]+', '[M+H]+'}	188.6142	non anotated	not interesting
+8820	4521x	8.289108328118093e-05	4.66	285.2213	{4521}	{nan}	0.0	annotated	not interesting
+7675	3011x	0.0003919533505365059	4.66	245.2264	{3011}	{nan}	0.0	non anotated	not interesting
+5758	14945x	0.0043847746176835355	4.66	600.2593	{14945}	{nan}	0.0	non anotated	specific non annotated
+8210	374x	0.00010022190404465728	4.67	149.1325	{374}	{nan}	0.0	annotated	not interesting
+1320	2150.0	0.01483201822805874	4.67	493.3284	{13017, 12220, 12845}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	470.3397	annotated	not interesting
+1321	2151.0	0.00043456100596356745	4.67	337.205	{1320, 7503}	{'[M+NH4]+', '[2M-H2O+H]+'}	177.1041	non anotated	not interesting
+9655	5545x	0.00030351404258443056	4.67	303.1485	{5545}	{nan}	0.0	non anotated	not interesting
+4617	13290x	0.00011545954008942149	4.67	501.3208	{13290}	{nan}	0.0	non anotated	not interesting
+7006	2173x	0.0007203648443939623	4.67	219.1017	{2173}	{nan}	0.0	non anotated	not interesting
+1325	2156.0	0.0003897907687510742	4.67	313.2369	{6183, 5703}	{'[M+K]+', '[M+HFA+H]+'}	266.2217	non anotated	not interesting
+1323	2154.0	0.0006566237151670133	4.67	515.3006	{13652, 12398}	{'[M-CO2+Na]+', '[M+NH4]+'}	497.266	non anotated	not interesting
+3773	12017x	0.0038145883366724784	4.67	467.2795	{12017}	{nan}	0.0	non anotated	not interesting
+12370	897x	0.0002195353813348533	4.68	179.143	{897}	{nan}	0.0	non anotated	not interesting
+6402	15953x	8.634276821245977e-05	4.68	888.3069	{15953}	{nan}	0.0	non anotated	not interesting
+9521	538x	7.563476445403e-05	4.68	161.1324	{538}	{nan}	0.0	non anotated	not interesting
+7718	3069x	0.00021104803969234991	4.68	247.1695	{3069}	{nan}	0.0	non anotated	not interesting
+10923	7095x	0.0005960356357334579	4.68	329.2111	{7095}	{nan}	0.0	non anotated	not interesting
+1334	2174.0	0.005950176844966462	4.69	611.4278	{6441, 3469, 5070, 15055, 7325, 4158}	{'[2M+Na]+', '[M+Na]+', '[M+H]+', '[M+K]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	294.2195	annotated	not interesting
+1341	2183.0	0.00011068344103929563	4.69	213.1484	{1954, 1746}	{'[M+NH4]+', '[2M+HFA+2H]2+'}	189.1395	non anotated	not interesting
+3456	11562x	4.681671192540402e-05	4.69	455.3157	{11562}	{nan}	0.0	non anotated	not interesting
+1342	2184.0	0.025401334073049484	4.69	321.2414	{6711, 5319, 6376, 5323, 4342, 4343, 3611}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	298.2512	annotated	not interesting
+6431	15986x	7.199098591575796e-05	4.69	910.2749	{15986}	{nan}	0.0	non anotated	not interesting
+4243	12708x	0.0006177323434761169	4.69	485.2894	{12708}	{nan}	0.0	non anotated	not interesting
+9853	577x	6.501594721819074e-05	4.69	163.1482	{577}	{nan}	0.0	non anotated	not interesting
+1344	2188.0	0.00014003985480580934	4.7	477.2625	{10056, 12432}	{'[M+Na]+', '[M-2H2O+H]+'}	454.2732	non anotated	not interesting
+1359	2210.0	0.00019227184606723167	4.7	297.1847	{5160}	{'[2M-2H2O+H]+'}	166.1005	non anotated	not interesting
+8903	461x	3.606157710892032e-05	4.7	155.1066	{461}	{nan}	0.0	non anotated	not interesting
+7917	3336x	6.0353792563106646e-05	4.7	255.2317	{3336}	{nan}	0.0	annotated	not interesting
+7590	28x	0.00011019084818126261	4.7	109.1011	{28}	{nan}	0.0	non anotated	not interesting
+10021	5986x	0.00272405955753519	4.7	310.1381	{5986}	{nan}	0.0	non anotated	not interesting
+6565	1656x	0.0003767877565321569	4.71	205.1951	{1656}	{nan}	0.0	annotated	not interesting
+1346	2192.0	0.012632799155031587	4.71	983.491	{16082, 16101}	{'[M+Na]+', '[M+H]+'}	960.5021	non anotated	not interesting
+9684	5575x	0.001424541110058472	4.71	303.2318	{5575}	{nan}	0.0	annotated	not interesting
+1347	2193.0	7.721083002099673e-05	4.71	500.207	{13252, 12487}	{'[M+NH4]+', '[M+K]+'}	461.2447	non anotated	not interesting
+9158	4929x	0.0011600201232839344	4.71	293.1443	{4929}	{nan}	0.0	non anotated	not interesting
+10541	6628x	0.0005370993442867465	4.71	319.6268	{6628}	{nan}	0.0	non anotated	not interesting
+9538	5405x	0.0018431037954945333	4.71	301.1328	{5405}	{nan}	0.0	non anotated	not interesting
+6191	15661x	0.0003113968106084553	4.72	740.3578	{15661}	{nan}	0.0	non anotated	not interesting
+4938	13762x	0.0011149644317829351	4.72	520.7452	{13762}	{nan}	0.0	non anotated	not interesting
+1348	2194.0	0.0006684559150426961	4.72	479.2432	{12478, 2575}	{'[2M+Na]+', '[M-2H2O+K]+'}	228.1245	non anotated	not interesting
+10618	6722x	0.0014913066001994372	4.72	321.6462	{6722}	{nan}	0.0	non anotated	not interesting
+4404	12961x	0.0004205051525870912	4.72	492.157	{12961}	{nan}	0.0	non anotated	not interesting
+11987	848x	5.148345030841953e-05	4.72	177.1638	{848}	{nan}	0.0	non anotated	not interesting
+3540	11684x	0.00024311497733480293	4.72	457.3672	{11684}	{nan}	0.0	annotated	not interesting
+9960	5901x	0.00045857907046835573	4.72	309.1188	{5901}	{nan}	0.0	non anotated	not interesting
+1351	2197.0	0.00011042391974180058	4.72	313.1804	{6172, 3221}	{'[M+HFA+K]+', '[M+Na]+'}	228.2116	annotated	not interesting
+10259	6282x	0.0011288204193106103	4.73	315.1954	{6282}	{nan}	0.0	non anotated	specific non annotated
+2837	10749x	0.0009819580826077106	4.73	437.2683	{10749}	{nan}	0.0	non anotated	not interesting
+1356	2205.0	0.00035382764322817485	4.73	301.2161	{5423, 4247}	{'[M+Na]+', '[M+H]+'}	278.2258	non anotated	not interesting
+1355	2203.0	0.00021367952057723799	4.73	497.3607	{12384, 13166, 13168, 12977, 10876}	{'[M+Na]+', '[M+NH4]+', '[M+H]+', '[M-2H2O+H]+'}	474.371	annotated	not interesting
+3839	12108x	0.0003214809355026258	4.73	469.3309	{12108}	{nan}	0.0	annotated	not interesting
+1364	2220.0	0.00015761567821956246	4.74	497.2895	{10840, 13144}	{'[M+Na]+', '[M-2H2O+H]+'}	474.2991	non anotated	not interesting
+1362	2218.0	6.892739058729737e-05	4.74	293.2099	{4689, 3892, 3894, 3286, 4955, 3294}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	270.2199	annotated	not interesting
+8936	4660x	0.00021090953263999213	4.75	288.1432	{4660}	{nan}	0.0	non anotated	not interesting
+1373	2240.0	5.686936124982088e-05	4.75	489.3579	{12895}	{'[M-H2O+H]+'}	506.3614	non anotated	not interesting
+1370	2232.0	0.0003793494192980729	4.75	243.1382	{82, 2933, 1114}	{'[2M-2H2O+K]+', '[M+HFA+Na]+', '[M+H]+'}	120.096	non anotated	not interesting
+1367	2227.0	0.0032192782505251587	4.75	455.28	{10584, 11555}	{'[M+ACN+H]+', '[M+NH4]+'}	413.2456	non anotated	not interesting
+7021	2193x	0.0004933615846137789	4.75	219.1743	{2193}	{nan}	0.0	annotated	not interesting
+4570	13221x	0.00022106210723331395	4.76	499.3048	{13221}	{nan}	0.0	non anotated	not interesting
+6452	16004x	0.0010363106461230012	4.76	920.2962	{16004}	{nan}	0.0	non anotated	specific non annotated
+1382	2257.0	5.5614813096792844e-05	4.77	291.1949	{4852, 4570, 3788}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	268.2044	non anotated	not interesting
+2790	10688x	0.0005241973846084469	4.77	435.2535	{10688}	{nan}	0.0	non anotated	not interesting
+3766	12008x	0.0005604268639585763	4.77	467.2789	{12008}	{nan}	0.0	non anotated	not interesting
+4311	12810x	0.00034505136404671256	4.78	487.3414	{12810}	{nan}	0.0	non anotated	not interesting
+1389	2266.0	0.003868337570587309	4.78	333.1832	{5314, 6440, 5068, 3472, 4156, 7326}	{'[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M+K]+', '[M-H2O+Na]+', '[M-2H2O+H]+'}	294.2202	annotated	not interesting
+4886	1368x	0.00011712924576348661	4.78	196.609	{1368}	{nan}	0.0	non anotated	not interesting
+10358	6396x	0.00011256218193189839	4.78	316.6903	{6396}	{nan}	0.0	non anotated	not interesting
+9474	5337x	0.00012394643388543804	4.79	299.6515	{5337}	{nan}	0.0	non anotated	not interesting
+1395	2276.0	0.0027434197314958886	4.79	421.2738	{1528, 9481, 4267, 10110}	{'[2M-2H2O+K]+', '[2M-H2O+K]+', '[M+ACN+K]+', '[M+H]+'}	200.1583	annotated	not interesting
+1392	2270.0	0.0005398793609230992	4.79	255.2317	{1497, 3335}	{'[M+HFA+K]+', '[2M+Na]+'}	116.1214	annotated	not interesting
+4250	12718x	0.0005454945520408915	4.79	485.3258	{12718}	{nan}	0.0	non anotated	not interesting
+10282	6309x	0.0007843524614373155	4.79	315.253	{6309}	{nan}	0.0	annotated	not interesting
+9368	5207x	0.00042366995356607934	4.79	297.2435	{5207}	{nan}	0.0	non anotated	not interesting
+5096	13995x	0.00017275773923074031	4.79	532.3853	{13995}	{nan}	0.0	non anotated	not interesting
+1407	2292.0	0.00030121477192682265	4.8	473.3622	{12298, 3142}	{'[M+ACN+2H]2+', '[M+NH4]+'}	455.3284	annotated	not interesting
+1404	2288.0	0.00011629965607961122	4.8	527.3347	{10976, 10211, 11752, 11753, 13903, 12561, 12405, 10207, 10975}	{'[M+NH4]+', '[M+HFA+Na]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	458.3399	annotated	not interesting
+1401	2283.0	0.0012529011497258804	4.8	503.336	{13344, 11198}	{'[M+Na]+', '[M-2H2O+H]+'}	480.346	non anotated	specific non annotated
+1398	2279.0	0.0002041698449267484	4.8	437.3415	{10770, 3077}	{'[2M-CO2+Na]+', '[M+NH4]+'}	229.1714	annotated	not interesting
+10440	6497x	8.031914875417608e-05	4.8	317.6983	{6497}	{nan}	0.0	non anotated	not interesting
+9346	5168x	0.00032971937784764225	4.81	297.185	{5168}	{nan}	0.0	non anotated	not interesting
+4324	12834x	0.000274897245377039	4.81	487.3783	{12834}	{nan}	0.0	non anotated	not interesting
+3466	11574x	0.0006265877230648467	4.81	455.3517	{11574}	{nan}	0.0	annotated	not interesting
+11022	7220x	8.036840612610551e-05	4.81	331.1907	{7220}	{nan}	0.0	non anotated	not interesting
+1412	2300.0	0.0004431058595160246	4.81	453.3363	{11464, 3893, 3158}	{'[M+ACN+H]+', '[2M+K]+', '[M+HFA+NH4]+'}	207.1872	annotated	not interesting
+3920	12214x	0.00108070314204872	4.81	471.3465	{12214}	{nan}	0.0	non anotated	not interesting
+3855	12145x	0.00023815477892886108	4.82	469.3676	{12145}	{nan}	0.0	annotated	not interesting
+4090	12486x	0.00014781637412164493	4.82	479.2793	{12486}	{nan}	0.0	non anotated	not interesting
+10264	6288x	0.0012401908453774568	4.82	315.1956	{6288}	{nan}	0.0	non anotated	not interesting
+13094	9869x	0.00021902096074527213	4.82	413.2691	{9869}	{nan}	0.0	non anotated	not interesting
+3671	11877x	0.0001241308987911642	4.83	463.248	{11877}	{nan}	0.0	non anotated	not interesting
+10726	6849x	0.00012429824218120161	4.84	324.2171	{6849}	{nan}	0.0	non anotated	not interesting
+11052	7262x	0.00013725985730819547	4.85	331.6595	{7262}	{nan}	0.0	non anotated	not interesting
+1442	2335.0	9.355988133327453e-05	4.85	425.3416	{10313}	{'[2M+H]+'}	212.1669	non anotated	not interesting
+1432	2323.0	3.411975493338661e-05	4.85	283.2057	{4417, 3468}	{'[M+ACN+H]+', '[M+NH4]+'}	241.171	non anotated	not interesting
+4601	13274x	0.0010003935492668033	4.85	501.285	{13274}	{nan}	0.0	non anotated	not interesting
+4903	1370x	6.405052607763527e-05	4.86	196.609	{1370}	{nan}	0.0	non anotated	not interesting
+1433	2324.0	0.0017864930139162608	4.86	317.209	{4161, 6442, 5071}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	294.2197	annotated	not interesting
+1446	2342.0	0.0014023340487082168	4.87	505.2559	{12617, 13395}	{'[M+Na]+', '[M+H]+'}	482.2665	non anotated	not interesting
+1447	2344.0	9.632589224060744e-05	4.87	318.2127	{5128, 4201, 6539}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	295.2232	non anotated	not interesting
+1454	2352.0	0.0008545705226331639	4.87	471.3465	{12215}	{'[2M+K]+'}	216.1899	annotated	not interesting
+1453	2351.0	0.00011387476831019589	4.87	467.3154	{12029}	{'[2M+HFA+Na]+'}	199.161	non anotated	not interesting
+1445	2339.0	7.41584117159681e-05	4.87	429.3001	{1577, 10521}	{'[M-H2O+NH4]+', '[2M+Na]+'}	203.1559	annotated	not interesting
+9294	5107x	0.0001109935230568292	4.87	296.1769	{5107}	{nan}	0.0	non anotated	not interesting
+9683	5574x	0.00020167721559151568	4.87	303.2317	{5574}	{nan}	0.0	annotated	not interesting
+8816	4517x	0.00025803484907229796	4.87	285.2212	{4517}	{nan}	0.0	non anotated	not interesting
+6566	1658x	0.00031460597518387357	4.88	205.1952	{1658}	{nan}	0.0	annotated	not interesting
+4323	12832x	0.00035099453573052053	4.88	487.3783	{12832}	{nan}	0.0	non anotated	not interesting
+1456	2354.0	0.00020117168494608543	4.88	497.3597	{12377, 11689, 13164}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	474.3705	annotated	not interesting
+10305	6339x	0.0001535566349833163	4.88	315.6817	{6339}	{nan}	0.0	non anotated	not interesting
+9831	5751x	2.778291661828767e-05	4.88	306.1905	{5751}	{nan}	0.0	non anotated	not interesting
+3969	12299x	0.000708800433750916	4.89	473.3622	{12299}	{nan}	0.0	annotated	not interesting
+3389	11471x	0.00036137760772401805	4.89	453.3366	{11471}	{nan}	0.0	annotated	not interesting
+10953	7134x	0.00014844813431852275	4.89	329.6622	{7134}	{nan}	0.0	non anotated	not interesting
+1469	2373.0	0.0024205568642228403	4.9	993.5727	{13738, 13739, 13148, 16107}	{'[2M+H]+', '[M+Na]+', '[M+H]+'}	496.2827	non anotated	not interesting
+1471	2378.0	6.000390388284003e-05	4.91	421.347	{10128, 3801}	{'[M+ACN+NH4]+', '[2M+H]+'}	210.168	annotated	not interesting
+4694	13404x	0.00022449091754403482	4.92	505.3522	{13404}	{nan}	0.0	non anotated	not interesting
+1479	2387.0	0.00020858746774452902	4.92	255.232	{3341}	{'[2M+Na]+'}	116.1215	annotated	not interesting
+1475	2383.0	0.0001436164257490752	4.92	541.2583	{13072, 14147}	{'[M+ACN+Na]+', '[M+NH4]+'}	477.2417	non anotated	not interesting
+5896	15185x	0.00035359325109466294	4.92	626.2752	{15185}	{nan}	0.0	non anotated	not interesting
+1480	2388.0	0.0009003752086752741	4.93	329.2115	{7100}	{'[M+K]+'}	290.2471	non anotated	not interesting
+10436	6493x	4.2006226303360055e-05	4.93	317.698	{6493}	{nan}	0.0	non anotated	not interesting
+1487	2397.0	0.00013136048271415062	4.93	499.3054	{13228, 1342}	{'[M-CO2+H]+', '[2M+Na]+'}	238.1576	annotated	not interesting
+1488	2398.0	0.00022833805283705645	4.93	295.1696	{5045}	{'[2M-2H2O+K]+'}	146.1117	non anotated	not interesting
+8803	4501x	0.0002841620025877023	4.93	285.1381	{4501}	{nan}	0.0	non anotated	not interesting
+4537	13184x	0.0004369692143221593	4.93	497.6696	{13184}	{nan}	0.0	non anotated	not interesting
+1489	2399.0	0.0002714535738356762	4.93	467.2794	{12015, 11074, 10803, 10111}	{'[M+Na]+', '[M+NH4]+', '[M+HFA+H]+', '[M+H]+'}	420.2667	non anotated	not interesting
+10360	6398x	0.0002554508513982569	4.93	316.6905	{6398}	{nan}	0.0	non anotated	not interesting
+4501	13126x	0.0007747677810696517	4.93	497.1684	{13126}	{nan}	0.0	non anotated	not interesting
+1481	2389.0	0.00013197188120686875	4.93	499.3761	{11778, 12458, 11790, 13237, 13046, 11000, 13241, 11007}	{'[M+NH4]+', '[M+H]+', '[M+Na]+', '[M-H2O+H]+', '[2M-2H2O+2H]2+', '[M-2H2O+H]+'}	476.3866	annotated	not interesting
+9456	5309x	0.0016783514079095328	4.94	299.201	{5309}	{nan}	0.0	annotated	not interesting
+6453	16005x	0.00011407911262386511	4.94	920.2973	{16005}	{nan}	0.0	non anotated	not interesting
+9356	5179x	0.0001918015115623688	4.94	297.1854	{5179}	{nan}	0.0	non anotated	not interesting
+8657	4322x	0.0007198251319611186	4.94	281.1901	{4322}	{nan}	0.0	non anotated	not interesting
+3707	11932x	0.001971983679484632	4.94	465.2638	{11932}	{nan}	0.0	non anotated	specific non annotated
+9408	5250x	0.00018337133733252158	4.96	298.2462	{5250}	{nan}	0.0	non anotated	not interesting
+4618	13291x	0.0003744784954529198	4.96	501.3208	{13291}	{nan}	0.0	non anotated	not interesting
+8503	4113x	3.3773449025014616e-05	4.96	276.6718	{4113}	{nan}	0.0	non anotated	not interesting
+1504	2424.0	0.0001519802651104034	4.96	469.3314	{12120}	{'[M-CO2+NH4]+'}	495.2867	annotated	not interesting
+3472	11581x	0.0010345418438874189	4.97	455.3521	{11581}	{nan}	0.0	annotated	not interesting
+3549	11697x	0.00031420253057095357	4.97	457.3677	{11697}	{nan}	0.0	annotated	not interesting
+10135	6120x	0.0001600301526012221	4.97	312.1737	{6120}	{nan}	0.0	non anotated	not interesting
+1514	2439.0	0.00043197945804808685	4.97	279.1749	{1664, 4227}	{'[M+K]+', '[M-2H2O+H]+'}	240.2104	annotated	not interesting
+9050	4800x	0.0002902732123977645	4.97	290.1955	{4800}	{nan}	0.0	non anotated	not interesting
+1512	2436.0	0.001383567749811034	4.97	952.2997	{16075, 16030}	{'[M+Na]+', '[M+H]+'}	929.3106	non anotated	not interesting
+1519	2449.0	0.0018663118128815874	4.98	504.3694	{12803, 12116, 13368, 12826, 13373}	{'[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	486.3349	annotated	not interesting
+1518	2447.0	9.632162430186544e-05	4.98	317.2097	{5073, 4164, 6445}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	294.22	annotated	not interesting
+1516	2441.0	0.0001786061550189806	4.98	359.2207	{8338}	{'[M+HFA+K]+'}	274.2532	non anotated	not interesting
+1520	2450.0	0.0005282050747808702	4.98	337.2357	{4248, 7289, 5203, 7509}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	314.2462	annotated	not interesting
+1531	2469.0	0.0025540541603245653	4.99	983.5664	{12555, 16085, 16102}	{'[2M+H]+', '[2M+Na]+', '[M+H]+'}	480.2884	non anotated	not interesting
+1524	2454.0	6.0734039110783776e-05	4.99	271.2272	{3900}	{'[M-2H2O+H]+'}	306.2413	non anotated	not interesting
+3783	12033x	8.259796010005668e-05	4.99	467.3157	{12033}	{nan}	0.0	non anotated	not interesting
+1549	2495.0	0.00012222236271007024	4.99	285.2217	{4529}	{'[M+ACN+H]+'}	243.1879	annotated	not interesting
+8334	3908x	3.565299948626665e-05	4.99	271.2422	{3908}	{nan}	0.0	annotated	not interesting
+7027	2208x	0.00020595630456270427	4.99	219.1746	{2208}	{nan}	0.0	annotated	not interesting
+1510	2433.0	5.4541439900299264e-05	5.0	191.1795	{1194}	{'[2M-CO2+H]+'}	117.082	annotated	not interesting
+1540	2484.0	0.0004557405849851117	5.0	485.3261	{12722, 2734}	{'[2M+ACN+NH4]+', '[M+Na]+'}	213.1284	non anotated	not interesting
+1535	2474.0	0.0018045545478975913	5.0	489.3573	{5585, 12891}	{'[M+ACN+NH4]+', '[2M+H]+'}	244.1734	annotated	not interesting
+1533	2472.0	0.00037346383607917365	5.0	483.3463	{12647}	{'[M+Na]+'}	460.3564	non anotated	not interesting
+1538	2480.0	0.0002936915442490179	5.0	496.2702	{11666, 13108}	{'[M-H2O+NH4]+', '[M+K]+'}	457.3077	non anotated	not interesting
+4804	13572x	0.0001292789955925645	5.01	512.374	{13572}	{nan}	0.0	non anotated	not interesting
+10805	6944x	0.0017214269672216355	5.01	325.6961	{6944}	{nan}	0.0	non anotated	not interesting
+8233	3780x	0.0005310802109488267	5.01	269.1903	{3780}	{nan}	0.0	non anotated	not interesting
+10460	6518x	0.00027477148472469093	5.01	317.7079	{6518}	{nan}	0.0	non anotated	not interesting
+11459	7790x	0.00018884592761993644	5.01	344.1901	{7790}	{nan}	0.0	non anotated	not interesting
+3017	10988x	8.548445510946339e-05	5.02	441.3369	{10988}	{nan}	0.0	non anotated	not interesting
+4177	12619x	0.001985324337332635	5.02	483.2738	{12619}	{nan}	0.0	non anotated	not interesting
+4224	12680x	0.00012403098117775473	5.03	484.3496	{12680}	{nan}	0.0	non anotated	not interesting
+9455	5308x	0.0004032785843613519	5.03	299.2009	{5308}	{nan}	0.0	non anotated	not interesting
+1551	2498.0	0.0003532114715340117	5.03	475.3417	{10538, 11395, 12367}	{'[M+Na]+', '[M+HFA+H]+', '[M+H]+'}	428.3303	non anotated	not interesting
+2401	10201x	0.00017434028326077507	5.03	423.2899	{10201}	{nan}	0.0	non anotated	not interesting
+1550	2496.0	5.151521678700229e-05	5.03	561.2828	{13232, 14457, 13765}	{'[M+HFA+K]+', '[M-H+2Na]+', '[M+Na]+'}	476.3158	non anotated	not interesting
+1557	2510.0	0.000493990024239483	5.04	475.3189	{11473, 12362}	{'[M+Na]+', '[M+H]+'}	452.3295	annotated	not interesting
+1559	2512.0	0.00028497769563336895	5.04	307.2631	{4441, 5822}	{'[M+ACN+H]+', '[M+NH4]+'}	265.2295	annotated	not interesting
+1544	2489.0	0.00011924869648726378	5.04	549.3605	{14288}	{'[M+NH4]+'}	531.3238	non anotated	not interesting
+1569	2526.0	0.0009174101215711376	5.05	513.3561	{12304, 11586, 13611, 13460}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	490.3664	annotated	not interesting
+8913	4634x	0.00022067784920599414	5.05	287.2372	{4634}	{nan}	0.0	annotated	not interesting
+1570	2528.0	0.0002858910728016325	5.05	479.3507	{11691, 10132, 10886, 12511}	{'[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	456.3609	annotated	not interesting
+1573	2532.0	0.00240229544525397	5.06	319.225	{6604, 5199}	{'[M+Na]+', '[M+H]+'}	296.2357	annotated	not interesting
+11764	8204x	0.0003458234016292829	5.06	355.3005	{8204}	{nan}	0.0	non anotated	not interesting
+1572	2531.0	0.00015348445514398203	5.06	497.3612	{10939, 13174}	{'[M+ACN+K]+', '[M+Na]+'}	417.3718	non anotated	not interesting
+1576	2536.0	0.00016407129728898613	5.07	490.2587	{10322, 12903}	{'[M+K]+', '[M-CO2+NH4]+'}	451.2968	non anotated	not interesting
+5947	15274x	0.00013836282282254946	5.07	641.3113	{15274}	{nan}	0.0	non anotated	not interesting
+1585	2555.0	0.00014596591645717183	5.08	503.2423	{13340, 5117}	{'[2M+K]+', '[M+HFA+NH4]+'}	232.1388	non anotated	not interesting
+10359	6397x	0.000796750900037754	5.09	316.6905	{6397}	{nan}	0.0	non anotated	not interesting
+3772	12014x	0.00011525675175521293	5.09	467.2793	{12014}	{nan}	0.0	non anotated	not interesting
+1598	2573.0	0.00038400242946378066	5.11	483.3464	{12648, 5705}	{'[2M+H]+', '[M+ACN+Na]+'}	241.1682	non anotated	not interesting
+4517	13150x	0.0002816871340020327	5.11	497.29	{13150}	{nan}	0.0	non anotated	not interesting
+1600	2575.0	0.00023932171759137192	5.11	469.3313	{12117, 3333}	{'[2M-CO2+K]+', '[M+NH4]+'}	237.1782	non anotated	not interesting
+1599	2574.0	0.00026422636503016907	5.11	321.2415	{6712, 5210, 5251, 6323}	{'[2M+HFA+2H]2+', '[M-H2O+NH4]+', '[M+NH4]+', '[M+H]+'}	297.2353	annotated	not interesting
+10268	6292x	3.7852088415870284e-05	5.12	315.1958	{6292}	{nan}	0.0	non anotated	not interesting
+10331	6367x	0.00014796143619202575	5.13	316.2273	{6367}	{nan}	0.0	non anotated	not interesting
+1604	2583.0	7.480640730493034e-05	5.13	439.3577	{10891, 3086}	{'[2M+K]+', '[M+HFA+H]+'}	200.1953	annotated	not interesting
+9551	5437x	0.0002346378557787938	5.13	301.2167	{5437}	{nan}	0.0	annotated	not interesting
+1605	2585.0	0.001398026377944574	5.13	481.3661	{11009, 12579, 10245, 11784, 12415}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	458.3765	annotated	not interesting
+1608	2591.0	8.405772912098884e-05	5.13	525.3197	{13864, 13353, 12724, 13753, 13435, 13756}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-H2O+Na]+'}	502.3299	non anotated	not interesting
+3098	11088x	8.245503965454237e-05	5.14	443.3165	{11088}	{nan}	0.0	non anotated	not interesting
+10653	6762x	3.287193978865199e-05	5.14	322.6539	{6762}	{nan}	0.0	non anotated	not interesting
+7424	2702x	0.0001685342674343689	5.14	235.169	{2702}	{nan}	0.0	non anotated	not interesting
+6797	1937x	0.000664358368491826	5.14	213.0906	{1937}	{nan}	0.0	annotated	not interesting
+2863	10782x	0.0008091970515139047	5.15	437.3421	{10782}	{nan}	0.0	annotated	not interesting
+4575	13229x	8.470445389769786e-05	5.15	499.3055	{13229}	{nan}	0.0	non anotated	not interesting
+8824	4527x	0.000284387265542829	5.15	285.2216	{4527}	{nan}	0.0	annotated	not interesting
+3897	12191x	0.002374298149881285	5.15	471.2505	{12191}	{nan}	0.0	non anotated	not interesting
+1624	2620.0	5.205134453407748e-05	5.15	271.2271	{3898}	{'[M+ACN+NH4]+'}	212.1671	non anotated	not interesting
+9691	5582x	0.001031808640606057	5.15	303.2321	{5582}	{nan}	0.0	non anotated	not interesting
+3018	10989x	7.147519690635593e-05	5.15	441.3371	{10989}	{nan}	0.0	non anotated	not interesting
+5767	1495x	0.0004215893047212506	5.16	201.0902	{1495}	{nan}	0.0	non anotated	not interesting
+3285	11342x	0.0040627010319966754	5.16	450.2728	{11342}	{nan}	0.0	non anotated	not interesting
+8802	4500x	0.0003856421217677328	5.16	285.1378	{4500}	{nan}	0.0	non anotated	not interesting
+9749	5648x	0.00022510418014990753	5.16	304.2353	{5648}	{nan}	0.0	non anotated	not interesting
+8118	3635x	0.00019105163663927485	5.16	264.6244	{3635}	{nan}	0.0	non anotated	not interesting
+8427	4018x	0.0002868419427591138	5.16	273.6298	{4018}	{nan}	0.0	non anotated	not interesting
+1620	2610.0	0.000515370100688207	5.16	338.2694	{4256, 6243, 6603, 7533, 5200, 4251}	{'[M+ACN+H]+', '[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+'}	296.2356	annotated	not interesting
+9821	5740x	0.0002669237980088011	5.16	305.6511	{5740}	{nan}	0.0	non anotated	not interesting
+4182	12624x	0.0004656468344413089	5.16	483.2745	{12624}	{nan}	0.0	non anotated	not interesting
+6451	16003x	0.00012118783349775041	5.17	919.5107	{16003}	{nan}	0.0	non anotated	not interesting
+1625	2621.0	0.00022159107326434767	5.18	967.6996	{13082, 16092, 12309, 11591}	{'[M+Na]+', '[2M+Na]+', '[M-H2O+H]+', '[M+H]+'}	472.3555	annotated	not interesting
+8250	3805x	0.00025579163578049856	5.19	269.2267	{3805}	{nan}	0.0	non anotated	not interesting
+3702	11928x	0.001008145982479918	5.19	465.2634	{11928}	{nan}	0.0	non anotated	not interesting
+9421	5265x	0.0002928486550555828	5.2	298.6706	{5265}	{nan}	0.0	non anotated	not interesting
+9241	5032x	0.0004133863264591441	5.2	295.1515	{5032}	{nan}	0.0	non anotated	not interesting
+10333	6369x	0.0001774713809208186	5.2	316.2357	{6369}	{nan}	0.0	non anotated	not interesting
+9846	5773x	0.0006028243951728652	5.2	306.6592	{5773}	{nan}	0.0	non anotated	not interesting
+1623	2618.0	0.00017687731446991547	5.2	421.3475	{10137}	{'[M+Na]+'}	398.3567	annotated	not interesting
+12837	9554x	0.001488477971166651	5.21	405.2791	{9554}	{nan}	0.0	non anotated	not interesting
+9454	5307x	5.327261233428737e-05	5.22	299.2009	{5307}	{nan}	0.0	non anotated	not interesting
+1645	2653.0	0.0002581968010796286	5.22	949.7515	{16072, 12986, 13175}	{'[2M+H]+', '[M+NH4]+', '[M+Na]+'}	474.3722	annotated	not interesting
+10172	6168x	0.0001294822107206473	5.22	313.18	{6168}	{nan}	0.0	non anotated	not interesting
+1648	2657.0	0.006386263725154615	5.23	941.6854	{13570, 12211, 12851, 12853, 12854, 16051, 12227, 12228, 12237, 10446, 11474, 11475, 10709, 10711, 10712, 11479, 11483, 13021, 13028, 13031, 13032, 15980}	{'[M+ACN+H]+', '[M-CO2+H]+', '[M+NH4]+', '[M+H]+', '[M+Na]+', '[2M-2H2O+H]+', '[M-H2O+H]+', '[2M+H]+', '[M-2H2O+H]+'}	470.34	annotated	not interesting
+10372	6409x	0.00011575271494514039	5.23	316.7	{6409}	{nan}	0.0	non anotated	not interesting
+10750	6875x	0.0006375589285002337	5.23	324.6883	{6875}	{nan}	0.0	non anotated	not interesting
+1652	2666.0	0.00016391908689968097	5.24	499.3056	{13230}	{'[M+Na]+'}	476.3155	non anotated	not interesting
+10025	5990x	0.00015421230137877088	5.24	310.1568	{5990}	{nan}	0.0	non anotated	not interesting
+1655	2671.0	0.001181505730738144	5.24	481.2955	{12556}	{'[M+Na]+'}	458.3051	non anotated	not interesting
+1643	2650.0	9.653667865374103e-05	5.24	217.1956	{2119}	{'[M+NH4]+'}	199.1607	non anotated	not interesting
+7007	2175x	9.177526093011284e-05	5.24	219.1019	{2175}	{nan}	0.0	non anotated	not interesting
+3794	12053x	0.000316667714954814	5.24	467.3523	{12053}	{nan}	0.0	non anotated	not interesting
+2867	10790x	0.00025419492908378637	5.24	437.3426	{10790}	{nan}	0.0	annotated	not interesting
+10275	6301x	0.0008934304685150274	5.25	315.2321	{6301}	{nan}	0.0	non anotated	specific non annotated
+4518	13152x	0.00011804845833319605	5.25	497.2903	{13152}	{nan}	0.0	non anotated	not interesting
+1657	2674.0	0.0014483369738063341	5.25	425.378	{3392, 10347, 1205}	{'[2M+H]+', '[M-CO2+Na]+', '[M-H+2Na]+'}	212.1829	annotated	not interesting
+4268	12755x	0.0011424227037173718	5.25	485.3633	{12755}	{nan}	0.0	annotated	not interesting
+4900	13706x	0.00018303540653442774	5.26	517.353	{13706}	{nan}	0.0	non anotated	not interesting
+10447	6505x	8.71181608159335e-05	5.26	317.699	{6505}	{nan}	0.0	non anotated	not interesting
+1664	2686.0	0.0016579731487408513	5.27	504.3693	{11109, 11110, 12812, 13367, 12824, 13371, 2718}	{'[M-H2O+2H]2+', '[M-CO2+H]+', '[M+NH4]+', '[M+H]+'}	486.3349	annotated	not interesting
+1663	2684.0	0.00010708462322610289	5.27	441.3368	{10984, 3083}	{'[M+NH4]+', '[2M-H2O+H]+'}	229.1711	non anotated	not interesting
+1665	2687.0	0.0012631735041156902	5.28	399.3268	{9395, 1582, 9399}	{'[2M-CO2+K]+', '[M+H]+'}	202.1753	annotated	not interesting
+10286	6316x	0.00020622926891029965	5.28	315.2536	{6316}	{nan}	0.0	non anotated	not interesting
+1668	2691.0	0.0006956205413084405	5.28	520.376	{13760, 12333, 10893, 11700, 12508}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M+ACN+Na]+'}	456.361	annotated	not interesting
+12987	9737x	3.255219462192186e-05	5.29	409.3474	{9737}	{nan}	0.0	non anotated	not interesting
+9847	5774x	0.0009367708314165212	5.3	306.6599	{5774}	{nan}	0.0	non anotated	not interesting
+6883	2028x	0.0041053427161012405	5.3	215.1064	{2028}	{nan}	0.0	non anotated	not interesting
+5816	1503x	0.04413645405092923	5.3	201.0907	{1503}	{nan}	0.0	non anotated	not interesting
+1680	2714.0	0.0013485527382672354	5.31	405.2804	{2932, 9558}	{'[2M-2H2O+H]+', '[M+Na]+'}	220.148	non anotated	not interesting
+5605	1472x	0.0004999723346440414	5.31	200.083	{1472}	{nan}	0.0	non anotated	not interesting
+1678	2708.0	0.0027801016123526687	5.31	454.2947	{11504, 2867}	{'[2M+NH4]+', '[M+Na]+'}	218.1316	non anotated	not interesting
+1683	2721.0	0.0003523359507910022	5.31	486.3635	{11200, 12771}	{'[M+ACN+H]+', '[M+H]+'}	444.3266	non anotated	not interesting
+8251	3806x	4.429981849717984e-05	5.31	269.2267	{3806}	{nan}	0.0	non anotated	not interesting
+8566	41x	0.00030749578062710427	5.31	109.1014	{41}	{nan}	0.0	non anotated	not interesting
+2915	10848x	0.0004457490915865072	5.32	439.2869	{10848}	{nan}	0.0	non anotated	not interesting
+6419	15972x	0.000391857599426523	5.32	899.5511	{15972}	{nan}	0.0	non anotated	not interesting
+1682	2719.0	0.00029184773729626156	5.32	541.3726	{14152, 13618, 13315, 14060}	{'[M-CO2+K]+', '[M+NH4]+', '[M-H2O+H]+', '[M+Na]+'}	518.3837	non anotated	not interesting
+1690	2732.0	5.436471278665108e-05	5.33	298.1935	{5242, 3899}	{'[M+H]+', '[M-CO2+NH4]+'}	297.1847	non anotated	not interesting
+8856	4560x	0.0003836011475283397	5.33	286.1469	{4560}	{nan}	0.0	non anotated	not interesting
+8441	4031x	0.0004537640891565786	5.34	274.6379	{4031}	{nan}	0.0	non anotated	not interesting
+1704	2755.0	0.024774490618157417	5.34	901.5629	{12104, 12946, 15976, 10645}	{'[M+Na]+', '[2M-2H2O+H]+', '[M+H]+', '[M-2H2O+H]+'}	468.2881	annotated	not interesting
+2864	10784x	0.0005097347756172462	5.34	437.3422	{10784}	{nan}	0.0	annotated	not interesting
+8995	4743x	0.0002011872256019531	5.34	289.1879	{4743}	{nan}	0.0	non anotated	not interesting
+1705	2757.0	0.0005843413304704927	5.34	391.3377	{9181, 1758}	{'[2M-CO2+Na]+', '[M+H]+'}	206.1683	non anotated	not interesting
+1697	2743.0	0.0006241933137368959	5.34	485.3628	{11218, 12751}	{'[M-H2O+H]+', '[M+Na]+'}	462.3723	annotated	not interesting
+1716	2772.0	0.0007766355497233271	5.35	518.3606	{11589, 13718}	{'[M+ACN+Na]+', '[M+H]+'}	454.345	annotated	not interesting
+1715	2771.0	0.002574868878430516	5.35	473.3629	{12312, 10759}	{'[M+ACN+NH4]+', '[M+Na]+'}	414.3007	annotated	not interesting
+9341	5163x	7.552169278547539e-05	5.35	297.1849	{5163}	{nan}	0.0	non anotated	not interesting
+10443	6501x	0.0004751712851981161	5.36	317.6987	{6501}	{nan}	0.0	non anotated	not interesting
+9836	5756x	9.118527677218579e-05	5.36	306.1905	{5756}	{nan}	0.0	non anotated	not interesting
+9240	5031x	0.0007847602505439324	5.36	295.1514	{5031}	{nan}	0.0	non anotated	not interesting
+11433	7763x	0.0001283261620004871	5.36	343.285	{7763}	{nan}	0.0	non anotated	not interesting
+1711	2765.0	0.000776384717413226	5.37	263.2008	{3602}	{'[M+ACN+NH4]+'}	204.1421	non anotated	not interesting
+3131	1113x	4.001250560994895e-05	5.37	189.0908	{1113}	{nan}	0.0	non anotated	not interesting
+3463	11571x	8.339730292120631e-05	5.37	455.3165	{11571}	{nan}	0.0	non anotated	not interesting
+1713	2768.0	0.0021899532440471207	5.37	502.3535	{13323, 12731}	{'[M+NH4]+', '[M+H]+'}	484.3189	non anotated	not interesting
+1735	2802.0	0.00012045078152962121	5.38	300.1523	{5347}	{'[M+Na]+'}	277.1632	non anotated	not interesting
+1726	2788.0	0.0058889799622531625	5.38	1011.5218	{13696, 16104, 13068, 16113}	{'[2M+H]+', '[M+Na]+', '[2M+Na]+', '[M+H]+'}	494.2667	non anotated	not interesting
+10200	6211x	0.0001493265258723452	5.38	313.647	{6211}	{nan}	0.0	non anotated	not interesting
+9663	5553x	5.28468021912602e-05	5.38	303.1668	{5553}	{nan}	0.0	non anotated	not interesting
+2346	10136x	0.0005045246750439067	5.38	421.3474	{10136}	{nan}	0.0	annotated	not interesting
+10891	7057x	0.00016800088226855703	5.38	328.6542	{7057}	{nan}	0.0	non anotated	not interesting
+9908	5847x	0.00020968247154356162	5.38	308.1407	{5847}	{nan}	0.0	non anotated	not interesting
+1737	2804.0	0.00025325491079117817	5.39	317.1461	{6427, 6348}	{'[2M+HFA+2H]2+', '[M+Na]+'}	293.1367	non anotated	not interesting
+9590	5475x	0.0001156500528365937	5.4	301.7131	{5475}	{nan}	0.0	non anotated	not interesting
+12147	8699x	0.0004473209370615788	5.4	371.2955	{8699}	{nan}	0.0	non anotated	not interesting
+2457	10270x	6.817898169159196e-05	5.4	424.3651	{10270}	{nan}	0.0	non anotated	not interesting
+1743	2812.0	0.00043437492000666895	5.4	297.2418	{3808, 4089, 5191}	{'[M-CO2+K]+', '[M+Na]+', '[M+H]+'}	274.2525	non anotated	not interesting
+3546	11692x	0.0006439532576726737	5.4	457.3676	{11692}	{nan}	0.0	annotated	not interesting
+1747	2823.0	0.0005370995165353954	5.41	469.3319	{12133, 9798, 11276, 9806, 10808, 12126}	{'[M+Na]+', '[2M-H2O+2H]2+', '[M+H]+', '[M-2H2O+H]+'}	446.3417	annotated	not interesting
+1749	2827.0	0.0005065656301445612	5.42	323.6807	{6830}	{'[M+HFA+H]+'}	276.6659	non anotated	not interesting
+1736	2803.0	0.00015140593069915494	5.42	257.2267	{3411}	{'[M+NH4]+'}	239.1939	non anotated	not interesting
+10131	6117x	5.972147351505725e-05	5.42	312.1728	{6117}	{nan}	0.0	non anotated	not interesting
+11461	7792x	5.431159895886286e-05	5.43	344.1946	{7792}	{nan}	0.0	non anotated	not interesting
+5948	15275x	0.00011029439832728747	5.43	641.3133	{15275}	{nan}	0.0	non anotated	not interesting
+10311	6344x	0.0001394840466936741	5.43	315.6927	{6344}	{nan}	0.0	non anotated	not interesting
+1753	2833.0	0.00011185688878685646	5.43	305.2478	{4440, 4443, 5732}	{'[M+Na]+', '[M+H]+'}	282.2571	annotated	not interesting
+3956	12278x	0.0007702424837076448	5.43	473.2672	{12278}	{nan}	0.0	non anotated	not interesting
+13065	9835x	7.78942648125085e-05	5.44	411.3632	{9835}	{nan}	0.0	non anotated	not interesting
+12572	9231x	8.227972497981418e-05	5.44	393.3528	{9231}	{nan}	0.0	non anotated	not interesting
+3712	11937x	0.001233695922994129	5.44	465.2646	{11937}	{nan}	0.0	non anotated	specific non annotated
+4622	13295x	0.00014614870289550932	5.44	501.3216	{13295}	{nan}	0.0	non anotated	not interesting
+1755	2837.0	0.0031120373901191174	5.44	475.3783	{12390, 3154, 3155, 1204, 3156, 1851}	{'[M+Na]+', '[2M+Na]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	226.1951	annotated	not interesting
+1759	2843.0	4.187419197244863e-05	5.45	499.3772	{11780, 3526, 13247}	{'[2M+Na]+', '[2M-H2O+H]+', '[M+Na]+'}	238.1945	annotated	not interesting
+1760	2844.0	0.0003258400511960375	5.45	309.7014	{5970, 5967}	{'[M+ACN+Na]+'}	245.6841	non anotated	not interesting
+1758	2842.0	0.000334602894982895	5.45	497.3244	{12971, 12373, 13157}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	474.3356	non anotated	not interesting
+1764	2849.0	0.0008766385027688987	5.45	457.3322	{11674}	{'[M+NH4]+'}	439.2982	non anotated	not interesting
+2868	10792x	0.00012731896673485476	5.45	437.3427	{10792}	{nan}	0.0	annotated	not interesting
+10195	6207x	0.0001792528338627166	5.46	313.2747	{6207}	{nan}	0.0	annotated	not interesting
+8002	3464x	0.0001129748380197804	5.46	259.1699	{3464}	{nan}	0.0	non anotated	not interesting
+1771	2859.0	0.012803075556782957	5.47	463.379	{11900, 10892}	{'[M+HFA+H]+', '[M+Na]+'}	416.3674	annotated	not interesting
+4318	12823x	0.00032761826969108626	5.47	487.3418	{12823}	{nan}	0.0	annotated	not interesting
+3777	12021x	0.0002088963478492689	5.48	467.28	{12021}	{nan}	0.0	non anotated	not interesting
+9553	5439x	0.00017654320950749873	5.49	301.217	{5439}	{nan}	0.0	non anotated	not interesting
+6740	1866x	0.00019037858461353675	5.49	210.6252	{1866}	{nan}	0.0	non anotated	not interesting
+1773	2863.0	0.00047251940241771695	5.49	471.2731	{11320, 12193}	{'[M+Na]+', '[M+H]+'}	448.2837	non anotated	not interesting
+4359	12893x	7.374311065439037e-05	5.49	489.3573	{12893}	{nan}	0.0	non anotated	not interesting
+5413	1446x	6.186288976930162e-05	5.49	199.1172	{1446}	{nan}	0.0	non anotated	not interesting
+8107	3620x	0.00011726831549476374	5.5	263.2374	{3620}	{nan}	0.0	non anotated	not interesting
+1782	2877.0	0.0022326517702057833	5.5	363.2516	{8456, 8304, 6811, 7678, 5727}	{'[M+NH4]+', '[M+Na]+', '[2M+2H]2+', '[2M-2H2O+2H]2+', '[M-2H2O+H]+'}	340.262	non anotated	not interesting
+1781	2876.0	4.573164687340603e-05	5.5	537.2609	{14074, 13227, 12558}	{'[M+K]+', '[M-H2O+H]+', '[M+H]+'}	498.2982	non anotated	not interesting
+8829	4533x	0.00040410537787549547	5.51	285.2219	{4533}	{nan}	0.0	annotated	not interesting
+8337	3912x	3.757174417061162e-05	5.51	271.2425	{3912}	{nan}	0.0	non anotated	not interesting
+2499	10325x	8.763943307398837e-05	5.51	425.3424	{10325}	{nan}	0.0	non anotated	not interesting
+4827	13612x	5.2010609642514915e-05	5.53	513.3563	{13612}	{nan}	0.0	non anotated	not interesting
+12924	9662x	7.64140938960653e-05	5.53	407.3682	{9662}	{nan}	0.0	non anotated	not interesting
+2523	10359x	0.0011114374684505178	5.53	425.3784	{10359}	{nan}	0.0	annotated	not interesting
+2350	10142x	0.00010969470508719086	5.54	421.3477	{10142}	{nan}	0.0	annotated	not interesting
+1796	2899.0	0.001113139782707671	5.54	457.3679	{11698, 2219}	{'[2M-H2O+K]+', '[M+H]+'}	218.2059	annotated	not interesting
+1797	2901.0	0.00026291922745079466	5.54	493.3287	{13024, 12230, 12843, 12238, 11477, 10718}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	470.3401	annotated	not interesting
+1795	2898.0	5.7220863325764404e-05	5.54	297.2429	{5201, 4007}	{'[M+HFA+H]+', '[M+Na]+'}	250.2314	annotated	not interesting
+4519	13154x	0.00012910600818846874	5.54	497.2904	{13154}	{nan}	0.0	non anotated	not interesting
+1798	2903.0	0.000917394810580135	5.55	931.68	{13719, 10785, 12257, 11588, 9829, 16036, 11597, 13015, 12441, 12447}	{'[M-CO2+H]+', '[M+NH4]+', '[2M+Na]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M+K]+', '[M+ACN+Na]+'}	454.3452	annotated	not interesting
+3127	11133x	4.2421527364937777e-05	5.55	443.3885	{11133}	{nan}	0.0	annotated	not interesting
+3534	11678x	0.000683591250701076	5.56	457.3317	{11678}	{nan}	0.0	non anotated	not interesting
+1807	2916.0	0.00014435595618387295	5.56	481.3655	{10244, 11774, 12407, 11003, 12574}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	458.3756	annotated	not interesting
+1809	2919.0	8.737752900351854e-05	5.56	501.2601	{13272, 12489, 12484}	{'[M+Na]+', '[M+H]+'}	478.2718	non anotated	not interesting
+9994	5957x	9.871171975810111e-05	5.56	309.6832	{5957}	{nan}	0.0	non anotated	not interesting
+6315	1583x	0.00010845211290426203	5.57	203.1797	{1583}	{nan}	0.0	annotated	not interesting
+1828	2952.0	0.0002442908423050683	5.57	279.2323	{4254}	{'[M+HFA+NH4]+'}	215.1942	non anotated	not interesting
+3808	1206x	0.0006233956111056575	5.57	191.1797	{1206}	{nan}	0.0	annotated	not interesting
+8358	3936x	0.00013544464363113661	5.58	272.1943	{3936}	{nan}	0.0	non anotated	not interesting
+8616	4270x	0.0003459359374131524	5.58	280.1827	{4270}	{nan}	0.0	non anotated	not interesting
+2944	10889x	0.007662573006919954	5.58	439.3577	{10889}	{nan}	0.0	annotated	not interesting
+8213	3754x	0.00018758783114474354	5.58	268.6748	{3754}	{nan}	0.0	non anotated	not interesting
+4857	13655x	0.00012866957604543348	5.59	515.3012	{13655}	{nan}	0.0	non anotated	not interesting
+1824	2946.0	0.00029726107213642254	5.59	335.2949	{7432, 6082}	{'[M+ACN+H]+', '[M+NH4]+'}	293.261	non anotated	not interesting
+8994	4742x	0.0003551455176399899	5.59	289.1879	{4742}	{nan}	0.0	non anotated	not interesting
+1822	2942.0	0.0004278755382972119	5.59	393.3524	{9226}	{'[M+ACN+NH4]+'}	334.2898	non anotated	not interesting
+1823	2945.0	0.00013555439281464366	5.59	501.3914	{11849, 13317}	{'[M-H2O+H]+', '[M+Na]+'}	478.4024	annotated	not interesting
+1830	2955.0	0.00014707445134450303	5.61	449.2679	{10406, 11311}	{'[M+Na]+', '[M+H]+'}	426.2782	non anotated	not interesting
+1831	2956.0	9.04476889193715e-05	5.61	288.1803	{4675, 4677, 3085}	{'[M-2H2O+NH4]+', '[M+Na]+'}	265.1918	non anotated	not interesting
+1832	2957.0	0.00026501444087581464	5.61	425.3425	{10328, 3410}	{'[2M+K]+', '[M+HFA+NH4]+'}	193.1886	non anotated	not interesting
+1833	2958.0	0.00021823161217349947	5.61	247.1697	{3073, 572}	{'[2M-CO2+H]+', '[M+NH4]+'}	145.0771	non anotated	not interesting
+3693	11911x	9.586649743881595e-05	5.62	464.2568	{11911}	{nan}	0.0	non anotated	not interesting
+1841	2970.0	0.0019722730572145817	5.62	453.3369	{10168, 11481}	{'[2M-H2O+2H]2+', '[M+Na]+'}	430.3484	annotated	not interesting
+1837	2964.0	0.00012317527094322882	5.62	467.336	{11208, 12045, 10429, 11855}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	444.3462	non anotated	not interesting
+1838	2966.0	0.00011043489580847561	5.62	485.2649	{11882, 12702}	{'[M+Na]+', '[M+H]+'}	462.2767	non anotated	not interesting
+9900	5838x	0.00010594805008649808	5.63	307.6847	{5838}	{nan}	0.0	non anotated	not interesting
+9897	5835x	0.00013386970533588245	5.63	307.6675	{5835}	{nan}	0.0	non anotated	not interesting
+10367	6404x	7.034222184963674e-05	5.63	316.6911	{6404}	{nan}	0.0	non anotated	not interesting
+1849	2983.0	7.519528159603746e-05	5.64	435.3267	{10714, 2122}	{'[2M-2H2O+K]+', '[M+H]+'}	216.1904	annotated	not interesting
+1851	2986.0	0.0009554661830091455	5.64	497.2902	{10594, 13151}	{'[M-CO2+H]+', '[M+Na]+'}	474.2997	non anotated	not interesting
+2572	10412x	7.466389068680372e-05	5.64	427.3212	{10412}	{nan}	0.0	non anotated	not interesting
+1848	2982.0	0.00017218386414922195	5.64	526.3538	{12736, 13875, 12027, 13326}	{'[M+ACN+H]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	484.3196	non anotated	not interesting
+12921	9659x	7.879816830508917e-05	5.65	407.3681	{9659}	{nan}	0.0	non anotated	not interesting
+12897	9634x	0.00032661358160023055	5.65	407.3319	{9634}	{nan}	0.0	non anotated	not interesting
+10008	5972x	0.0001860634306030414	5.65	309.7014	{5972}	{nan}	0.0	non anotated	not interesting
+2442	10251x	6.543258224985957e-05	5.65	423.3629	{10251}	{nan}	0.0	annotated	not interesting
+1860	2995.0	0.0002796809922671707	5.66	533.2881	{13547, 14015}	{'[M+Na]+', '[M+H]+'}	510.2989	non anotated	not interesting
+3569	11722x	0.00038004436604094474	5.66	458.3715	{11722}	{nan}	0.0	non anotated	not interesting
+1864	3000.0	0.00018837081608588072	5.67	474.3945	{12328, 10139, 10901, 11695}	{'[M+NH4]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	456.361	annotated	not interesting
+4007	12358x	0.0003333139966215525	5.67	475.3067	{12358}	{nan}	0.0	non anotated	not interesting
+10280	6306x	0.00022384682243003053	5.67	315.2329	{6306}	{nan}	0.0	annotated	not interesting
+9572	5458x	6.660280320606658e-05	5.67	301.6857	{5458}	{nan}	0.0	non anotated	not interesting
+4205	12655x	6.417465993718931e-05	5.68	483.348	{12655}	{nan}	0.0	annotated	not interesting
+3537	11681x	9.105755822686325e-05	5.68	457.332	{11681}	{nan}	0.0	non anotated	not interesting
+1868	3005.0	8.645007912064965e-05	5.68	509.3249	{12816, 12107, 13502}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	486.3347	annotated	not interesting
+1869	3006.0	8.758017762493421e-05	5.68	479.3507	{9832, 12510}	{'[M+HFA+Na]+', '[M+H]+'}	410.3559	annotated	not interesting
+1857	2992.0	0.00015487756393783638	5.68	443.3888	{11138}	{'[2M+Na]+'}	210.1993	non anotated	not interesting
+1872	3013.0	0.00023520089833417782	5.69	483.3831	{10353, 12665}	{'[M+Na]+', '[M-2H2O+H]+'}	460.393	annotated	not interesting
+1877	3022.0	0.0002512314102202669	5.7	287.2373	{4640}	{'[M+HFA+NH4]+'}	223.199	annotated	not interesting
+12568	9228x	0.00016105350096236226	5.7	393.3525	{9228}	{nan}	0.0	non anotated	not interesting
+3972	12306x	0.00011959173924067833	5.7	473.3626	{12306}	{nan}	0.0	annotated	not interesting
+9926	5866x	0.00013168002501024996	5.71	308.6754	{5866}	{nan}	0.0	non anotated	not interesting
+9589	5474x	6.927043716845968e-05	5.73	301.713	{5474}	{nan}	0.0	non anotated	not interesting
+1884	3034.0	0.0007856544889734428	5.73	476.3732	{12402, 10220, 11758, 10980}	{'[M+NH4]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	458.3399	annotated	not interesting
+1879	3025.0	0.0004622341867954652	5.73	493.3289	{12225, 13026}	{'[M+Na]+', '[M+H]+'}	470.3403	annotated	not interesting
+3611	11786x	0.00022951386039110557	5.74	459.3831	{11786}	{nan}	0.0	annotated	not interesting
+2596	10457x	5.0274779626057086e-05	5.74	427.3579	{10457}	{nan}	0.0	non anotated	not interesting
+12149	8700x	3.811255516705975e-05	5.75	371.2956	{8700}	{nan}	0.0	annotated	not interesting
+10366	6403x	0.00014850556967352144	5.76	316.691	{6403}	{nan}	0.0	non anotated	not interesting
+1885	3037.0	3.2036017096123124e-05	5.76	315.2698	{6325, 4806}	{'[M+HFA+NH4]+', '[M+K]+'}	251.2316	non anotated	not interesting
+8609	4260x	0.00020290236281407086	5.76	279.2326	{4260}	{nan}	0.0	non anotated	not interesting
+9903	5840x	9.31553879174708e-05	5.77	307.6858	{5840}	{nan}	0.0	non anotated	not interesting
+7923	3348x	0.00030473417545743236	5.77	255.2324	{3348}	{nan}	0.0	annotated	not interesting
+7771	3150x	7.87808573158868e-05	5.77	249.1852	{3150}	{nan}	0.0	non anotated	not interesting
+2525	10361x	0.00022803820621700814	5.77	425.3784	{10361}	{nan}	0.0	annotated	not interesting
+9000	4748x	0.0001235214122584475	5.77	289.188	{4748}	{nan}	0.0	non anotated	not interesting
+10011	5975x	0.00022033507439492213	5.78	309.7016	{5975}	{nan}	0.0	non anotated	not interesting
+1893	3048.0	0.00026688023823939847	5.78	947.5477	{12704, 16068, 11885, 16015}	{'[2M+H]+', '[M+Na]+', '[2M+Na]+', '[M+H]+'}	462.2784	non anotated	not interesting
+8831	4535x	0.0020610530729939435	5.79	285.2221	{4535}	{nan}	0.0	non anotated	not interesting
+3457	11563x	0.00029955337629312425	5.79	455.3161	{11563}	{nan}	0.0	non anotated	not interesting
+1899	3055.0	0.00043884990162449327	5.8	191.1798	{1200, 1209}	{'[M-2H2O+2H]2+'}	416.367	annotated	not interesting
+1906	3071.0	0.00029389485507079445	5.81	547.4369	{6099, 14262}	{'[2M+NH4]+', '[M+HFA+H]+'}	264.7031	non anotated	not interesting
+1907	3072.0	0.00044291119940416456	5.81	959.6356	{12770, 12131, 13911, 16076, 13517, 16081, 12951, 10330, 12124}	{'[M+ACN+H]+', '[M-CO2+H]+', '[M+NH4]+', '[2M+NH4]+', '[M+ACN+NH4]+', '[2M+Na]+', '[M+Na]+', '[M+H]+', '[2M+2H]2+'}	468.3242	annotated	not interesting
+1917	3085.0	0.0005662435668567023	5.82	469.3685	{9833, 12141}	{'[M+Na]+', '[M-2H2O+H]+'}	446.3782	annotated	not interesting
+9099	4867x	0.0001813509563760271	5.83	291.2038	{4867}	{nan}	0.0	non anotated	not interesting
+1940	3119.0	0.0008529540647580584	5.83	457.3682	{11705}	{'[M+H]+'}	456.3609	annotated	not interesting
+1927	3096.0	0.004670242303306467	5.84	463.379	{10899, 11901}	{'[M+HFA+H]+', '[M+Na]+'}	416.3675	annotated	not interesting
+8696	4378x	0.0006882169881640603	5.84	282.2797	{4378}	{nan}	0.0	annotated	not interesting
+9496	5363x	0.0002817917272093196	5.84	300.2332	{5363}	{nan}	0.0	non anotated	not interesting
+4520	13155x	7.583219968300929e-05	5.84	497.2909	{13155}	{nan}	0.0	non anotated	not interesting
+3415	11511x	0.0005851678943197713	5.85	454.34	{11511}	{nan}	0.0	non anotated	not interesting
+1931	3105.0	8.608784595388715e-05	5.85	921.7945	{11128, 12661, 16007}	{'[2M+H]+', '[M-H2O+H]+', '[M+Na]+'}	460.3927	annotated	not interesting
+9514	5383x	0.0002631207775086059	5.85	300.7053	{5383}	{nan}	0.0	non anotated	not interesting
+1933	3107.0	0.013033831329931767	5.86	496.3794	{12258, 10791, 11596, 13117, 12446}	{'[M+ACN+H]+', '[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+'}	454.3454	annotated	not interesting
+12571	9230x	0.00025706239061750293	5.86	393.3526	{9230}	{nan}	0.0	non anotated	not interesting
+4139	12559x	7.571742466670562e-05	5.87	481.2957	{12559}	{nan}	0.0	non anotated	not interesting
+1945	3126.0	0.0006281811378984932	5.87	485.2668	{11884, 12703}	{'[M+Na]+', '[M+H]+'}	462.2777	non anotated	not interesting
+6798	1938x	6.327628754010836e-05	5.87	213.0912	{1938}	{nan}	0.0	non anotated	not interesting
+1941	3121.0	0.0008659769812652791	5.87	479.3501	{11595, 12501}	{'[M+ACN+H]+', '[M+NH4]+'}	437.3176	annotated	not interesting
+3128	11136x	0.0011258258956903108	5.88	443.3887	{11136}	{nan}	0.0	annotated	not interesting
+1954	3136.0	0.0002177493350956545	5.88	515.3532	{13664, 3522, 1589, 3527}	{'[M+Na]+', '[2M+K]+', '[M-2H2O+H]+'}	238.1954	annotated	not interesting
+9812	5730x	0.00011911324589148489	5.88	305.2477	{5730}	{nan}	0.0	annotated	not interesting
+6278	15789x	0.00011342702900030515	5.88	802.4028	{15789}	{nan}	0.0	non anotated	not interesting
+1951	3133.0	0.00013510483532457135	5.88	407.3684	{9664, 2601, 9661}	{'[2M+K]+', '[M+HFA+H]+'}	184.2013	non anotated	not interesting
+1950	3132.0	0.0011350942892613372	5.88	271.2425	{795, 3911}	{'[2M-CO2+H]+', '[M+NH4]+'}	157.1136	non anotated	not interesting
+2526	10362x	0.0027288465388721713	5.88	425.3786	{10362}	{nan}	0.0	annotated	not interesting
+5983	15329x	0.00010841314643216025	5.88	652.3288	{15329}	{nan}	0.0	non anotated	not interesting
+7773	3152x	0.0001973893266282483	5.89	249.1853	{3152}	{nan}	0.0	non anotated	not interesting
+4585	13248x	7.912820245777309e-05	5.89	499.3773	{13248}	{nan}	0.0	annotated	not interesting
+3713	11938x	0.00013974500339657565	5.89	465.2648	{11938}	{nan}	0.0	non anotated	not interesting
+12128	866x	0.0005453671645957494	5.89	177.1642	{866}	{nan}	0.0	non anotated	not interesting
+1961	3144.0	0.0002897314712586129	5.9	436.3403	{10736, 9917, 9934, 9935}	{'[M-H2O+NH4]+', '[M+Na]+', '[M+H]+'}	413.3526	non anotated	not interesting
+1958	3141.0	0.0017854188713424693	5.9	963.667	{13027, 11460, 12231, 16088, 12848, 16050, 13495, 11480}	{'[M+NH4]+', '[2M+Na]+', '[M+Na]+', '[M+H]+', '[M+K]+', '[M-H2O+H]+', '[2M+H]+'}	470.3396	annotated	not interesting
+1959	3142.0	0.00016753837550784425	5.9	287.2376	{2899, 4644}	{'[M+ACN+Na]+', '[M+NH4]+'}	223.2205	annotated	not interesting
+1966	3151.0	0.0007867820094896172	5.91	308.6938	{5880, 4474}	{'[M+HFA+H]+', '[M+Na]+'}	261.6806	non anotated	not interesting
+12153	8704x	0.0005667467434372659	5.91	371.3164	{8704}	{nan}	0.0	non anotated	not interesting
+3840	1210x	0.00011720019306804517	5.91	191.1798	{1210}	{nan}	0.0	annotated	not interesting
+3038	11020x	0.0005497004047143666	5.91	441.3733	{11020}	{nan}	0.0	annotated	not interesting
+11720	8143x	0.00022331572242962583	5.91	353.3059	{8143}	{nan}	0.0	non anotated	not interesting
+7680	3017x	0.00011923364769698205	5.91	245.227	{3017}	{nan}	0.0	non anotated	not interesting
+6475	16034x	0.0006745793545068216	5.92	931.5009	{16034}	{nan}	0.0	non anotated	not interesting
+3973	12307x	0.00017059277467233386	5.92	473.3627	{12307}	{nan}	0.0	annotated	not interesting
+1993	3201.0	6.132491130618898e-05	5.93	163.1485	{580}	{'[2M-CO2+H]+'}	103.0666	non anotated	not interesting
+3677	11887x	0.0005445727729663153	5.93	463.2858	{11887}	{nan}	0.0	non anotated	not interesting
+10454	6511x	0.00017854614550361956	5.93	317.6994	{6511}	{nan}	0.0	non anotated	not interesting
+3791	12042x	0.0004076399392871978	5.93	467.3168	{12042}	{nan}	0.0	non anotated	not interesting
+2866	10789x	0.004352456943424675	5.93	437.3425	{10789}	{nan}	0.0	annotated	not interesting
+9462	5316x	0.00012371433840057652	5.93	299.202	{5316}	{nan}	0.0	non anotated	not interesting
+1980	3181.0	5.341189450556468e-05	5.93	247.1696	{3071}	{'[2M-2H2O+K]+'}	122.1117	non anotated	not interesting
+1974	3171.0	6.321281774078072e-05	5.93	329.2074	{3621, 7094}	{'[M-CO2+H]+', '[M+Na]+'}	306.2191	non anotated	not interesting
+8621	4276x	0.0001992053230797222	5.93	280.1918	{4276}	{nan}	0.0	non anotated	not interesting
+1979	3180.0	0.0002754524793270116	5.93	353.2681	{7259, 8132, 6205}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	330.2779	non anotated	not interesting
+13063	9831x	0.00017283226547944576	5.94	411.3631	{9831}	{nan}	0.0	non anotated	not interesting
+1987	3192.0	0.0005410328144302845	5.95	415.3219	{9738, 9972}	{'[M+NH4]+', '[2M+HFA+2H]2+'}	391.3128	non anotated	not interesting
+4094	12492x	6.481351103677521e-05	5.96	479.2802	{12492}	{nan}	0.0	non anotated	not interesting
+6958	2117x	6.150480013947921e-05	5.96	217.1955	{2117}	{nan}	0.0	non anotated	not interesting
+8540	4172x	0.00018336004547665711	5.96	277.2169	{4172}	{nan}	0.0	non anotated	not interesting
+8339	3915x	0.0007867061626679378	5.96	271.2426	{3915}	{nan}	0.0	non anotated	not interesting
+1984	3187.0	6.132371130726914e-05	5.97	237.2215	{2217, 2787}	{'[M-H2O+NH4]+', '[M+NH4]+'}	219.1875	annotated	not interesting
+7920	3343x	0.00039577903130338503	5.97	255.2321	{3343}	{nan}	0.0	annotated	not interesting
+2607	10468x	0.00034984393389540954	5.97	427.3936	{10468}	{nan}	0.0	non anotated	not interesting
+2582	10430x	8.505686123598442e-05	5.97	427.3431	{10430}	{nan}	0.0	non anotated	not interesting
+12531	9180x	8.987052197478755e-05	5.97	391.3372	{9180}	{nan}	0.0	non anotated	not interesting
+13003	9755x	0.0001808979998459522	5.97	409.3831	{9755}	{nan}	0.0	annotated	not interesting
+2348	10140x	7.439816078245709e-05	5.98	421.3476	{10140}	{nan}	0.0	annotated	not interesting
+1994	3202.0	0.00032593723771142687	5.98	313.253	{6199, 4679}	{'[M+HFA+NH4]+', '[M+K]+'}	249.2154	non anotated	not interesting
+3533	11677x	0.0003164178587203894	5.99	457.3316	{11677}	{nan}	0.0	non anotated	not interesting
+1995	3203.0	0.00042705984525154533	5.99	443.3524	{11108, 1565}	{'[2M+H]+', '[M-2H2O+NH4]+'}	221.1697	annotated	not interesting
+4370	12906x	6.743506848561969e-05	5.99	490.2957	{12906}	{nan}	0.0	non anotated	not interesting
+12621	9285x	0.00018344696405870532	6.0	395.368	{9285}	{nan}	0.0	non anotated	not interesting
+1996	3204.0	0.00025729077318704626	6.0	483.3824	{11850, 10356, 12663, 12471, 11135}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	460.3924	annotated	not interesting
+2002	3211.0	0.00048747018321829865	6.03	951.5752	{16074, 16026}	{'[M+Na]+', '[M+H]+'}	928.5864	non anotated	not interesting
+12910	9646x	0.00011297721887888133	6.03	407.368	{9646}	{nan}	0.0	non anotated	not interesting
+10201	6212x	0.00014869135897996932	6.03	313.6678	{6212}	{nan}	0.0	non anotated	not interesting
+8921	4645x	0.0013199878070418655	6.03	287.2376	{4645}	{nan}	0.0	annotated	not interesting
+7961	3390x	0.0006035119926400557	6.03	257.154	{3390}	{nan}	0.0	non anotated	not interesting
+5810	1502x	0.010871430405581316	6.03	201.0907	{1502}	{nan}	0.0	non anotated	not interesting
+6882	2027x	0.0012151966095025552	6.03	215.1064	{2027}	{nan}	0.0	non anotated	not interesting
+7563	2866x	0.00010486105393575987	6.03	241.1219	{2866}	{nan}	0.0	non anotated	not interesting
+3780	1202x	0.00025345506372106047	6.03	191.1796	{1202}	{nan}	0.0	annotated	not interesting
+8096	3608x	0.0010772664944244796	6.04	263.2009	{3608}	{nan}	0.0	non anotated	not interesting
+2004	3216.0	0.0007672797495324142	6.04	487.282	{11888, 12794}	{'[M+ACN+H]+', '[M+NH4]+'}	445.2505	non anotated	not interesting
+3848	12132x	8.331732978745168e-05	6.04	469.3319	{12132}	{nan}	0.0	non anotated	not interesting
+4508	13139x	0.0001852619289321604	6.04	497.2892	{13139}	{nan}	0.0	non anotated	not interesting
+2006	3220.0	0.00022059166746538794	6.04	405.2798	{2931, 2268, 9557}	{'[2M+2H]2+', '[2M-2H2O+H]+', '[M+Na]+'}	220.1471	non anotated	not interesting
+3036	11018x	0.0013492585940911967	6.05	441.3731	{11018}	{nan}	0.0	annotated	not interesting
+4137	12554x	0.0003033062532977857	6.05	481.2951	{12554}	{nan}	0.0	non anotated	not interesting
+2946	10895x	0.0032000380764564437	6.05	439.3578	{10895}	{nan}	0.0	annotated	not interesting
+2865	10786x	0.0006590629856986017	6.06	437.3424	{10786}	{nan}	0.0	annotated	not interesting
+10012	5976x	4.466159998970777e-05	6.06	309.7016	{5976}	{nan}	0.0	non anotated	not interesting
+3554	11706x	0.0017301236866661001	6.06	457.3683	{11706}	{nan}	0.0	annotated	not interesting
+2017	3238.0	0.0002673999698289837	6.07	427.3579	{10456, 2116}	{'[2M-CO2+K]+', '[M+H]+'}	216.1903	non anotated	not interesting
+2014	3233.0	0.0008684391800058939	6.07	271.2428	{3918, 862, 2703}	{'[M+ACN+NH4]+', '[M+Na]+', '[M-2H2O+H]+'}	212.18	annotated	not interesting
+2015	3234.0	0.0006434410476074186	6.07	501.3563	{12256, 12448, 9828, 11599, 13298}	{'[M-CO2+H]+', '[M+NH4]+', '[M+Na]+', '[M+HFA+H]+', '[M+H]+'}	454.345	annotated	not interesting
+4088	12482x	0.0001524831546098857	6.07	479.2789	{12482}	{nan}	0.0	non anotated	not interesting
+2885	10811x	0.0002093494192117763	6.08	438.3461	{10811}	{nan}	0.0	non anotated	not interesting
+3565	11718x	9.08349517286756e-05	6.08	458.3362	{11718}	{nan}	0.0	non anotated	not interesting
+10053	6021x	0.00018618306685898843	6.09	310.7092	{6021}	{nan}	0.0	non anotated	not interesting
+2021	3244.0	9.63373391202558e-05	6.09	444.3921	{1208, 11165}	{'[2M+HFA+NH4]+', '[M+H]+'}	190.1744	annotated	not interesting
+8421	4012x	0.0004439608061148743	6.09	273.2583	{4012}	{nan}	0.0	annotated	not interesting
+6474	16033x	5.634468612401568e-05	6.1	931.4996	{16033}	{nan}	0.0	non anotated	not interesting
+10450	6508x	0.00042522019140509845	6.1	317.6991	{6508}	{nan}	0.0	non anotated	not interesting
+2022	3249.0	0.00038451808450201143	6.1	490.3899	{12918, 12310}	{'[M+NH4]+', '[M+H]+'}	472.3558	annotated	not interesting
+2023	3250.0	0.00032295341264609016	6.1	395.3682	{9290, 8355}	{'[M+ACN+NH4]+', '[M+Na]+'}	336.3069	annotated	not interesting
+2024	3251.0	0.000634387409823943	6.1	525.3561	{13865, 12748, 13361, 11795, 12056}	{'[M-CO2+H]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	502.3665	annotated	not interesting
+7774	3153x	0.0004690612045736404	6.11	249.1853	{3153}	{nan}	0.0	non anotated	not interesting
+3977	12314x	0.0019283681206586037	6.11	473.3633	{12314}	{nan}	0.0	annotated	not interesting
+2026	3255.0	0.00013811943548182345	6.11	475.3405	{12363, 12173, 11487}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	452.3523	non anotated	not interesting
+12986	9736x	0.0004579405638660674	6.12	409.3477	{9736}	{nan}	0.0	non anotated	not interesting
+2518	10351x	0.0015727890148921574	6.13	425.3786	{10351}	{nan}	0.0	annotated	not interesting
+6367	1590x	0.00011065879034378134	6.13	203.18	{1590}	{nan}	0.0	annotated	not interesting
+2031	3266.0	0.001765741836422971	6.14	437.3424	{10787, 9901}	{'[M+ACN+H]+', '[M+NH4]+'}	395.3088	annotated	not interesting
+4535	13182x	0.0010789383589482763	6.14	497.3634	{13182}	{nan}	0.0	non anotated	not interesting
+8922	4646x	0.00016521552592409228	6.14	287.2377	{4646}	{nan}	0.0	non anotated	not interesting
+3129	11137x	0.0003975177283029081	6.14	443.3887	{11137}	{nan}	0.0	annotated	not interesting
+11836	8288x	0.0010479251811228423	6.15	357.3372	{8288}	{nan}	0.0	non anotated	not interesting
+2035	3273.0	0.0018677328642340216	6.16	397.3314	{9346, 7598}	{'[M+Na]+', '[M-2H2O+H]+'}	374.3414	non anotated	not interesting
+2038	3276.0	0.0021207977082106405	6.16	941.6886	{13573, 13030, 12235, 12846, 11470, 12239, 12849, 11476, 16053, 13023}	{'[M+ACN+H]+', '[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[2M+H]+'}	470.3403	annotated	not interesting
+10616	6720x	0.00010794941479216727	6.16	321.3161	{6720}	{nan}	0.0	non anotated	not interesting
+5687	14844x	0.0001593369379142074	6.16	591.4263	{14844}	{nan}	0.0	non anotated	not interesting
+12569	9229x	0.0009066752604206154	6.17	393.3526	{9229}	{nan}	0.0	non anotated	not interesting
+2041	3279.0	0.0001537565601622074	6.17	407.3683	{2600, 9663}	{'[2M+K]+', '[M+HFA+H]+'}	184.2005	non anotated	not interesting
+2443	10252x	0.00038013900710407995	6.18	423.3629	{10252}	{nan}	0.0	annotated	not interesting
+8832	4536x	0.00010760658639262674	6.18	285.2221	{4536}	{nan}	0.0	non anotated	not interesting
+2044	3283.0	0.00015255576698471583	6.18	431.3524	{10608, 3068}	{'[2M-H2O+H]+', '[M+Na]+'}	224.1789	non anotated	not interesting
+2043	3282.0	0.0001732287053139821	6.18	439.321	{10855, 10023, 10666, 9400, 9404}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	416.3305	non anotated	not interesting
+9814	5734x	6.975834103549813e-05	6.19	305.2481	{5734}	{nan}	0.0	non anotated	not interesting
+6957	2115x	7.006998094636622e-05	6.19	217.1955	{2115}	{nan}	0.0	non anotated	not interesting
+10368	6405x	0.00021347782889276	6.19	316.6911	{6405}	{nan}	0.0	non anotated	not interesting
+2047	3289.0	0.00011430705883016493	6.2	177.164	{844}	{'[M+ACN+NH4]+'}	118.106	non anotated	not interesting
+9931	5871x	5.394595144110676e-05	6.21	308.6927	{5871}	{nan}	0.0	non anotated	not interesting
+13002	9754x	0.0002970346034407545	6.22	409.3831	{9754}	{nan}	0.0	annotated	not interesting
+2600	10461x	0.0002930120233295812	6.23	427.393	{10461}	{nan}	0.0	non anotated	not interesting
+2051	3297.0	0.00012787303322176345	6.24	885.6933	{15946, 12560, 10326, 11961, 11100, 11806}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M+K]+', '[M-H2O+H]+', '[2M+H]+'}	442.3448	non anotated	not interesting
+2052	3299.0	0.00033879938881311976	6.24	273.2581	{4011}	{'[M+ACN+NH4]+'}	214.1961	annotated	not interesting
+4532	13177x	4.901374918221329e-05	6.25	497.3617	{13177}	{nan}	0.0	non anotated	not interesting
+2061	3318.0	0.00033151954847604096	6.25	467.352	{10452, 12052}	{'[M-H2O+H]+', '[M+Na]+'}	444.3618	non anotated	not interesting
+2058	3309.0	0.0003614255502645951	6.25	551.4665	{14326, 3415}	{'[2M+H]+', '[M-2H2O+NH4]+'}	275.2324	annotated	not interesting
+13047	9814x	0.00017653465449127598	6.25	411.3628	{9814}	{nan}	0.0	non anotated	not interesting
+2057	3307.0	0.00019499854217741754	6.25	453.3732	{11494, 9287}	{'[M+Na]+', '[M-2H2O+H]+'}	430.3829	annotated	not interesting
+12062	8588x	0.00013923017132411126	6.25	367.3211	{8588}	{nan}	0.0	non anotated	not interesting
+2056	3306.0	0.0043503421127924335	6.25	487.282	{11953, 12793, 12591}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	464.2938	annotated	not interesting
+2063	3324.0	0.0012603626932486834	6.26	499.3775	{13244, 285, 12454}	{'[2M+H]+', '[M+HFA+2H]2+', '[2M+Na]+'}	238.1937	non anotated	not interesting
+8038	3520x	5.713338397867072e-05	6.26	261.1852	{3520}	{nan}	0.0	non anotated	not interesting
+3646	11839x	9.59788226965592e-05	6.26	461.363	{11839}	{nan}	0.0	non anotated	not interesting
+2066	3328.0	0.0035610875122270586	6.27	301.2168	{5421, 3342}	{'[M+ACN+Na]+', '[M+NH4]+'}	237.1997	annotated	not interesting
+2070	3336.0	0.0004666242689681798	6.27	442.3768	{11058}	{'[M+Na]+'}	419.3877	non anotated	not interesting
+2071	3337.0	0.001803606797554527	6.27	475.3777	{3144, 1201, 12380}	{'[M+Na]+', '[2M+Na]+', '[M-2H2O+H]+'}	226.1944	annotated	not interesting
+3417	11514x	0.000150330429274912	6.27	454.3402	{11514}	{nan}	0.0	non anotated	not interesting
+12300	8883x	0.00012064299762454245	6.27	379.2847	{8883}	{nan}	0.0	non anotated	not interesting
+6283	1579x	0.00016120726158950642	6.28	203.1796	{1579}	{nan}	0.0	annotated	not interesting
+2076	3344.0	0.00041222366721861854	6.28	471.3474	{12236, 3599}	{'[2M+K]+', '[M+HFA+H]+'}	216.19	annotated	not interesting
+12089	861x	5.959622003928613e-05	6.28	177.164	{861}	{nan}	0.0	non anotated	not interesting
+2073	3340.0	0.002678783043266455	6.28	425.3783	{10345, 3913, 10354, 2699}	{'[M+ACN+NH4]+', '[2M+H]+', '[M+Na]+'}	212.183	annotated	not interesting
+2078	3347.0	0.00024327295613996833	6.28	247.17	{3075, 1127}	{'[M+Na]+', '[M-2H2O+H]+'}	224.1791	non anotated	not interesting
+10028	5994x	0.00020749809073468991	6.28	310.1934	{5994}	{nan}	0.0	non anotated	not interesting
+2072	3338.0	0.0006473800871239336	6.29	443.3883	{11122}	{'[2M-CO2+H]+'}	243.1866	annotated	not interesting
+2862	10781x	0.0003035622530673502	6.3	437.3419	{10781}	{nan}	0.0	annotated	not interesting
+12923	9660x	0.00014334833029661868	6.3	407.3682	{9660}	{nan}	0.0	non anotated	not interesting
+6654	1755x	0.0005833043170498828	6.3	207.1746	{1755}	{nan}	0.0	non anotated	not interesting
+2084	3360.0	0.00016440086637031835	6.31	617.4781	{15114, 14694}	{'[M-H2O+H]+', '[M+Na]+'}	594.488	non anotated	not interesting
+8773	4469x	0.00020224542560636307	6.32	284.2949	{4469}	{nan}	0.0	non anotated	not interesting
+2097	3381.0	0.020004785820649032	6.33	913.7283	{11703, 13761, 10123, 12332, 10894, 11694, 10896, 10133, 11701, 10135, 12502, 15993, 12503}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[2M+H]+', '[M+ACN+Na]+', '[M-2H2O+H]+'}	456.3609	annotated	not interesting
+2096	3379.0	0.0001798872332916685	6.33	497.3618	{13178, 10933, 10927}	{'[M+ACN+K]+', '[M+Na]+'}	417.3719	non anotated	not interesting
+2093	3376.0	0.0010921526054268138	6.33	283.2636	{2026, 4442}	{'[M+HFA+K]+', '[2M+Na]+'}	130.1374	annotated	not interesting
+8150	3674x	0.00014470275969945254	6.33	265.253	{3674}	{nan}	0.0	annotated	not interesting
+2095	3378.0	0.00014487077868696797	6.33	472.3803	{12261, 11290, 11478, 10166}	{'[M+ACN+H]+', '[M+Na]+', '[2M-H2O+2H]2+', '[M+NH4]+'}	430.3469	annotated	not interesting
+12622	9288x	7.725831131796985e-05	6.33	395.3681	{9288}	{nan}	0.0	non anotated	not interesting
+2098	3385.0	0.00010537424007669146	6.34	411.363	{2892, 9830}	{'[2M+Na]+', '[M+HFA+H]+'}	194.1848	non anotated	not interesting
+2099	3386.0	0.00011719854139489075	6.34	485.3618	{12746, 10444, 12527, 10447, 11224, 11899}	{'[M+NH4]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	462.3716	annotated	not interesting
+2104	3393.0	0.001902722880585008	6.35	939.745	{10242, 11011, 11779, 10248, 11016, 16045, 11022, 11791, 12573, 12408, 12570, 12411, 12413, 12575}	{'[M+NH4]+', '[2M+Na]+', '[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	458.3764	annotated	not interesting
+2670	10544x	6.590412058139004e-05	6.36	429.3728	{10544}	{nan}	0.0	non anotated	not interesting
+2882	10809x	9.850529314965553e-05	6.37	438.3459	{10809}	{nan}	0.0	non anotated	not interesting
+10036	6004x	0.00010647645152473855	6.37	310.3106	{6004}	{nan}	0.0	non anotated	not interesting
+2105	3394.0	0.0001255612362596415	6.38	615.4616	{15096}	{'[2M-2H2O+K]+'}	306.2582	non anotated	not interesting
+2119	3415.0	7.841818778588071e-05	6.39	465.3342	{11960, 11093, 10317}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	442.3451	non anotated	not interesting
+2117	3413.0	0.00010292497912347378	6.39	407.3681	{9658, 3516}	{'[M+HFA+Na]+', '[2M+Na]+'}	192.1891	non anotated	not interesting
+2546	10382x	0.0008684628546257318	6.4	426.3818	{10382}	{nan}	0.0	non anotated	not interesting
+2124	3430.0	9.072388005832068e-05	6.41	523.3606	{12656, 13722, 13806}	{'[M+NH4]+', '[M-H2O+H]+', '[M+Na]+'}	500.3716	non anotated	not interesting
+3745	11983x	6.417484558295523e-05	6.41	466.2679	{11983}	{nan}	0.0	non anotated	not interesting
+3199	11232x	5.872417680510813e-05	6.41	445.4033	{11232}	{nan}	0.0	non anotated	not interesting
+3710	11935x	0.00021583245643833798	6.41	465.2644	{11935}	{nan}	0.0	non anotated	not interesting
+4695	13406x	7.743799153900768e-05	6.42	505.3527	{13406}	{nan}	0.0	non anotated	not interesting
+2130	3438.0	0.0014282155565117224	6.43	967.6989	{12300, 12302, 10778, 13083, 10779, 13087, 13088, 13089, 16059, 10557, 11582, 11584, 11585, 11593, 16091, 12255, 12911, 12913, 12914, 12923}	{'[M-CO2+H]+', '[M+NH4]+', '[2M+Na]+', '[M+H]+', '[M+Na]+', '[2M+2H]2+', '[M-H2O+H]+', '[2M+H]+', '[M-H2O+NH4]+', '[M-2H2O+H]+'}	472.3557	annotated	not interesting
+2604	10465x	0.000164302512391865	6.43	427.3932	{10465}	{nan}	0.0	non anotated	not interesting
+8105	3619x	0.0004452923647248979	6.45	263.2374	{3619}	{nan}	0.0	non anotated	not interesting
+2141	3454.0	0.0011338103478333317	6.45	465.3712	{2664, 11014, 11968}	{'[M+ACN+2H]2+', '[M+NH4]+', '[M+ACN+H]+'}	423.3388	annotated	not interesting
+13058	9824x	0.00019100716969365538	6.45	411.3626	{9824}	{nan}	0.0	non anotated	not interesting
+2140	3453.0	0.00017276868658930723	6.45	439.3575	{2592, 10887, 1191}	{'[2M+Na]+', '[M-H2O+H]+', '[M+Na]+'}	208.184	annotated	not interesting
+12995	9747x	0.00013725367549557817	6.45	409.3834	{9747}	{nan}	0.0	annotated	not interesting
+2143	3457.0	0.00018508306784914124	6.46	369.2255	{8625, 8482}	{'[M+NH4]+', '[M+Na]+'}	346.2363	non anotated	not interesting
+8668	4344x	0.0068809626100000435	6.46	281.248	{4344}	{nan}	0.0	annotated	not interesting
+6418	15971x	7.318980971703182e-05	6.49	899.5479	{15971}	{nan}	0.0	non anotated	not interesting
+12912	9648x	5.588616979033295e-05	6.5	407.368	{9648}	{nan}	0.0	non anotated	not interesting
+2437	10243x	0.0027394231800694194	6.51	423.3626	{10243}	{nan}	0.0	annotated	not interesting
+12620	9284x	0.0002457462094160872	6.52	395.3679	{9284}	{nan}	0.0	non anotated	not interesting
+2543	10379x	8.214934997755268e-05	6.52	426.3815	{10379}	{nan}	0.0	non anotated	not interesting
+2158	3479.0	0.000452554023260161	6.53	425.3781	{10349}	{'[M-H2O+H]+'}	442.3817	annotated	not interesting
+2163	3491.0	5.2910160985903075e-05	6.53	453.336	{10603, 11292, 11459, 9895}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M+H]+'}	430.3455	annotated	not interesting
+3586	11747x	0.00016888115707427284	6.53	459.3235	{11747}	{nan}	0.0	non anotated	not interesting
+3121	11126x	0.0014598205806943636	6.54	443.3884	{11126}	{nan}	0.0	annotated	not interesting
+13060	9826x	3.889480709450267e-05	6.56	411.3628	{9826}	{nan}	0.0	non anotated	not interesting
+2168	3497.0	0.0005703363861391004	6.57	513.3315	{13601, 10888, 12975, 11704, 13179}	{'[M+NH4]+', '[M+Na]+', '[M+K]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	474.371	annotated	not interesting
+2172	3503.0	0.00014261367067083366	6.59	453.3733	{9912, 10618, 9286, 11495}	{'[M+Na]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	430.3822	annotated	not interesting
+2179	3513.0	6.391468505158581e-05	6.61	474.3949	{12329, 10131}	{'[M+NH4]+', '[M-2H2O+H]+'}	456.361	annotated	not interesting
+2541	10377x	0.00015332198639070508	6.63	426.3813	{10377}	{nan}	0.0	non anotated	not interesting
+2507	10337x	0.000479783395879108	6.63	425.3777	{10337}	{nan}	0.0	annotated	not interesting
+2183	3524.0	0.0028303800359945844	6.63	476.411	{11783, 11012, 12414, 10239}	{'[M+NH4]+', '[M+H]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	458.3763	annotated	not interesting
+2186	3528.0	0.0001454798786171618	6.64	407.3679	{9654, 2598}	{'[2M+K]+', '[M+HFA+H]+'}	184.2003	non anotated	not interesting
+2190	3532.0	9.35832516471662e-05	6.65	177.1638	{851}	{'[M+HFA+H]+'}	130.1531	non anotated	not interesting
+2193	3537.0	6.182613382152587e-05	6.69	467.3502	{11856, 10458, 9730, 12049}	{'[M+Na]+', '[M+NH4]+', '[M-H2O+H]+', '[M-2H2O+H]+'}	444.3608	non anotated	not interesting
+2943	10885x	0.0009814294323658662	6.72	439.3575	{10885}	{nan}	0.0	annotated	not interesting
+2970	10928x	0.0003259169315096096	6.72	440.3609	{10928}	{nan}	0.0	non anotated	not interesting
+6020	15398x	0.0003160958494408647	6.75	663.4819	{15398}	{nan}	0.0	non anotated	not interesting
+2341	10125x	8.948181419070758e-05	6.75	421.3468	{10125}	{nan}	0.0	annotated	not interesting
+6004	15368x	0.0001209099830301513	6.75	658.5269	{15368}	{nan}	0.0	non anotated	not interesting
+12917	9652x	0.00013615310232356834	6.76	407.3678	{9652}	{nan}	0.0	non anotated	not interesting
+2516	10348x	0.0012537248044868687	6.76	425.3781	{10348}	{nan}	0.0	annotated	not interesting
+2202	3547.0	4.1480689934310945e-05	6.76	507.3672	{13441, 2111}	{'[2M+K]+', '[M-H2O+H]+'}	234.2003	non anotated	not interesting
+13092	9867x	0.00023486549193752583	6.78	413.2663	{9867}	{nan}	0.0	non anotated	not interesting
+2209	3555.0	8.688374954368282e-05	6.81	483.3814	{12659, 12469, 11118}	{'[M+NH4]+', '[M-H2O+H]+', '[M+Na]+'}	460.3917	annotated	not interesting
+2210	3557.0	0.00021824355474648154	6.82	555.3659	{14024, 14388, 14304}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	532.3769	non anotated	not interesting
+9231	501x	0.000785434584865167	6.82	158.1541	{501}	{nan}	0.0	non anotated	not interesting
+2399	1019x	0.00036053881422067616	6.82	184.9856	{1019}	{nan}	0.0	non anotated	not interesting
+2431	10235x	0.0011640450765987129	6.83	423.3623	{10235}	{nan}	0.0	annotated	not interesting
+11254	7537x	0.0004499435758491629	6.83	338.3419	{7537}	{nan}	0.0	non anotated	not interesting
+7363	261x	0.0004687784105698213	6.84	141.9587	{261}	{nan}	0.0	non anotated	not interesting
+2216	3565.0	0.00028729453565315237	6.85	407.3679	{2597, 9655}	{'[2M+K]+', '[M+HFA+H]+'}	184.2003	non anotated	not interesting
+6570	1661x	9.195106172880535e-05	6.85	205.1953	{1661}	{nan}	0.0	non anotated	not interesting
+2514	10344x	0.0013851584469437776	6.85	425.378	{10344}	{nan}	0.0	annotated	not interesting
+2461	10274x	0.00037863008980202923	6.86	424.3658	{10274}	{nan}	0.0	non anotated	not interesting
+2217	3566.0	0.00025888717366393844	6.87	509.3605	{13505, 11010}	{'[M+HFA+Na]+', '[M+H]+'}	440.3657	annotated	not interesting
+12981	972x	0.00040819603448041434	6.89	182.9853	{972}	{nan}	0.0	non anotated	not interesting
+5819	15044x	3.059248538114928e-05	6.9	610.5051	{15044}	{nan}	0.0	non anotated	not interesting
+2434	10238x	0.0008118250491483395	6.9	423.3625	{10238}	{nan}	0.0	annotated	not interesting
+2227	3578.0	0.00041590952036016593	6.91	481.366	{12577, 12571, 11796, 11005}	{'[M+Na]+', '[M-H2O+H]+', '[M+H]+'}	458.3763	annotated	not interesting
+2225	3575.0	0.000516441334173708	6.91	589.4446	{14562, 14764, 14814}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	566.4553	non anotated	not interesting
+13128	9910x	0.00021451678298147958	6.95	413.3781	{9910}	{nan}	0.0	non anotated	not interesting
+12619	9283x	0.00014431810932798828	6.95	395.3677	{9283}	{nan}	0.0	non anotated	not interesting
+2343	10127x	0.00017519993798935805	6.96	421.3469	{10127}	{nan}	0.0	annotated	not interesting
+7111	2318x	0.00043906073397059986	6.96	222.1713	{2318}	{nan}	0.0	non anotated	not interesting
+2230	3583.0	0.0004282853752488756	6.99	615.46	{15043, 15092, 15093, 14875, 14877}	{'[M+Na]+', '[M+NH4]+', '[M+H]+'}	592.4706	non anotated	not interesting
+12911	9647x	0.00015521534353809375	7.02	407.3675	{9647}	{nan}	0.0	non anotated	not interesting
+2424	10229x	0.0001874836207122317	7.03	423.3622	{10229}	{nan}	0.0	annotated	not interesting
+2678	10553x	0.0019306516592729566	7.03	429.3729	{10553}	{nan}	0.0	non anotated	not interesting
+12971	971x	5.6649642787311116e-05	7.04	182.9853	{971}	{nan}	0.0	non anotated	not interesting
+2232	3587.0	0.00019727335352689868	7.06	461.3389	{10129, 11830}	{'[M-H2O+H]+', '[M+Na]+'}	438.35	annotated	not interesting
+12677	9354x	0.00012314610924699036	7.11	397.3835	{9354}	{nan}	0.0	non anotated	not interesting
+2237	3598.0	0.0005549202660444703	7.12	597.4494	{14360, 14930, 14663}	{'[M-H+2Na]+', '[M+Na]+', '[M+H]+'}	552.4774	non anotated	not interesting
+9670	555x	0.0003354391621727214	7.12	162.1026	{555}	{nan}	0.0	non anotated	not interesting
+7110	2317x	0.00013833510992883465	7.16	222.1713	{2317}	{nan}	0.0	non anotated	not interesting
+4465	1305x	0.0004513305028303999	7.16	195.0878	{1305}	{nan}	0.0	non anotated	not interesting
+2241	3606.0	0.0011470639244200074	7.18	601.4805	{14720, 14964}	{'[M+Na]+', '[M+H]+'}	578.4912	non anotated	specific non annotated
+12913	9649x	0.00013891011419593947	7.2	407.3676	{9649}	{nan}	0.0	non anotated	not interesting
+5532	14621x	9.947872385237927e-05	7.21	571.4142	{14621}	{nan}	0.0	non anotated	not interesting
+6136	15585x	0.0001731363608994973	7.24	714.5515	{15585}	{nan}	0.0	non anotated	not interesting
+12555	9215x	0.00012935706059406544	7.27	393.3154	{9215}	{nan}	0.0	non anotated	not interesting
+12908	9644x	0.00014045979701153474	7.28	407.3674	{9644}	{nan}	0.0	non anotated	not interesting
+12907	9643x	5.0884011613548335e-05	7.36	407.3674	{9643}	{nan}	0.0	non anotated	not interesting
+4457	1304x	8.287413210026712e-05	7.39	195.0877	{1304}	{nan}	0.0	non anotated	not interesting
+3123	11129x	8.497329384709191e-05	7.43	443.3884	{11129}	{nan}	0.0	annotated	not interesting
+11303	75x	0.0005948322301181264	7.56	121.0759	{75}	{nan}	0.0	non anotated	not interesting
+2468	10284x	6.140606912787244e-05	7.6	424.369	{10284}	{nan}	0.0	non anotated	not interesting
+12906	9642x	4.5318929541560005e-05	7.61	407.3674	{9642}	{nan}	0.0	non anotated	not interesting
+12999	9751x	0.00019533772847497326	7.61	409.383	{9751}	{nan}	0.0	annotated	not interesting
+13050	9817x	0.00032263691532332647	7.72	411.3622	{9817}	{nan}	0.0	non anotated	not interesting
+9448	52x	0.0005818702896325737	7.72	112.0357	{52}	{nan}	0.0	non anotated	not interesting
+7713	305x	0.0007268842835016329	7.72	146.0714	{305}	{nan}	0.0	non anotated	not interesting
+9629	551x	0.0005718044613726513	7.75	162.1024	{551}	{nan}	0.0	non anotated	not interesting
+13125	9908x	9.104067785928282e-05	7.84	413.3778	{9908}	{nan}	0.0	non anotated	not interesting
+13000	9752x	0.00022056946652843407	7.85	409.383	{9752}	{nan}	0.0	annotated	not interesting
+9365	51x	0.00020574683872254465	7.87	112.0357	{51}	{nan}	0.0	non anotated	not interesting
+11158	73x	0.00015829811588278516	7.93	121.0758	{73}	{nan}	0.0	non anotated	not interesting
+9988	594x	0.0039942587969535315	7.94	164.1011	{594}	{nan}	0.0	non anotated	not interesting
+12996	9748x	0.00019823358232763037	7.97	409.3829	{9748}	{nan}	0.0	annotated	not interesting
+12675	9352x	0.00047446874037595913	8.0	397.3829	{9352}	{nan}	0.0	non anotated	not interesting
+2605	10466x	0.00025533816250447735	8.0	427.3933	{10466}	{nan}	0.0	non anotated	not interesting
+6446	159x	0.004383819594619745	8.01	133.0634	{159}	{nan}	0.0	non anotated	not interesting
+8074	356x	0.005134082459948202	8.01	148.087	{356}	{nan}	0.0	non anotated	not interesting
+6765	18x	0.00047237392886445296	8.02	106.0402	{18}	{nan}	0.0	non anotated	not interesting
+8045	352x	0.00027988788203309406	8.02	148.0747	{352}	{nan}	0.0	non anotated	not interesting
+10226	623x	8.457543200426622e-05	8.1	165.126	{623}	{nan}	0.0	non anotated	not interesting
+6852	199x	0.0010274406062603862	8.11	136.0824	{199}	{nan}	0.0	non anotated	not interesting
+10235	624x	8.503953110804328e-05	8.16	165.1261	{624}	{nan}	0.0	non anotated	not interesting
+4239	126x	0.0006039465185647112	8.16	125.0852	{126}	{nan}	0.0	non anotated	not interesting
+6875	201x	0.0002962507572563734	8.18	136.0825	{201}	{nan}	0.0	non anotated	not interesting
+7225	244x	0.0026189798435091735	8.19	140.058	{244}	{nan}	0.0	non anotated	not interesting
+6824	196x	0.000541090651698797	8.44	136.0824	{196}	{nan}	0.0	non anotated	not interesting

@@ -681,35 +681,70 @@ def distribution_to_plot(sample, quant_df, reduced_df):
         height=700)
     fig.show()
     
-def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df, min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore):
+def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df, 
+min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, 
+min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_dentity, correlation_groups_df):
+    
         
-        dfq=pd.read_csv(quantitative_data_filename, sep=',', usecols=['row ID','row m/z', 'row retention time', sample+' Peak area'] ,index_col='row ID')
+        if use_ion_dentity == True: 
+            row_ID_header = 'annotation network number'
+        else: 
+            row_ID_header = 'row ID'
+            
+        #get a clean table with the original intensities normalized
+        dfq = pd.read_csv(quantitative_data_filename, sep=',')
         dfq.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
+        dfq.drop(list(dfq.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
         dfq.rename(columns ={'row retention time':'retention time (min)'}, inplace=True)
-        dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the data
-        df = dfq[['row m/z', 'retention time (min)']]
-        df.reset_index(inplace=True)
-        df= pd.merge(df, annotation_df[['cluster index', 'annotation']], how='left', right_on='cluster index', left_on='row ID').fillna(0)
-        df.drop('cluster index', axis=1, inplace=True)
+            
+        if data_process_origin == 'MZMine3':
+            
+                if use_ion_dentity == True:
+            
+                    dfq = dfq[['row ID', 'annotation network number', sample]]
+                    #complete correlation groups
+                    dfq['annotation network number'] = dfq['annotation network number'].fillna(dfq['row ID'].apply(str) + 'x')
+                    dfq.drop('row ID', axis =1, inplace=True)
+                    dfq = dfq.groupby('annotation network number', dropna=False).max()
+
+                    #recover information from the correlation groups:
+                    agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion identity)': set, 'row ID': set, 'neutral mass (ion identity)': 'max'}
+                    dfcg = correlation_groups_df.groupby('annotation network number', as_index=False).agg(agg_func)
+                    dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)   
+                    
+                    #merge with the main data according to sample
+                    dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
+                    dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample
+                    
+                    #add annotation status 
+                    df = dfq#dfq[[row_ID_header, sample, 'row m/z', 'retention time (min)']]
+                    df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
+                    df.fillna({'adduct (ion identity)': 'not available', 'neutral mass (ion identity)': 'not available'}, inplace=True)
+                else:
+                    dfq
+        else:
+            dfq = dfq[['row ID','row m/z', 'retention time (min)', sample]]
+            #dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample
+            df = dfq[['row m/z', 'retention time (min)']]
+            df.reset_index(inplace=True)
+            df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
 
         #2) normalize the filtered table and combine information from specificity and annotation status for each feature
-            #normalize row-wise the area of features = relative % of each feature in each sample
+                    #normalize row-wise the area of features = relative % of each feature in each sample
 
         reduced_df_norm = reduced_df.copy()#.transpose()
         reduced_df_norm = reduced_df_norm.div(reduced_df_norm.sum(axis=1), axis=0).fillna(0)
         reduced_df_norm.reset_index(inplace=True)
-        reduced_df_norm.rename(columns={'index': 'row ID'}, inplace=True)
+        reduced_df_norm.rename(columns={'index': row_ID_header}, inplace=True)
 
-        #merge and check status by sample
-        df_check = pd.merge(df, reduced_df_norm[['row ID', sample]], how='left', on= 'row ID')
-
+        #change the area for the post filter-row wise normalized one
+        df_check = df.copy()
+        df_check[sample] = reduced_df_norm[sample]
         df_check['status'] = np.where(
-            ((df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'specific non annotated', 
-            (np.where (((df_check[sample] > min_specificity) & (df_check['annotation'] != annotation_preference)),'specific annotated', 'not interesting'))
+        ((df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'specific non annotated', 
+        (np.where (((df_check[sample] > min_specificity) & (df_check['annotation'] != annotation_preference)),'specific annotated', 'not interesting'))
         )
         df_check.annotation = df_check.annotation.map({1: 'annotated', 0: 'non anotated'})
-
-
         #change intensity for the intensity before filtering
         df_check[sample] = dfq[sample]
         #erase all zero values (easy to plot)
@@ -719,8 +754,9 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
         #df_check['retention time (min)'] = df_check['retention time (min)'].astype(str)
         df_check['row m/z'] = df_check['row m/z'].round(decimals=4)
 
-        if sirius_annotations == True:
-            
+
+        if sirius_annotations == True and use_ion_dentity == False:
+                    
             annot_sirius_df=pd.read_csv(sirius_annotations_filename,
                                             sep='\t', 
                                             usecols =['id','ConfidenceScore','ZodiacScore', 'molecularFormula', 'adduct', 'name'], 
@@ -740,7 +776,7 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
         else:
             df_check
 
-        if CC_component == True:
+        if CC_component == True and use_ion_dentity == False:
 
             canopus_npc_df=pd.read_csv(canopus_npc_summary_filename, sep=',', usecols=['name', 'pathway', 'superclass', 'class', 'classProbability'])
             canopus_npc_df.rename(columns={'name': 'row ID'}, inplace=True)
@@ -751,7 +787,7 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
             df_check.drop('classProbability', axis=1, inplace=True)
         else:
             df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
-            df_check
+            df_check    
 
         #recover species and organe for the particular sample 
         species=metadata_df.loc[metadata_df[filename_header] == sample, species_column].item()

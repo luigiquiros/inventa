@@ -139,8 +139,8 @@ def annotations(df2, df3,
         df = pd.merge(correlation_groups_df[['row ID', 'annotation network number']], df[['row ID', 'annotation']], how ='left', on='row ID')
         df.drop('row ID', axis = 1, inplace=True)
         df = df.groupby('annotation network number', as_index=False).agg(max)
-        df.reset_index(inplace=True)
-        df.rename(columns={'index': filename_header}, inplace=True)
+        #df.reset_index(inplace=True)
+        #df.rename(columns={'index': filename_header}, inplace=True)
     else: 
         df
     #df.to_csv('../data_out/annotations_df.tsv', sep='\t')

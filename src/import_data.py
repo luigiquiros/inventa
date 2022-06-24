@@ -22,6 +22,7 @@ def quant_table(quantitative_data_filename, data_process_origin, use_ion_dentity
     df = pd.read_csv(quantitative_data_filename, sep=',')#,  index_col='row ID')
     df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
     df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+    df.sort_index(axis=1, inplace=True)
 
     if data_process_origin == 'MZMine3':
 
@@ -73,7 +74,7 @@ def correlation_groups(quantitative_data_filename, use_ion_dentity):
             'row ion mobility unit', 'row CCS', 
             'correlation group ID', 'auto MS2 verify',
             'identified by n=', 'partners'], axis=1, inplace=True)
-        df.rename(columns={'best ion': 'adduct', 'neutral M mass':'neutral mass', 'row retention time':'retention time (min)' }, inplace=True)
+        df.rename(columns={'best ion': 'adduct (ion identity)', 'neutral M mass':'neutral mass (ion identity)', 'row retention time':'retention time (min)' }, inplace=True)
         #complete correlation groups
         df['annotation network number'] = df['annotation network number'].fillna(df['row ID'].apply(str) + 'x')
         #df = df.reset_index()
