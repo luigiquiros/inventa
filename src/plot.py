@@ -681,147 +681,280 @@ def distribution_to_plot(sample, quant_df, reduced_df):
         height=700)
     fig.show()
     
-def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df, 
-min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, 
-min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_dentity, correlation_groups_df):
+def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename,  min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_dentity, correlation_groups_df, data_process_origin, filename_header):
     
+    if use_ion_dentity == True: 
+        row_ID_header = 'annotation network number'
+    else: 
+        row_ID_header = 'row ID'
         
-        if use_ion_dentity == True: 
-            row_ID_header = 'annotation network number'
-        else: 
-            row_ID_header = 'row ID'
-            
-        #get a clean table with the original intensities normalized
-        dfq = pd.read_csv(quantitative_data_filename, sep=',')
-        dfq.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
-        dfq.drop(list(dfq.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
-        dfq.rename(columns ={'row retention time':'retention time (min)'}, inplace=True)
-            
-        if data_process_origin == 'MZMine3':
-            
-                if use_ion_dentity == True:
-            
-                    dfq = dfq[['row ID', 'annotation network number', sample]]
-                    #complete correlation groups
-                    dfq['annotation network number'] = dfq['annotation network number'].fillna(dfq['row ID'].apply(str) + 'x')
-                    dfq.drop('row ID', axis =1, inplace=True)
-                    dfq = dfq.groupby('annotation network number', dropna=False).max()
+    #get a clean table with the original intensities normalized
+    dfq = pd.read_csv(quantitative_data_filename, sep=',')
+    dfq.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
+    dfq.drop(list(dfq.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+    dfq.rename(columns ={'row retention time':'retention time (min)'}, inplace=True)
+    dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample    
 
-                    #recover information from the correlation groups:
-                    agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion identity)': set, 'row ID': set, 'neutral mass (ion identity)': 'max'}
-                    dfcg = correlation_groups_df.groupby('annotation network number', as_index=False).agg(agg_func)
-                    dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)   
-                    
-                    #merge with the main data according to sample
-                    dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
-                    dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample
-                    
-                    #add annotation status 
-                    df = dfq#dfq[[row_ID_header, sample, 'row m/z', 'retention time (min)']]
-                    df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
-                    df.fillna({'adduct (ion identity)': 'not available', 'neutral mass (ion identity)': 'not available'}, inplace=True)
-                else:
-                    dfq
-        else:
-            dfq = dfq[['row ID','row m/z', 'retention time (min)', sample]]
-            #dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample
-            df = dfq[['row m/z', 'retention time (min)']]
-            df.reset_index(inplace=True)
-            df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
+    if data_process_origin == 'MZMine3':
+        
+            if use_ion_dentity == True:
+        
+                dfq = dfq[['row ID', 'annotation network number', sample]]
+                #complete correlation groups
+                dfq['annotation network number'] = dfq['annotation network number'].fillna(dfq['row ID'].apply(str) + 'x')
+                dfq.drop('row ID', axis =1, inplace=True)
+                dfq = dfq.groupby('annotation network number', dropna=False).max()
 
-        #2) normalize the filtered table and combine information from specificity and annotation status for each feature
-                    #normalize row-wise the area of features = relative % of each feature in each sample
+                #recover information from the correlation groups:
+                agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion identity)': set, 'row ID': set, 'neutral mass (ion identity)': 'max'}
+                dfcg = correlation_groups_df.groupby('annotation network number', as_index=False).agg(agg_func)
+                dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)   
+                
+                #merge with the main data according to sample
+                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
+                
+                #add annotation status 
+                df = dfq#dfq[[row_ID_header, sample, 'row m/z', 'retention time (min)']]
+                df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
+                df.fillna({'adduct (ion identity)': 'not available', 'neutral mass (ion identity)': 'not available'}, inplace=True)
+            else:
+                dfq
+    else:
+        dfq = dfq[['row ID','row m/z', 'retention time (min)', sample]]
+        #dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample
+        df = dfq[['row m/z', 'retention time (min)']]
+        df.reset_index(inplace=True)
+        df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
 
-        reduced_df_norm = reduced_df.copy()#.transpose()
-        reduced_df_norm = reduced_df_norm.div(reduced_df_norm.sum(axis=1), axis=0).fillna(0)
-        reduced_df_norm.reset_index(inplace=True)
-        reduced_df_norm.rename(columns={'index': row_ID_header}, inplace=True)
+    #2) normalize the filtered table and combine information from specificity and annotation status for each feature
+                #normalize row-wise the area of features = relative % of each feature in each sample
 
-        #change the area for the post filter-row wise normalized one
-        df_check = df.copy()
-        df_check[sample] = reduced_df_norm[sample]
-        df_check['status'] = np.where(
-        ((df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'specific non annotated', 
-        (np.where (((df_check[sample] > min_specificity) & (df_check['annotation'] != annotation_preference)),'specific annotated', 'not interesting'))
-        )
-        df_check.annotation = df_check.annotation.map({1: 'annotated', 0: 'non anotated'})
-        #change intensity for the intensity before filtering
-        df_check[sample] = dfq[sample]
-        #erase all zero values (easy to plot)
-        df_check= df_check[df_check[sample] != 0]
-        df_check['retention time (min)'] = df_check['retention time (min)'].round(decimals=2)
-        df_check = df_check.sort_values(by='retention time (min)', ascending=True)
-        #df_check['retention time (min)'] = df_check['retention time (min)'].astype(str)
-        df_check['row m/z'] = df_check['row m/z'].round(decimals=4)
+    reduced_df_norm = reduced_df.copy()#.transpose()
+    reduced_df_norm = reduced_df_norm.div(reduced_df_norm.sum(axis=1), axis=0).fillna(0)
+    reduced_df_norm.reset_index(inplace=True)
+    reduced_df_norm.rename(columns={'index': row_ID_header}, inplace=True)
+
+    #change the area for the post filter-row wise normalized one
+    df_check = df.copy()
+    df_check[sample] = reduced_df_norm[sample]
+    df_check['status'] = np.where(
+    ((df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'specific non annotated', 
+    (np.where (((df_check[sample] > min_specificity) & (df_check['annotation'] != annotation_preference)),'specific annotated', 'not interesting'))
+    )
+    df_check.annotation = df_check.annotation.map({1: 'annotated', 0: 'non anotated'})
+    #change intensity for the intensity before filtering
+    df_check[sample] = dfq[sample]
+    #erase all zero values (easy to plot)
+    df_check= df_check[df_check[sample] != 0]
+    df_check['retention time (min)'] = df_check['retention time (min)'].round(decimals=2)
+    df_check = df_check.sort_values(by='retention time (min)', ascending=True)
+    #df_check['retention time (min)'] = df_check['retention time (min)'].astype(str)
+    df_check['row m/z'] = df_check['row m/z'].round(decimals=4)
 
 
-        if sirius_annotations == True and use_ion_dentity == False:
-                    
-            annot_sirius_df=pd.read_csv(sirius_annotations_filename,
-                                            sep='\t', 
-                                            usecols =['id','ConfidenceScore','ZodiacScore', 'molecularFormula', 'adduct', 'name'], 
-                                            low_memory=False)
-            annot_sirius_df['shared name'] = annot_sirius_df['id'].str.split('_').str[-1].astype(int)
-            annot_sirius_df.drop('id', axis=1, inplace=True)
-            annot_sirius_df.rename(columns={'shared name': 'row ID', 'adduct': 'adduct (sirius)', 'molecularFormula': 'MF (sirius)', 'name': 'Compound name (sirius)'}, inplace=True) 
-            annot_sirius_df.drop(annot_sirius_df[(annot_sirius_df.ConfidenceScore >= min_ConfidenceScore) & (annot_sirius_df.ZodiacScore >= min_ZodiacScore)].index, inplace=True) 
-            annot_sirius_df.drop('ConfidenceScore', axis=1, inplace=True)         
-            annot_sirius_df.drop('ZodiacScore', axis=1, inplace=True) 
-            annot_sirius_df['adduct (sirius)'] = annot_sirius_df['adduct (sirius)'].astype(str)
+    if sirius_annotations == True and use_ion_dentity == False:
+                
+        annot_sirius_df=pd.read_csv(sirius_annotations_filename,
+                                        sep='\t', 
+                                        usecols =['id','ConfidenceScore','ZodiacScore', 'molecularFormula', 'adduct', 'name'], 
+                                        low_memory=False)
+        annot_sirius_df['shared name'] = annot_sirius_df['id'].str.split('_').str[-1].astype(int)
+        annot_sirius_df.drop('id', axis=1, inplace=True)
+        annot_sirius_df.rename(columns={'shared name': 'row ID', 'adduct': 'adduct (sirius)', 'molecularFormula': 'MF (sirius)', 'name': 'Compound name (sirius)'}, inplace=True) 
+        annot_sirius_df.drop(annot_sirius_df[(annot_sirius_df.ConfidenceScore >= min_ConfidenceScore) & (annot_sirius_df.ZodiacScore >= min_ZodiacScore)].index, inplace=True) 
+        annot_sirius_df.drop('ConfidenceScore', axis=1, inplace=True)         
+        annot_sirius_df.drop('ZodiacScore', axis=1, inplace=True) 
+        annot_sirius_df['adduct (sirius)'] = annot_sirius_df['adduct (sirius)'].astype(str)
 
-            df_check = pd.merge(df_check, annot_sirius_df, how='left', on= 'row ID')
-            df_check.fillna({'MF (sirius)': 'not available', 'adduct (sirius)': 'not available', 'Compound name (sirius)': 'not available'}, inplace=True)
-            #df_check.drop('classProbability', axis=1, inplace=True)
+        df_check = pd.merge(df_check, annot_sirius_df, how='left', on= 'row ID')
+        df_check.fillna({'MF (sirius)': 'not available', 'adduct (sirius)': 'not available', 'Compound name (sirius)': 'not available'}, inplace=True)
+        #df_check.drop('classProbability', axis=1, inplace=True)
 
-        else:
-            df_check
+    else:
+        df_check
 
-        if CC_component == True and use_ion_dentity == False:
+    if CC_component == True and use_ion_dentity == False:
 
-            canopus_npc_df=pd.read_csv(canopus_npc_summary_filename, sep=',', usecols=['name', 'pathway', 'superclass', 'class', 'classProbability'])
-            canopus_npc_df.rename(columns={'name': 'row ID'}, inplace=True)
-            #filter by class probability
-            canopus_npc_df.drop(canopus_npc_df[canopus_npc_df.classProbability > min_class_confidence].index, inplace=True)
-            df_check = pd.merge(df_check, canopus_npc_df, how='left', on= 'row ID')
-            df_check.fillna({'pathway': 'not available', 'superclass': 'not available','class': 'not available' }, inplace=True)
-            df_check.drop('classProbability', axis=1, inplace=True)
-        else:
-            df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
-            df_check    
+        canopus_npc_df=pd.read_csv(canopus_npc_summary_filename, sep=',', usecols=['name', 'pathway', 'superclass', 'class', 'classProbability'])
+        canopus_npc_df.rename(columns={'name': 'row ID'}, inplace=True)
+        #filter by class probability
+        canopus_npc_df.drop(canopus_npc_df[canopus_npc_df.classProbability > min_class_confidence].index, inplace=True)
+        df_check = pd.merge(df_check, canopus_npc_df, how='left', on= 'row ID')
+        df_check.fillna({'pathway': 'not available', 'superclass': 'not available','class': 'not available' }, inplace=True)
+        df_check.drop('classProbability', axis=1, inplace=True)
+    else:
+        df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
+        df_check    
 
-        #recover species and organe for the particular sample 
-        species=metadata_df.loc[metadata_df[filename_header] == sample, species_column].item()
-        organism_part = metadata_df.loc[metadata_df[filename_header] == sample, organe_column].item()
+    #recover species and organe for the particular sample 
+    species=metadata_df.loc[metadata_df[filename_header] == sample, species_column].item()
+    organism_part = metadata_df.loc[metadata_df[filename_header] == sample, organe_column].item()
 
-        #plot 
-        fig = px.bar(df_check,
-                                x='retention time (min)', y=sample,
-                                #histnorm= 'probability density',
-                                #opacity=0.8, 
-                                #labels={'retention time (min)':'retention time range (min)'},
-                                title='Pseudo chromatogram for '+sample+'<br>species: <i>'+species+'<i><br>organism part: '+organism_part+'</sup>',
+    #plot 
+    fig = px.bar(df_check,
+                            x='retention time (min)', y=sample,
+                            #histnorm= 'probability density',
+                            #opacity=0.8, 
+                            #labels={'retention time (min)':'retention time range (min)'},
+                            title='Pseudo chromatogram for '+sample+'<br>species: <i>'+species+'<i><br>organism part: '+organism_part+'</sup>',
 
-                                template="simple_white",
-                                color ='status',
-                                color_discrete_map= {'specific non annotated': '#1E88E5', 'not interesting': '#FFC107', 'specific annotated':'#004D40'},
-                                hover_data=df_check.columns,
-                                facet_col_wrap=2
-                                )
+                            template="simple_white",
+                            color ='status',
+                            color_discrete_map= {'specific non annotated': '#1E88E5', 'not interesting': '#FFC107', 'specific annotated':'#004D40'},
+                            hover_data=df_check.columns,
+                            facet_col_wrap=2
+                            )
 
-        fig.update_layout( # customize font and legend orientation & position
-            font_family="Times New Roman",
-            legend=dict(
-                title=None, orientation="h", y=1, yanchor="bottom", x=0.5, xanchor="center"
-            ))
-        fig.update_layout(
-        autosize=True,
-        #width=1400,
-        #height=500
-        barmode ='group',
-        bargap=0.15, # gap between bars of adjacent location coordinates.
-        bargroupgap=0.1
-        )
-        fig.update_xaxes(title_text='retention time (min)',showgrid=False, ticks="outside", tickson="boundaries")
+    fig.update_layout( # customize font and legend orientation & position
+        font_family="Times New Roman",
+        legend=dict(
+            title=None, orientation="h", y=1, yanchor="bottom", x=0.5, xanchor="center"
+        ))
+    fig.update_layout(
+    autosize=True,
+    width=1400,
+    height=500,
+    barmode ='group',
+    bargap=0.15, # gap between bars of adjacent location coordinates.
+    bargroupgap=0.1
+    )
+    fig.update_xaxes(title_text='retention time (min)',showgrid=False, ticks="outside", tickson="boundaries")
 
-        fig.update_yaxes(title_text='relative intensity')
-        fig.show()
+    fig.update_yaxes(title_text='relative intensity')
+    fig.show()
+    
+def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_dentity, correlation_groups_df, data_process_origin, filename_header):
+
+    if use_ion_dentity == True: 
+        row_ID_header = 'annotation network number'
+    else: 
+        row_ID_header = 'row ID'
+        
+    #get a clean table with the original intensities normalized
+    dfq = pd.read_csv(quantitative_data_filename, sep=',')
+    dfq.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
+    dfq.drop(list(dfq.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+    dfq.rename(columns ={'row retention time':'retention time (min)'}, inplace=True)
+    dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample    
+
+    if data_process_origin == 'MZMine3':
+        
+            if use_ion_dentity == True:
+        
+                dfq = dfq[['row ID', 'annotation network number', sample]]
+                #complete correlation groups
+                dfq['annotation network number'] = dfq['annotation network number'].fillna(dfq['row ID'].apply(str) + 'x')
+                dfq.drop('row ID', axis =1, inplace=True)
+                dfq = dfq.groupby('annotation network number', dropna=False).max()
+
+                #recover information from the correlation groups:
+                agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion identity)': set, 'row ID': set, 'neutral mass (ion identity)': 'max'}
+                dfcg = correlation_groups_df.groupby('annotation network number', as_index=False).agg(agg_func)
+                dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)   
+                
+                #merge with the main data according to sample
+                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
+                
+                #add annotation status 
+                df = dfq#dfq[[row_ID_header, sample, 'row m/z', 'retention time (min)']]
+                df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
+                df.fillna({'adduct (ion identity)': 'not available', 'neutral mass (ion identity)': 'not available'}, inplace=True)
+            else:
+                dfq
+    else:
+        dfq = dfq[['row ID','row m/z', 'retention time (min)', sample]]
+        #dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample
+        df = dfq[['row m/z', 'retention time (min)']]
+        df.reset_index(inplace=True)
+        df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
+
+    #2) normalize the filtered table and combine information from specificity and annotation status for each feature
+                #normalize row-wise the area of features = relative % of each feature in each sample
+
+    reduced_df_norm = reduced_df.copy()#.transpose()
+    reduced_df_norm = reduced_df_norm.div(reduced_df_norm.sum(axis=1), axis=0).fillna(0)
+    reduced_df_norm.reset_index(inplace=True)
+    reduced_df_norm.rename(columns={'index': row_ID_header}, inplace=True)
+
+    #change the area for the post filter-row wise normalized one
+    df_check = df.copy()
+    df_check[sample] = reduced_df_norm[sample]
+    df_check['status'] = np.where(
+    ((df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'specific non annotated', 
+    (np.where (((df_check[sample] > min_specificity) & (df_check['annotation'] != annotation_preference)),'specific annotated', 'not interesting'))
+    )
+    df_check.annotation = df_check.annotation.map({1: 'annotated', 0: 'non anotated'})
+    #change intensity for the intensity before filtering
+    df_check[sample] = dfq[sample]
+    #erase all zero values (easy to plot)
+    df_check= df_check[df_check[sample] != 0]
+    df_check['retention time (min)'] = df_check['retention time (min)'].round(decimals=2)
+    df_check = df_check.sort_values(by='retention time (min)', ascending=True)
+    #df_check['retention time (min)'] = df_check['retention time (min)'].astype(str)
+    df_check['row m/z'] = df_check['row m/z'].round(decimals=4)
+
+
+    if sirius_annotations == True and use_ion_dentity == False:
+                
+        annot_sirius_df=pd.read_csv(sirius_annotations_filename,
+                                        sep='\t', 
+                                        usecols =['id','ConfidenceScore','ZodiacScore', 'molecularFormula', 'adduct', 'name'], 
+                                        low_memory=False)
+        annot_sirius_df['shared name'] = annot_sirius_df['id'].str.split('_').str[-1].astype(int)
+        annot_sirius_df.drop('id', axis=1, inplace=True)
+        annot_sirius_df.rename(columns={'shared name': 'row ID', 'adduct': 'adduct (sirius)', 'molecularFormula': 'MF (sirius)', 'name': 'Compound name (sirius)'}, inplace=True) 
+        annot_sirius_df.drop(annot_sirius_df[(annot_sirius_df.ConfidenceScore >= min_ConfidenceScore) & (annot_sirius_df.ZodiacScore >= min_ZodiacScore)].index, inplace=True) 
+        annot_sirius_df.drop('ConfidenceScore', axis=1, inplace=True)         
+        annot_sirius_df.drop('ZodiacScore', axis=1, inplace=True) 
+        annot_sirius_df['adduct (sirius)'] = annot_sirius_df['adduct (sirius)'].astype(str)
+
+        df_check = pd.merge(df_check, annot_sirius_df, how='left', on= 'row ID')
+        df_check.fillna({'MF (sirius)': 'not available', 'adduct (sirius)': 'not available', 'Compound name (sirius)': 'not available'}, inplace=True)
+        #df_check.drop('classProbability', axis=1, inplace=True)
+
+    else:
+        df_check
+
+    if CC_component == True and use_ion_dentity == False:
+
+        canopus_npc_df=pd.read_csv(canopus_npc_summary_filename, sep=',', usecols=['name', 'pathway', 'superclass', 'class', 'classProbability'])
+        canopus_npc_df.rename(columns={'name': 'row ID'}, inplace=True)
+        #filter by class probability
+        canopus_npc_df.drop(canopus_npc_df[canopus_npc_df.classProbability > min_class_confidence].index, inplace=True)
+        df_check = pd.merge(df_check, canopus_npc_df, how='left', on= 'row ID')
+        df_check.fillna({'pathway': 'not available', 'superclass': 'not available','class': 'not available' }, inplace=True)
+        df_check.drop('classProbability', axis=1, inplace=True)
+    else:
+        df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
+        df_check    
+
+    #recover species and organe for the particular sample 
+    species=metadata_df.loc[metadata_df[filename_header] == sample, species_column].item()
+    organism_part = metadata_df.loc[metadata_df[filename_header] == sample, organe_column].item()
+
+    #plot 
+    fig = make_subplots(rows=2, cols=1)
+    
+    fig = px.scatter(df_check,
+                            x='retention time (min)', y='row m/z',
+                            size= sample,
+                            title='2D chromatogram plot for '+sample+'<br>species: <i>'+species+'<i><br>organism part: '+organism_part+'</sup>',
+                            template="simple_white",
+                            color ='status',
+                            color_discrete_map= {'specific non annotated': '#1E88E5', 'not interesting': '#FFC107', 'specific annotated':'#004D40'},
+                            hover_data=df_check.columns
+                            )
+
+    fig.update_layout( # customize font and legend orientation & position
+        font_family="Times New Roman",
+        legend=dict(
+            title=None, orientation="h", y=1, yanchor="bottom", x=0.5, xanchor="center"
+        ))
+    fig.update_layout(
+    autosize=True,
+    width=1400,
+    height=500)
+    fig.update_xaxes(title_text='retention time (min)',showgrid=False, ticks="outside", tickson="boundaries")
+
+    fig.update_yaxes(title_text='relative intensity')
+    fig.show()
