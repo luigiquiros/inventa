@@ -956,5 +956,5 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
     height=500)
     fig.update_xaxes(title_text='retention time (min)',showgrid=False, ticks="outside", tickson="boundaries")
 
-    fig.update_yaxes(title_text='relative intensity')
+    fig.update_yaxes(title_text='m/z ratio')
     fig.show()
