@@ -13,10 +13,10 @@ This images and interactive plots are presented in the publication of Iventa.
 ### Fig 3.[**PCoA & UMAP projections for the Celastraceae library**](/assets/img/PCoA_UMAP_2D.html)
 
 
-### Sup. Fig 78.A[**Visualization of the effects of filtering steps in a particular sample. A) intensity-based filtering **](/assets/img/filtering_plot_perc.html)
+### Sup. Fig 78.A[**Visualization of the effects of filtering steps in a particular sample. A) intensity-based filtering**](/assets/img/filtering_plot_perc.html)
 
-### Sup. Fig 78.B[**Visualization of the effects of filtering steps in a particular sample. B) quantile-based filtering **](/assets/img/filtering_plot_quant.html)
-### Sup. Fig 78.C[**Visualization of the effects of filtering steps in a particular sample. A) sequential filtering **](/assets/img/filtering_plot_perquant.html)
+### Sup. Fig 78.B[**Visualization of the effects of filtering steps in a particular sample. B) quantile-based filtering**](/assets/img/filtering_plot_quant.html)
+### Sup. Fig 78.C[**Visualization of the effects of filtering steps in a particular sample. A) sequential filtering**](/assets/img/filtering_plot_perquant.html)
 
 
 ### [Back to home page](index.md)
