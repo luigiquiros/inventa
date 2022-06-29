@@ -10,7 +10,7 @@ import pathlib
 
 def annotations(df2, df3,
                 sirius_annotations, isbd_annotations,
-                min_score_final, min_ConfidenceScore, min_ZodiacScore,  correlation_groups_df, use_ion_dentity):
+                min_score_final, min_ConfidenceScore, min_ZodiacScore,  correlation_groups_df, use_ion_identity):
 
     """ 
         function to check the presence of annotations by feature in the combined information form gnps &/ in silico 
@@ -135,7 +135,7 @@ def annotations(df2, df3,
     df['annotation'] = df.apply(annotations_gnps, axis=1)  
     df.rename(columns={'cluster index': 'row ID'}, inplace=True)
     
-    if use_ion_dentity == True: 
+    if use_ion_identity == True: 
         df = pd.merge(correlation_groups_df[['row ID', 'annotation network number']], df[['row ID', 'annotation']], how ='left', on='row ID')
         df.drop('row ID', axis = 1, inplace=True)
         df = df.groupby('annotation network number', as_index=False).agg(max)
@@ -147,7 +147,7 @@ def annotations(df2, df3,
     return df 
 
 
-def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_column, genus_column, species_column, col_id_unique, min_specificity, annotation_preference, filename_header, annot_sirius_df, sirius_annotations, annot_gnps_df, min_ZodiacScore, multiple_organism_parts, max_parts_per_organism, use_ion_dentity):
+def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_column, genus_column, species_column, col_id_unique, min_specificity, annotation_preference, filename_header, annot_sirius_df, sirius_annotations, annot_gnps_df, min_ZodiacScore, multiple_organism_parts, max_parts_per_organism, use_ion_identity):
       
     #1) Feature count by sample before and after filtering
     
@@ -163,7 +163,7 @@ def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_c
     #get the number of features > min_specificity for each sample
     filtered_features_count = feature_count(reduced_df,  header ='filtered_F', filename_header = filename_header)
 
-    if use_ion_dentity == True: 
+    if use_ion_identity == True: 
         row_ID_header = 'annotation network number'
     else: 
         row_ID_header = 'row ID'
@@ -240,7 +240,7 @@ def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_c
     df['FC'] = df['FC'].round(decimals = 2)
     df = df.sort_values(by=['FC'], ascending=False)
 
-    if sirius_annotations == True and use_ion_dentity == False: 
+    if sirius_annotations == True and use_ion_identity == False: 
         df1 = annotation_df.copy() #pd.read_csv('../data_out/annot_gnps_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df2 = annot_sirius_df.copy()
         df2['shared name'] = df2['id'].str.split('_').str[-1].astype(int)

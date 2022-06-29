@@ -682,9 +682,9 @@ def distribution_to_plot(sample, quant_df, reduced_df):
     fig.write_html("../data_out/filtering_plot.html") 
     fig.show()
     
-def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename,  min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_dentity, correlation_groups_df, data_process_origin, filename_header):
+def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename,  min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_identity, correlation_groups_df, data_process_origin, filename_header):
     
-    if use_ion_dentity == True: 
+    if use_ion_identity == True: 
         row_ID_header = 'annotation network number'
     else: 
         row_ID_header = 'row ID'
@@ -698,7 +698,7 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
 
     if data_process_origin == 'MZMine3':
         
-            if use_ion_dentity == True:
+            if use_ion_identity == True:
         
                 dfq = dfq[['row ID', 'annotation network number', sample]]
                 #complete correlation groups
@@ -707,17 +707,17 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
                 dfq = dfq.groupby('annotation network number', dropna=False).max()
 
                 #recover information from the correlation groups:
-                agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion identity)': set, 'row ID': set, 'neutral mass (ion identity)': 'max'}
+                agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion iidentity)': set, 'row ID': set, 'neutral mass (ion iidentity)': 'max'}
                 dfcg = correlation_groups_df.groupby('annotation network number', as_index=False).agg(agg_func)
-                dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)   
+                dfcg[['adduct (ion iidentity)', 'row ID']] = dfcg[['adduct (ion iidentity)', 'row ID']].astype(str)   
                 
                 #merge with the main data according to sample
-                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
+                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion iidentity)','neutral mass (ion iidentity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
                 
                 #add annotation status 
                 df = dfq#dfq[[row_ID_header, sample, 'row m/z', 'retention time (min)']]
                 df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
-                df.fillna({'adduct (ion identity)': 'not available', 'neutral mass (ion identity)': 'not available'}, inplace=True)
+                df.fillna({'adduct (ion iidentity)': 'not available', 'neutral mass (ion iidentity)': 'not available'}, inplace=True)
             else:
                 dfq
     else:
@@ -752,7 +752,7 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
     df_check['row m/z'] = df_check['row m/z'].round(decimals=4)
 
 
-    if sirius_annotations == True and use_ion_dentity == False:
+    if sirius_annotations == True and use_ion_identity == False:
                 
         annot_sirius_df=pd.read_csv(sirius_annotations_filename,
                                         sep='\t', 
@@ -773,7 +773,7 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
     else:
         df_check
 
-    if CC_component == True and use_ion_dentity == False:
+    if CC_component == True and use_ion_identity == False:
 
         canopus_npc_df=pd.read_csv(canopus_npc_summary_filename, sep=',', usecols=['name', 'pathway', 'superclass', 'class', 'classProbability'])
         canopus_npc_df.rename(columns={'name': 'row ID'}, inplace=True)
@@ -823,9 +823,9 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
     fig.write_html("../data_out/pseudochromato.html")  
     fig.show()
     
-def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_dentity, correlation_groups_df, data_process_origin, filename_header):
+def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_identity, correlation_groups_df, data_process_origin, filename_header):
 
-    if use_ion_dentity == True: 
+    if use_ion_identity == True: 
         row_ID_header = 'annotation network number'
     else: 
         row_ID_header = 'row ID'
@@ -839,7 +839,7 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
 
     if data_process_origin == 'MZMine3':
         
-            if use_ion_dentity == True:
+            if use_ion_identity == True:
         
                 dfq = dfq[['row ID', 'annotation network number', sample]]
                 #complete correlation groups
@@ -848,17 +848,17 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
                 dfq = dfq.groupby('annotation network number', dropna=False).max()
 
                 #recover information from the correlation groups:
-                agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion identity)': set, 'row ID': set, 'neutral mass (ion identity)': 'max'}
+                agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion iidentity)': set, 'row ID': set, 'neutral mass (ion iidentity)': 'max'}
                 dfcg = correlation_groups_df.groupby('annotation network number', as_index=False).agg(agg_func)
-                dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)   
+                dfcg[['adduct (ion iidentity)', 'row ID']] = dfcg[['adduct (ion iidentity)', 'row ID']].astype(str)   
                 
                 #merge with the main data according to sample
-                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
+                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion iidentity)','neutral mass (ion iidentity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
                 
                 #add annotation status 
                 df = dfq#dfq[[row_ID_header, sample, 'row m/z', 'retention time (min)']]
                 df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
-                df.fillna({'adduct (ion identity)': 'not available', 'neutral mass (ion identity)': 'not available'}, inplace=True)
+                df.fillna({'adduct (ion iidentity)': 'not available', 'neutral mass (ion iidentity)': 'not available'}, inplace=True)
             else:
                 dfq
     else:
@@ -893,7 +893,7 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
     df_check['row m/z'] = df_check['row m/z'].round(decimals=4)
 
 
-    if sirius_annotations == True and use_ion_dentity == False:
+    if sirius_annotations == True and use_ion_identity == False:
                 
         annot_sirius_df=pd.read_csv(sirius_annotations_filename,
                                         sep='\t', 
@@ -914,7 +914,7 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
     else:
         df_check
 
-    if CC_component == True and use_ion_dentity == False:
+    if CC_component == True and use_ion_identity == False:
 
         canopus_npc_df=pd.read_csv(canopus_npc_summary_filename, sep=',', usecols=['name', 'pathway', 'superclass', 'class', 'classProbability'])
         canopus_npc_df.rename(columns={'name': 'row ID'}, inplace=True)
