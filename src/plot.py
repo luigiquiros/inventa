@@ -679,6 +679,7 @@ def distribution_to_plot(sample, quant_df, reduced_df):
         autosize=True,
         width=700,
         height=700)
+    fig.write_html("../data_out/filtering_plot.html") 
     fig.show()
     
 def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename,  min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_dentity, correlation_groups_df, data_process_origin, filename_header):
@@ -818,8 +819,8 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
     bargroupgap=0.1
     )
     fig.update_xaxes(title_text='retention time (min)',showgrid=False, ticks="outside", tickson="boundaries")
-
     fig.update_yaxes(title_text='relative intensity')
+    fig.write_html("../data_out/pseudochromato.html")  
     fig.show()
     
 def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_dentity, correlation_groups_df, data_process_origin, filename_header):
@@ -953,6 +954,6 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
     width=1400,
     height=500)
     fig.update_xaxes(title_text='retention time (min)',showgrid=False, ticks="outside", tickson="boundaries")
-
     fig.update_yaxes(title_text='m/z ratio')
+    fig.write_html("../data_out/chromato2D.html") 
     fig.show()
