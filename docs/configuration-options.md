@@ -43,6 +43,12 @@ Each path corresponds to the files mentiones above. Just drop your files in the 
     cosine = 0.7                      # min cosine score to consider an annotation valable
     ionisation_mode = 'pos'           # ionisation mode according to experimental conditions
 ```
+#### quantitative table
+
+```
+data_process_origin = 'MZMine3'   #'MZMine2' or 'MZmine3' #specify the sofware use to process the data
+use_ion_dentity= True             # specify if the ions identity groups should be considered or not. Default True, else False
+```
 
 ##### Feature_component
 
@@ -62,7 +68,7 @@ Each path corresponds to the files mentiones above. Just drop your files in the 
     min_ConfidenceScore = 0.0           #cut-off filter for considering a sirius annotation valable. '0.0' as default.
 
     annotation_preference = 0          # Only Annotated nodes: '1' 
-                                    # Only Not annotated: '0'
+                                       # Only Not annotated: '0'
 ```
 
 ##### Literature_component
@@ -70,10 +76,17 @@ Each path corresponds to the files mentiones above. Just drop your files in the 
 ```
     LC_component = True                # LC will be calculated
     
-    max_comp_reported = 40             # more than this value, the plant is considered no interesting LC =0
-    min_comp_reported = 10             # less than this value, the plant is consireded very interesintg LC =1
-                                    # a sample with x between both values gets a LC=0.5
+    max_comp_reported_sp = 20          # max number of compounds reported at species level, more than this value, the plant is considered less interesting
+    max_comp_reported_g = 50           # max number of compounds reported at genus level,more than this value, the plant is considered less interesting
+    max_comp_reported_f = 500          # max number of compounds reported at genus level,more than this value, the plant is considered less interesting
 ```
+###### weight for each taxonomic level 
+```
+    ws = 1                            #weight for the species level
+    wg = 1                            #weight for the genus level
+    wf = 1                            #weight for the family level 
+```
+
 ##### Similarity_component
 
 ```

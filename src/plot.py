@@ -722,8 +722,7 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
     else:
         dfq = dfq[['row ID','row m/z', 'retention time (min)', sample]]
         #dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample
-        df = dfq[['row m/z', 'retention time (min)']]
-        df.reset_index(inplace=True)
+        df = dfq[['row ID','row m/z', 'retention time (min)']]
         df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
 
     #2) normalize the filtered table and combine information from specificity and annotation status for each feature
@@ -783,9 +782,9 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
         df_check.fillna({'pathway': 'not available', 'superclass': 'not available','class': 'not available' }, inplace=True)
         df_check.drop('classProbability', axis=1, inplace=True)
     else:
-        df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
         df_check    
-
+        df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
+        
     #recover species and organe for the particular sample 
     species=metadata_df.loc[metadata_df[filename_header] == sample, species_column].item()
     organism_part = metadata_df.loc[metadata_df[filename_header] == sample, organe_column].item()
@@ -864,8 +863,7 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
     else:
         dfq = dfq[['row ID','row m/z', 'retention time (min)', sample]]
         #dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample
-        df = dfq[['row m/z', 'retention time (min)']]
-        df.reset_index(inplace=True)
+        df = dfq[['row ID','row m/z', 'retention time (min)']]
         df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
 
     #2) normalize the filtered table and combine information from specificity and annotation status for each feature
@@ -925,7 +923,7 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
         df_check.fillna({'pathway': 'not available', 'superclass': 'not available','class': 'not available' }, inplace=True)
         df_check.drop('classProbability', axis=1, inplace=True)
     else:
-        df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
+        #df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
         df_check    
 
     #recover species and organe for the particular sample 

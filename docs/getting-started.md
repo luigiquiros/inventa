@@ -5,7 +5,7 @@ To run the repository the minimun inputs needed are:
 
 - GNPS job
 - Metadata table (the same used for the GNPS job)
-- Quantification table from MZmine or another similar software
+- Quantification table from MZmine2 (MZmine3) or another similar software
 
 This will run at least the Feature component (FC).
 
@@ -23,6 +23,7 @@ Optionally, the following inputs can be added:
 
 
 #### 1.1 Metadata table:
+
 The standard format from GNPS is prefered:
 
 `metadata_filename`: it uses the [GNPS format](https://docs.google.com/spreadsheets/d/1pSrqOdmMVBhVGpxIZeglToxihymTuaR4_sqTbLBlgOA/edit#gid=0).
@@ -46,6 +47,10 @@ The `organe _colum` should be specified if you have diferent parts (or solvents)
 #### 1.2 Feature quantitative table:
 
 `quantitative_data_filename`: MZmine output format using only the 'Peak area', 'row m/z' and 'row retention time' columns.  
+
+-Inventa takes input directly from MZmine2 or [MZmine 3](http://mzmine.github.io/), is possible to use other processing sofwares , however the input should be manually formated to a MZmine 2 format.
+
+-Inventa is capable to performe the calcultions based on the results from [Ion Identity](https://doi.org/10.1038/s41467-021-23953-9), reducing the total number of features.
 
 - if you prefer 'Peak Height', go to `src/process_data.py` and change it inside the function quant_table(). ONLY ONE of the columns is considered at the time, 'Peak height' or 'Peak area', if you want to consider both they must be done one at a time.  
 

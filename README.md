@@ -86,7 +86,7 @@ To run the repository the minimum inputs needed are:
 
 - GNPS job
 - Metadata table (the same used for the FBMN)
-- Quantification table
+- Quantification table (out of MZmine 2 or MZmine 3, remember to specify if Ion Identity is used)
 
 This will run at least the Feature component (FC).
 

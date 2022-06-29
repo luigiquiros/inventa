@@ -7,13 +7,13 @@ layout: default
 
 ## Description 
 
-Here, we introduce Inventa, an untargeted mass spectrometry-based prioritization workflow for natural products extract libraries. The bioinformatic workflow is composed of four components that aim at estimating the potential of natural extracts for chemical novelty: 
+Here, we introduce Inventa, an untargeted mass spectrometry-based prioritization workflow for natural products extract libraries. The bioinformatic workflow is composed of four components that aim at estimating the potential of natural extracts for chemical novelty:
 
 "The feature component" considers the presence (intensity/area) and specificity of the mass spectrometric features along with their annotation status (annotated/ unannotated) with experimental and/or in silico databases. The postulate of this score is that the presence of a highly specific and non annotated metabolome is an indication of a particular chemistry. 
 
 "The literature component" gives a score based on the number of compounds reported in the literature at the species, genus and family level. The more a plant is studied  (species, genus, family), the less likely it is to find structurally new compounds. 
 
-"The class component" takes advantage of the prediction capacity of chemical classes based only on the fragmentation pattern without a formal putative structure annotation through [**CANOPUS**](). The predicted chemical classes in each sample are compared against those reported in the literature. The proposition of new chemical classes in particular samples being a potential indication  of new compounds. 
+"The class component" takes advantage of the prediction capacity of chemical classes based only on the fragmentation pattern without a formal putative structure annotation through [**CANOPUS**](). The proposed chemical classes in each sample are compared against those reported in the literature. The proposition of new chemical classes in particular samples being a potential indication  of new compounds. 
 
 "The similarity component" harnesses the spectral diversity of the samples through vectorization of the fragmentation spectra data with [**MEMO**](https://doi.org/10.3389/fbinf.2022.842964) and application of machine learning outliers detectors. This component assumes that samples classified as ‘outlier’ hold a particular pool of metabolites  with a specific particular chemistry.
 

@@ -1,78 +1,78 @@
-	filename	ATTRIBUTE_Family	ATTRIBUTE_Genus	ATTRIBUTE_Species	initial_F	filtered_F	Total_SF	Total_SNAF	FS	FC
-13	LQ-01-61-14_pos.mzXML	Celastraceae	Evonymopsis	Evonymopsis sp	1312	3.0	2.0	2.0	0.67	0.67
-22	LQ-01-61-23_pos.mzXML	Celastraceae	Euonymus	Euonymus cochinchinensis	598	14.0	11.0	9.0	0.79	0.64
-6	LQ-01-61-07_pos.mzXML	Celastraceae	Celastrus	Celastrus paniculatus	1389	67.0	48.0	42.0	0.72	0.63
-2	LQ-01-61-03_pos.mzXML	Celastraceae	Catha	Catha edulis	1321	16.0	12.0	10.0	0.75	0.62
-30	LQ-01-61-31_pos.mzXML	Celastraceae	Euonymus	Euonymus frigidus	1425	39.0	27.0	23.0	0.69	0.59
-71	LQ-01-61-72_pos.mzXML	Celastraceae	Salacia	Salacia letestuana	902	110.0	88.0	64.0	0.8	0.58
-55	LQ-01-61-56_pos.mzXML	Celastraceae	Maytenus	Maytenus undata	1506	39.0	29.0	22.0	0.74	0.56
-36	LQ-01-61-37_pos.mzXML	Celastraceae	Euonymus	Euonymus sanguineus	1655	12.0	11.0	6.0	0.92	0.5
-72	LQ-01-61-73_pos.mzXML	Celastraceae	Tripterygium	Tripterygium hypoglaucum	1192	46.0	27.0	23.0	0.59	0.5
-41	LQ-01-61-42_pos.mzXML	Celastraceae	Loeseneriella	Loeseneriella concinna	716	19.0	9.0	9.0	0.47	0.47
-21	LQ-01-61-22_pos.mzXML	Celastraceae	Euonymus	Euonymus cochinchinensis	674	13.0	11.0	6.0	0.85	0.46
-3	LQ-01-61-04_pos.mzXML	Celastraceae	Catha	Catha edulis	1432	38.0	19.0	17.0	0.5	0.45
-18	LQ-01-61-19_pos.mzXML	Celastraceae	Euonymus	Euonymus bockii	1331	19.0	8.0	8.0	0.42	0.42
-0	LQ-01-61-01_pos.mzXML	Celastraceae	Catha	Catha edulis	1138	26.0	10.0	10.0	0.38	0.38
-73	LQ-01-61-74_pos.mzXML	Celastraceae	Tripterygium	Tripterygium wilfordii	1388	53.0	32.0	20.0	0.6	0.38
-54	LQ-01-61-55_pos.mzXML	Celastraceae	Maytenus	Maytenus undata	1430	19.0	12.0	7.0	0.63	0.37
-23	LQ-01-61-24_pos.mzXML	Celastraceae	Euonymus	Euonymus dielsianus	1460	38.0	19.0	14.0	0.5	0.37
-63	LQ-01-61-64_pos.mzXML	Celastraceae	Pleurostylia	Pleurostylia pachyphloea	929	73.0	27.0	26.0	0.37	0.36
-7	LQ-01-61-08_pos.mzXML	Celastraceae	Celastrus	Celastrus paniculatus	530	78.0	34.0	28.0	0.44	0.36
-27	LQ-01-61-28_pos.mzXML	Celastraceae	Euonymus	Euonymus grandiflorus	641	65.0	29.0	23.0	0.45	0.35
-69	LQ-01-61-70_pos.mzXML	Celastraceae	Salacia	Salacia cochinchinensis	921	3.0	1.0	1.0	0.33	0.33
-5	LQ-01-61-06_pos.mzXML	Celastraceae	Celastrus	Celastrus orbiculatus	1017	30.0	16.0	10.0	0.53	0.33
-59	LQ-01-61-60_pos.mzXML	Celastraceae	Mystroxylon	Mystroxylon aethiopicum	376	25.0	14.0	8.0	0.56	0.32
-62	LQ-01-61-63_pos.mzXML	Celastraceae	Pleurostylia	Pleurostylia pachyphloea	995	57.0	24.0	18.0	0.42	0.32
-44	LQ-01-61-45_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buxifolia	1320	52.0	23.0	16.0	0.44	0.31
-76	LQ-01-61-78_pos.mzXML	Celastraceae	Pristimera	Pristimera indica	727	26.0	15.0	8.0	0.58	0.31
-46	LQ-01-61-47_pos.mzXML	Celastraceae	Maytenus	Maytenus inermis	700	64.0	24.0	18.0	0.38	0.28
-8	LQ-01-61-09_pos.mzXML	Celastraceae	Celastrus	Celastrus paniculatus	370	40.0	11.0	11.0	0.28	0.28
-31	LQ-01-61-32_pos.mzXML	Celastraceae	Euonymus	Euonymus frigidus	1261	53.0	23.0	15.0	0.43	0.28
-50	LQ-01-61-51_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia graciliramula	1126	98.0	46.0	27.0	0.47	0.28
-43	LQ-01-61-44_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buchananii	1013	15.0	6.0	4.0	0.4	0.27
-29	LQ-01-61-30_pos.mzXML	Celastraceae	Euonymus	Euonymus alatus	1198	52.0	17.0	14.0	0.33	0.27
-16	LQ-01-61-17_pos.mzXML	Celastraceae	Euonymus	Euonymus bockii	1393	37.0	9.0	9.0	0.24	0.24
-66	LQ-01-61-67_pos.mzXML	Celastraceae	Salacia	Salacia chinensis	1038	33.0	8.0	8.0	0.24	0.24
-67	LQ-01-61-68_pos.mzXML	Celastraceae	Salacia	Salacia cochinchinensis	624	53.0	13.0	12.0	0.25	0.23
-53	LQ-01-61-54_pos.mzXML	Celastraceae	Maytenus	Maytenus undata	1184	14.0	5.0	3.0	0.36	0.21
-48	LQ-01-61-49_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buxifolia	942	41.0	18.0	8.0	0.44	0.2
-47	LQ-01-61-48_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buxifolia	1068	56.0	23.0	11.0	0.41	0.2
-49	LQ-01-61-50_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buxifolia	902	32.0	14.0	6.0	0.44	0.19
-65	LQ-01-61-66_pos.mzXML	Celastraceae	Salacia	Salacia chinensis	1200	72.0	22.0	14.0	0.31	0.19
-20	LQ-01-61-21_pos.mzXML	Celastraceae	Euonymus	Euonymus cochinchinensis	728	31.0	11.0	6.0	0.35	0.19
-40	LQ-01-61-41_pos.mzXML	Celastraceae	Loeseneriella	Loeseneriella concinna	1223	44.0	18.0	8.0	0.41	0.18
-32	LQ-01-61-33_pos.mzXML	Celastraceae	Euonymus	Euonymus frigidus	1349	63.0	22.0	11.0	0.35	0.17
-61	LQ-01-61-62_pos.mzXML	Celastraceae	Pleurostylia	Pleurostylia africana	682	29.0	7.0	5.0	0.24	0.17
-28	LQ-01-61-29_pos.mzXML	Celastraceae	Euonymus	Euonymus alatus	1019	19.0	5.0	3.0	0.26	0.16
-45	LQ-01-61-46_pos.mzXML	Celastraceae	Maytenus	Maytenus inermis	886	58.0	9.0	9.0	0.16	0.16
-1	LQ-01-61-02_pos.mzXML	Celastraceae	Catha	Catha edulis	1213	80.0	27.0	13.0	0.34	0.16
-11	LQ-01-61-12_pos.mzXML	Celastraceae	Evonymopsis	Evonymopsis sp	1013	13.0	2.0	2.0	0.15	0.15
-56	LQ-01-61-57_pos.mzXML	Celastraceae	Microtropis	Microtropis triflora	517	33.0	13.0	5.0	0.39	0.15
-33	LQ-01-61-34_pos.mzXML	Celastraceae	Euonymus	Euonymus myrianthus	1419	33.0	11.0	5.0	0.33	0.15
-4	LQ-01-61-05_pos.mzXML	Celastraceae	Celastrus	Celastrus orbiculatus	837	20.0	4.0	3.0	0.2	0.15
-60	LQ-01-61-61_pos.mzXML	Celastraceae	Mystroxylon	Mystroxylon aethiopicum	794	43.0	12.0	6.0	0.28	0.14
-74	LQ-01-61-75_pos.mzXML	Celastraceae	Tripterygium	Tripterygium wilfordii	1435	61.0	26.0	8.0	0.43	0.13
-12	LQ-01-61-13_pos.mzXML	Celastraceae	Evonymopsis	Evonymopsis sp	1418	76.0	30.0	10.0	0.39	0.13
-52	LQ-01-61-53_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia senegalensis	1200	59.0	11.0	7.0	0.19	0.12
-17	LQ-01-61-18_pos.mzXML	Celastraceae	Euonymus	Euonymus bockii	960	48.0	6.0	6.0	0.12	0.12
-19	LQ-01-61-20_pos.mzXML	Celastraceae	Euonymus	Euonymus maackii	1666	63.0	16.0	7.0	0.25	0.11
-10	LQ-01-61-11_pos.mzXML	Celastraceae	Elaeodendron	Elaeodendron schweinfurthianum	1467	37.0	17.0	4.0	0.46	0.11
-39	LQ-01-61-40_pos.mzXML	Celastraceae	Loeseneriella	Loeseneriella urceolus	1237	22.0	2.0	2.0	0.09	0.09
-26	LQ-01-61-27_pos.mzXML	Celastraceae	Euonymus	Euonymus fortunei	658	22.0	4.0	2.0	0.18	0.09
-42	LQ-01-61-43_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buchananii	1019	51.0	12.0	4.0	0.24	0.08
-57	LQ-01-61-58_pos.mzXML	Celastraceae	Microtropis	Microtropis triflora	1560	28.0	7.0	2.0	0.25	0.07
-25	LQ-01-61-26_pos.mzXML	Celastraceae	Euonymus	Euonymus dielsianus	1148	31.0	3.0	2.0	0.1	0.06
-35	LQ-01-61-36_pos.mzXML	Celastraceae	Euonymus	Euonymus myrianthus	1142	16.0	1.0	1.0	0.06	0.06
-24	LQ-01-61-25_pos.mzXML	Celastraceae	Euonymus	Euonymus dielsianus	1304	17.0	2.0	1.0	0.12	0.06
-70	LQ-01-61-71_pos.mzXML	Celastraceae	Salacia	Salacia chinensis	1106	33.0	8.0	2.0	0.24	0.06
-51	LQ-01-61-52_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia senegalensis	1082	19.0	3.0	1.0	0.16	0.05
-68	LQ-01-61-69_pos.mzXML	Celastraceae	Salacia	Salacia cochinchinensis	1061	27.0	3.0	1.0	0.11	0.04
-9	LQ-01-61-10_pos.mzXML	Celastraceae	Elaeodendron	Elaeodendron schweinfurthianum	1170	51.0	7.0	2.0	0.14	0.04
-64	LQ-01-61-65_pos.mzXML	Celastraceae	Salacia	Salacia chinensis	1182	37.0	1.0	1.0	0.03	0.03
-34	LQ-01-61-35_pos.mzXML	Celastraceae	Euonymus	Euonymus myrianthus	1535	30.0	6.0	1.0	0.2	0.03
-14	LQ-01-61-15_pos.mzXML	Celastraceae	Euonymus	Euonymus alatus	759	31.0	0.0	0.0	0.0	0.0
-58	LQ-01-61-59_pos.mzXML	Celastraceae	Microtropis	Microtropis triflora	1297	20.0	3.0	0.0	0.15	0.0
-15	LQ-01-61-16_pos.mzXML	Celastraceae	Euonymus	Euonymus alatus	1077	15.0	0.0	0.0	0.0	0.0
-37	LQ-01-61-38_pos.mzXML	Celastraceae	Euonymus	Euonymus sanguineus	1123	25.0	1.0	0.0	0.04	0.0
-38	LQ-01-61-39_pos.mzXML	Celastraceae	Euonymus	Euonymus sanguineus	1009	10.0	0.0	0.0	0.0	0.0
-75	LQ-01-61-76_pos.mzXML				63					
+	filename	ATTRIBUTE_Family	ATTRIBUTE_Genus	ATTRIBUTE_Species	initial_F	filtered_F	Total_SF	Total_SNAF	Total_SNA_GQMFF	MF_prediction_ratio	FS	FC
+13	LQ-01-61-14_pos.mzXML	Celastraceae	Evonymopsis	Evonymopsis sp	610	2.0	2.0	2.0	2.0	1.0	1.0	1.0
+71	LQ-01-61-72_pos.mzXML	Celastraceae	Salacia	Salacia letestuana	478	64.0	58.0	53.0	48.0	0.75	0.91	0.83
+22	LQ-01-61-23_pos.mzXML	Celastraceae	Euonymus	Euonymus cochinchinensis	712	11.0	9.0	9.0	9.0	0.82	0.82	0.82
+36	LQ-01-61-37_pos.mzXML	Celastraceae	Euonymus	Euonymus sanguineus	876	11.0	9.0	9.0	9.0	0.82	0.82	0.82
+6	LQ-01-61-07_pos.mzXML	Celastraceae	Celastrus	Celastrus paniculatus	827	61.0	47.0	46.0	42.0	0.69	0.77	0.75
+76	LQ-01-61-78_pos.mzXML	Celastraceae	Pristimera	Pristimera indica	680	22.0	15.0	15.0	7.0	0.32	0.68	0.68
+30	LQ-01-61-31_pos.mzXML	Celastraceae	Euonymus	Euonymus frigidus	775	36.0	27.0	24.0	23.0	0.64	0.75	0.67
+40	LQ-01-61-41_pos.mzXML	Celastraceae	Loeseneriella	Loeseneriella concinna	492	23.0	18.0	15.0	14.0	0.61	0.78	0.65
+10	LQ-01-61-11_pos.mzXML	Celastraceae	Elaeodendron	Elaeodendron schweinfurthianum	700	22.0	14.0	14.0	14.0	0.64	0.64	0.64
+2	LQ-01-61-03_pos.mzXML	Celastraceae	Catha	Catha edulis	739	14.0	9.0	9.0	8.0	0.57	0.64	0.64
+21	LQ-01-61-22_pos.mzXML	Celastraceae	Euonymus	Euonymus cochinchinensis	815	13.0	8.0	8.0	8.0	0.62	0.62	0.62
+55	LQ-01-61-56_pos.mzXML	Celastraceae	Maytenus	Maytenus undata	709	33.0	27.0	20.0	18.0	0.55	0.82	0.61
+5	LQ-01-61-06_pos.mzXML	Celastraceae	Celastrus	Celastrus orbiculatus	640	50.0	31.0	30.0	24.0	0.48	0.62	0.6
+41	LQ-01-61-42_pos.mzXML	Celastraceae	Loeseneriella	Loeseneriella concinna	590	15.0	9.0	9.0	3.0	0.2	0.6	0.6
+18	LQ-01-61-19_pos.mzXML	Celastraceae	Euonymus	Euonymus bockii	768	27.0	17.0	16.0	16.0	0.59	0.63	0.59
+72	LQ-01-61-73_pos.mzXML	Celastraceae	Tripterygium	Tripterygium hypoglaucum	791	37.0	24.0	21.0	13.0	0.35	0.65	0.57
+73	LQ-01-61-74_pos.mzXML	Celastraceae	Tripterygium	Tripterygium wilfordii	778	65.0	42.0	37.0	33.0	0.51	0.65	0.57
+32	LQ-01-61-33_pos.mzXML	Celastraceae	Euonymus	Euonymus frigidus	648	51.0	30.0	28.0	22.0	0.43	0.59	0.55
+65	LQ-01-61-66_pos.mzXML	Celastraceae	Salacia	Salacia chinensis	487	24.0	15.0	13.0	12.0	0.5	0.62	0.54
+31	LQ-01-61-32_pos.mzXML	Celastraceae	Euonymus	Euonymus frigidus	828	45.0	26.0	24.0	20.0	0.44	0.58	0.53
+59	LQ-01-61-60_pos.mzXML	Celastraceae	Mystroxylon	Mystroxylon aethiopicum	476	19.0	11.0	10.0	8.0	0.42	0.58	0.53
+69	LQ-01-61-70_pos.mzXML	Celastraceae	Salacia	Salacia cochinchinensis	530	2.0	1.0	1.0	1.0	0.5	0.5	0.5
+62	LQ-01-61-63_pos.mzXML	Celastraceae	Pleurostylia	Pleurostylia pachyphloea	774	50.0	27.0	25.0	23.0	0.46	0.54	0.5
+50	LQ-01-61-51_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia graciliramula	627	56.0	30.0	28.0	25.0	0.45	0.54	0.5
+28	LQ-01-61-29_pos.mzXML	Celastraceae	Euonymus	Euonymus alatus	412	8.0	4.0	4.0	4.0	0.5	0.5	0.5
+66	LQ-01-61-67_pos.mzXML	Celastraceae	Salacia	Salacia chinensis	453	15.0	11.0	7.0	7.0	0.47	0.73	0.47
+54	LQ-01-61-55_pos.mzXML	Celastraceae	Maytenus	Maytenus undata	690	15.0	10.0	7.0	6.0	0.4	0.67	0.47
+1	LQ-01-61-02_pos.mzXML	Celastraceae	Catha	Catha edulis	643	54.0	26.0	25.0	24.0	0.44	0.48	0.46
+23	LQ-01-61-24_pos.mzXML	Celastraceae	Euonymus	Euonymus dielsianus	566	16.0	8.0	7.0	6.0	0.38	0.5	0.44
+3	LQ-01-61-04_pos.mzXML	Celastraceae	Catha	Catha edulis	715	27.0	15.0	12.0	10.0	0.37	0.56	0.44
+68	LQ-01-61-69_pos.mzXML	Celastraceae	Salacia	Salacia cochinchinensis	414	12.0	7.0	5.0	4.0	0.33	0.58	0.42
+74	LQ-01-61-75_pos.mzXML	Celastraceae	Tripterygium	Tripterygium wilfordii	744	46.0	21.0	19.0	18.0	0.39	0.46	0.41
+48	LQ-01-61-49_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buxifolia	669	44.0	24.0	18.0	15.0	0.34	0.55	0.41
+19	LQ-01-61-20_pos.mzXML	Celastraceae	Euonymus	Euonymus maackii	700	49.0	22.0	20.0	19.0	0.39	0.45	0.41
+67	LQ-01-61-68_pos.mzXML	Celastraceae	Salacia	Salacia cochinchinensis	493	32.0	14.0	13.0	11.0	0.34	0.44	0.41
+53	LQ-01-61-54_pos.mzXML	Celastraceae	Maytenus	Maytenus undata	634	10.0	4.0	4.0	4.0	0.4	0.4	0.4
+12	LQ-01-61-13_pos.mzXML	Celastraceae	Evonymopsis	Evonymopsis sp	601	30.0	12.0	12.0	12.0	0.4	0.4	0.4
+44	LQ-01-61-45_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buxifolia	788	38.0	16.0	15.0	14.0	0.37	0.42	0.39
+29	LQ-01-61-30_pos.mzXML	Celastraceae	Euonymus	Euonymus alatus	482	23.0	11.0	9.0	8.0	0.35	0.48	0.39
+27	LQ-01-61-28_pos.mzXML	Celastraceae	Euonymus	Euonymus grandiflorus	368	28.0	14.0	11.0	10.0	0.36	0.5	0.39
+49	LQ-01-61-50_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buxifolia	671	36.0	17.0	14.0	10.0	0.28	0.47	0.39
+20	LQ-01-61-21_pos.mzXML	Celastraceae	Euonymus	Euonymus cochinchinensis	746	27.0	11.0	10.0	8.0	0.3	0.41	0.37
+46	LQ-01-61-47_pos.mzXML	Celastraceae	Maytenus	Maytenus inermis	628	46.0	20.0	17.0	17.0	0.37	0.43	0.37
+56	LQ-01-61-57_pos.mzXML	Celastraceae	Microtropis	Microtropis triflora	431	20.0	9.0	7.0	6.0	0.3	0.45	0.35
+0	LQ-01-61-01_pos.mzXML	Celastraceae	Catha	Catha edulis	488	15.0	9.0	5.0	5.0	0.33	0.6	0.33
+16	LQ-01-61-17_pos.mzXML	Celastraceae	Euonymus	Euonymus bockii	629	31.0	10.0	10.0	4.0	0.13	0.32	0.32
+63	LQ-01-61-64_pos.mzXML	Celastraceae	Pleurostylia	Pleurostylia pachyphloea	611	32.0	10.0	10.0	10.0	0.31	0.31	0.31
+24	LQ-01-61-25_pos.mzXML	Celastraceae	Euonymus	Euonymus dielsianus	706	10.0	3.0	3.0	3.0	0.3	0.3	0.3
+33	LQ-01-61-34_pos.mzXML	Celastraceae	Euonymus	Euonymus myrianthus	543	15.0	5.0	4.0	4.0	0.27	0.33	0.27
+43	LQ-01-61-44_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buchananii	680	11.0	3.0	3.0	3.0	0.27	0.27	0.27
+11	LQ-01-61-12_pos.mzXML	Celastraceae	Evonymopsis	Evonymopsis sp	592	15.0	4.0	4.0	3.0	0.2	0.27	0.27
+60	LQ-01-61-61_pos.mzXML	Celastraceae	Mystroxylon	Mystroxylon aethiopicum	510	23.0	7.0	6.0	4.0	0.17	0.3	0.26
+70	LQ-01-61-71_pos.mzXML	Celastraceae	Salacia	Salacia chinensis	427	16.0	4.0	4.0	4.0	0.25	0.25	0.25
+17	LQ-01-61-18_pos.mzXML	Celastraceae	Euonymus	Euonymus bockii	623	24.0	7.0	6.0	4.0	0.17	0.29	0.25
+7	LQ-01-61-08_pos.mzXML	Celastraceae	Celastrus	Celastrus paniculatus	345	21.0	5.0	5.0	5.0	0.24	0.24	0.24
+58	LQ-01-61-59_pos.mzXML	Celastraceae	Microtropis	Microtropis triflora	536	13.0	3.0	3.0	2.0	0.15	0.23	0.23
+42	LQ-01-61-43_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buchananii	568	22.0	6.0	5.0	5.0	0.23	0.27	0.23
+52	LQ-01-61-53_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia senegalensis	698	32.0	7.0	7.0	7.0	0.22	0.22	0.22
+26	LQ-01-61-27_pos.mzXML	Celastraceae	Euonymus	Euonymus fortunei	658	18.0	4.0	4.0	4.0	0.22	0.22	0.22
+61	LQ-01-61-62_pos.mzXML	Celastraceae	Pleurostylia	Pleurostylia africana	527	14.0	4.0	3.0	3.0	0.21	0.29	0.21
+57	LQ-01-61-58_pos.mzXML	Celastraceae	Microtropis	Microtropis triflora	756	20.0	4.0	4.0	4.0	0.2	0.2	0.2
+25	LQ-01-61-26_pos.mzXML	Celastraceae	Euonymus	Euonymus dielsianus	609	20.0	4.0	4.0	2.0	0.1	0.2	0.2
+47	LQ-01-61-48_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia buxifolia	623	35.0	11.0	7.0	6.0	0.17	0.31	0.2
+34	LQ-01-61-35_pos.mzXML	Celastraceae	Euonymus	Euonymus myrianthus	772	17.0	3.0	3.0	3.0	0.18	0.18	0.18
+39	LQ-01-61-40_pos.mzXML	Celastraceae	Loeseneriella	Loeseneriella urceolus	698	19.0	3.0	3.0	2.0	0.11	0.16	0.16
+4	LQ-01-61-05_pos.mzXML	Celastraceae	Celastrus	Celastrus orbiculatus	731	17.0	2.0	2.0	2.0	0.12	0.12	0.12
+8	LQ-01-61-09_pos.mzXML	Celastraceae	Celastrus	Celastrus paniculatus	502	26.0	6.0	2.0	1.0	0.04	0.23	0.08
+45	LQ-01-61-46_pos.mzXML	Celastraceae	Maytenus	Maytenus inermis	613	24.0	3.0	2.0	2.0	0.08	0.12	0.08
+64	LQ-01-61-65_pos.mzXML	Celastraceae	Salacia	Salacia chinensis	431	12.0	1.0	1.0	1.0	0.08	0.08	0.08
+51	LQ-01-61-52_pos.mzXML	Celastraceae	Gymnosporia	Gymnosporia senegalensis	569	13.0	1.0	1.0	1.0	0.08	0.08	0.08
+14	LQ-01-61-15_pos.mzXML	Celastraceae	Euonymus	Euonymus alatus	610	16.0	0.0	0.0	0.0	0.0	0.0	0.0
+15	LQ-01-61-16_pos.mzXML	Celastraceae	Euonymus	Euonymus alatus	582	11.0	0.0	0.0	0.0	0.0	0.0	0.0
+9	LQ-01-61-10_pos.mzXML	Celastraceae	Elaeodendron	Elaeodendron schweinfurthianum	611	18.0	1.0	0.0	0.0	0.0	0.06	0.0
+35	LQ-01-61-36_pos.mzXML	Celastraceae	Euonymus	Euonymus myrianthus	545	11.0	0.0	0.0	0.0	0.0	0.0	0.0
+37	LQ-01-61-38_pos.mzXML	Celastraceae	Euonymus	Euonymus sanguineus	686	18.0	0.0	0.0	0.0	0.0	0.0	0.0
+38	LQ-01-61-39_pos.mzXML	Celastraceae	Euonymus	Euonymus sanguineus	583	9.0	0.0	0.0	0.0	0.0	0.0	0.0
+75	LQ-01-61-76_pos.mzXML				60							
