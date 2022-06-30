@@ -707,17 +707,17 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
                 dfq = dfq.groupby('annotation network number', dropna=False).max()
 
                 #recover information from the correlation groups:
-                agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion iidentity)': set, 'row ID': set, 'neutral mass (ion iidentity)': 'max'}
+                agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion identity)': set, 'row ID': set, 'neutral mass (ion identity)': 'max'}
                 dfcg = correlation_groups_df.groupby('annotation network number', as_index=False).agg(agg_func)
-                dfcg[['adduct (ion iidentity)', 'row ID']] = dfcg[['adduct (ion iidentity)', 'row ID']].astype(str)   
+                dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)   
                 
                 #merge with the main data according to sample
-                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion iidentity)','neutral mass (ion iidentity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
+                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
                 
                 #add annotation status 
                 df = dfq#dfq[[row_ID_header, sample, 'row m/z', 'retention time (min)']]
                 df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
-                df.fillna({'adduct (ion iidentity)': 'not available', 'neutral mass (ion iidentity)': 'not available'}, inplace=True)
+                df.fillna({'adduct (ion identity)': 'not available', 'neutral mass (ion identity)': 'not available'}, inplace=True)
             else:
                 dfq
     else:
@@ -848,17 +848,17 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
                 dfq = dfq.groupby('annotation network number', dropna=False).max()
 
                 #recover information from the correlation groups:
-                agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion iidentity)': set, 'row ID': set, 'neutral mass (ion iidentity)': 'max'}
+                agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion identity)': set, 'row ID': set, 'neutral mass (ion identity)': 'max'}
                 dfcg = correlation_groups_df.groupby('annotation network number', as_index=False).agg(agg_func)
-                dfcg[['adduct (ion iidentity)', 'row ID']] = dfcg[['adduct (ion iidentity)', 'row ID']].astype(str)   
+                dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)   
                 
                 #merge with the main data according to sample
-                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion iidentity)','neutral mass (ion iidentity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
+                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
                 
                 #add annotation status 
                 df = dfq#dfq[[row_ID_header, sample, 'row m/z', 'retention time (min)']]
                 df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
-                df.fillna({'adduct (ion iidentity)': 'not available', 'neutral mass (ion iidentity)': 'not available'}, inplace=True)
+                df.fillna({'adduct (ion identity)': 'not available', 'neutral mass (ion identity)': 'not available'}, inplace=True)
             else:
                 dfq
     else:
