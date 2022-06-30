@@ -700,11 +700,11 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
         
             if use_ion_identity == True:
         
-                dfq = dfq[['row ID', 'annotation network number', sample]]
+                dfq = dfq[['row ID', row_ID_header, sample]]
                 #complete correlation groups
-                dfq['annotation network number'] = dfq['annotation network number'].fillna(dfq['row ID'].apply(str) + 'x')
+                dfq[row_ID_header] = dfq[row_ID_header].fillna(dfq['row ID'].apply(str) + 'x')
                 dfq.drop('row ID', axis =1, inplace=True)
-                dfq = dfq.groupby('annotation network number', dropna=False).max()
+                dfq = dfq.groupby(row_ID_header, dropna=False).max()
 
                 #recover information from the correlation groups:
                 agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion identity)': set, 'row ID': set, 'neutral mass (ion identity)': 'max'}
@@ -712,19 +712,19 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
                 dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)   
                 
                 #merge with the main data according to sample
-                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
+                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on=row_ID_header)
                 
                 #add annotation status 
-                df = dfq#dfq[[row_ID_header, sample, 'row m/z', 'retention time (min)']]
+                df = dfq
                 df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
                 df.fillna({'adduct (ion identity)': 'not available', 'neutral mass (ion identity)': 'not available'}, inplace=True)
             else:
-                dfq
+                df = dfq
     else:
-        dfq = dfq[['row ID','row m/z', 'retention time (min)', sample]]
+        dfq = dfq[['row ID',row_ID_header, 'retention time (min)', sample]]
         #dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample
-        df = dfq[['row ID','row m/z', 'retention time (min)']]
-        df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
+    df = dfq[['row ID', 'row m/z', row_ID_header, 'retention time (min)']]
+    df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
 
     #2) normalize the filtered table and combine information from specificity and annotation status for each feature
                 #normalize row-wise the area of features = relative % of each feature in each sample
@@ -735,7 +735,7 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
     reduced_df_norm.rename(columns={'index': row_ID_header}, inplace=True)
 
     #change the area for the post filter-row wise normalized one
-    df_check = df.copy()
+    df_check = df
     df_check[sample] = reduced_df_norm[sample]
     df_check['status'] = np.where(
     ((df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'specific non annotated', 
@@ -823,6 +823,7 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
     fig.write_html("../data_out/pseudochromato.html")  
     fig.show()
     
+
 def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_identity, correlation_groups_df, data_process_origin, filename_header):
 
     if use_ion_identity == True: 
@@ -841,31 +842,32 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
         
             if use_ion_identity == True:
         
-                dfq = dfq[['row ID', 'annotation network number', sample]]
+                dfq = dfq[['row ID', row_ID_header, sample]]
                 #complete correlation groups
-                dfq['annotation network number'] = dfq['annotation network number'].fillna(dfq['row ID'].apply(str) + 'x')
+                dfq[row_ID_header] = dfq[row_ID_header].fillna(dfq['row ID'].apply(str) + 'x')
                 dfq.drop('row ID', axis =1, inplace=True)
-                dfq = dfq.groupby('annotation network number', dropna=False).max()
+                dfq = dfq.groupby(row_ID_header, dropna=False).max()
 
                 #recover information from the correlation groups:
                 agg_func = {'retention time (min)': 'mean', 'row m/z': 'max',  'adduct (ion identity)': set, 'row ID': set, 'neutral mass (ion identity)': 'max'}
                 dfcg = correlation_groups_df.groupby('annotation network number', as_index=False).agg(agg_func)
-                dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)   
+                dfcg[['adduct (ion identity)', 'row ID']] = dfcg[['adduct (ion identity)', 'row ID']].astype(str)
+    
                 
                 #merge with the main data according to sample
-                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on='annotation network number')
+                dfq = pd.merge(dfq, dfcg[['annotation network number', 'retention time (min)', 'row m/z', 'row ID', 'adduct (ion identity)','neutral mass (ion identity)']], how ='left', left_on = row_ID_header, right_on=row_ID_header)
                 
                 #add annotation status 
-                df = dfq#dfq[[row_ID_header, sample, 'row m/z', 'retention time (min)']]
+                df = dfq
                 df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
                 df.fillna({'adduct (ion identity)': 'not available', 'neutral mass (ion identity)': 'not available'}, inplace=True)
             else:
-                dfq
+                df = dfq
     else:
-        dfq = dfq[['row ID','row m/z', 'retention time (min)', sample]]
+        dfq = dfq[['row ID',row_ID_header, 'retention time (min)', sample]]
         #dfq[sample] = dfq[sample]/dfq[sample].sum()  #normalize to 1 the areas of the particular sample
-        df = dfq[['row ID','row m/z', 'retention time (min)']]
-        df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
+    df = dfq[['row ID', 'row m/z', row_ID_header, 'retention time (min)']]
+    df= pd.merge(df, annotation_df[[row_ID_header, 'annotation']], how='left', on=row_ID_header).fillna(0)
 
     #2) normalize the filtered table and combine information from specificity and annotation status for each feature
                 #normalize row-wise the area of features = relative % of each feature in each sample
@@ -876,7 +878,7 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
     reduced_df_norm.rename(columns={'index': row_ID_header}, inplace=True)
 
     #change the area for the post filter-row wise normalized one
-    df_check = df.copy()
+    df_check = df
     df_check[sample] = reduced_df_norm[sample]
     df_check['status'] = np.where(
     ((df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'specific non annotated', 
@@ -890,7 +892,10 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
     df_check['retention time (min)'] = df_check['retention time (min)'].round(decimals=2)
     df_check = df_check.sort_values(by='retention time (min)', ascending=True)
     #df_check['retention time (min)'] = df_check['retention time (min)'].astype(str)
+    #if use_ion_identity == False:
     df_check['row m/z'] = df_check['row m/z'].round(decimals=4)
+    #else:
+    #    df_check
 
 
     if sirius_annotations == True and use_ion_identity == False:
@@ -924,15 +929,14 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
         df_check.fillna({'pathway': 'not available', 'superclass': 'not available','class': 'not available' }, inplace=True)
         df_check.drop('classProbability', axis=1, inplace=True)
     else:
-        #df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
         df_check    
-
+        df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
+        
     #recover species and organe for the particular sample 
     species=metadata_df.loc[metadata_df[filename_header] == sample, species_column].item()
     organism_part = metadata_df.loc[metadata_df[filename_header] == sample, organe_column].item()
 
     #plot 
-    fig = make_subplots(rows=2, cols=1)
     
     fig = px.scatter(df_check,
                             x='retention time (min)', y='row m/z',
@@ -954,6 +958,6 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
     width=1400,
     height=500)
     fig.update_xaxes(title_text='retention time (min)',showgrid=False, ticks="outside", tickson="boundaries")
-    fig.update_yaxes(title_text='m/z ratio')
+    fig.update_yaxes(title_text='m/z max')
     fig.write_html("../data_out/chromato2D.html") 
     fig.show()
