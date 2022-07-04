@@ -9,18 +9,13 @@ layout: default
 
 Here, we introduce Inventa, an untargeted mass spectrometry-based prioritization workflow for natural products extract libraries. The bioinformatic workflow is composed of four components that aim at estimating the potential of natural extracts for chemical novelty:
 
-"The feature component (FC)" considers the presence (intensity/area) and specificity of the mass spectrometric features along with their annotation status (annotated/ unannotated) with experimental and/or in silico databases. The postulate of this score is that the presence of a highly specific and non annotated metabolome is an indication of a particular chemistry. 
+"The feature component (FC)" considers the presence (intensity/area) and specificity of the mass spectrometric features along with their annotation status (annotated/ unannotated) with experimental and/or in silico databases. The postulate of this score is that the presence of a highly specific and non annotated metabolome is an indication of a particular chemistry. [*Detailed FC calculation steps*](/assets/img/FC.png)
 
-###### [*Detailed FC calculation stepst*](/assets/img/FC.png)
+"The literature component (LC)" gives a score based on the number of compounds reported in the literature at the species, genus and family level. The more a plant is studied  (species, genus, family), the less likely it is to find structurally new compounds. [*Detailed LC calculation steps*](/assets/img/LC.png)
 
-"The literature component (LC)" gives a score based on the number of compounds reported in the literature at the species, genus and family level. The more a plant is studied  (species, genus, family), the less likely it is to find structurally new compounds. 
-###### [*Detailed LC calculation stepst*](/assets/img/LC.png)
+"The class component (CC)" takes advantage of the prediction capacity of chemical classes based only on the fragmentation pattern without a formal putative structure annotation through [**CANOPUS**](). The proposed chemical classes in each sample are compared against those reported in the literature. The proposition of new chemical classes in particular samples being a potential indication  of new compounds. [*Detailed CC calculation steps*](/assets/img/CC.png)
 
-"The class component (CC)" takes advantage of the prediction capacity of chemical classes based only on the fragmentation pattern without a formal putative structure annotation through [**CANOPUS**](). The proposed chemical classes in each sample are compared against those reported in the literature. The proposition of new chemical classes in particular samples being a potential indication  of new compounds. 
-###### [*Detailed CC calculation stepst*](/assets/img/CC.png)
-
-"The similarity component (SC)" harnesses the spectral diversity of the samples through vectorization of the fragmentation spectra data with [**MEMO**](https://doi.org/10.3389/fbinf.2022.842964) and application of machine learning outliers detectors. This component assumes that samples classified as ‘outlier’ hold a particular pool of metabolites  with a specific particular chemistry.
-###### [*Detailed SC calculation stepst*](/assets/img/SC.png)
+"The similarity component (SC)" harnesses the spectral diversity of the samples through vectorization of the fragmentation spectra data with [**MEMO**](https://doi.org/10.3389/fbinf.2022.842964) and application of machine learning outliers detectors. This component assumes that samples classified as ‘outlier’ hold a particular pool of metabolites  with a specific particular chemistry. [*Detailed SC calculation steps*](/assets/img/SC.png)
 
 The combined score (adition of the four components) can be modulated acording to the user preference. The ouput consist of .tsv file with all the information generared along the final rank of the samples.
 
