@@ -38,6 +38,8 @@ def pcoa_2d(matrix, data, metric, filename_header):
                     subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO aligned (OCSVM)'))
 
 
+    colors = 'YlOrRd_r'
+
     #prepare table and calculate pcoa: 
     matrix= matrix.iloc[:, 1:]
     dist_matrix = sp.spatial.distance.pdist(matrix, metric)
@@ -45,7 +47,6 @@ def pcoa_2d(matrix, data, metric, filename_header):
 
     exp_var_pc1 = round(100*pcoa_results.proportion_explained[0], 1)
     exp_var_pc2 = round(100*pcoa_results.proportion_explained[1], 1)
-    
 
     # first plot: Isolation Forest 
     fig.add_trace(
@@ -58,11 +59,11 @@ def pcoa_2d(matrix, data, metric, filename_header):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_IF'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
-            name='[-1]',
-            legendgrouptitle_text="Anomaly",
+            #name='[-1]',
+            #legendgrouptitle_text="Anomaly",
             hovertext=data[filename_header]),
             row=1, col=1)
 
@@ -77,10 +78,10 @@ def pcoa_2d(matrix, data, metric, filename_header):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_LOF'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
-            legendgrouptitle_text="normal",
+            #legendgrouptitle_text="normal",
             showlegend=False,
             hovertext=data[filename_header]),
             row=1, col=2)
@@ -96,10 +97,10 @@ def pcoa_2d(matrix, data, metric, filename_header):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_OCSVM'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False
                 ),
-            legendgrouptitle_text="Anomaly",
+            #legendgrouptitle_text="Anomaly",
             showlegend=False,
             hovertext=data[filename_header]),
             row=1, col=3)
@@ -142,7 +143,7 @@ def pcoa_2d(matrix, data, metric, filename_header):
     fig.write_html("../data_out/PCoA_2D.html")    
     fig.show()
 
-def pcoa_3d(matrix, data, metric = 'braycurtis'):#, filename_header):
+def pcoa_3d(matrix, data,filename_header, metric = 'braycurtis'):
     
     fig = make_subplots(rows=1, cols=3,
                     shared_xaxes=False,
@@ -150,7 +151,7 @@ def pcoa_3d(matrix, data, metric = 'braycurtis'):#, filename_header):
                     specs=[[{"type": "scene"}, {'type': "scene"}, {'type': "scene"}]],
                     subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO aligned (OCSVM)'))
 
-
+    colors = 'YlOrRd_r'
     #prepare table and calculate pcoa: 
     matrix= matrix.iloc[:, 1:]
     dist_matrix = sp.spatial.distance.pdist(matrix, metric)
@@ -176,7 +177,7 @@ def pcoa_3d(matrix, data, metric = 'braycurtis'):#, filename_header):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_IF'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
             name='[-1]',
@@ -195,7 +196,7 @@ def pcoa_3d(matrix, data, metric = 'braycurtis'):#, filename_header):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_LOF'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
             showlegend=False,
@@ -213,7 +214,7 @@ def pcoa_3d(matrix, data, metric = 'braycurtis'):#, filename_header):
                     line_width=0.5,
                     line_color ='black',
                     color=data['anomaly_OCSVM'], 
-                    colorscale='YlOrRd',
+                    colorscale=colors,
                     showscale=False,
                 ),
             showlegend=False,
@@ -273,21 +274,20 @@ def umap_2d(matrix, data, metadata, filename_header):
     memo_aligned_matrix = memo_aligned_matrix.div(memo_aligned_matrix.sum(axis=1), axis=0)
 
 
-    results_umap = metadata.copy()
-    #results_umap = results_umap.dropna()
+    results_umap = data.copy()
+    results_umap = results_umap.dropna()
     metric ='MEMO aligned (Bray-Curtis)'
     matrix = memo_aligned_matrix
     reducer = umap.UMAP(metric='braycurtis')
     embedding = reducer.fit_transform(matrix.values)
     results_umap[metric+'_x'] = embedding[:, 0]
     results_umap[metric+'_y'] = embedding[:, 1]
-    colors = 'YlOrRd_r'
 
     fig = make_subplots(rows=1, cols=3,
                     shared_xaxes=False,
                     vertical_spacing=0.4,
                     subplot_titles=('UMAP MEMO aligned: Isolation Forest', 'UMAP MEMO aligned: LOF', 'UMAP MEMO aligned: OCSVM'))
-
+    colors = 'YlOrRd_r'
     # first plot: Isolation Forest 
     fig.add_trace(
         go.Scatter(
@@ -373,7 +373,6 @@ def umap_2d(matrix, data, metadata, filename_header):
     fig.update_annotations(font_size=20)
     fig.write_html("../data_out/UMAP_2D.html")     
     fig.show()
-
     
 def pcoa_umap_2d(matrix, data, metric, filename_header):
     fig = make_subplots(rows=2, cols=3,
