@@ -1,0 +1,77 @@
+filename,ATTRIBUTE_Family,ATTRIBUTE_Genus,ATTRIBUTE_Species,ATTRIBUTE_Organe,initial_F,filtered_F,Total_SF_npp,Total_SNAF_npp,FS_npp,FC_npp,Total_SF_pp,Total_SNAF_pp,FS_pp,FC_pp
+LQ-01-61-01_pos.mzXML,Celastraceae,Catha,Catha edulis,Leaves,1138,26,7,7,0.27,0.27,10,10,0.38,0.38
+LQ-01-61-02_pos.mzXML,Celastraceae,Catha,Catha edulis,Stems,1213,80,10,3,0.12,0.04,27,13,0.34,0.16
+LQ-01-61-03_pos.mzXML,Celastraceae,Catha,Catha edulis,Roots,1321,16,6,6,0.38,0.38,12,10,0.75,0.62
+LQ-01-61-04_pos.mzXML,Celastraceae,Catha,Catha edulis,Aerial parts,1432,38,6,5,0.16,0.13,19,17,0.5,0.45
+LQ-01-61-05_pos.mzXML,Celastraceae,Celastrus,Celastrus orbiculatus,Stems,837,20,2,1,0.1,0.05,4,3,0.2,0.15
+LQ-01-61-06_pos.mzXML,Celastraceae,Celastrus,Celastrus orbiculatus,Roots,1017,30,14,9,0.47,0.3,16,10,0.53,0.33
+LQ-01-61-07_pos.mzXML,Celastraceae,Celastrus,Celastrus paniculatus,Seeds,1389,67,29,27,0.43,0.4,48,42,0.72,0.63
+LQ-01-61-08_pos.mzXML,Celastraceae,Celastrus,Celastrus paniculatus,Leaves,530,78,16,16,0.21,0.21,34,28,0.44,0.36
+LQ-01-61-09_pos.mzXML,Celastraceae,Celastrus,Celastrus paniculatus,Bark,370,40,8,8,0.2,0.2,11,11,0.28,0.28
+LQ-01-61-10_pos.mzXML,Celastraceae,Elaeodendron,Elaeodendron schweinfurthianum,Leaves,1170,51,2,1,0.04,0.02,7,2,0.14,0.04
+LQ-01-61-11_pos.mzXML,Celastraceae,Elaeodendron,Elaeodendron schweinfurthianum,Stems,1467,37,4,2,0.11,0.05,17,4,0.46,0.11
+LQ-01-61-12_pos.mzXML,Celastraceae,Evonymopsis,Evonymopsis sp,Leaves,1013,13,0,0,0,0,2,2,0.15,0.15
+LQ-01-61-13_pos.mzXML,Celastraceae,Evonymopsis,Evonymopsis sp,Stems,1418,76,19,6,0.25,0.08,30,10,0.39,0.13
+LQ-01-61-14_pos.mzXML,Celastraceae,Evonymopsis,Evonymopsis sp,Underground parts,1312,3,0,0,0,0,2,2,0.67,0.67
+LQ-01-61-15_pos.mzXML,Celastraceae,Euonymus,Euonymus alatus,Stems,759,31,0,0,0,0,0,0,0,0
+LQ-01-61-16_pos.mzXML,Celastraceae,Euonymus,Euonymus alatus,Leaves,1077,15,0,0,0,0,0,0,0,0
+LQ-01-61-17_pos.mzXML,Celastraceae,Euonymus,Euonymus bockii,Roots,1393,37,9,9,0.24,0.24,9,9,0.24,0.24
+LQ-01-61-18_pos.mzXML,Celastraceae,Euonymus,Euonymus bockii,Stems,960,48,3,3,0.06,0.06,6,6,0.12,0.12
+LQ-01-61-19_pos.mzXML,Celastraceae,Euonymus,Euonymus bockii,Leaves,1331,19,3,3,0.16,0.16,8,8,0.42,0.42
+LQ-01-61-20_pos.mzXML,Celastraceae,Euonymus,Euonymus maackii,Stems,1666,63,5,4,0.08,0.06,16,7,0.25,0.11
+LQ-01-61-21_pos.mzXML,Celastraceae,Euonymus,Euonymus cochinchinensis,Branche,728,31,4,2,0.13,0.06,11,6,0.35,0.19
+LQ-01-61-22_pos.mzXML,Celastraceae,Euonymus,Euonymus cochinchinensis,Roots,674,13,4,2,0.31,0.15,11,6,0.85,0.46
+LQ-01-61-23_pos.mzXML,Celastraceae,Euonymus,Euonymus cochinchinensis,Leaves,598,14,9,8,0.64,0.57,11,9,0.79,0.64
+LQ-01-61-24_pos.mzXML,Celastraceae,Euonymus,Euonymus dielsianus,Roots,1460,38,9,8,0.24,0.21,19,14,0.5,0.37
+LQ-01-61-25_pos.mzXML,Celastraceae,Euonymus,Euonymus dielsianus,Stems,1304,17,0,0,0,0,2,1,0.12,0.06
+LQ-01-61-26_pos.mzXML,Celastraceae,Euonymus,Euonymus dielsianus,Leaves,1148,31,1,0,0.03,0,3,2,0.1,0.06
+LQ-01-61-27_pos.mzXML,Celastraceae,Euonymus,Euonymus fortunei,Aerial parts,658,22,4,2,0.18,0.09,4,2,0.18,0.09
+LQ-01-61-28_pos.mzXML,Celastraceae,Euonymus,Euonymus grandiflorus,Bark,641,65,22,18,0.34,0.28,29,23,0.45,0.35
+LQ-01-61-29_pos.mzXML,Celastraceae,Euonymus,Euonymus alatus,Bark,1019,19,2,0,0.11,0,5,3,0.26,0.16
+LQ-01-61-30_pos.mzXML,Celastraceae,Euonymus,Euonymus alatus,Leaves,1198,52,4,4,0.08,0.08,17,14,0.33,0.27
+LQ-01-61-31_pos.mzXML,Celastraceae,Euonymus,Euonymus frigidus,Roots,1425,39,13,10,0.33,0.26,27,23,0.69,0.59
+LQ-01-61-32_pos.mzXML,Celastraceae,Euonymus,Euonymus frigidus,Stems,1261,53,15,9,0.28,0.17,23,15,0.43,0.28
+LQ-01-61-33_pos.mzXML,Celastraceae,Euonymus,Euonymus frigidus,Leaves,1349,63,11,4,0.17,0.06,22,11,0.35,0.17
+LQ-01-61-34_pos.mzXML,Celastraceae,Euonymus,Euonymus myrianthus,Roots,1419,33,7,4,0.21,0.12,11,5,0.33,0.15
+LQ-01-61-35_pos.mzXML,Celastraceae,Euonymus,Euonymus myrianthus,Stems,1535,30,3,0,0.1,0,6,1,0.2,0.03
+LQ-01-61-36_pos.mzXML,Celastraceae,Euonymus,Euonymus myrianthus,Leaves,1142,16,0,0,0,0,1,1,0.06,0.06
+LQ-01-61-37_pos.mzXML,Celastraceae,Euonymus,Euonymus sanguineus,Roots,1655,12,10,6,0.83,0.5,11,6,0.92,0.5
+LQ-01-61-38_pos.mzXML,Celastraceae,Euonymus,Euonymus sanguineus,Stems,1123,25,1,0,0.04,0,1,0,0.04,0
+LQ-01-61-39_pos.mzXML,Celastraceae,Euonymus,Euonymus sanguineus,Leaves,1009,10,0,0,0,0,0,0,0,0
+LQ-01-61-40_pos.mzXML,Celastraceae,Loeseneriella,Loeseneriella urceolus,Leaves,1237,22,0,0,0,0,2,2,0.09,0.09
+LQ-01-61-41_pos.mzXML,Celastraceae,Loeseneriella,Loeseneriella concinna,Stems,1223,44,8,5,0.18,0.11,18,8,0.41,0.18
+LQ-01-61-42_pos.mzXML,Celastraceae,Loeseneriella,Loeseneriella concinna,Leaves,716,19,8,8,0.42,0.42,9,9,0.47,0.47
+LQ-01-61-43_pos.mzXML,Celastraceae,Gymnosporia,Gymnosporia buchananii,Leaves,1019,51,6,2,0.12,0.04,12,4,0.24,0.08
+LQ-01-61-44_pos.mzXML,Celastraceae,Gymnosporia,Gymnosporia buchananii,Stems,1013,15,2,0,0.13,0,6,4,0.4,0.27
+LQ-01-61-45_pos.mzXML,Celastraceae,Gymnosporia,Gymnosporia buxifolia,Bark,1320,52,14,12,0.27,0.23,23,16,0.44,0.31
+LQ-01-61-46_pos.mzXML,Celastraceae,Maytenus,Maytenus inermis,Leaves,886,58,6,6,0.1,0.1,9,9,0.16,0.16
+LQ-01-61-47_pos.mzXML,Celastraceae,Maytenus,Maytenus inermis,Underground parts,700,64,17,13,0.27,0.2,24,18,0.38,0.28
+LQ-01-61-48_pos.mzXML,Celastraceae,Gymnosporia,Gymnosporia buxifolia,Leaves,1068,56,3,1,0.05,0.02,23,11,0.41,0.2
+LQ-01-61-49_pos.mzXML,Celastraceae,Gymnosporia,Gymnosporia buxifolia,Stems,942,41,1,0,0.02,0,18,8,0.44,0.2
+LQ-01-61-50_pos.mzXML,Celastraceae,Gymnosporia,Gymnosporia buxifolia,Roots,902,32,0,0,0,0,14,6,0.44,0.19
+LQ-01-61-51_pos.mzXML,Celastraceae,Gymnosporia,Gymnosporia graciliramula,Aerial parts,1126,98,25,17,0.26,0.17,46,27,0.47,0.28
+LQ-01-61-52_pos.mzXML,Celastraceae,Gymnosporia,Gymnosporia senegalensis,Leaves,1082,19,2,1,0.11,0.05,3,1,0.16,0.05
+LQ-01-61-53_pos.mzXML,Celastraceae,Gymnosporia,Gymnosporia senegalensis,Stems,1200,59,5,3,0.08,0.05,11,7,0.19,0.12
+LQ-01-61-54_pos.mzXML,Celastraceae,Maytenus,Maytenus undata,Leaves,1184,14,2,1,0.14,0.07,5,3,0.36,0.21
+LQ-01-61-55_pos.mzXML,Celastraceae,Maytenus,Maytenus undata,Stems,1430,19,4,3,0.21,0.16,12,7,0.63,0.37
+LQ-01-61-56_pos.mzXML,Celastraceae,Maytenus,Maytenus undata,Roots,1506,39,19,19,0.49,0.49,29,22,0.74,0.56
+LQ-01-61-57_pos.mzXML,Celastraceae,Microtropis,Microtropis triflora,Roots,517,33,9,3,0.27,0.09,13,5,0.39,0.15
+LQ-01-61-58_pos.mzXML,Celastraceae,Microtropis,Microtropis triflora,Stems,1560,28,2,1,0.07,0.04,7,2,0.25,0.07
+LQ-01-61-59_pos.mzXML,Celastraceae,Microtropis,Microtropis triflora,Leaves,1297,20,3,0,0.15,0,3,0,0.15,0
+LQ-01-61-60_pos.mzXML,Celastraceae,Mystroxylon,Mystroxylon aethiopicum,Bark,376,25,9,7,0.36,0.28,14,8,0.56,0.32
+LQ-01-61-61_pos.mzXML,Celastraceae,Mystroxylon,Mystroxylon aethiopicum,Leaves,794,43,3,0,0.07,0,12,6,0.28,0.14
+LQ-01-61-62_pos.mzXML,Celastraceae,Pleurostylia,Pleurostylia africana,Leaves,682,29,5,3,0.17,0.1,7,5,0.24,0.17
+LQ-01-61-63_pos.mzXML,Celastraceae,Pleurostylia,Pleurostylia pachyphloea,Stems,995,57,16,11,0.28,0.19,24,18,0.42,0.32
+LQ-01-61-64_pos.mzXML,Celastraceae,Pleurostylia,Pleurostylia pachyphloea,Leaves,929,73,19,18,0.26,0.25,27,26,0.37,0.36
+LQ-01-61-65_pos.mzXML,Celastraceae,Salacia,Salacia chinensis,Leaves,1182,37,0,0,0,0,1,1,0.03,0.03
+LQ-01-61-66_pos.mzXML,Celastraceae,Salacia,Salacia chinensis,Branche,1200,72,11,7,0.15,0.1,22,14,0.31,0.19
+LQ-01-61-67_pos.mzXML,Celastraceae,Salacia,Salacia chinensis,Roots,1038,33,3,3,0.09,0.09,8,8,0.24,0.24
+LQ-01-61-68_pos.mzXML,Celastraceae,Salacia,Salacia cochinchinensis,Leaves,624,53,7,7,0.13,0.13,13,12,0.25,0.23
+LQ-01-61-69_pos.mzXML,Celastraceae,Salacia,Salacia cochinchinensis,Branche,1061,27,1,0,0.04,0,3,1,0.11,0.04
+LQ-01-61-70_pos.mzXML,Celastraceae,Salacia,Salacia cochinchinensis,Underground parts,921,3,0,0,0,0,1,1,0.33,0.33
+LQ-01-61-71_pos.mzXML,Celastraceae,Salacia,Salacia chinensis,Indeterminated,1106,33,6,2,0.18,0.06,8,2,0.24,0.06
+LQ-01-61-72_pos.mzXML,Celastraceae,Salacia,Salacia letestuana,Fruits,902,110,73,58,0.66,0.53,88,64,0.8,0.58
+LQ-01-61-73_pos.mzXML,Celastraceae,Tripterygium,Tripterygium hypoglaucum,Roots,1192,46,9,8,0.2,0.17,27,23,0.59,0.5
+LQ-01-61-74_pos.mzXML,Celastraceae,Tripterygium,Tripterygium wilfordii,Roots,1388,53,6,5,0.11,0.09,32,20,0.6,0.38
+LQ-01-61-75_pos.mzXML,Celastraceae,Tripterygium,Tripterygium wilfordii,Stems,1435,61,9,6,0.15,0.1,26,8,0.43,0.13
+LQ-01-61-78_pos.mzXML,Celastraceae,Pristimera,Pristimera indica,Roots,727,26,14,7,0.54,0.27,15,8,0.58,0.31

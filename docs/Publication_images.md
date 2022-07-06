@@ -12,6 +12,9 @@ This images and interactive plots are presented in the publication of Iventa.
 
 ##### Fig 2.B.2. [**Scatter plot: 2D chromatogram for the Pristimera indica roots extract**](/assets/img/chromato2D_ID.html)
 
+##### Fig 2.B.1 (no Ion identiy). [**Bar chart: Pseudochromatogram for the Pristimera indica roots extract (row ID-based, no Iion Identitity)**](/assets/img/pseudochromato_noID.html)
+##### Sup. Fig 2.B.2 (no Ion identiy). [**Scatter plot: 2D chromatogram for the Pristimera indica roots extract (row ID-based, no Iion Identitity)**](/assets/img/chromato2D_noID.html)
+
 ##### Fig 3.A. [**Celastraceae Library Chemical Space TMAP**](/assets/img/Celastraceae_annotation_vs_lotusdnp_tmap.html)
 
 ##### Fig. 3.B. [**Celastraceae Library Chemical Coverage**](/assets/img/Chemical_class_Celastraceae.html)  
@@ -24,7 +27,7 @@ This images and interactive plots are presented in the publication of Iventa.
 ##### Sup. Fig. 78.B. [**Visualization of the effects of filtering steps in a particular sample. B) quantile-based filtering**](/assets/img/filtering_plot_quant.html)
 ##### Sup. Fig. 78.C. [**Visualization of the effects of filtering steps in a particular sample. A) sequential filtering**](/assets/img/filtering_plot_perquant.html)
 
-##### Sup. Fig 2.B.1. [**Bar chart: Pseudochromatogram for the Pristimera indica roots extract (row ID-based, no Iion Identitity)**](/assets/img/pseudochromato_noID.html)
-##### Sup. Fig 2.B.2. [**Scatter plot: 2D chromatogram for the Pristimera indica roots extract (row ID-based, no Iion Identitity)**](/assets/img/chromato2D_noID.html)
+##### Sup. Fig. 80.uppertrace. [**Effect of considering the presence of different organs for the same species on the total number of specific and non-annotated specific features**](/assets/img/Catha_pp1.html)
+##### Sup. Fig. 80.lowertrace. [**Effect of considering the presence of different organs for the same species on the FS and FC results**](/assets/img/Catha_pp2.html)
 
 ### [Back to home page](index.md)
