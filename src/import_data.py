@@ -124,7 +124,8 @@ def get_sirius_annotations(path_sirius, sirius_annotations):
 def get_canopus_pred_classes(path_canopus, CC_component): 
 
     if CC_component == True:
-        df = pd.read_csv(path_canopus, sep=',')
+        df = pd.read_csv(path_canopus, sep='\t')
+        df['shared name'] = df['id'].str.split('_').str[-1].astype(int)
         return df 
     else: 
         print('The canopus classes will be not used')

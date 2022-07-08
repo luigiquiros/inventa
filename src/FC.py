@@ -241,7 +241,7 @@ def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_c
     df = df.sort_values(by=['FC'], ascending=False)
 
     if sirius_annotations == True and use_ion_identity == False: 
-        df1 = annotation_df.copy() #pd.read_csv('../data_out/annot_gnps_df.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+        df1 = annotation_df.copy()
         df2 = annot_sirius_df.copy()
         df2['shared name'] = df2['id'].str.split('_').str[-1].astype(int)
         df5 = pd.merge(left=df1[[row_ID_header]],right=df2[['shared name','ZodiacScore']], how='left', left_on= row_ID_header, right_on='shared name')
