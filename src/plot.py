@@ -628,22 +628,6 @@ def drop_selection(quant_df):
     drop_down.observe(dropdown_handler, names='value')
     display(drop_down)
 
-def quant_plot(df):
-    """ Cleans up the quantitative table to specific format
-
-    Args:
-        df = quantitative.csv file, output from MZmine
-
-    Returns:
-        None
-    """
-    df.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
-    df.rename(columns = lambda x: x.replace('row retention time', 'retention time (min)'),inplace=True)
-    df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
-    #df.drop('row m/z', axis=1, inplace=True)
-    #df.drop('row retention time', axis=1, inplace=True)
-    #df.to_csv('../data_out/quant_df.tsv', sep='\t')
-    return df
 
 def distribution_to_plot(sample, quant_df, reduced_df):
     df1 = quant_df.copy()
