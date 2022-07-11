@@ -84,15 +84,16 @@ def reduce_df(full_df, metadata_df, col_id_unique):
 
 
 def priority_rank(FC, LC, SC, CC, LC_component, SC_component, CC_component, w1, w2, w3, w4):
+
     
     if LC_component == True: 
-        #df2 = pd.read_csv('../data_out/LC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+
+    #df2 = pd.read_csv('../data_out/LC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df =pd.merge(
-                    left=FC,
-                    right=LC[['filename', 'LC', 'Reported_comp_Species', 'Reported_comp_Genus', 'Reported_comp_Family']], 
-                    how='left', 
-                    left_on='filename', 
-                    right_on='filename')
+                left=FC,
+                right=LC[[filename_header, 'LC', 'Reported_comp_Species', 'Reported_comp_Genus', 'Reported_comp_Family']], 
+                how='left', 
+                on=filename_header)
     else:
         df
 
@@ -100,10 +101,9 @@ def priority_rank(FC, LC, SC, CC, LC_component, SC_component, CC_component, w1, 
         #df3 = pd.read_csv('../data_out/SC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df =pd.merge(
                     left=df,
-                    right=SC[['filename', 'SC']], 
+                    right=SC[[filename_header, 'SC']], 
                     how='left', 
-                    left_on='filename', 
-                    right_on='filename')
+                    on=filename_header)
     else:
         df
 
@@ -111,10 +111,9 @@ def priority_rank(FC, LC, SC, CC, LC_component, SC_component, CC_component, w1, 
         #df4 = pd.read_csv('../data_out/CC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
         df =pd.merge(
                         left=df,
-                        right=CC[['filename','CC', 'New_CC_in_sp', 'New_CC_in_genus']], 
+                        right=CC[[filename_header,'CC', 'New_CC_in_sp', 'New_CC_in_genus']], 
                         how='left', 
-                        left_on='filename', 
-                        right_on='filename')
+                        on =filename_header)
     else: 
         df
 

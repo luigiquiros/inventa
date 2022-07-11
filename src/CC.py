@@ -12,119 +12,72 @@ from pandas import Series
 
 #Class component:
 
-def class_component(df3, filename_header, species_column, genus_column,family_column, metadata_df, reduced_df, col_id_unique, min_class_confidence, min_recurrence, CC_component):
-    """ function to compute the class component based on the possible presence of new chemical classes 
-    Args:
-        df3: canopus_sunmmary
-        Returns:
-        None
-    """
-
+def class_component(canopus_npc_df, filename_header, species_column, genus_column,family_column, metadata_df, reduced_df, min_class_confidence, min_recurrence, CC_component):
+        
     if CC_component == True:
+        row_ID_header = 'row ID'
+        #normalize the filtered table and combine information from specificity and annotation status for each feature
 
-        def top_ions(col_id_unique, reduced_df):
+        filtered_quant_df_norm = reduced_df.copy()#.transpose()
+        filtered_quant_df_norm = filtered_quant_df_norm.div(filtered_quant_df_norm.sum(axis=1), axis=0).fillna(0)
+        filtered_quant_df_norm.reset_index(inplace=True)
+        filtered_quant_df_norm.rename(columns={'index': row_ID_header}, inplace=True)
+        filtered_quant_df_norm.set_index(row_ID_header, inplace=True)
+        filtered_quant_df_norm = filtered_quant_df_norm.astype(float)
+        filtered_quant_df_norm.rename(columns={'row ID': row_ID_header}, inplace=True)
 
-                """ function to compute the top species, top filename and top species/plant part for each ion 
-            Args:
-                df1 = reduced_df, table of with index on sp/part column and features only.
-                df2 = quantitative.csv file, output from MZmine
-                Returns:
-                None
-            """
-            #computes the % for each feature
-                dfA = reduced_df.copy()
-                #dfA = dfA.transpose()
-                dfA = dfA.div(dfA.sum(axis=1), axis=0)
-                dfA.reset_index(inplace=True)
-                dfA.rename(columns={'index': 'row ID'}, inplace=True)
-                dfA.set_index('row ID', inplace=True)
-                dfA = dfA.astype(float)
-                dfA['Feature_specificity'] = dfA.apply(lambda s: s.abs().nlargest(1).sum(), axis=1)
-                dfA.reset_index(inplace=True)
-                #df1 = df1.drop([0], axis=1)
-                dfA = dfA[['row ID', 'Feature_specificity']]
-                dfA['row ID']=dfA['row ID'].astype(int)
+        #retrieve the top 1 filename for each feature based on the quantitative table:
+        df = filtered_quant_df_norm.transpose()
+        df = df.astype(float)
+        df = df.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
+        df = df.to_frame()
+        df[['row ID']] = pd.DataFrame(df[0].values.tolist(),index= df.index)
+        df = df.drop([0], axis=1)
+        df.reset_index(inplace=True)
 
-                #computes the top filename for each ion 
-                df2 = reduced_df.copy()
-                df2 = df2.div(df2.sum(axis=1), axis=0)
-                df2 = df2.copy()
-                df2 = df2.astype(float)
-                df2 = df2.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
-                df2 = df2.to_frame()
-                df2['filename'] = pd.DataFrame(df2[0].values.tolist(), index= df2.index)
-                df2 = df2.drop([0], axis=1)
-                df2.reset_index(inplace=True)
-                df2.rename(columns={'index': 'row ID'}, inplace=True)
-
-                df = pd.merge(left=dfA,right=df2, how='left',on='row ID')
-
-                if col_id_unique != 'filename':
-                    #computes the top species/part for each feature 
-                    df3 = reduced_df.copy()
-                    df3 = df3.transpose()
-                    df3 = df3.astype(float)
-                    df3 = df3.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
-                    df3 = df3.to_frame()
-                    df3[[col_id_unique]] = pd.DataFrame(df3[0].values.tolist(),index= df3.index)
-                    df3 = df3.drop([0], axis=1)
-                    df3.reset_index(inplace=True)
-                    df3.rename(columns={'index': 'row ID'}, inplace=True)
-                    df3['row ID'] = df3['row ID'].astype(int)
-                    
-                    #merge all the data 
-                    df = pd.merge(left=df3, right=df, how='left', on='row ID')
-                else: 
-                    df
-                return df
-                
-        df1 = top_ions(col_id_unique, reduced_df)
-        df2 = metadata_df.copy()
-
-        LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',sep=',').dropna()
-
-        # merge with top filename with iones 
-        #df3['shared name'] = df3['name'].str.split('_').str[-1].astype(int) #use this line if you don't have a column with the name/shared name
-
-        ## Retrieve classes predicted by Sirius         
-        #the specificity_df is used to assign the main biological source to each feature. 
-        df3.rename(columns={'name': 'shared name'}, inplace=True)
-        df3 = pd.merge(left=df1[['row ID', filename_header]], right=df3[['shared name', 'class', 'classProbability']], how='left', left_on='row ID', right_on='shared name').dropna()
-        df3.drop('shared name', axis=1, inplace=True)
+        #merged with the information from Canopus 
+        df = pd.merge(df, canopus_npc_df[['shared name', 'NPC#class', 'NPC#class Probability']], how='left', left_on='row ID', right_on='shared name').dropna()
+        df.rename(columns={'NPC#class Probability': 'NPC_class_Probability'}, inplace=True)
+        df.drop('shared name', axis=1, inplace=True)
 
         #filter based on min_class_probability
-        df3.drop(df3[df3.classProbability > min_class_confidence].index, inplace=True)
+        df = df[df.NPC_class_Probability > min_class_confidence]
 
         #calculare recurrence of each class 
-        df4= df3[[filename_header, 'class']].groupby([filename_header,'class']).size().reset_index()
-        df4.rename(columns={0: 'recurrence'}, inplace=True)
+        df= df[[filename_header, 'NPC#class']].groupby([filename_header,'NPC#class']).size().reset_index()
+        df.rename(columns={0: 'recurrence'}, inplace=True)
 
-        df4 = df4[df4['recurrence'] >= min_recurrence].groupby(filename_header).agg(set)
-        df4.drop ('recurrence', axis=1, inplace=True)
-            
-        df5 = pd.merge(left=df2[[filename_header, species_column]], right=df4, how='left', left_on=filename_header, right_on=filename_header).dropna()
+        #filter based on minimun recurrence 
+        df = df[df['recurrence'] >= min_recurrence].groupby(filename_header).agg(set)
+        df.drop ('recurrence', axis=1, inplace=True)
 
+        #add the species for each filename    
+        df = pd.merge(metadata_df[[filename_header, species_column]], df, how='left', left_on=filename_header, right_on=filename_header).dropna()
+        
         ## Retrieve classes reported in Lotus
+        LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',sep=',').dropna()
+        
 
         #create a set of species present in the metatada and reduce the lotus DB to it
-        set_sp = set(df5[species_column].dropna())
+        set_sp = set(metadata_df[species_column].dropna())
         LotusDB= LotusDB[LotusDB['organism_taxonomy_09species'].isin(set_sp)]
 
         #retrieve the chemical classes associated to the species and genus
-        df7 = LotusDB[['organism_taxonomy_09species', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_09species').agg(set)
-        df7.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_species'}, inplace=True)
-        df8 = LotusDB[['organism_taxonomy_08genus', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_08genus').agg(set)
-        df8.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
+        ccs = LotusDB[['organism_taxonomy_09species', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_09species').agg(set)
+        ccs.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_species'}, inplace=True)
+        ccg = LotusDB[['organism_taxonomy_08genus', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_08genus').agg(set)
+        ccg.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
+
         #merge into a single dataframe
-        df9 = pd.merge(df2[[filename_header, species_column, genus_column, family_column]], df7, left_on= species_column, right_on='organism_taxonomy_09species', how='left')
-        df9 = pd.merge(df9,df8, left_on= genus_column, right_on='organism_taxonomy_08genus', how='left')
-        #df9.head(5)
-        #df9.to_csv('../data_out/reported_classes_df.tsv', sep='\t')
+        cc = pd.merge(metadata_df[[filename_header, species_column, genus_column, family_column]], ccs, left_on= species_column, right_on='organism_taxonomy_09species', how='left')
+        cc = pd.merge(cc,ccg, left_on= genus_column, right_on='organism_taxonomy_08genus', how='left')
 
         #obtain the difference between the predicted and reported compounds
-        df = pd.merge(df5[[filename_header, 'class']],df9,on=filename_header, how='left').dropna()
+        #first merge both dataframes
+        df = pd.merge(df[[filename_header, 'NPC#class']],cc,on=filename_header, how='left')#.dropna()
 
-        df['New_CC_in_sp'] = df["class"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species
+        #check if the chemical classes from Sirius are reported in the species
+        df['New_CC_in_sp'] = df["NPC#class"] - df["Chemical_class_reported_in_species"]  
         df['New_CC_in_genus'] = df["New_CC_in_sp"] - df["Chemical_class_reported_in_genus"]
 
         #change all the NaN with a string to indicate lack of reports in the literature 
@@ -134,25 +87,23 @@ def class_component(df3, filename_header, species_column, genus_column,family_co
         df['New_CC_in_sp'] = df['New_CC_in_sp'].fillna('nothing in DB')
         df['New_CC_in_genus'] = df['New_CC_in_genus'].fillna('nothing in DB')
 
+        #function to check if there are new cc in ccs/ccg
         def is_empty(df):
-            """ function to check if the sets are empty or not 
-                Args:
-                    df = Class component column CC 
-                    Returns:
-                    None
-            """
-            if df:
-                return 1 # if the column is not empty then 1, something is new in the sp &/ genus
-            else:
-                return 0
+                    """ function to check if the sets are empty or not 
+                        Args:
+                            df = Class component column CC 
+                            Returns:
+                            None
+                    """
+                    if df:
+                        return 1 # if the column is not empty then 1, something is new in the sp &/ genus
+                    else:
+                        return 0
 
         df['CC'] = df['New_CC_in_sp'].apply(is_empty)
         df['CC'] = df['CC'].fillna(1)
-
-        #df = pd.merge(df2[[filename_header]], df,how= 'left', on=filename_header)
-        df.to_csv('../data_out/LC_results.tsv', sep='\t')
+        df.to_csv('../data_out/CC_results.tsv', sep='\t')
         return df
-        
     else:
         print ('No search was done because the Class component is not going to be calculated')
 
