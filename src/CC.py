@@ -34,9 +34,12 @@ def class_component(canopus_npc_df, filename_header, species_column, genus_colum
         df[['row ID']] = pd.DataFrame(df[0].values.tolist(),index= df.index)
         df = df.drop([0], axis=1)
         df.reset_index(inplace=True)
+        df['row ID'] = pd.to_numeric(df['row ID'],errors = 'coerce')
+        df['row ID'] = df['row ID'].fillna(0).astype(int)
 
-        #merged with the information from Canopus 
-        df = pd.merge(df, canopus_npc_df[['shared name', 'NPC#class', 'NPC#class Probability']], how='left', left_on='row ID', right_on='shared name').dropna()
+        #merged with the information from Canopus
+        canopus_npc_df['shared name'] = canopus_npc_df['shared name'].astype(int) 
+        df = pd.merge(df, canopus_npc_df[['shared name', 'NPC#class', 'NPC#class Probability']], how='left', left_on='row ID', right_on='shared name')#.dropna()
         df.rename(columns={'NPC#class Probability': 'NPC_class_Probability'}, inplace=True)
         df.drop('shared name', axis=1, inplace=True)
 

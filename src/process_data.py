@@ -83,7 +83,7 @@ def reduce_df(full_df, metadata_df, col_id_unique):
     return df
 
 
-def priority_rank(FC, LC, SC, CC, LC_component, SC_component, CC_component, w1, w2, w3, w4):
+def priority_rank(FC, LC, SC, CC, LC_component, SC_component, CC_component, w1, w2, w3, w4, filename_header):
 
     
     if LC_component == True: 
