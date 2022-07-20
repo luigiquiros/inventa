@@ -137,6 +137,7 @@ def priority_rank(FC, LC, SC, CC, LC_component, SC_component, CC_component, w1, 
         return df
 
     df = priority(df)
+    df.dropna(inplace=True)
     df.to_csv('../data_out/Priority_rank_results.tsv', sep='\t')
     return df
 
@@ -181,7 +182,7 @@ def selection_changed_FC(selection):
     return FC.iloc[selection]
 
 def selection_changed(selection):
-    return df.iloc[selection]
+    return PR.iloc[selection]
 
 #Function to count features different from 0 in each sample 
 def feature_count(df, header, filename_header):

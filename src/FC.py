@@ -1,3 +1,4 @@
+from re import T
 import pandas as pd
 import numpy as np
 import zipfile
@@ -281,6 +282,7 @@ def feature_component(quant_df, reduced_df, annotation_df, metadata_df, family_c
     else:
         df = pd.merge(metadata_df[[filename_header,family_column, genus_column, species_column]], df, how='left', on=filename_header)
         df = df.sort_values(by=['FC'], ascending=False)
+    df.dropna(inplace=True)
     df.to_csv('../data_out/FC_results.tsv', sep='\t')
 
     return df
