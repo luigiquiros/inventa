@@ -99,11 +99,13 @@ def class_component(canopus_npc_df, filename_header, species_column, genus_colum
                             None
                     """
                     if df:
-                        return 1 # if the column is not empty then 1, something is new in the sp &/ genus
+                        return 0.5 # if the column is not empty then 1, something is new in the sp &/ genus
                     else:
                         return 0
 
-        df['CC'] = df['New_CC_in_sp'].apply(is_empty)
+        df['CCs'] = df['New_CC_in_sp'].apply(is_empty)
+        df['CCg'] = df['New_CC_in_genus'].apply(is_empty)
+        df['CC'] = df['CCs'] + df['CCg']
         df['CC'] = df['CC'].fillna(1)
         df.to_csv('../data_out/CC_results.tsv', sep='\t')
         return df
