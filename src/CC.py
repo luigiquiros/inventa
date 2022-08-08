@@ -12,30 +12,51 @@ from pandas import Series
 
 #Class component:
 
-def class_component(canopus_npc_df, filename_header, species_column, genus_column,family_column, metadata_df, reduced_df, min_class_confidence, min_recurrence, CC_component):
+def class_component(quantitative_data_filename, data_process_origin, canopus_npc_df, filename_header, species_column, genus_column,family_column, metadata_df, reduced_df, min_class_confidence, min_recurrence, CC_component):
         
     if CC_component == True:
         row_ID_header = 'row ID'
-        #normalize the filtered table and combine information from specificity and annotation status for each feature
 
-        filtered_quant_df_norm = reduced_df.copy()#.transpose()
-        filtered_quant_df_norm = filtered_quant_df_norm.div(filtered_quant_df_norm.sum(axis=1), axis=0).fillna(0)
-        filtered_quant_df_norm.reset_index(inplace=True)
-        filtered_quant_df_norm.rename(columns={'index': row_ID_header}, inplace=True)
-        filtered_quant_df_norm.set_index(row_ID_header, inplace=True)
-        filtered_quant_df_norm = filtered_quant_df_norm.astype(float)
-        filtered_quant_df_norm.rename(columns={'row ID': row_ID_header}, inplace=True)
+        #read the file 
+
+        quant_df_norm = pd.read_csv(quantitative_data_filename, sep=',')#,  index_col='row ID')
+        quant_df_norm.rename(columns = lambda x: x.replace(' Peak area', ''),inplace=True)
+        quant_df_norm.drop(list(quant_df_norm.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+        quant_df_norm.sort_index(axis=1, inplace=True)
+
+        if data_process_origin == 'MZMine3':
+
+            quant_df_norm.drop('row m/z', axis=1, inplace=True)
+            quant_df_norm.drop('row retention time', axis=1, inplace=True)
+
+            quant_df_norm.drop(['row ion mobility', 'correlation group ID', 'best ion', 'row ion mobility unit', 'row CCS', 
+            'annotation network number', 'auto MS2 verify', 'identified by n=', 'partners', 'neutral M mass'], axis=1, inplace=True)
+            quant_df_norm.set_index('row ID', inplace=True)
+
+        else:
+
+            quant_df_norm.drop('row m/z', axis=1, inplace=True)
+            quant_df_norm.drop('row retention time', axis=1, inplace=True)
+            quant_df_norm.set_index('row ID', inplace=True)
+
+        quant_df_norm = quant_df_norm.apply(lambda x: x/x.max(), axis=0)
+        
+        quant_df_norm = quant_df_norm.transpose()
+        quant_df_norm.reset_index(inplace=True)
+        quant_df_norm.rename(columns={'index': filename_header}, inplace=True)
+        quant_df_norm.set_index(filename_header, inplace=True)
 
         #retrieve the top 1 filename for each feature based on the quantitative table:
-        df = filtered_quant_df_norm.transpose()
+        df = quant_df_norm
         df = df.astype(float)
         df = df.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
         df = df.to_frame()
         df[['row ID']] = pd.DataFrame(df[0].values.tolist(),index= df.index)
         df = df.drop([0], axis=1)
-        df.reset_index(inplace=True)
+        #df.reset_index(inplace=True)
         df['row ID'] = pd.to_numeric(df['row ID'],errors = 'coerce')
         df['row ID'] = df['row ID'].fillna(0).astype(int)
+        df.reset_index(inplace=True)
 
         #merged with the information from Canopus
         canopus_npc_df['shared name'] = canopus_npc_df['shared name'].astype(int) 
@@ -83,13 +104,6 @@ def class_component(canopus_npc_df, filename_header, species_column, genus_colum
         df['New_CC_in_sp'] = df["NPC#class"] - df["Chemical_class_reported_in_species"]  
         df['New_CC_in_genus'] = df["New_CC_in_sp"] - df["Chemical_class_reported_in_genus"]
 
-        #change all the NaN with a string to indicate lack of reports in the literature 
-        df['Chemical_class_reported_in_species'] = df['Chemical_class_reported_in_species'].fillna('nothing in DB')
-        df['Chemical_class_reported_in_genus'] = df['Chemical_class_reported_in_genus'].fillna('nothing in DB')
-
-        df['New_CC_in_sp'] = df['New_CC_in_sp'].fillna('nothing in DB')
-        df['New_CC_in_genus'] = df['New_CC_in_genus'].fillna('nothing in DB')
-
         #function to check if there are new cc in ccs/ccg
         def is_empty(df):
                     """ function to check if the sets are empty or not 
@@ -103,10 +117,17 @@ def class_component(canopus_npc_df, filename_header, species_column, genus_colum
                     else:
                         return 0
 
-        df['CCs'] = df['New_CC_in_sp'].apply(is_empty)
-        df['CCg'] = df['New_CC_in_genus'].apply(is_empty)
+        df['CCs'] = df['New_CC_in_sp'].notnull().apply(is_empty)
+        df['CCg'] = df['New_CC_in_genus'].notnull().apply(is_empty)
         df['CC'] = df['CCs'] + df['CCg']
         df['CC'] = df['CC'].fillna(1)
+
+        #change all the NaN with a string to indicate lack of reports in the literature 
+        df['Chemical_class_reported_in_species'] = df['Chemical_class_reported_in_species'].fillna('nothing in DB')
+        df['Chemical_class_reported_in_genus'] = df['Chemical_class_reported_in_genus'].fillna('nothing in DB')
+        df['New_CC_in_sp'] = df['New_CC_in_sp'].fillna('nothing in DB')
+        df['New_CC_in_genus'] = df['New_CC_in_genus'].fillna('nothing in DB')
+
         df.to_csv('../data_out/CC_results.tsv', sep='\t')
         return df
     else:
