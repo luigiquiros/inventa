@@ -46,16 +46,16 @@ def class_component(quantitative_data_filename, data_process_origin, canopus_npc
         quant_df_norm.rename(columns={'index': filename_header}, inplace=True)
         quant_df_norm.set_index(filename_header, inplace=True)
 
-        #retrieve the top 1 filename for each feature based on the quantitative table:
-        df = quant_df_norm
+       #retrieve the top 1 filename for each feature based on the quantitative table:
+        df = quant_df_norm.transpose()
         df = df.astype(float)
         df = df.apply(lambda s: s.abs().nlargest(1).index.tolist(), axis=1)
         df = df.to_frame()
-        df[['row ID']] = pd.DataFrame(df[0].values.tolist(),index= df.index)
+        df[['filename']] = pd.DataFrame(df[0].values.tolist(),index= df.index)
         df = df.drop([0], axis=1)
         #df.reset_index(inplace=True)
-        df['row ID'] = pd.to_numeric(df['row ID'],errors = 'coerce')
-        df['row ID'] = df['row ID'].fillna(0).astype(int)
+        #df['filename'] = pd.to_numeric(df['filen'],errors = 'coerce')
+        #df['row ID'] = df['row ID'].fillna(0).astype(int)
         df.reset_index(inplace=True)
 
         #merged with the information from Canopus
