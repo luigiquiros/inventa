@@ -808,7 +808,7 @@ def pseudochromatogram(sample, quantitative_data_filename, annotation_df, metada
     fig.show()
     
 
-def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_identity, correlation_groups_df, data_process_origin, filename_header):
+def ionmap2D(sample, quantitative_data_filename, annotation_df, metadata_df, reduced_df,  min_specificity, annotation_preference, species_column, organe_column, CC_component, canopus_npc_summary_filename, min_class_confidence, sirius_annotations, sirius_annotations_filename, min_ConfidenceScore, min_ZodiacScore, use_ion_identity, correlation_groups_df, data_process_origin, filename_header):
     
     if use_ion_identity == True: 
         row_ID_header = 'annotation network number'
@@ -943,6 +943,7 @@ def chromatogram2D(sample, quantitative_data_filename, annotation_df, metadata_d
     height=500)
     fig.update_xaxes(title_text='retention time (min)',showgrid=False, ticks="outside", tickson="boundaries")
     fig.update_yaxes(title_text='m/z max')
-    fig.write_html("../data_out/chromato2D.html") 
-    #fig.write_image("../data_out/chromato2D.jpg")
+    fig.write_html("../data_out/IonMap2D.html") 
+    #fig.write_image("../data_out/2DionMap
+    #.jpg")
     fig.show()
