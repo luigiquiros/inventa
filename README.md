@@ -3,19 +3,18 @@
 
 ## Description
 
-This workflow explores the potential of a set of samples to contain novel compounds. 
-It is composed of 4 independent components:
+Inventa calculates multiple scores that estimate the chemical novelty potential of the natural extracts. It has the potential to accelerate the discovery of new natural produts.
+The rank comes from the addition of four individual components:
 
-The **Feature Component (FC)** is a percentage indicating the proportion of specific non annotated features by sample. A user-defined `minimum specificity` value is used to designate the minimum percentage at which a feature is considered specific, by default the value is set to 0.9 (90%). Additionally, a column wiht the Feature specificity (not considering the annotations) is calculated. This allows a direct visualization of the proportion of specific features that were annotated. A ratio of non annotated specific features with a hihg quality Molecular formula predictions is calculated if the Zodiac MF prediction from Sirius is included in the input.
+The **Feature Component (FC)** is a ratio of the number of specific non-annotated features over the total number of features of each extract. For example, an FC of ‘0.6’ implies that 60% of the total features in a given extract are specific within the extract set and do not present structural annotations.
 
-The **Literature Component (LC)** is based on the number of compounds reported in the literature for the taxon. The output includes one column with the LC score and at least two additional columns of metadata containing the number of reported compounds at the species and genus levels.
+The **Literature Component (LC)** is a score based on the number of compounds reported in the literature for the taxon of a given extract. It is independent of the spectral data. For example, an LC value of 1 indicates no reported compounds for the considered taxon. From this initial value (‘1’), fractions (ratio of reported compounds over the user-defined maximum value of reported compounds) are subtracted. The first fraction is related to compounds found in the species, the second one to those found in the genus, and the third one in the family.
 
-The **Similarity Component (SC)** is based on the spectral similarity of the sample within the set. Multiple outlier detection machine learning algorithms are implemented to spot the dissimilar samples. A value of ‘1’ is given to the sample considered anomalies in at least one detection method.
+The **Class Component (CC)** indicates if an unreported chemical class is detected in a given extract compared to those reported in the species and the genus. A CC value of 1 implies that the chemical class is new to both the species (CCs 0.5) and the genus (CCg 0.5).
 
-The **Class Component (CC)** is based on the presence of possible new chemical classes in the taxon, not previously reported before. The CC will be considered ‘1’ if there are new chemical classes at the species level, and an additional ‘1’ if those new chemical classes are not present in the genus either.
+The **Similarity Component (SC)** is a complementary score that compares extracts based on their general MS2 spectral information independently from the feature alignment used in FC, using the MEMO metric. This metric generates a matrix containing all the MS2 information in the form of peaks and neutral losses without annotations. The matrix is mined through multiple outlier detection machine learning algorithms to highlight spectrally dissimilar extracts (outliers). An SC value of ‘1’ implies the extract is classified as an outlier within the extract set studied.
 
 The combined score (addition of the four components) can be modulated according to the user preference. The output consists of .tsv file with all the information generated along with the final rank of the samples.
-
 
 ## Installation
 

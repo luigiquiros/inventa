@@ -1,9 +1,9 @@
-title: "INVENTA"
-description: "Workflow for prioritization of natural extracts for chemical originality discovery"
+title: "Inventa"
+description: " a computational tool to discover chemical novelty in natural  extracts libraries"
 logo: /assets/img/logo.png
 
 
-subtitle: "Version 1.0"
+subtitle: "Version 1.0.0"
 name: Luis Quiros-Guerrero
 email: luis.guerrero@unige.ch
 
