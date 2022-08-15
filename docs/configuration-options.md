@@ -46,8 +46,8 @@ Each path corresponds to the files mentiones above. Just drop your files in the 
 #### quantitative table
 
 ```
-data_process_origin = 'MZMine3'   #'MZMine2' or 'MZmine3' #specify the sofware use to process the data
-use_ion_dentity= True             # specify if the ions identity groups should be considered or not. Default True, else False
+    data_process_origin = 'MZMine3'   #'MZMine2' or 'MZmine3' #specify the sofware use to process the data
+    use_ion_dentity= True             # specify if the ions identity groups should be considered or not. Default True, else False
 ```
 
 ##### Feature_component
@@ -98,9 +98,9 @@ use_ion_dentity= True             # specify if the ions identity groups should b
 
 ```
     
-CC_component = True               # CC will be calculated
-min_class_confidence = 0.8       #cut-off filter for considering a sirius class valable. It is used in combination with min_recurrence.
-min_recurrence = 5               # minimum recurrence of a chemical class to consider it acceptable
+    CC_component = True               # CC will be calculated
+    min_class_confidence = 0.8       #cut-off filter for considering a sirius class valable. It is used in combination with min_recurrence.
+    min_recurrence = 5               # minimum recurrence of a chemical class to consider it acceptable
 ```
 
 ##### specify the weight to modulate each component:
