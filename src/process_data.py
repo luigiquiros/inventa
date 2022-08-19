@@ -118,20 +118,20 @@ def priority_rank(FC, LC, SC, CC, LC_component, SC_component, CC_component, w1, 
         df
 
     def priority(df):
-        df['PR'] = w1*df['FC']
+        df['PS'] = w1*df['FC']
     
         if LC_component == True: 
-            df['PR'] = w1*df['FC'] + w2*df['LC']
+            df['PS'] = w1*df['FC'] + w2*df['LC']
         else:
             df
 
         if SC_component == True:
-            df['PR'] = w1*df['FC'] + w2*df['LC'] + w3*df['SC']
+            df['PS'] = w1*df['FC'] + w2*df['LC'] + w3*df['SC']
         else:
             df
 
         if CC_component == True: 
-            df['PR'] = w1*df['FC'] + w2*df['LC'] + w3*df['SC'] + w4*df['CC']
+            df['PS'] = w1*df['FC'] + w2*df['LC'] + w3*df['SC'] + w4*df['CC']
         else: 
             df
         return df
@@ -182,7 +182,7 @@ def selection_changed_FC(selection):
     return FC.iloc[selection]
 
 def selection_changed(selection):
-    return PR.iloc[selection]
+    return PS.iloc[selection]
 
 #Function to count features different from 0 in each sample 
 def feature_count(df, header, filename_header):

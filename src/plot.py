@@ -864,11 +864,11 @@ def ionmap2D(sample, quantitative_data_filename, annotation_df, metadata_df, red
     #change the area for the post filter-row wise normalized one
     df_check = df
     df_check[sample] = reduced_df_norm[sample]
-    df_check['status'] = np.where(
-    ((df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'specific non annotated', 
+    df_check['category'] = np.where(
+    ((df_check[sample] > min_specificity) & (df_check['annotation'] == annotation_preference)), 'specific unannotated', 
     (np.where (((df_check[sample] > min_specificity) & (df_check['annotation'] != annotation_preference)),'specific annotated', 'not interesting'))
     )
-    df_check.annotation = df_check.annotation.map({1: 'annotated', 0: 'non anotated'})
+    df_check.annotation = df_check.annotation.map({1: 'annotated', 0: 'unanotated'})
     #change intensity for the intensity before filtering
     df_check[sample] = dfq[sample]
     #erase all zero values (easy to plot)
@@ -905,13 +905,16 @@ def ionmap2D(sample, quantitative_data_filename, annotation_df, metadata_df, red
 
     if CC_component == True and use_ion_identity == False:
 
-        canopus_npc_df=pd.read_csv(canopus_npc_summary_filename, sep=',', usecols=['name', 'pathway', 'superclass', 'class', 'classProbability'])
-        canopus_npc_df.rename(columns={'name': 'row ID'}, inplace=True)
+        canopus_npc_df=pd.read_csv(canopus_npc_summary_filename, sep='\t', usecols=['id', 'NPC#pathway', 'NPC#superclass', 'NPC#class', 'NPC#class Probability'])
+        canopus_npc_df['row ID'] = canopus_npc_df['id'].str.split('_').str[-1].astype(int)
+        canopus_npc_df.drop('id', axis=1, inplace=True)
+        canopus_npc_df.rename(columns={'NPC#class Probability': 'NPC_classProbability'}, inplace=True) 
         #filter by class probability
-        canopus_npc_df.drop(canopus_npc_df[canopus_npc_df.classProbability > min_class_confidence].index, inplace=True)
+        canopus_npc_df.drop(canopus_npc_df[canopus_npc_df.NPC_classProbability > min_class_confidence].index, inplace=True)
         df_check = pd.merge(df_check, canopus_npc_df, how='left', on= 'row ID')
-        df_check.fillna({'pathway': 'not available', 'superclass': 'not available','class': 'not available' }, inplace=True)
-        df_check.drop('classProbability', axis=1, inplace=True)
+        df_check.fillna({'NPC#pathway': 'not available', 'NPC#superclass': 'not available','NPC#class': 'not available' }, inplace=True)
+        df_check.drop('NPC_classProbability', axis=1, inplace=True)
+        df_check = df_check.fillna(0)
     else:
         df_check    
         df_check.to_csv('../data_out/Interesting_features_for'+sample+'.tsv', sep='\t')
@@ -927,8 +930,8 @@ def ionmap2D(sample, quantitative_data_filename, annotation_df, metadata_df, red
                             size= sample,
                             title='2D chromatogram plot for '+sample+'<br>species: <i>'+species+'<i><br>organism part: '+organism_part+'</sup>',
                             template="simple_white",
-                            color ='status',
-                            color_discrete_map= {'specific non annotated': '#1E88E5', 'not interesting': '#FFC107', 'specific annotated':'#004D40'},
+                            color ='category',
+                            color_discrete_map= {'specific unannotated': '#1E88E5', 'not interesting': '#FFC107', 'specific annotated':'#004D40'},
                             hover_data=df_check.columns
                             )
 
@@ -942,7 +945,7 @@ def ionmap2D(sample, quantitative_data_filename, annotation_df, metadata_df, red
     width=1400,
     height=500)
     fig.update_xaxes(title_text='retention time (min)',showgrid=False, ticks="outside", tickson="boundaries")
-    fig.update_yaxes(title_text='m/z max')
+    fig.update_yaxes(title_text='m/z')
     fig.write_html("../data_out/IonMap2D.html") 
     #fig.write_image("../data_out/2DionMap
     #.jpg")
