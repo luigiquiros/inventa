@@ -1,3 +1,4 @@
+from fileinput import filename
 import pandas as pd
 import numpy as np
 import zipfile
@@ -20,7 +21,7 @@ from skbio import OrdinationResults
 
 #similarity component: 
 
-def similarity_component(df, SC_component):
+def similarity_component(df, SC_component, filename_header):
     """ function to compute the similarity component based on the MEMO matrix and machine learning unsupervised clustering methods 
     Args:
         df = memo matrix
@@ -30,7 +31,7 @@ def similarity_component(df, SC_component):
     """
     if SC_component == True:
         df1 = df.copy()
-        df1.set_index('filename', inplace=True)
+        df1.set_index(filename, inplace=True)
         df2 = df.copy()
         
         #specify the parameters of the individual classification algorithms
@@ -70,8 +71,8 @@ def similarity_component(df, SC_component):
 
         #recover and print the results
         df1.reset_index(inplace=True)
-        df = pd.merge(df1,df2, how='left', left_on='filename', right_on='filename')
-        df = df[['filename', 'anomaly_IF', 'anomaly_LOF', 'anomaly_OCSVM']]
+        df = pd.merge(df1,df2, how='left', on =filename_header)
+        df = df[[filename_header, 'anomaly_IF', 'anomaly_LOF', 'anomaly_OCSVM']]
 
         def similarity_conditions(df):
             if (df['anomaly_IF'] == -1) | (df['anomaly_LOF'] == -1) | (df['anomaly_OCSVM'] == -1):
@@ -85,7 +86,7 @@ def similarity_component(df, SC_component):
     else:
         print('Similarity component not calculated')
 
-def calculate_memo_matrix_ind_files(repository_path, spectra_suffix):
+def calculate_memo_matrix_ind_files(repository_path, spectra_suffix, filename_header):
     
     # Generating memo matrix
     memo_unaligned = memo.MemoMatrix()
@@ -102,5 +103,7 @@ def calculate_memo_matrix_ind_files(repository_path, spectra_suffix):
     
     df = memo_unaligned_filtered.memo_matrix
     df.reset_index(inplace=True)
-    df.rename(columns={'index': 'filename'}, inplace=True)
+    df.rename(columns={'index': filename_header}, inplace=True)
+    #df[filename_header] = df[filename_header].apply(lambda x: "{}{}".format(x, polarity))
+
     return df 

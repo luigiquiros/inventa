@@ -67,6 +67,30 @@ def drop_samples_based_on_string(df,filename,list_of_strings_for_QC_Blank_filter
     df.to_csv(completeName, sep='\t')
     return df
 
+def drop_samples_based_on_string_ind(df, metadata_df, filename_header, sampletype_header, filename,list_of_strings_for_QC_Blank_filter,column):
+    """ drop samples based on string 
+
+    Args:
+        pd dataframe
+        list of string
+
+    Returns:
+        pd dataframe
+    """
+    df= pd.merge(metric_df, metadata_df[[filename_header, sampletype_header]], how='left', on=filename_header)
+    print(df.shape)
+
+    for string in list_of_strings_for_QC_Blank_filter:
+        df = df[~df[column].str.contains(string, na=False)]
+        df = df.dropna(how = 'any', subset=[column])
+    print(df.shape)
+    
+    save_path = '../data_out/'
+    completeName = os.path.join(save_path, filename+".tsv")
+    df.to_csv(completeName, sep='\t')
+    df.drop(sampletype_header, axis=1, inplace=True)
+    return df
+    
 def reduce_df(full_df, metadata_df, col_id_unique):
     """ Reduce the full df to minimal info
 

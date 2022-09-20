@@ -64,6 +64,7 @@ def literature_component(LC_component, metadata, filename_header, species_column
         df = df.fillna(0) #assumign species not present in LotusDB the number of reported compounds is set to 0
         df['LC'] = 1-(df['Reported_comp_Species'].div(max_comp_reported_sp*100))*ws - (df['Reported_comp_Genus'].div(max_comp_reported_g*100))*wg - (df['Reported_comp_Family'].div(max_comp_reported_f*100
         ))*wf
+        df['LC'] = df['LC'].apply(lambda x : x if x > 0 else 0)
         df.to_csv('../data_out/LC_results.tsv', sep='\t')
         return df
     else:
