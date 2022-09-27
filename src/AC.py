@@ -8,23 +8,21 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import zipfile
 import pathlib
+from tqdm import tqdm
 
-def ind_quant_table_full(repository_path, ionization_mode, data_process_origin, use_ion_identity, min_score_final, min_ConfidenceScore, min_ZodiacScore):
+def ind_quant_table_full(repository_path, ionization_mode, file_extention, data_process_origin, use_ion_identity, min_score_final, min_ConfidenceScore, min_ZodiacScore):
         
     path = os.path.normpath(repository_path)
     samples_dir = [directory for directory in os.listdir(path)]
 
     for directory in tqdm(samples_dir):
-
         quant_path = os.path.join(path, directory, ionization_mode, directory + '_features_quant_' + ionization_mode + '.csv')
         isdb_path = os.path.join(path, directory, ionization_mode+'/isdb/', directory +'_isdb_reweighted_' + ionization_mode+ '.tsv')
         sirius_path = os.path.join(path, directory, ionization_mode, directory + '_WORKSPACE_SIRIUS', 'compound_identifications_adducts.tsv')
-        
         try:
             df =pd.read_csv(quant_path, sep=',')
             dfs = pd.read_csv(sirius_path, sep='\t')
             dfi = pd.read_csv(isdb_path, sep='\t')
-
         except FileNotFoundError:
             continue
         except NotADirectoryError:
@@ -130,9 +128,10 @@ def ind_quant_table_full(repository_path, ionization_mode, data_process_origin, 
         else:
             df
     
-        pathout = os.path.join(samples_dir, 'results/')
+        pathout = os.path.join(path, 'results/')
         os.makedirs(pathout, exist_ok=True)
         pathout = os.path.join(pathout, directory +'_' + ionization_mode + '_quant_annotations.tsv')
+        #pathout = os.path.normpath(os.path.join((pathout, directory +'_' + ionization_mode + '_quant_annotations.tsv')))
         df.to_csv(pathout, sep ='\t')
     print(f'Result are in : {pathout}')
 
