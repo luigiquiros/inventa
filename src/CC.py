@@ -133,70 +133,175 @@ def class_component(quantitative_data_filename, data_process_origin, canopus_npc
     else:
         print ('No search was done because the Class component is not going to be calculated')
 
-def class_component_ind_files(CC_component, repository_path, canopus_sample_suffix, metadata_df, filename_header, species_column, genus_column, family_column):
+#class component general for NPClassifier
+
+def class_component_ind_files(CC_component, repository_path, canopus_sample_suffix, min_class_confidence, metadata_df, filename_header, species_column, genus_column, family_column):
     """
     Function to recover the chemical classes predicted and reported from individual files and LOTUS accordingly, used for calculation of inventa non aligned data
     """
-    if CC_component == True:
-        df1 = pd.DataFrame()
+    if CC_component == True:      
         for r, d, f in os.walk(repository_path):
             for file in (f for f in f if f.endswith(canopus_sample_suffix)):
                 complete_file_path =r+'/'+file
                 read_file = pd.read_csv(complete_file_path, sep = '\t').dropna()
-                read_file['partial_filename'] = read_file['name'].apply(lambda r: '_'.join(r.split('_')[:-3]) if len(r.split('_')) > 1 else r)
+                read_file['partial_filename'] = read_file['id'].apply(lambda r: '_'.join(r.split('_')[:-3]) if len(r.split('_')) > 1 else r)
                 read_file['partial_filename'] = read_file['partial_filename'].apply(lambda r: '_'.join(r.split('_')[1:]) if len(r.split('_')) > 1 else r)
-                read_file = read_file[['partial_filename', 'class']].groupby('partial_filename').agg(set)
-                df1 = df1.append(read_file, ignore_index=False)
+                read_file.rename(columns={'id': 'shared name','NPC#class Probability': 'NPC_class_Probability'}, inplace=True)
+                read_file = read_file[['partial_filename', 'id', 'NPC#class', 'NPC#class Probability']]
+                read_file = read_file[read_file.NPC_class_Probability > min_class_confidence]
+                read_file = read_file[['partial_filename', 'NPC#class']].groupby('partial_filename').agg(set)
+                df = df.append(read_file, ignore_index=False)
             else:
                 continue
-        df1.reset_index(inplace=True)
+
+        df.reset_index(inplace=True)
         df2 = metadata_df
         s = [df2[df2[filename_header].str.contains(x)].index[0] for x in df1['partial_filename']]
-        df1 = df1.assign(subcode=Series(data=df2[filename_header], index=s)).merge(df2[[filename_header, species_column]], left_on='subcode', right_on=filename_header).drop('subcode', axis='columns')
-        df1.drop('partial_filename', axis=1, inplace=True)
+        df = df.assign(subcode=Series(data=df2[filename_header], index=s)).merge(df2[[filename_header, species_column]], left_on='subcode', right_on=filename_header).drop('subcode', axis='columns')
+        df.drop('partial_filename', axis=1, inplace=True)
 
-        #now, try to get the reported chemical classes for the set 
+        ## Retrieve classes reported in Lotus
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',sep=',').dropna()
+        
         #create a set of species present in the metatada and reduce the lotus DB to it
-        set_sp = set(df2[species_column].dropna())
+        set_sp = set(metadata_df[species_column].dropna())
         LotusDB= LotusDB[LotusDB['organism_taxonomy_09species'].isin(set_sp)]
 
         #retrieve the chemical classes associated to the species and genus
-        df3 = LotusDB[['organism_taxonomy_09species', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_09species').agg(set)
-        df3.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_species'}, inplace=True)
-        df4 = LotusDB[['organism_taxonomy_08genus', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_08genus').agg(set)
-        df4.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
+        ccs = LotusDB[['organism_taxonomy_09species', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_09species').agg(set)
+        ccs.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_species'}, inplace=True)
+        ccg = LotusDB[['organism_taxonomy_08genus', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_08genus').agg(set)
+        ccg.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
 
         #merge into a single dataframe
-        df5 = pd.merge(df2[[filename_header, species_column, genus_column, family_column]], df3, left_on= species_column, right_on='organism_taxonomy_09species', how='left')
-        df5 = pd.merge(df5,df4, left_on= genus_column, right_on='organism_taxonomy_08genus', how='left')
+        cc = pd.merge(metadata_df[[filename_header, species_column, genus_column, family_column]], ccs, left_on= species_column, right_on='organism_taxonomy_09species', how='left')
+        cc = pd.merge(cc,ccg, left_on= genus_column, right_on='organism_taxonomy_08genus', how='left')
 
         #obtain the difference between the predicted and reported compounds
-        df = pd.merge(df1[[filename_header, 'class']],df5,on=filename_header, how='left').dropna()
-        
-        df['New_CC_in_sp'] = df["class"] - df["Chemical_class_reported_in_species"]  #check if the chemical classes from Sirius are reported in the species 
+        #first merge both dataframes
+        df = pd.merge(df[[filename_header, 'NPC#class']],cc,on=filename_header, how='left')#.dropna()
+
+        #check if the chemical classes from Sirius are reported in the species
+        df['New_CC_in_sp'] = df["NPC#class"] - df["Chemical_class_reported_in_species"]  
         df['New_CC_in_genus'] = df["New_CC_in_sp"] - df["Chemical_class_reported_in_genus"]
-            
+
+        #function to check if there are new cc in ccs/ccg
+        def is_empty(df):
+                    """ function to check if the sets are empty or not 
+                        Args:
+                            df = Class component column CC 
+                            Returns:
+                            None
+                    """
+                    if df:
+                        return 0.5 # if the column is not empty then 1, something is new in the sp &/ genus
+                    else:
+                        return 0
+
+        df['CCs'] = df['New_CC_in_sp'].notnull().apply(is_empty)
+        df['CCg'] = df['New_CC_in_genus'].notnull().apply(is_empty)
+        df['CC'] = df['CCs'] + df['CCg']
+        df['CC'] = df['CC'].fillna(1)
+
         #change all the NaN with a string to indicate lack of reports in the literature 
         df['Chemical_class_reported_in_species'] = df['Chemical_class_reported_in_species'].fillna('nothing in DB')
         df['Chemical_class_reported_in_genus'] = df['Chemical_class_reported_in_genus'].fillna('nothing in DB')
-
         df['New_CC_in_sp'] = df['New_CC_in_sp'].fillna('nothing in DB')
         df['New_CC_in_genus'] = df['New_CC_in_genus'].fillna('nothing in DB')
+        
+        #if we considered lack of reports in DB... all the proposed cc will be new to that particular species, hence.. the real value of CC is 1, not zero
+        string = 'nothing in DB'
+        df.loc[df['Chemical_class_reported_in_species'] ==string, 'CC'] = 1
 
-            
-        def is_empty(df):
-            """ function to check if the sets are empty or not 
-                Args:
-                    df = Class component column CC 
-                    Returns:
-                    None
-            """
-            if df:
-                return 1 # if the column is not empty then 1, something is new in the sp &/ genus
+        df.to_csv('../data_out/LC_results.tsv', sep='\t')
+        return df
+    else:
+        print ('No search was done because the Class component is not going to be calculated')
+
+
+#class component general for NPClassifier PF1600
+
+def class_component_ind_files_PF1600(CC_component, repository_path, canopus_sample_suffix, min_class_confidence, metadata_df, filename_header, species_column, genus_column, family_column):
+    """
+    Function to recover the chemical classes predicted and reported from individual files and LOTUS accordingly, used for calculation of inventa non aligned data
+    """
+    if CC_component == True:
+        df = pd.DataFrame()      
+        for r, d, f in os.walk(repository_path):
+            for file in (f for f in f if f.endswith(canopus_sample_suffix)):
+                complete_file_path =r+'/'+file
+                read_file = pd.read_csv(complete_file_path, sep = ',').dropna()
+                read_file['partial_filename'] = read_file['directoryName'].apply(lambda r: '/'.join(r.split('/')[8:]) if len(r.split('_')) > 1 else r)
+                read_file['partial_filename'] = read_file['partial_filename'].apply(lambda r: '_'.join(r.split('_')[:-3]) if len(r.split('_')) > 1 else r)
+                read_file['partial_filename'] = read_file['partial_filename'].apply(lambda r: '_'.join(r.split('_')[1:]) if len(r.split('_')) > 1 else r)
+                read_file.rename(columns={'name': 'shared name','classProbability': 'NPC_class_Probability', 'class':'NPC#class'}, inplace=True)
+                read_file = read_file[['partial_filename', 'shared name', 'NPC#class', 'NPC_class_Probability']]
+                read_file = read_file[read_file.NPC_class_Probability > min_class_confidence]
+                read_file = read_file[['partial_filename', 'NPC#class']].groupby('partial_filename').agg(set)
+                df = df.append(read_file, ignore_index=False)
             else:
-                return 0
-        df['CC'] = df['New_CC_in_sp'].apply(is_empty)
+                continue
+
+        df.reset_index(inplace=True)
+        df2 = metadata_df
+        s = [df2[df2[filename_header].str.contains(x)].index[0] for x in df['partial_filename']]
+        df = df.assign(subcode=Series(data=df2[filename_header], index=s)).merge(df2[[filename_header, species_column]], left_on='subcode', right_on=filename_header).drop('subcode', axis='columns')
+        df.drop('partial_filename', axis=1, inplace=True)
+
+        ## Retrieve classes reported in Lotus
+        LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',sep=',').dropna()
+        
+        #create a set of species present in the metatada and reduce the lotus DB to it
+        set_sp = set(metadata_df[species_column].dropna())
+        LotusDB= LotusDB[LotusDB['organism_taxonomy_09species'].isin(set_sp)]
+
+        #retrieve the chemical classes associated to the species and genus
+        ccs = LotusDB[['organism_taxonomy_09species', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_09species').agg(set)
+        ccs.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_species'}, inplace=True)
+        ccg = LotusDB[['organism_taxonomy_08genus', 'structure_taxonomy_npclassifier_03class']].groupby('organism_taxonomy_08genus').agg(set)
+        ccg.rename(columns={'structure_taxonomy_npclassifier_03class': 'Chemical_class_reported_in_genus'}, inplace=True)
+
+        #merge into a single dataframe
+        cc = pd.merge(metadata_df[[filename_header, species_column, genus_column, family_column]], ccs, left_on= species_column, right_on='organism_taxonomy_09species', how='left')
+        cc = pd.merge(cc,ccg, left_on= genus_column, right_on='organism_taxonomy_08genus', how='left')
+
+        #obtain the difference between the predicted and reported compounds
+        #first merge both dataframes
+        df = pd.merge(df[[filename_header, 'NPC#class']],cc,on=filename_header, how='left')#.dropna()
+
+        #check if the chemical classes from Sirius are reported in the species
+        df['New_CC_in_sp'] = df["NPC#class"] - df["Chemical_class_reported_in_species"]  
+        df['New_CC_in_genus'] = df["New_CC_in_sp"] - df["Chemical_class_reported_in_genus"]
+
+        #function to check if there are new cc in ccs/ccg
+        def is_empty(df):
+                    """ function to check if the sets are empty or not 
+                        Args:
+                            df = Class component column CC 
+                            Returns:
+                            None
+                    """
+                    if df:
+                        return 0.5 # if the column is not empty then 1, something is new in the sp &/ genus
+                    else:
+                        return 0
+
+        df['CCs'] = df['New_CC_in_sp'].notnull().apply(is_empty)
+        df['CCg'] = df['New_CC_in_genus'].notnull().apply(is_empty)
+        df['CC'] = df['CCs'] + df['CCg']
+        df['CC'] = df['CC'].fillna(1)
+
+        #change all the NaN with a string to indicate lack of reports in the literature 
+        df['Chemical_class_reported_in_species'] = df['Chemical_class_reported_in_species'].fillna('nothing in DB')
+        df['Chemical_class_reported_in_genus'] = df['Chemical_class_reported_in_genus'].fillna('nothing in DB')
+        df['New_CC_in_sp'] = df['New_CC_in_sp'].fillna('nothing in DB')
+        df['New_CC_in_genus'] = df['New_CC_in_genus'].fillna('nothing in DB')
+        
+        #if we considered lack of reports in DB... all the proposed cc will be new to that particular species, hence.. the real value of CC is 1, not zero
+        string = 'nothing in DB'
+        df.loc[df['Chemical_class_reported_in_species'] ==string, 'CC'] = 1
+        
+
         df.to_csv('../data_out/LC_results.tsv', sep='\t')
         return df
     else:
