@@ -65,7 +65,6 @@ def ind_quant_table_full(repository_path, ionization_mode, file_extention, data_
         #normalize
         df.set_index('row ID', inplace=True)
         df = df.apply(lambda x: x/x.sum(), axis=0)
-
         df =pd.merge(df, df1, how ='left', on='row ID')
 
         #rename columns
@@ -92,7 +91,7 @@ def ind_quant_table_full(repository_path, ionization_mode, file_extention, data_
                     annotated=0 #'bad annotation'
                 return annotated   
 
-            dfi['Annotation_ISDB'] = dfi.apply(lambda x: score_final_isdb(x['final_score']), axis=1)
+            dfi['Annotated_ISDB'] = dfi.apply(lambda x: score_final_isdb(x['final_score']), axis=1)
             dfi.drop('final_score', axis =1, inplace=True)
             dfi.loc[dfi['libname']== 'MS1_match', 'Annotated_ISDB'] = 0
 
@@ -127,7 +126,21 @@ def ind_quant_table_full(repository_path, ionization_mode, file_extention, data_
             df.drop('shared name', axis=1, inplace = True)
         else:
             df
-    
+            
+        def annotation_status(df):
+            
+            """ function to classify the annotations results 
+            Args:
+            df = treated and combinend table with the gnps and insilico results
+            Returns:
+            None
+            """
+            if (df['Annotated_ISDB'] == 1) or (df['Annotated_Sirius'] == 1):
+                return 1
+            else: 
+                return 0
+
+        df['annotation'] = df.apply(annotation_status, axis=1)
         pathout = os.path.join(path, 'results/')
         os.makedirs(pathout, exist_ok=True)
         pathout = os.path.join(pathout, directory +'_' + ionization_mode + '_quant_annotations.tsv')

@@ -139,7 +139,8 @@ def class_component_ind_files(CC_component, repository_path, canopus_sample_suff
     """
     Function to recover the chemical classes predicted and reported from individual files and LOTUS accordingly, used for calculation of inventa non aligned data
     """
-    if CC_component == True:      
+    if CC_component == True:   
+        df= pd.DataFrame()   
         for r, d, f in os.walk(repository_path):
             for file in (f for f in f if f.endswith(canopus_sample_suffix)):
                 complete_file_path =r+'/'+file
