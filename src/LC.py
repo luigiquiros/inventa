@@ -21,6 +21,7 @@ def literature_component(LC_component, metadata, filename_header, species_column
     """
     if LC_component == True:
         df = metadata
+        df = df[df[species_column].notna()]
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv', 
                        sep=',').dropna()
 

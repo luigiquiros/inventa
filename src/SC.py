@@ -31,7 +31,7 @@ def similarity_component(df, SC_component, filename_header):
     """
     if SC_component == True:
         df1 = df.copy()
-        df1.set_index(filename, inplace=True)
+        df1.set_index(filename_header, inplace=True)
         df2 = df.copy()
         
         #specify the parameters of the individual classification algorithms

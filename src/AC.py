@@ -271,8 +271,8 @@ def ind_quant_table(repository_path, quant_table_suffix, data_process_origin, us
                 prefix = 'treated_'
                 df.to_csv(r+'/'+prefix+file, sep =',')
 
-def annotation_component(repository_path, ionization_mode, intensity_filter, quantile_filter, min_threshold, quantile_threshold):
-
+def annotation_component(repository_path, ionization_mode, file_extention, intensity_filter, quantile_filter, min_threshold, quantile_threshold):
+    
     path = os.path.normpath(repository_path)
     samples_dir = [directory for directory in os.listdir(path)]
 
@@ -282,8 +282,11 @@ def annotation_component(repository_path, ionization_mode, intensity_filter, qua
     annotated_features_count = []
 
     for directory in tqdm(samples_dir):
+        
         quant_annotations_path = os.path.join(path, path +'/results/', directory + '_'+ionization_mode + '_quant_annotations.tsv')
-        column = os.path.join(path, directory, directory + file_extention)
+        
+        #get the filename column associated to each quant table
+        column = os.path.join(path, directory, directory + '.mzXML')
         column = column.rsplit('/',1)[1]
 
         try:
@@ -341,6 +344,7 @@ def annotation_component(repository_path, ionization_mode, intensity_filter, qua
         dffc = dffc[dffc>0.0].count()
         feature_count_filtered.append(dffc)
 
+
         #number of features after filtering annotated
         dfa = dff[[column, 'annotation']]
         dfa = dfa[dfa['annotation'] == 1]
@@ -348,7 +352,7 @@ def annotation_component(repository_path, ionization_mode, intensity_filter, qua
         dfac = dfa[dfa>0.0].count()
         annotated_features_count.append(dfac)
 
-    AC = pd.DataFrame({'ms_filename': files,'initial_features': original_feature_count, 'features_after_filtering' : feature_count_filtered, 'Annot_features_after_filtering': annotated_features_count })
-    AC['AC'] = AC['Annot_features_after_filtering']/AC['features_after_filtering']*100
+    AC = pd.DataFrame({filename_header: files,'initial_features': original_feature_count, 'features_after_filtering' : feature_count_filtered, 'Annot_features_after_filtering': annotated_features_count })
+    AC['AC'] = (AC['features_after_filtering'] - AC['Annot_features_after_filtering'])/AC['features_after_filtering'] # % of features unannotated
     AC['AC'] = AC['AC'].round(decimals = 1)
     return AC

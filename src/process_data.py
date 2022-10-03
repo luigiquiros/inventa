@@ -67,7 +67,7 @@ def drop_samples_based_on_string(df,filename,list_of_strings_for_QC_Blank_filter
     df.to_csv(completeName, sep='\t')
     return df
 
-def drop_samples_based_on_string_ind(df, metadata_df, filename_header, sampletype_header, filename,list_of_strings_for_QC_Blank_filter,column):
+def drop_samples_based_on_string_ind(metric_df, metadata_df, filename_header, sampletype_header, filename,list_of_strings_for_QC_Blank_filter,column):
     """ drop samples based on string 
 
     Args:
@@ -85,9 +85,9 @@ def drop_samples_based_on_string_ind(df, metadata_df, filename_header, sampletyp
         df = df.dropna(how = 'any', subset=[column])
     print(df.shape)
     
-    save_path = '../data_out/'
-    completeName = os.path.join(save_path, filename+".tsv")
-    df.to_csv(completeName, sep='\t')
+    #save_path = '../data_out/'
+    #completeName = os.path.join(save_path, filename+".tsv")
+    #df.to_csv(completeName, sep='\t')
     df.drop(sampletype_header, axis=1, inplace=True)
     return df
     
