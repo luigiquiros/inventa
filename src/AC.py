@@ -64,7 +64,7 @@ def ind_quant_table_full(repository_path, ionization_mode, file_extention, data_
 
         #normalize
         df.set_index('row ID', inplace=True)
-        df = df.apply(lambda x: x/x.sum(), axis=0)
+        #df = df.apply(lambda x: x/x.sum(), axis=0)
         df =pd.merge(df, df1, how ='left', on='row ID')
 
         #rename columns
@@ -271,3 +271,84 @@ def ind_quant_table(repository_path, quant_table_suffix, data_process_origin, us
                 prefix = 'treated_'
                 df.to_csv(r+'/'+prefix+file, sep =',')
 
+def annotation_component(repository_path, ionization_mode, intensity_filter, quantile_filter, min_threshold, quantile_threshold):
+
+    path = os.path.normpath(repository_path)
+    samples_dir = [directory for directory in os.listdir(path)]
+
+    files = []
+    original_feature_count = []
+    feature_count_filtered = []
+    annotated_features_count = []
+
+    for directory in tqdm(samples_dir):
+        quant_annotations_path = os.path.join(path, path +'/results/', directory + '_'+ionization_mode + '_quant_annotations.tsv')
+        column = os.path.join(path, directory, directory + file_extention)
+        column = column.rsplit('/',1)[1]
+
+        try:
+            df_original = pd.read_csv(quant_annotations_path, sep='\t')
+        except FileNotFoundError:
+            continue
+        except NotADirectoryError:
+            continue
+        
+        #recover filenames 
+        files.append(directory)
+        #read original filename
+        df_original = pd.read_csv(quant_annotations_path, sep='\t')
+        #normalize
+        df_original[column] = df_original[column]/df_original[column].sum()
+
+        #original number of features
+        dfo = df_original[column]
+        dfo = dfo[dfo>0.0].count()
+        original_feature_count.append(dfo)
+
+        #check and apply filtering steps if applicable
+
+        if intensity_filter == True and quantile_filter == True:
+                
+            dff = df_original.copy()
+            #apply intensity filter
+            dff[column].values[dff[column] < min_threshold] = 0 #change all the values lower than x for 0 in the dataframe
+            dff[column] = dff[column]/dff[column].sum() #once the data was filtered, the table is normalized sample-wise
+
+            #apply quantile filtering
+            dff = dff.replace (0, np.nan)
+            dff = dff[dff[column] < dff[column].quantile(quantile_threshold)]#change all the values lower than x quantile for 0 in the dataframe
+            dff[column] = dff[column]/dff[column].sum()#once the data was filtered, the table is normalized sample-wis
+
+        elif intensity_filter == True and quantile_filter == False:
+            
+            dff = df_original.copy()
+            #apply intensity filter
+            dff[column].values[dff[column] < min_threshold] = 0 #change all the values lower than x for 0 in the dataframe
+            dff[column] = dff[column]/dff[column].sum() #once the data was filtered, the table is normalized sample-wise
+
+        elif intensity_filter == False and quantile_filter == True:
+            dff = df_original.copy()
+            #apply quantile filtering
+            dff = dff.replace (0, np.nan)
+            dff = dff[dff[column] < dff[column].quantile(quantile_threshold)]#change all the values lower than x quantile for 0 in the dataframe
+            dff[column] = dff[column]/dff[column].sum()#once the data was filtered, the table is normalized sample-wis
+
+        else:
+            dff = df_original
+
+        #number of features after filtering
+        dffc = dff[column]
+        dffc = dffc[dffc>0.0].count()
+        feature_count_filtered.append(dffc)
+
+        #number of features after filtering annotated
+        dfa = dff[[column, 'annotation']]
+        dfa = dfa[dfa['annotation'] == 1]
+        dfa = dfa[column]
+        dfac = dfa[dfa>0.0].count()
+        annotated_features_count.append(dfac)
+
+    AC = pd.DataFrame({'ms_filename': files,'initial_features': original_feature_count, 'features_after_filtering' : feature_count_filtered, 'Annot_features_after_filtering': annotated_features_count })
+    AC['AC'] = AC['Annot_features_after_filtering']/AC['features_after_filtering']*100
+    AC['AC'] = AC['AC'].round(decimals = 1)
+    return AC
