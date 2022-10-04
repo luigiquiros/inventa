@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import zipfile
 import pathlib
+from tqdm import tqdm
 
 def quant_table(quantitative_data_filename, data_process_origin, use_ion_dentity):
     """ Cleans up the quantitative table to specific format

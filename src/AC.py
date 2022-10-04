@@ -271,7 +271,7 @@ def ind_quant_table(repository_path, quant_table_suffix, data_process_origin, us
                 prefix = 'treated_'
                 df.to_csv(r+'/'+prefix+file, sep =',')
 
-def annotation_component(repository_path, ionization_mode, file_extention, intensity_filter, quantile_filter, min_threshold, quantile_threshold):
+def annotation_component(repository_path, ionization_mode, file_extention, intensity_filter, quantile_filter, min_threshold, quantile_threshold, filename_header):
     
     path = os.path.normpath(repository_path)
     samples_dir = [directory for directory in os.listdir(path)]

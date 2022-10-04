@@ -217,3 +217,57 @@ def feature_count(df, header, filename_header):
     df.reset_index(inplace=True)
     df.rename(columns={'index': filename_header}, inplace=True)
     return df
+
+def priority_score_ind(AC, LC, SC, CC, LC_component, SC_component, CC_component, w1, w2, w3, w4, filename_header):
+    
+    
+    if LC_component == True: 
+        df =pd.merge(
+                left=AC,
+                right=LC[[filename_header, 'LC', 'Reported_comp_Species', 'Reported_comp_Genus', 'Reported_comp_Family']], 
+                how='left', 
+                on=filename_header)
+    else:
+        df
+
+    if SC_component == True:
+        df =pd.merge(
+                    left=df,
+                    right=SC[[filename_header, 'SC']], 
+                    how='left', 
+                    on=filename_header)
+    else:
+        df
+
+    if CC_component == True:
+        df =pd.merge(
+                        left=df,
+                        right=CC[[filename_header,'CCs','CCg', 'CC', 'New_CC_in_sp', 'New_CC_in_genus']], 
+                        how='left', 
+                        on =filename_header)
+    else: 
+        df
+
+    def priority(df):
+        df['PS'] = w1*df['AC']
+    
+        if LC_component == True: 
+            df['PS'] = w1*df['AC'] + w2*df['LC']
+        else:
+            df
+
+        if SC_component == True:
+            df['PS'] = w1*df['AC'] + w2*df['LC'] + w3*df['SC']
+        else:
+            df
+
+        if CC_component == True: 
+            df['PS'] = w1*df['AC'] + w2*df['LC'] + w3*df['SC'] + w4*df['CC']
+        else: 
+            df
+        return df
+
+    df = priority(df)
+    df.dropna(inplace=True)
+    df.to_csv('../data_out/Priority_score_results.tsv', sep='\t')
+    return df

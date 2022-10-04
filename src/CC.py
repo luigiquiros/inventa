@@ -128,7 +128,7 @@ def class_component(quantitative_data_filename, data_process_origin, canopus_npc
         df['New_CC_in_sp'] = df['New_CC_in_sp'].fillna('nothing in DB')
         df['New_CC_in_genus'] = df['New_CC_in_genus'].fillna('nothing in DB')
 
-        df.to_csv('../data_out/CC_results.tsv', sep='\t')
+        #df.to_csv('../data_out/CC_results.tsv', sep='\t')
         return df
     else:
         print ('No search was done because the Class component is not going to be calculated')
@@ -214,7 +214,7 @@ def class_component_ind_files(CC_component, repository_path, canopus_sample_suff
         string = 'nothing in DB'
         df.loc[df['Chemical_class_reported_in_species'] ==string, 'CC'] = 1
 
-        df.to_csv('../data_out/LC_results.tsv', sep='\t')
+        #df.to_csv('../data_out/LC_results.tsv', sep='\t')
         return df
     else:
         print ('No search was done because the Class component is not going to be calculated')
@@ -222,31 +222,44 @@ def class_component_ind_files(CC_component, repository_path, canopus_sample_suff
 
 #class component general for NPClassifier PF1600
 
-def class_component_ind_files_PF1600(CC_component, repository_path, canopus_sample_suffix, min_class_confidence, metadata_df, filename_header, species_column, genus_column, family_column):
+def class_component_ind_files_PF1600(CC_component, repository_path, min_class_confidence, metadata_df, filename_header, species_column, genus_column, family_column):
     """
     Function to recover the chemical classes predicted and reported from individual files and LOTUS accordingly, used for calculation of inventa non aligned data
     """
     if CC_component == True:
-        df = pd.DataFrame()      
-        for r, d, f in os.walk(repository_path):
-            for file in (f for f in f if f.endswith(canopus_sample_suffix)):
-                complete_file_path =r+'/'+file
-                read_file = pd.read_csv(complete_file_path, sep = ',').dropna()
-                read_file['partial_filename'] = read_file['directoryName'].apply(lambda r: '/'.join(r.split('/')[8:]) if len(r.split('_')) > 1 else r)
-                read_file['partial_filename'] = read_file['partial_filename'].apply(lambda r: '_'.join(r.split('_')[:-3]) if len(r.split('_')) > 1 else r)
-                read_file['partial_filename'] = read_file['partial_filename'].apply(lambda r: '_'.join(r.split('_')[1:]) if len(r.split('_')) > 1 else r)
-                read_file.rename(columns={'name': 'shared name','classProbability': 'NPC_class_Probability', 'class':'NPC#class'}, inplace=True)
-                read_file = read_file[['partial_filename', 'shared name', 'NPC#class', 'NPC_class_Probability']]
-                read_file = read_file[read_file.NPC_class_Probability > min_class_confidence]
-                read_file = read_file[['partial_filename', 'NPC#class']].groupby('partial_filename').agg(set)
-                df = df.append(read_file, ignore_index=False)
-            else:
+        
+        path = os.path.normpath(repository_path)
+        samples_dir = [directory for directory in os.listdir(path)]
+
+        df =pd.DataFrame()
+        
+        for directory in tqdm(samples_dir):
+            canopus_path = os.path.join(path, directory, ionization_mode, directory + '_WORKSPACE_SIRIUS', 'npc_summary.csv')
+            #canopus_path = os.path.join(path, directory, ionization_mode, directory + '_WORKSPACE_SIRIUS', 'canopus_summary_adducts.tsv')
+            try:
+                canopus_df =pd.read_csv(canopus_path, sep=',')
+            except FileNotFoundError:
+                continue
+            except NotADirectoryError:
                 continue
 
+            #recover filenames 
+            files.append(directory)
+            
+            #read canpus filename
+            canopus_df =pd.read_csv(canopus_path, sep=',')
+            canopus_df['partial_filename'] = canopus_df['directoryName'].apply(lambda r: '/'.join(r.split('/')[8:]) if len(r.split('_')) > 1 else r)
+            canopus_df['partial_filename'] = canopus_df['partial_filename'].apply(lambda r: '_'.join(r.split('_')[:-3]) if len(r.split('_')) > 1 else r)
+            canopus_df['partial_filename'] = canopus_df['partial_filename'].apply(lambda r: '_'.join(r.split('_')[1:]) if len(r.split('_')) > 1 else r)
+            canopus_df.rename(columns={'name': 'shared name','classProbability': 'NPC_class_Probability', 'class':'NPC#class'}, inplace=True)
+
+            canopus_df = canopus_df[['partial_filename', 'shared name', 'NPC#class', 'NPC_class_Probability']]
+            canopus_df = canopus_df[canopus_df.NPC_class_Probability > min_class_confidence]
+            canopus_df = canopus_df[['partial_filename', 'NPC#class']].groupby('partial_filename').agg(set)
+            df = df.append(canopus_df, ignore_index=False)
+
         df.reset_index(inplace=True)
-        df2 = metadata_df
-        s = [df2[df2[filename_header].str.contains(x)].index[0] for x in df['partial_filename']]
-        df = df.assign(subcode=Series(data=df2[filename_header], index=s)).merge(df2[[filename_header, species_column]], left_on='subcode', right_on=filename_header).drop('subcode', axis='columns')
+        df = pd.merge(df, metadata_df[[filename_header, species_column]], how= 'left', left_on='partial_filename', right_on=filename_header)
         df.drop('partial_filename', axis=1, inplace=True)
 
         ## Retrieve classes reported in Lotus
@@ -302,8 +315,7 @@ def class_component_ind_files_PF1600(CC_component, repository_path, canopus_samp
         string = 'nothing in DB'
         df.loc[df['Chemical_class_reported_in_species'] ==string, 'CC'] = 1
         
-
-        df.to_csv('../data_out/LC_results.tsv', sep='\t')
+        #df.to_csv('../data_out/LC_results.tsv', sep='\t')
         return df
     else:
         print ('No search was done because the Class component is not going to be calculated')
