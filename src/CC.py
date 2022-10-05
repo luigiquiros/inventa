@@ -9,6 +9,7 @@ import plotly.express as px
 import zipfile
 import pathlib
 from pandas import Series
+from tqdm import tqdm
 
 #Class component:
 
@@ -232,7 +233,7 @@ def class_component_ind_files_PF1600(CC_component, repository_path, min_class_co
         samples_dir = [directory for directory in os.listdir(path)]
 
         df =pd.DataFrame()
-        
+        files = []
         for directory in tqdm(samples_dir):
             canopus_path = os.path.join(path, directory, ionization_mode, directory + '_WORKSPACE_SIRIUS', 'npc_summary.csv')
             #canopus_path = os.path.join(path, directory, ionization_mode, directory + '_WORKSPACE_SIRIUS', 'canopus_summary_adducts.tsv')
@@ -314,8 +315,11 @@ def class_component_ind_files_PF1600(CC_component, repository_path, min_class_co
         #if we considered lack of reports in DB... all the proposed cc will be new to that particular species, hence.. the real value of CC is 1, not zero
         string = 'nothing in DB'
         df.loc[df['Chemical_class_reported_in_species'] ==string, 'CC'] = 1
-        
-        #df.to_csv('../data_out/LC_results.tsv', sep='\t')
+       
+        pathout = os.path.join(path, 'results/')
+        os.makedirs(pathout, exist_ok=True)
+        pathout = os.path.join(pathout, 'Class_component_results.tsv')
+        df.to_csv(pathout, sep ='\t')
         return df
     else:
         print ('No search was done because the Class component is not going to be calculated')

@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import zipfile
 import os
 import scipy as sp
 import matplotlib.pyplot as plt
@@ -10,7 +9,7 @@ import pathlib
 
 
 #literature component
-def literature_component(LC_component, metadata, filename_header, species_column, genus_column, family_column, 
+def literature_component(LC_component, repository_path, metadata, filename_header, species_column, genus_column, family_column, 
  max_comp_reported_sp, max_comp_reported_g, max_comp_reported_f, ws, wg, wf):
     """ function to compute the literature component based on the metadata and combinend information of the Dictionary of natural products and the Lotus DB, 
     Args:
@@ -66,7 +65,13 @@ def literature_component(LC_component, metadata, filename_header, species_column
         df['LC'] = 1-(df['Reported_comp_Species'].div(max_comp_reported_sp*100))*ws - (df['Reported_comp_Genus'].div(max_comp_reported_g*100))*wg - (df['Reported_comp_Family'].div(max_comp_reported_f*100
         ))*wf
         df['LC'] = df['LC'].apply(lambda x : x if x > 0 else 0)
-        df.to_csv('../data_out/LC_results.tsv', sep='\t')
+        
+        path = os.path.normpath(repository_path)
+        pathout = os.path.join(path, 'results/')
+        os.makedirs(pathout, exist_ok=True)
+        pathout = os.path.join(pathout, 'Literature_component_results.tsv')
+        df.to_csv(pathout, sep ='\t')
+
         return df
     else:
         print('Literature component not calculated')

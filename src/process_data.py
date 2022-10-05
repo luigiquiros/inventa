@@ -218,7 +218,7 @@ def feature_count(df, header, filename_header):
     df.rename(columns={'index': filename_header}, inplace=True)
     return df
 
-def priority_score_ind(AC, LC, SC, CC, LC_component, SC_component, CC_component, w1, w2, w3, w4, filename_header):
+def priority_score_ind(repository_path, AC, LC, SC, CC, LC_component, SC_component, CC_component, w1, w2, w3, w4, filename_header):
     
     
     if LC_component == True: 
@@ -269,5 +269,13 @@ def priority_score_ind(AC, LC, SC, CC, LC_component, SC_component, CC_component,
 
     df = priority(df)
     df.dropna(inplace=True)
-    df.to_csv('../data_out/Priority_score_results.tsv', sep='\t')
+    path = os.path.normpath(repository_path)
+    pathout = os.path.join(path, 'results/')
+    os.makedirs(pathout, exist_ok=True)
+    pathout = os.path.join(pathout, 'Priority_score_results.tsv')
+    df.to_csv(pathout, sep ='\t')
+    #df.to_csv('../data_out/Priority_score_results.tsv', sep='\t')
     return df
+
+def selection_changed_AC(selection):
+    return AC.iloc[selection]

@@ -141,6 +141,7 @@ def ind_quant_table_full(repository_path, ionization_mode, file_extention, data_
                 return 0
 
         df['annotation'] = df.apply(annotation_status, axis=1)
+
         pathout = os.path.join(path, 'results/')
         os.makedirs(pathout, exist_ok=True)
         pathout = os.path.join(pathout, directory +'_' + ionization_mode + '_quant_annotations.tsv')
@@ -271,7 +272,7 @@ def ind_quant_table(repository_path, quant_table_suffix, data_process_origin, us
                 prefix = 'treated_'
                 df.to_csv(r+'/'+prefix+file, sep =',')
 
-def annotation_component(repository_path, ionization_mode, file_extention, intensity_filter, quantile_filter, min_threshold, quantile_threshold, filename_header):
+def annotation_component(repository_path, ionization_mode, file_extention, intensity_filter, quantile_filter, min_threshold, quantile_threshold, filename_header, metadata_df, species_column, genus_column, family_column, sppart_column):
     
     path = os.path.normpath(repository_path)
     samples_dir = [directory for directory in os.listdir(path)]
@@ -355,4 +356,12 @@ def annotation_component(repository_path, ionization_mode, file_extention, inten
     AC = pd.DataFrame({filename_header: files,'initial_features': original_feature_count, 'features_after_filtering' : feature_count_filtered, 'Annot_features_after_filtering': annotated_features_count })
     AC['AC'] = (AC['features_after_filtering'] - AC['Annot_features_after_filtering'])/AC['features_after_filtering'] # % of features unannotated
     AC['AC'] = AC['AC'].round(decimals = 1)
+    
+    #add metadata information 
+    AC = pd.merge(metadata_df[[filename_header, species_column, genus_column, family_column, sppart_column]], AC, how= 'right', on= filename_header)
+    #save table 
+    pathout = os.path.join(path, 'results/')
+    os.makedirs(pathout, exist_ok=True)
+    pathout = os.path.join(pathout, 'Annotation_component_results.tsv')
+    AC.to_csv(pathout, sep ='\t')
     return AC
