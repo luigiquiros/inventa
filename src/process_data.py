@@ -67,6 +67,30 @@ def drop_samples_based_on_string(df,filename,list_of_strings_for_QC_Blank_filter
     df.to_csv(completeName, sep='\t')
     return df
 
+def drop_samples_based_on_string_ind(metric_df, metadata_df, filename_header, sampletype_header, filename,list_of_strings_for_QC_Blank_filter,column):
+    """ drop samples based on string 
+
+    Args:
+        pd dataframe
+        list of string
+
+    Returns:
+        pd dataframe
+    """
+    df= pd.merge(metric_df, metadata_df[[filename_header, sampletype_header]], how='left', on=filename_header)
+    print(df.shape)
+
+    for string in list_of_strings_for_QC_Blank_filter:
+        df = df[~df[column].str.contains(string, na=False)]
+        df = df.dropna(how = 'any', subset=[column])
+    print(df.shape)
+    
+    #save_path = '../data_out/'
+    #completeName = os.path.join(save_path, filename+".tsv")
+    #df.to_csv(completeName, sep='\t')
+    df.drop(sampletype_header, axis=1, inplace=True)
+    return df
+    
 def reduce_df(full_df, metadata_df, col_id_unique):
     """ Reduce the full df to minimal info
 
@@ -193,3 +217,65 @@ def feature_count(df, header, filename_header):
     df.reset_index(inplace=True)
     df.rename(columns={'index': filename_header}, inplace=True)
     return df
+
+def priority_score_ind(repository_path, AC, LC, SC, CC, LC_component, SC_component, CC_component, w1, w2, w3, w4, filename_header):
+    
+    
+    if LC_component == True: 
+        df =pd.merge(
+                left=AC,
+                right=LC[[filename_header, 'LC', 'Reported_comp_Species', 'Reported_comp_Genus', 'Reported_comp_Family']], 
+                how='left', 
+                on=filename_header)
+    else:
+        df
+
+    if SC_component == True:
+        df =pd.merge(
+                    left=df,
+                    right=SC[[filename_header, 'SC']], 
+                    how='left', 
+                    on=filename_header)
+    else:
+        df
+
+    if CC_component == True:
+        df =pd.merge(
+                        left=df,
+                        right=CC[[filename_header,'CCs','CCg', 'CC', 'New_CC_in_sp', 'New_CC_in_genus']], 
+                        how='left', 
+                        on =filename_header)
+    else: 
+        df
+
+    def priority(df):
+        df['PS'] = w1*df['AC']
+    
+        if LC_component == True: 
+            df['PS'] = w1*df['AC'] + w2*df['LC']
+        else:
+            df
+
+        if SC_component == True:
+            df['PS'] = w1*df['AC'] + w2*df['LC'] + w3*df['SC']
+        else:
+            df
+
+        if CC_component == True: 
+            df['PS'] = w1*df['AC'] + w2*df['LC'] + w3*df['SC'] + w4*df['CC']
+        else: 
+            df
+        return df
+
+    df = priority(df)
+    df.dropna(inplace=True)
+    path = os.path.normpath(repository_path)
+    pathout = os.path.join(path, 'results/')
+    os.makedirs(pathout, exist_ok=True)
+    pathout = os.path.join(pathout, 'Priority_score_results.tsv')
+    df.to_csv(pathout, sep ='\t')
+    #df.to_csv('../data_out/Priority_score_results.tsv', sep='\t')
+    return df
+
+def selection_changed_AC(selection):
+    return AC.iloc[selection]

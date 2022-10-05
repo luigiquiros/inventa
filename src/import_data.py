@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import zipfile
 import pathlib
+from tqdm import tqdm
 
 def quant_table(quantitative_data_filename, data_process_origin, use_ion_dentity):
     """ Cleans up the quantitative table to specific format
@@ -130,14 +131,27 @@ def get_canopus_pred_classes(path_canopus, CC_component):
     else: 
         print('The canopus classes will be not used')
 
-def get_metadata_ind_files(repository_path, metadata_sample_suffix):
+def get_metadata_ind_files(repository_path):
     """
     Function to recover the metadata from individual files, used for calculation of inventa non aligned data
     """
+    path = os.path.normpath(repository_path)
+    samples_dir = [directory for directory in os.listdir(path)]
+    
     df= pd.DataFrame()
-    for r, d, f in os.walk(repository_path):
-        for file in (f for f in f if f.endswith(metadata_sample_suffix)):
-                complete_file_path =r+'/'+file 
-                read_file = pd.read_csv(complete_file_path, sep = '\t')
-                df = df.append(read_file, ignore_index=True)
+    for directory in tqdm(samples_dir):
+        metadata_path = os.path.join(path, directory, directory + '_metadata.tsv')
+    
+        try:
+            metadata_df = pd.read_csv(metadata_path, sep='\t')
+        except FileNotFoundError:
+            continue
+        except NotADirectoryError:
+            continue
+
+   
+        metadata_df = pd.read_csv(metadata_path, sep='\t')
+        df = df.append(metadata_df)#, ignore_index=True)
+        #df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+
     return df
