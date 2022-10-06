@@ -71,7 +71,7 @@ def literature_component(LC_component, repository_path, metadata, filename_heade
         os.makedirs(pathout, exist_ok=True)
         pathout = os.path.join(pathout, 'Literature_component_results.tsv')
         df.to_csv(pathout, sep ='\t')
-
+        
         return df
     else:
         print('Literature component not calculated')
