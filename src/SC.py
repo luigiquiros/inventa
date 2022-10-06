@@ -86,7 +86,7 @@ def similarity_component(df, SC_component, filename_header):
     else:
         print('Similarity component not calculated')
 
-def calculate_memo_matrix_ind_files(repository_path, spectra_suffix, filename_header):
+def calculate_memo_matrix_ind_files(repository_path, ionization_mode, spectra_suffix, filename_header):
     
     # Generating memo matrix
     memo_unaligned = memo.MemoMatrix()
@@ -105,10 +105,16 @@ def calculate_memo_matrix_ind_files(repository_path, spectra_suffix, filename_he
     df.reset_index(inplace=True)
     df.rename(columns={'index': filename_header}, inplace=True)
     #df[filename_header] = df[filename_header].apply(lambda x: "{}{}".format(x, polarity))
+    
+    path = os.path.normpath(repository_path)
+    pathout = os.path.join(path, 'results/')
+    os.makedirs(pathout, exist_ok=True)
+    pathout = os.path.join(pathout, 'memo_matrix_non_filtered' +'_'+ ionization_mode + '.tsv')
+    df.to_csv(pathout, sep ='\t')
 
     return df 
 
-def similarity_component_ind(repository_path, df, SC_component, filename_header):
+def similarity_component_ind(repository_path, ionization_mode, df, SC_component, filename_header):
     """ function to compute the similarity component based on the MEMO matrix and machine learning unsupervised clustering methods 
     Args:
         df = memo matrix
@@ -116,8 +122,25 @@ def similarity_component_ind(repository_path, df, SC_component, filename_header)
     Returns:
         None
     """
-    if SC_component == True:
-        df1 = df.copy()
+    path = os.path.normpath(repository_path)
+    samples_dir = [directory for directory in os.listdir(path)]
+
+    for directory in tqdm(samples_dir):
+   
+        MEMO_path = os.path.join(path +'/results/', 'memo_matrix' +'_'+ ionization_mode + '.tsv')
+
+        try:
+            MEMO_path = pd.read_csv(MEMO_path, sep='\t')
+            
+        except FileNotFoundError:
+            continue
+        except NotADirectoryError:
+            continue
+
+    if os.path.isfile(MEMO_path):
+        
+        df1 = pd.read_csv(MEMO_path, sep='\t')
+
         df1.set_index(filename_header, inplace=True)
         df2 = df.copy()
         
@@ -172,7 +195,7 @@ def similarity_component_ind(repository_path, df, SC_component, filename_header)
         path = os.path.normpath(repository_path)
         pathout = os.path.join(path, 'results/')
         os.makedirs(pathout, exist_ok=True)
-        pathout = os.path.join(pathout, 'Similarity_component_results.tsv')
+        pathout = os.path.join(pathout, 'Similarity_component_results' +'_' + ionization_mode + '.tsv')
         df.to_csv(pathout, sep ='\t')
         return df
     else:

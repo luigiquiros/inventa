@@ -223,7 +223,7 @@ def class_component_ind_files(CC_component, repository_path, canopus_sample_suff
 
 #class component general for NPClassifier PF1600
 
-def class_component_ind_files_PF1600(CC_component, repository_path, min_class_confidence, metadata_df, filename_header, species_column, genus_column, family_column):
+def class_component_ind_files_PF1600(CC_component, repository_path, ionization_mode, min_class_confidence, metadata_df, filename_header, species_column, genus_column, family_column):
     """
     Function to recover the chemical classes predicted and reported from individual files and LOTUS accordingly, used for calculation of inventa non aligned data
     """
@@ -318,7 +318,7 @@ def class_component_ind_files_PF1600(CC_component, repository_path, min_class_co
        
         pathout = os.path.join(path, 'results/')
         os.makedirs(pathout, exist_ok=True)
-        pathout = os.path.join(pathout, 'Class_component_results.tsv')
+        pathout = os.path.join(pathout, 'Class_component_results' +'_' + ionization_mode + '.tsv')
         df.to_csv(pathout, sep ='\t')
         return df
     else:

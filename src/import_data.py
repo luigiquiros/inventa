@@ -153,5 +153,10 @@ def get_metadata_ind_files(repository_path):
         metadata_df = pd.read_csv(metadata_path, sep='\t')
         df = df.append(metadata_df)#, ignore_index=True)
         #df.drop(list(df.filter(regex = 'Unnamed:')), axis = 1, inplace = True)
+    
+    pathout = os.path.join(path, 'results/')
+    os.makedirs(pathout, exist_ok=True)
+    pathout = os.path.join(pathout, 'Metadata_combined.tsv')
+    df.to_csv(pathout, sep ='\t')
 
     return df
