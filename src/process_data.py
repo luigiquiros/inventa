@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 import zipfile
 import pathlib
+from tqdm import tqdm
+
 
 #general treatment 
 
@@ -67,9 +69,8 @@ def drop_samples_based_on_string(df,filename,list_of_strings_for_QC_Blank_filter
     df.to_csv(completeName, sep='\t')
     return df
 
-def drop_samples_based_on_string_ind(metric_df, metadata_df, filename_header, sampletype_header, filename,list_of_strings_for_QC_Blank_filter,column):
+def drop_samples_based_on_string_ind(repository_path, ionization_mode, filename_header, sampletype_header, metric_df, metadata_df, list_of_strings_for_QC_Blank_filter, column):
     """ drop samples based on string 
-
     Args:
         pd dataframe
         list of string
@@ -77,6 +78,9 @@ def drop_samples_based_on_string_ind(metric_df, metadata_df, filename_header, sa
     Returns:
         pd dataframe
     """
+    #metric_df = pd.read_csv(MEMO_path, sep='\t')
+    #metadata_df = pd.read_csv(metadata_path, sep='\t')
+
     df= pd.merge(metric_df, metadata_df[[filename_header, sampletype_header]], how='left', on=filename_header)
     print(df.shape)
 
@@ -85,10 +89,14 @@ def drop_samples_based_on_string_ind(metric_df, metadata_df, filename_header, sa
         df = df.dropna(how = 'any', subset=[column])
     print(df.shape)
     
-    #save_path = '../data_out/'
-    #completeName = os.path.join(save_path, filename+".tsv")
-    #df.to_csv(completeName, sep='\t')
     df.drop(sampletype_header, axis=1, inplace=True)
+    #df.drop('Unnamed: 0', axis=1, inplace=True)
+    path = os.path.normpath(repository_path)
+    pathout = os.path.join(path, 'results/')
+    os.makedirs(pathout, exist_ok=True)
+    pathout = os.path.join(pathout, 'memo_matrix_filtered' +'_' + ionization_mode + '.tsv')
+    df.to_csv(pathout, sep ='\t')
+
     return df
     
 def reduce_df(full_df, metadata_df, col_id_unique):
@@ -218,63 +226,88 @@ def feature_count(df, header, filename_header):
     df.rename(columns={'index': filename_header}, inplace=True)
     return df
 
-def priority_score_ind(repository_path, AC, LC, SC, CC, LC_component, SC_component, CC_component, w1, w2, w3, w4, filename_header):
+def priority_score_ind(repository_path, filename_header, ionization_mode, species_column, genus_column, family_column, sppart_column, w1, w2, w3, w4):
     
+
+    path = os.path.normpath(repository_path)
+    samples_dir = [directory for directory in os.listdir(path)]
+
+    for directory in tqdm(samples_dir):
+        AC_path = os.path.join(path +'/results/', 'Annotation_component_results' +'_'+ ionization_mode + '.tsv')
+        LC_path = os.path.join(path +'/results/', 'Literature_component_results.tsv')
+        SC_path = os.path.join(path +'/results/', 'Similarity_component_results' +'_'+ ionization_mode + '.tsv')
+        CC_path = os.path.join(path +'/results/', 'Class_component_results' +'_'+ ionization_mode + '.tsv')
+        metadata_path = os.path.join(path +'/results/', 'Metadata_combined.tsv')
+
+        try:
+            df = pd.read_csv(AC_path, sep='\t')
+            LC = pd.read_csv(LC_path, sep='\t')
+            SC = pd.read_csv(SC_path, sep='\t')
+            CC = pd.read_csv(CC_path, sep='\t')
+            metadata_df= pd.read_csv(metadata_path, sep='\t')
+            
+        except FileNotFoundError:
+            continue
+        except NotADirectoryError:
+            continue
+
+
+    if os.path.isfile(AC_path):
     
-    if LC_component == True: 
-        df =pd.merge(
-                left=AC,
+            df = pd.read_csv(AC_path, sep='\t')
+            df.drop('Unnamed: 0', axis=1, inplace=True)
+            df['PS'] = w1*df['AC']
+
+    else:
+            metadata_df = pd.read_csv(metadata_path, usecols= [filename_header, family_column, genus_column, species_column, sppart_column], sep='\t')
+            df = metadata_df.copy()
+
+    if os.path.isfile(LC_path):
+            
+            LC = pd.read_csv(LC_path, sep='\t')
+            LC.drop('Unnamed: 0', axis=1, inplace=True)
+            df =pd.merge(
+                left=df,
                 right=LC[[filename_header, 'LC', 'Reported_comp_Species', 'Reported_comp_Genus', 'Reported_comp_Family']], 
                 how='left', 
                 on=filename_header)
+            df['PS'] = w1*df['AC'] + w2*df['LC']
     else:
         df
 
-    if SC_component == True:
-        df =pd.merge(
-                    left=df,
-                    right=SC[[filename_header, 'SC']], 
-                    how='left', 
-                    on=filename_header)
-    else:
-        df
-
-    if CC_component == True:
+    if os.path.isfile(CC_path):
+        CC = pd.read_csv(CC_path, sep='\t')
+        CC.drop('Unnamed: 0', axis=1, inplace=True)
         df =pd.merge(
                         left=df,
                         right=CC[[filename_header,'CCs','CCg', 'CC', 'New_CC_in_sp', 'New_CC_in_genus']], 
                         how='left', 
                         on =filename_header)
-    else: 
+        df['PS'] = w1*df['AC'] + w2*df['LC'] + w3*df['CC']
+    else:
         df
-
-    def priority(df):
-        df['PS'] = w1*df['AC']
     
-        if LC_component == True: 
-            df['PS'] = w1*df['AC'] + w2*df['LC']
-        else:
-            df
-
-        if SC_component == True:
-            df['PS'] = w1*df['AC'] + w2*df['LC'] + w3*df['SC']
-        else:
-            df
-
-        if CC_component == True: 
-            df['PS'] = w1*df['AC'] + w2*df['LC'] + w3*df['SC'] + w4*df['CC']
-        else: 
-            df
-        return df
-
-    df = priority(df)
-    df.dropna(inplace=True)
+    if os.path.isfile(SC_path):
+        SC = pd.read_csv(SC_path, sep='\t')
+        SC.drop('Unnamed: 0', axis=1, inplace=True)
+        df =pd.merge(
+                    left=df,
+                    right=SC[[filename_header, 'SC']], 
+                    how='left', 
+                    on=filename_header)
+        df['PS'] = w1*df['AC'] + w2*df['LC'] + w3*df['CC'] + w4*df['SC']
+    else:
+        df
+    df = df[['sample_id', 'organism_species', 'organism_genus', 'organism_family',
+       'organism_sppart', 'initial_features', 'features_after_filtering',
+       'Annot_features_after_filtering', 'AC', 'LC',
+       'Reported_comp_Species', 'Reported_comp_Genus', 'Reported_comp_Family',
+       'CCs', 'CCg', 'CC', 'New_CC_in_sp', 'New_CC_in_genus', 'SC','PS']]
     path = os.path.normpath(repository_path)
     pathout = os.path.join(path, 'results/')
     os.makedirs(pathout, exist_ok=True)
-    pathout = os.path.join(pathout, 'Priority_score_results.tsv')
+    pathout = os.path.join(pathout, 'Priority_score_results' +'_'+ ionization_mode + '.tsv')
     df.to_csv(pathout, sep ='\t')
-    #df.to_csv('../data_out/Priority_score_results.tsv', sep='\t')
     return df
 
 def selection_changed_AC(selection):

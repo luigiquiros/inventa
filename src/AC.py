@@ -20,7 +20,7 @@ def ind_quant_table_full(repository_path, ionization_mode, file_extention, data_
         isdb_path = os.path.join(path, directory, ionization_mode+'/isdb/', directory +'_isdb_reweighted_' + ionization_mode+ '.tsv')
         sirius_path = os.path.join(path, directory, ionization_mode, directory + '_WORKSPACE_SIRIUS', 'compound_identifications_adducts.tsv')
         try:
-            df =pd.read_csv(quant_path, sep=',')
+            df = pd.read_csv(quant_path, sep=',')
             dfs = pd.read_csv(sirius_path, sep='\t')
             dfi = pd.read_csv(isdb_path, sep='\t')
         except FileNotFoundError:
