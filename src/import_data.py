@@ -160,3 +160,28 @@ def get_metadata_ind_files(repository_path):
     df.to_csv(pathout, sep ='\t')
 
     return df
+
+def load_metric_df(repository_path, ionization_mode):
+    
+    path = os.path.normpath(repository_path)
+    samples_dir = [directory for directory in os.listdir(path)]
+
+    for directory in tqdm(samples_dir):
+
+        MEMO_path1 = os.path.join(path +'/results/', 'memo_matrix_filtered' +'_'+ ionization_mode + '.tsv')
+        MEMO_path2 = os.path.join(path +'/results/', 'memo_matrix_non_filtered' +'_'+ ionization_mode + '.tsv')
+
+        try:
+            df1 = pd.read_csv(MEMO_path1, sep='\t')
+            df2 = pd.read_csv(MEMO_path2, sep='\t')
+
+        except FileNotFoundError:
+            continue
+        except NotADirectoryError:
+            continue
+
+    if os.path.isfile(MEMO_path1):
+        df =  pd.read_csv(MEMO_path1, sep='\t')
+    else:
+        df = pd.read_csv(MEMO_path2, sep='\t')
+    return df

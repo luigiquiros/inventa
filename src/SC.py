@@ -116,7 +116,7 @@ def calculate_memo_matrix_ind_files(repository_path, ionization_mode, spectra_su
 
     return df
 
-def similarity_component_ind(repository_path, ionization_mode, filename_header):
+def similarity_component_ind(repository_path, ionization_mode, filename_header, metric_df):
     """ function to compute the similarity component based on the MEMO matrix and machine learning unsupervised clustering methods 
     Args:
         df = memo matrix
@@ -124,149 +124,66 @@ def similarity_component_ind(repository_path, ionization_mode, filename_header):
     Returns:
         None
     """
+
+    df = metric_df
+    df1 = df.copy()
+    df1.set_index(filename_header, inplace=True)
+
+    df2 = df.copy()
+    
+    #specify the parameters of the individual classification algorithms
+    clf = IsolationForest(n_estimators=100, 
+                max_samples='auto', 
+                contamination= 'auto', #0.15,
+                max_features=1.0, 
+                bootstrap=False, 
+                n_jobs=None, 
+                random_state=None)
+    clf.fit(df1)
+    pred = clf.predict(df1)
+    df1['anomaly_IF'] = pred
+    outliers = df1.loc[df1['anomaly_IF']==-1]
+    outlier_index = list(outliers.index)
+
+    lof = LocalOutlierFactor(n_neighbors=10, 
+                        algorithm='auto',
+                        leaf_size=30,
+                        metric='braycurtis', 
+                        contamination= 0.15,
+                        novelty=False, 
+                        n_jobs=None)#-1)
+    df1['anomaly_LOF'] = lof.fit_predict(df1)
+    outliers = df1.loc[df1['anomaly_LOF']==-1]
+    outlier_index = list(outliers.index)
+
+    ocsvm = OneClassSVM(kernel='rbf', 
+                        degree=3, 
+                        gamma='scale', 
+                        tol= 1e-3, 
+                        max_iter=-1, 
+                        nu=0.01)
+    df1['anomaly_OCSVM'] = ocsvm.fit_predict(df1)
+    outliers = df1.loc[df1['anomaly_OCSVM']==-1]
+    outlier_index = list(outliers.index)
+
+    #recover and print the results
+    df1.reset_index(inplace=True)
+
+    df = pd.merge(df1,df2, how='left', on =filename_header)
+
+    df = df[[filename_header, 'anomaly_IF', 'anomaly_LOF', 'anomaly_OCSVM']]
+
+    def similarity_conditions(df):
+        if (df['anomaly_IF'] == -1) | (df['anomaly_LOF'] == -1) | (df['anomaly_OCSVM'] == -1):
+            return 1
+        else: 
+            return 0 
+
+    df['SC'] = df.apply(similarity_conditions, axis=1)
+    
     path = os.path.normpath(repository_path)
-    samples_dir = [directory for directory in os.listdir(path)]
-
-    for directory in tqdm(samples_dir):
-   
-        MEMO_path1 = os.path.join(path +'/results/', 'memo_matrix_filtered' +'_'+ ionization_mode + '.tsv')
-        MEMO_path2 = os.path.join(path +'/results/', 'memo_matrix_non_filtered' +'_'+ ionization_mode + '.tsv')
-
-        try:
-            df1 = pd.read_csv(MEMO_path1, sep='\t')
-            df2 = pd.read_csv(MEMO_path2, sep='\t')
-
-        except FileNotFoundError:
-            continue
-        except NotADirectoryError:
-            continue
-
-    if os.path.isfile(MEMO_path1):
-
-        df = pd.read_csv(MEMO_path1, sep='\t')
-        df1 = df.copy()
-        df1.set_index(filename_header, inplace=True)
-
-        df2 = df.copy()
-        
-        #specify the parameters of the individual classification algorithms
-        clf = IsolationForest(n_estimators=100, 
-                    max_samples='auto', 
-                    contamination= 'auto', #0.15,
-                    max_features=1.0, 
-                    bootstrap=False, 
-                    n_jobs=None, 
-                    random_state=None)
-        clf.fit(df1)
-        pred = clf.predict(df1)
-        df1['anomaly_IF'] = pred
-        outliers = df1.loc[df1['anomaly_IF']==-1]
-        outlier_index = list(outliers.index)
-
-        lof = LocalOutlierFactor(n_neighbors=10, 
-                            algorithm='auto',
-                            leaf_size=30,
-                            metric='braycurtis', 
-                            contamination= 0.15,
-                            novelty=False, 
-                            n_jobs=None)#-1)
-        df1['anomaly_LOF'] = lof.fit_predict(df1)
-        outliers = df1.loc[df1['anomaly_LOF']==-1]
-        outlier_index = list(outliers.index)
-
-        ocsvm = OneClassSVM(kernel='rbf', 
-                            degree=3, 
-                            gamma='scale', 
-                            tol= 1e-3, 
-                            max_iter=-1, 
-                            nu=0.01)
-        df1['anomaly_OCSVM'] = ocsvm.fit_predict(df1)
-        outliers = df1.loc[df1['anomaly_OCSVM']==-1]
-        outlier_index = list(outliers.index)
-
-        #recover and print the results
-        df1.reset_index(inplace=True)
-
-        df = pd.merge(df1,df2, how='left', on =filename_header)
-
-        df = df[[filename_header, 'anomaly_IF', 'anomaly_LOF', 'anomaly_OCSVM']]
-
-        def similarity_conditions(df):
-            if (df['anomaly_IF'] == -1) | (df['anomaly_LOF'] == -1) | (df['anomaly_OCSVM'] == -1):
-                return 1
-            else: 
-                return 0 
-
-        df['SC'] = df.apply(similarity_conditions, axis=1)
-       
-        path = os.path.normpath(repository_path)
-        pathout = os.path.join(path, 'results/')
-        os.makedirs(pathout, exist_ok=True)
-        pathout = os.path.join(pathout, 'Similarity_component_results' +'_' + ionization_mode + '.tsv')
-        df.to_csv(pathout, sep ='\t')
-        return df
-
-    else:
-
-        df = pd.read_csv(MEMO_path2, sep='\t')
-        df1 = df.copy()
-        df1.set_index(filename_header, inplace=True)
-
-        df2 = df.copy()
-        
-        #specify the parameters of the individual classification algorithms
-        clf = IsolationForest(n_estimators=100, 
-                    max_samples='auto', 
-                    contamination= 'auto', #0.15,
-                    max_features=1.0, 
-                    bootstrap=False, 
-                    n_jobs=None, 
-                    random_state=None)
-        clf.fit(df1)
-        pred = clf.predict(df1)
-        df1['anomaly_IF'] = pred
-        outliers = df1.loc[df1['anomaly_IF']==-1]
-        outlier_index = list(outliers.index)
-
-        lof = LocalOutlierFactor(n_neighbors=10, 
-                            algorithm='auto',
-                            leaf_size=30,
-                            metric='braycurtis', 
-                            contamination= 0.15,
-                            novelty=False, 
-                            n_jobs=None)#-1)
-        df1['anomaly_LOF'] = lof.fit_predict(df1)
-        outliers = df1.loc[df1['anomaly_LOF']==-1]
-        outlier_index = list(outliers.index)
-
-        ocsvm = OneClassSVM(kernel='rbf', 
-                            degree=3, 
-                            gamma='scale', 
-                            tol= 1e-3, 
-                            max_iter=-1, 
-                            nu=0.01)
-        df1['anomaly_OCSVM'] = ocsvm.fit_predict(df1)
-        outliers = df1.loc[df1['anomaly_OCSVM']==-1]
-        outlier_index = list(outliers.index)
-
-        #recover and print the results
-        df1.reset_index(inplace=True)
-
-        df = pd.merge(df1,df2, how='left', on =filename_header)
-
-        df = df[[filename_header, 'anomaly_IF', 'anomaly_LOF', 'anomaly_OCSVM']]
-
-        def similarity_conditions(df):
-            if (df['anomaly_IF'] == -1) | (df['anomaly_LOF'] == -1) | (df['anomaly_OCSVM'] == -1):
-                return 1
-            else: 
-                return 0 
-
-        df['SC'] = df.apply(similarity_conditions, axis=1)
-       
-        path = os.path.normpath(repository_path)
-        pathout = os.path.join(path, 'results/')
-        os.makedirs(pathout, exist_ok=True)
-        pathout = os.path.join(pathout, 'Similarity_component_results' +'_' + ionization_mode + '.tsv')
-        df.to_csv(pathout, sep ='\t')
-        return df
+    pathout = os.path.join(path, 'results/')
+    os.makedirs(pathout, exist_ok=True)
+    pathout = os.path.join(pathout, 'Similarity_component_results' +'_' + ionization_mode + '.tsv')
+    df.to_csv(pathout, sep ='\t')
+    return df
