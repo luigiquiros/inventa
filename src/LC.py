@@ -65,13 +65,13 @@ def literature_component(LC_component, repository_path, metadata, filename_heade
         df['LC'] = 1-(df['Reported_comp_Species'].div(max_comp_reported_sp*100))*ws - (df['Reported_comp_Genus'].div(max_comp_reported_g*100))*wg - (df['Reported_comp_Family'].div(max_comp_reported_f*100
         ))*wf
         df['LC'] = df['LC'].apply(lambda x : x if x > 0 else 0)
-        
+        df['LC'] = df['LC'].round(decimals = 2)
         path = os.path.normpath(repository_path)
         pathout = os.path.join(path, 'results/')
         os.makedirs(pathout, exist_ok=True)
         pathout = os.path.join(pathout, 'Literature_component_results.tsv')
         df.to_csv(pathout, sep ='\t')
-
+        
         return df
     else:
         print('Literature component not calculated')

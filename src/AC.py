@@ -20,7 +20,7 @@ def ind_quant_table_full(repository_path, ionization_mode, file_extention, data_
         isdb_path = os.path.join(path, directory, ionization_mode+'/isdb/', directory +'_isdb_reweighted_' + ionization_mode+ '.tsv')
         sirius_path = os.path.join(path, directory, ionization_mode, directory + '_WORKSPACE_SIRIUS', 'compound_identifications_adducts.tsv')
         try:
-            df =pd.read_csv(quant_path, sep=',')
+            df = pd.read_csv(quant_path, sep=',')
             dfs = pd.read_csv(sirius_path, sep='\t')
             dfi = pd.read_csv(isdb_path, sep='\t')
         except FileNotFoundError:
@@ -355,13 +355,13 @@ def annotation_component(repository_path, ionization_mode, file_extention, inten
 
     AC = pd.DataFrame({filename_header: files,'initial_features': original_feature_count, 'features_after_filtering' : feature_count_filtered, 'Annot_features_after_filtering': annotated_features_count })
     AC['AC'] = (AC['features_after_filtering'] - AC['Annot_features_after_filtering'])/AC['features_after_filtering'] # % of features unannotated
-    AC['AC'] = AC['AC'].round(decimals = 1)
+    AC['AC'] = AC['AC'].round(decimals = 2)
     
     #add metadata information 
     AC = pd.merge(metadata_df[[filename_header, species_column, genus_column, family_column, sppart_column]], AC, how= 'right', on= filename_header)
     #save table 
     pathout = os.path.join(path, 'results/')
     os.makedirs(pathout, exist_ok=True)
-    pathout = os.path.join(pathout, 'Annotation_component_results.tsv')
+    pathout = os.path.join(pathout, 'Annotation_component_results' +'_'+ ionization_mode + '.tsv')
     AC.to_csv(pathout, sep ='\t')
     return AC
