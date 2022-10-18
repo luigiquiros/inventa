@@ -287,7 +287,8 @@ def annotation_component(repository_path, ionization_mode, file_extention, inten
         quant_annotations_path = os.path.join(path, path +'/results/', directory + '_'+ionization_mode + '_quant_annotations.tsv')
         
         #get the filename column associated to each quant table
-        column = os.path.join(path, directory, directory + '.mzXML')
+        #column = os.path.join(path, directory, directory + '.mzML')
+        column = os.path.join(path, directory, directory + '_'+ ionization_mode +  file_extention)
         column = column.rsplit('/',1)[1]
 
         try:
