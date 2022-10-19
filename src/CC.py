@@ -129,7 +129,7 @@ def class_component(quantitative_data_filename, data_process_origin, canopus_npc
         df['New_CC_in_sp'] = df['New_CC_in_sp'].fillna('nothing in DB')
         df['New_CC_in_genus'] = df['New_CC_in_genus'].fillna('nothing in DB')
 
-        #df.to_csv('../data_out/CC_results.tsv', sep='\t')
+        df.to_csv('../data_out/CC_results.tsv', sep='\t')
         return df
     else:
         print ('No search was done because the Class component is not going to be calculated')

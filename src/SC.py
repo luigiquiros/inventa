@@ -32,6 +32,7 @@ def similarity_component(df, SC_component, filename_header):
         None
     """
     if SC_component == True:
+        df.reset_index(inplace = True)
         df1 = df.copy()
         df1.set_index(filename_header, inplace=True)
         df2 = df.copy()

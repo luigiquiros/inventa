@@ -66,12 +66,11 @@ def literature_component(LC_component, metadata, filename_header, species_column
         df['LC'] = df['LC'].apply(lambda x : x if x > 0 else 0)
         df['LC'] = df['LC'].round(decimals = 2)
         
-        df.to_csv('../data_out/FC_results.tsv', sep='\t')
+        df.to_csv('../data_out/LC_results.tsv', sep='\t')
     
         return df
     else:
         print('Literature component not calculated')
-        
 
 #literature component
 def literature_component_ind(LC_component, repository_path, metadata, filename_header, species_column, genus_column, family_column, 

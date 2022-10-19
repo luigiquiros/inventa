@@ -19,7 +19,7 @@ def features_filter(df, min_threshold):
     df[df<min_threshold] = 0 #change all the values lower than x for 0 in the dataframe
     #once the data was filtered, the table is normalized sample-wise
     df = df.apply(lambda x: x/x.max(), axis=0)
-    df.to_csv('../data_out/filtered_quant_df.tsv', sep='\t')
+    #df.to_csv('../data_out/filtered_quant_df.tsv', sep='\t')
     return df
 
 def quantile_filter(df, quantile_threshold):
@@ -46,7 +46,7 @@ def full_data(df1, df2, filename_header):
     df2.reset_index(inplace=True)
     df2.set_index(filename_header, inplace=True)
     df = pd.merge(df1, df2, how='outer', on=filename_header)
-    df.to_csv('../data_out/full_metadata.tsv', sep='\t')
+    #df.to_csv('../data_out/full_metadata.tsv', sep='\t')
     return df
 
 def drop_samples_based_on_string(df,filename,list_of_strings_for_QC_Blank_filter,column):
@@ -111,64 +111,93 @@ def reduce_df(full_df, metadata_df, col_id_unique):
     df= full_df
     df.set_index(col_id_unique, inplace=True)
     df = df.iloc[:,len(metadata_df.columns)-1:]
-    df.to_csv('../data_out/reduced_df.tsv', sep='\t')
+    #df.to_csv('../data_out/reduced_df.tsv', sep='\t')
     return df
 
 
-def priority_rank(FC, LC, SC, CC, LC_component, SC_component, CC_component, w1, w2, w3, w4, filename_header):
+def priority_score(filename_header, species_column, genus_column, family_column, sppart_column, w1, w2, w3, w4):
 
+    repository_path = '../data_out/'
+    path = os.path.normpath(repository_path)
+    samples_dir = [directory for directory in os.listdir(path)]
+
+    for directory in tqdm(samples_dir):
+
+        FC_path = os.path.join(path + '/FC_results'+ '.tsv')
+        LC_path = os.path.join(path + '/LC_results'+ '.tsv')
+        SC_path = os.path.join(path + '/SC_results'+ '.tsv')
+        CC_path = os.path.join(path + '/CC_results'+ '.tsv')
+        metadata_path = os.path.join(path +'/metadata_df.tsv')
+
+        try:
+            FC = pd.read_csv(FC_path, sep='\t')
+            LC = pd.read_csv(LC_path, sep='\t')
+            SC = pd.read_csv(SC_path, sep='\t')
+            CC = pd.read_csv(CC_path, sep='\t')
+            metadata_df= pd.read_csv(metadata_path, sep='\t')
+            
+        except FileNotFoundError:
+            continue
+        except NotADirectoryError:
+            continue
+
+
+    if os.path.isfile(FC_path):
     
-    if LC_component == True: 
+            df = pd.read_csv(FC_path, sep='\t')
+            df.drop('Unnamed: 0', axis=1, inplace=True)
+            df['PS'] = w1*df['FC']
 
-    #df2 = pd.read_csv('../data_out/LC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-        df =pd.merge(
-                left=FC,
+    else:
+            metadata_df = pd.read_csv(metadata_path, usecols= [filename_header, family_column, genus_column, species_column, sppart_column], sep='\t')
+            df = metadata_df.copy()
+
+    if os.path.isfile(LC_path):
+            
+            LC = pd.read_csv(LC_path, sep='\t')
+            LC.drop('Unnamed: 0', axis=1, inplace=True)
+            df =pd.merge(
+                left=df,
                 right=LC[[filename_header, 'LC', 'Reported_comp_Species', 'Reported_comp_Genus', 'Reported_comp_Family']], 
                 how='left', 
                 on=filename_header)
+            df['PS'] = w1*df['FC'] + w2*df['LC']
     else:
         df
 
-    if SC_component == True:
-        #df3 = pd.read_csv('../data_out/SC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
+    if os.path.isfile(CC_path):
+        CC = pd.read_csv(CC_path, sep='\t')
+        CC.drop('Unnamed: 0', axis=1, inplace=True)
+        df =pd.merge(
+                        left=df,
+                        right=CC[[filename_header,'CCs','CCg', 'CC', 'New_CC_in_sp', 'New_CC_in_genus']], 
+                        how='left', 
+                        on =filename_header)
+        df['PS'] = w1*df['FC'] + w2*df['LC'] + w3*df['CC']
+    else:
+        df
+    
+    if os.path.isfile(SC_path):
+        SC = pd.read_csv(SC_path, sep='\t')
+        SC.drop('Unnamed: 0', axis=1, inplace=True)
         df =pd.merge(
                     left=df,
                     right=SC[[filename_header, 'SC']], 
                     how='left', 
                     on=filename_header)
+        df['PS'] = w1*df['FC'] + w2*df['LC'] + w3*df['CC'] + w4*df['SC']
     else:
         df
-
-    if CC_component == True:
-        #df4 = pd.read_csv('../data_out/CC_results.tsv', sep='\t').drop(['Unnamed: 0'],axis=1)
-        df =pd.merge( df, right=CC[[filename_header,'CCs','CCg', 'CC', 'New_CC_in_sp', 'New_CC_in_genus']], 
-                        how='left', 
-                        on =filename_header)
-    else: 
-        df
-
-    def priority(df):
-        df['PS'] = w1*df['FC']
+    #df = df[[filename_header, 'organism_species', 'organism_genus', 'organism_family',
+    #   'organism_sppart', 'initial_features', 'features_after_filtering',
+    #  'Annot_features_after_filtering', 'AC', 'LC',
+    #  'Reported_comp_Species', 'Reported_comp_Genus', 'Reported_comp_Family',
+    # 'CCs', 'CCg', 'CC', 'New_CC_in_sp', 'New_CC_in_genus', 'SC','PS']]
     
-        if LC_component == True: 
-            df['PS'] = w1*df['FC'] + w2*df['LC']
-        else:
-            df
-
-        if SC_component == True:
-            df['PS'] = w1*df['FC'] + w2*df['LC'] + w3*df['SC']
-        else:
-            df
-
-        if CC_component == True: 
-            df['PS'] = w1*df['FC'] + w2*df['LC'] + w3*df['SC'] + w4*df['CC']
-        else: 
-            df
-        return df
-
-    df = priority(df)
-    df.dropna(inplace=True)
-    df.to_csv('../data_out/Priority_rank_results.tsv', sep='\t')
+    pathout = os.path.join(path)
+    os.makedirs(pathout, exist_ok=True)
+    pathout = os.path.join(pathout,'/Priority_score_results.tsv')
+    df.to_csv(pathout, sep ='\t')
     return df
 
 

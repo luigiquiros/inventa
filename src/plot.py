@@ -374,192 +374,196 @@ def umap_2d(matrix, data, metadata, filename_header):
     fig.write_html("../data_out/UMAP_2D.html")     
     fig.show()
     
-def pcoa_umap_2d(matrix, data, metric, filename_header):
-    fig = make_subplots(rows=2, cols=3,
-                    shared_xaxes=False,
-                    vertical_spacing=0.12,
-                    subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO aligned (OCSVM)', 'UMAP MEMO aligned (IF)', 'UMAP MEMO aligned (LOF)', 'UMAP MEMO aligned (OCSVM)')
-    )
+def pcoa_umap_2d(SC_component, matrix, data, metric, filename_header):
+    if SC_component == True:
 
-    colors = 'YlOrRd_r'
-    #prepare table and calculate pcoa: 
-    matrix= matrix.iloc[:, 1:]
-    dist_matrix = sp.spatial.distance.pdist(matrix, metric)
-    pcoa_results = pcoa(dist_matrix)
+        fig = make_subplots(rows=2, cols=3,
+                        shared_xaxes=False,
+                        vertical_spacing=0.12,
+                        subplot_titles=('PCoA MEMO aligned (IF)', 'PCoA MEMO aligned (LOF)', 'PCoA MEMO aligned (OCSVM)', 'UMAP MEMO aligned (IF)', 'UMAP MEMO aligned (LOF)', 'UMAP MEMO aligned (OCSVM)')
+        )
 
-    exp_var_pc1 = round(100*pcoa_results.proportion_explained[0], 1)
-    exp_var_pc2 = round(100*pcoa_results.proportion_explained[1], 1)
-    
+        colors = 'YlOrRd_r'
+        #prepare table and calculate pcoa: 
+        matrix= matrix.iloc[:, 1:]
+        dist_matrix = sp.spatial.distance.pdist(matrix, metric)
+        pcoa_results = pcoa(dist_matrix)
 
-    # first plot: Isolation Forest 
-    fig.add_trace(
-        go.Scatter(
-            opacity=0.85,
-            mode='markers',
-            x=pcoa_results.samples['PC1'], y=pcoa_results.samples['PC2'],
-            marker=dict(
-                    size = 5,
-                    line_width=0.5,
-                    line_color ='black',
-                    color=data['anomaly_IF'], 
-                    colorscale=colors,
-                    showscale=False,
-                ),
-            showlegend=False,
-            #legendgrouptitle_text="Anomaly",
-            hovertext=data[filename_header]),
-            row=1, col=1)
+        exp_var_pc1 = round(100*pcoa_results.proportion_explained[0], 1)
+        exp_var_pc2 = round(100*pcoa_results.proportion_explained[1], 1)
+        
 
-    # Secon plot: Local factor outlier
-    fig.add_trace(
-        go.Scatter(
-            opacity=0.85,
-            mode='markers',
-            x=pcoa_results.samples['PC1'], y=pcoa_results.samples['PC2'],
-            marker=dict(
-                    size = 5,
-                    line_width=0.5,
-                    line_color ='black',
-                    color=data['anomaly_LOF'], 
-                    colorscale=colors,
-                    showscale=False,
-                ),
-            #name='Anomaly [-1]',
-            #legendgrouptitle_text="normal",
-            showlegend=False,
-            hovertext=data[filename_header]),
-            row=1, col=2)
+        # first plot: Isolation Forest 
+        fig.add_trace(
+            go.Scatter(
+                opacity=0.85,
+                mode='markers',
+                x=pcoa_results.samples['PC1'], y=pcoa_results.samples['PC2'],
+                marker=dict(
+                        size = 5,
+                        line_width=0.5,
+                        line_color ='black',
+                        color=data['anomaly_IF'], 
+                        colorscale=colors,
+                        showscale=False,
+                    ),
+                showlegend=False,
+                #legendgrouptitle_text="Anomaly",
+                hovertext=data[filename_header]),
+                row=1, col=1)
 
-    # Third plot: One Class Suport Vector machine
-    fig.add_trace(
-        go.Scatter(
-            opacity=0.85,
-            mode='markers',
-            x=pcoa_results.samples['PC1'], y=pcoa_results.samples['PC2'],
-            marker=dict(
-                    size = 5,
-                    line_width=0.5,
-                    line_color ='black',
-                    color=data['anomaly_OCSVM'], 
-                    colorscale=colors,
-                    showscale=False
-                ),
-            #legendgrouptitle_text="Anomaly",
-            showlegend=False,
-            hovertext=data[filename_header]),
-            row=1, col=3)
+        # Secon plot: Local factor outlier
+        fig.add_trace(
+            go.Scatter(
+                opacity=0.85,
+                mode='markers',
+                x=pcoa_results.samples['PC1'], y=pcoa_results.samples['PC2'],
+                marker=dict(
+                        size = 5,
+                        line_width=0.5,
+                        line_color ='black',
+                        color=data['anomaly_LOF'], 
+                        colorscale=colors,
+                        showscale=False,
+                    ),
+                #name='Anomaly [-1]',
+                #legendgrouptitle_text="normal",
+                showlegend=False,
+                hovertext=data[filename_header]),
+                row=1, col=2)
 
-    fig.update_layout(height=1200, width=1500, template = 'simple_white', title_text="Multiple outlier detection results")
-    
-    # Update xaxis properties
-    fig.update_xaxes(title_text=f"PC1 ({exp_var_pc1} %)", row=1, col=1)
-    fig.update_xaxes(title_text=f"PC1 ({exp_var_pc1} %)", row=1, col=2)
-    fig.update_xaxes(title_text=f"PC1 ({exp_var_pc1} %)", row=1, col=3)
+        # Third plot: One Class Suport Vector machine
+        fig.add_trace(
+            go.Scatter(
+                opacity=0.85,
+                mode='markers',
+                x=pcoa_results.samples['PC1'], y=pcoa_results.samples['PC2'],
+                marker=dict(
+                        size = 5,
+                        line_width=0.5,
+                        line_color ='black',
+                        color=data['anomaly_OCSVM'], 
+                        colorscale=colors,
+                        showscale=False
+                    ),
+                #legendgrouptitle_text="Anomaly",
+                showlegend=False,
+                hovertext=data[filename_header]),
+                row=1, col=3)
 
-    # Update yaxis properties
-    fig.update_yaxes(title_text=f"PC2 ({exp_var_pc2} %)", row=1, col=1)
-    fig.update_yaxes(title_text=f"PC2 ({exp_var_pc2} %)", row=1, col=2)
-    fig.update_yaxes(title_text=f"PC2 ({exp_var_pc2} %)", row=1, col=3)
-    
+        fig.update_layout(height=1200, width=1500, template = 'simple_white', title_text="Multiple outlier detection results")
+        
+        # Update xaxis properties
+        fig.update_xaxes(title_text=f"PC1 ({exp_var_pc1} %)", row=1, col=1)
+        fig.update_xaxes(title_text=f"PC1 ({exp_var_pc1} %)", row=1, col=2)
+        fig.update_xaxes(title_text=f"PC1 ({exp_var_pc1} %)", row=1, col=3)
 
-    # 1. Generate df used for plotting 
+        # Update yaxis properties
+        fig.update_yaxes(title_text=f"PC2 ({exp_var_pc2} %)", row=1, col=1)
+        fig.update_yaxes(title_text=f"PC2 ({exp_var_pc2} %)", row=1, col=2)
+        fig.update_yaxes(title_text=f"PC2 ({exp_var_pc2} %)", row=1, col=3)
+        
 
-    memo_aligned_matrix = matrix.iloc[:, 1:]
-    memo_aligned_matrix = memo_aligned_matrix.div(memo_aligned_matrix.sum(axis=1), axis=0)
+        # 1. Generate df used for plotting 
 
-
-    results_umap = data.copy()
-    results_umap = results_umap.dropna()
-    metric ='MEMO aligned (Bray-Curtis)'
-    matrix = memo_aligned_matrix
-    reducer = umap.UMAP(metric='braycurtis')
-    embedding = reducer.fit_transform(matrix.values)
-    results_umap[metric+'_x'] = embedding[:, 0]
-    results_umap[metric+'_y'] = embedding[:, 1]
+        memo_aligned_matrix = matrix.iloc[:, 1:]
+        memo_aligned_matrix = memo_aligned_matrix.div(memo_aligned_matrix.sum(axis=1), axis=0)
 
 
-    fig.add_trace(
-        go.Scatter(
-            opacity=0.85,
-            mode='markers',
-            x=results_umap[metric+'_x'], y=results_umap[metric+'_y'],
-            marker=dict(
-                    size = 5,
-                    line_width=0.5,
-                    line_color ='black',
-                    color=data['anomaly_IF'], 
-                    colorscale=colors,
-                    showscale=False,
-                ),
-            name='Outlier [-1]',
-            #legendgrouptitle_text="Anomaly",
-            hovertext=results_umap[filename_header]),
-            row=2, col=1)
+        results_umap = data.copy()
+        results_umap = results_umap.dropna()
+        metric ='MEMO aligned (Bray-Curtis)'
+        matrix = memo_aligned_matrix
+        reducer = umap.UMAP(metric='braycurtis')
+        embedding = reducer.fit_transform(matrix.values)
+        results_umap[metric+'_x'] = embedding[:, 0]
+        results_umap[metric+'_y'] = embedding[:, 1]
 
-    # Secon plot: Local factor outlier
-    fig.add_trace(
-        go.Scatter(
-            opacity=0.85,
-            mode='markers',
-            x=results_umap[metric+'_x'], y=results_umap[metric+'_y'],
-            marker=dict(
-                    size = 5,
-                    line_width=0.5,
-                    line_color ='black',
-                    color=data['anomaly_LOF'], 
-                    colorscale=colors,
-                    showscale=False,
-                ),
-                name='Normal [1]',
-            #legendgrouptitle_text="normal",
-            showlegend=True,
-            hovertext=results_umap[filename_header]),
-            row=2, col=2)
 
-    # Third plot: One Class Suport Vector machine
-    fig.add_trace(
-        go.Scatter(
-            opacity=0.85,
-            mode='markers',
-            x=results_umap[metric+'_x'], y=results_umap[metric+'_y'],
-            marker=dict(
-                    size = 5,
-                    line_width=0.5,
-                    line_color ='black',
-                    color=data['anomaly_OCSVM'], 
-                    colorscale=colors,
-                    showscale=False
-                ),
-            legendgrouptitle_text="Anomaly",
-            showlegend=False,
-            hovertext=results_umap[filename_header]),
-            row=2, col=3)
+        fig.add_trace(
+            go.Scatter(
+                opacity=0.85,
+                mode='markers',
+                x=results_umap[metric+'_x'], y=results_umap[metric+'_y'],
+                marker=dict(
+                        size = 5,
+                        line_width=0.5,
+                        line_color ='black',
+                        color=data['anomaly_IF'], 
+                        colorscale=colors,
+                        showscale=False,
+                    ),
+                name='Outlier [-1]',
+                #legendgrouptitle_text="Anomaly",
+                hovertext=results_umap[filename_header]),
+                row=2, col=1)
 
-    fig.update_layout(
+        # Secon plot: Local factor outlier
+        fig.add_trace(
+            go.Scatter(
+                opacity=0.85,
+                mode='markers',
+                x=results_umap[metric+'_x'], y=results_umap[metric+'_y'],
+                marker=dict(
+                        size = 5,
+                        line_width=0.5,
+                        line_color ='black',
+                        color=data['anomaly_LOF'], 
+                        colorscale=colors,
+                        showscale=False,
+                    ),
+                    name='Normal [1]',
+                #legendgrouptitle_text="normal",
+                showlegend=True,
+                hovertext=results_umap[filename_header]),
+                row=2, col=2)
+
+        # Third plot: One Class Suport Vector machine
+        fig.add_trace(
+            go.Scatter(
+                opacity=0.85,
+                mode='markers',
+                x=results_umap[metric+'_x'], y=results_umap[metric+'_y'],
+                marker=dict(
+                        size = 5,
+                        line_width=0.5,
+                        line_color ='black',
+                        color=data['anomaly_OCSVM'], 
+                        colorscale=colors,
+                        showscale=False
+                    ),
+                legendgrouptitle_text="Anomaly",
+                showlegend=False,
+                hovertext=results_umap[filename_header]),
+                row=2, col=3)
+
+        fig.update_layout(
+            font=dict(
+            family="Times New Roman",
+            size=16,
+            color="black")
+        )
+        fig.update_traces(marker=dict(size=10)
+        )
+        fig.update_layout(
+            legend=dict(
+            orientation="h",
+            y= -0.05,
+            x = -0.05,
+            bordercolor="Black",
+            borderwidth=1
+            ),
         font=dict(
-        family="Times New Roman",
-        size=16,
-        color="black")
-    )
-    fig.update_traces(marker=dict(size=10)
-    )
-    fig.update_layout(
-        legend=dict(
-        orientation="h",
-        y= -0.05,
-        x = -0.05,
-        bordercolor="Black",
-        borderwidth=1
-        ),
-    font=dict(
-        family="Times New Roman",
-        size=16,
-        color="black"
-        )    
-    )
-    fig.update_annotations(font_size=20)
-    fig.write_html("../data_out/PCoA_UMAP_2D.html")     
-    fig.show()
+            family="Times New Roman",
+            size=16,
+            color="black"
+            )    
+        )
+        fig.update_annotations(font_size=20)
+        fig.write_html("../data_out/PCoA_UMAP_2D.html")     
+        fig.show()
+    else: 
+        print('Can not plot it because Similarity component not calculated')
 
 def hist_to_plot(sample, quantitative_data_filename, annotation_df, reduced_df, min_specificity, annotation_preference):
 
