@@ -90,7 +90,7 @@ def correlation_groups(quantitative_data_filename, use_ion_dentity):
 def get_gnps_annotations(df):
     #retrive the clusterinfosummary file from the gnps jod downloaded before
     
-    for filepath in pathlib.Path("../data/all_annotations/clusterinfo_summary/").glob('**/*'):
+    for filepath in pathlib.Path("../data/all_annotation/clusterinfo_summary/").glob('**/*'):
         filepath.absolute()
     
     df_network = pd.read_csv(filepath.absolute(),

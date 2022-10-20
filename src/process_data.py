@@ -196,46 +196,11 @@ def priority_score(filename_header, species_column, genus_column, family_column,
     
     pathout = os.path.join(path)
     os.makedirs(pathout, exist_ok=True)
-    pathout = os.path.join(pathout,'/Priority_score_results.tsv')
+    pathout = os.path.join(pathout,'Priority_score_results.tsv')
     df.to_csv(pathout, sep ='\t')
     return df
 
 
-def Cyt_format(col_id_unique): 
-
-    #load red dataframe 
-    df = pd.read_csv('../data_out/reduced_df.tsv', sep='\t')#.drop(['Unnamed: 0'],axis=1)
-    df.set_index(col_id_unique, inplace=True)
-    df = df.transpose()
-
-    #normalize values row-wise 
-    norm = df.copy()
-    norm['Total'] = norm.sum(axis=1)
-    norm = norm.drop(norm[norm.Total == 0].index)
-    norm = norm.div(norm.Total, axis=0)
-    norm = norm*100
-    norm.drop('Total', axis=1, inplace=True)
-    norm.head()
-    df = norm.transpose()
-
-    #load the final PR values 
-    PR = pd.read_csv('../data_out/Priority_rank_results.tsv', sep='\t', 
-                        usecols =[col_id_unique, 'PR'])#.drop(['Unnamed: 0'],axis=1)
-
-    #merge both df 
-    df2 = pd.merge(df, PR, how ='left', on = 'ATTRIBUTE_Sppart')
-    df2.set_index(col_id_unique, inplace=True)
-    df3 = df2.multiply(df2.PR, axis=0)
-    df3.drop('PR', axis=1, inplace=True)
-    df3.loc['Score_Total']= df3.sum()
-
-    #recover the usuful info 
-    df = df3.transpose()
-    df.reset_index(inplace=True)
-    df = df[['index','Score_Total']]
-    df = df.astype(int)
-    df.to_csv('../data_out/PR_cyto_visualization.tsv', sep='\t')
-    return df
 
 def selection_changed_FC(selection):
     return FC.iloc[selection]
@@ -339,3 +304,43 @@ def priority_score_ind(repository_path, filename_header, ionization_mode, specie
 
 def selection_changed_AC(selection):
     return AC.iloc[selection]
+
+def Cyt_format(reduced_df, PS, col_id_unique):
+    #load red dataframe 
+    df = reduced_df.transpose()
+    df.reset_index(inplace=True)
+    df.set_index(col_id_unique, inplace=True)
+    df = df.transpose()
+    df.head(1)
+
+    #normalize values row-wise 
+    norm = df.copy()
+    norm['Total'] = norm.sum(axis=1)
+    norm = norm.drop(norm[norm.Total == 0].index)
+    norm = norm.div(norm.Total, axis=0)
+    norm = norm*100
+    norm.drop('Total', axis=1, inplace=True)
+    norm.head()
+    df = norm.transpose()
+
+    #load the final PR values 
+    PS = PS[[col_id_unique, 'PS']]
+    #merge both df 
+    df = pd.merge(df, PS, how ='left', on = col_id_unique)
+    df.set_index(col_id_unique, inplace=True)
+
+    #get the bioscore computations
+    df = df.multiply(df.PS, axis=0)
+    df.drop('PS', axis=1, inplace=True)
+    df.loc['Score_Total']= df.sum()
+
+    #recover the usuful info 
+    df = df.transpose()
+    df.reset_index(inplace=True)
+    df = df[['index','Score_Total']]
+    df.rename(columns ={'index':'shared name'}, inplace=True)
+    #df.set_index('shared name', inplace=True)
+    #df.drop(col_id_unique, axis=1, inplace=True)
+    df = df.astype(int)
+    df.to_csv('../data_out/PS_cytoscape_visualization.tsv', sep='\t')
+    return df
