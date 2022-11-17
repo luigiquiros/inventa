@@ -1,11 +1,12 @@
 # INVENTA: Prioritization of natural extracts for chemical originality discovery
 
-## PREPRINT AVAILABLE AT:
-## https://www.biorxiv.org/content/10.1101/2022.08.25.505324v1
+## PUBLICATION AVAILABLE AT:
+## https://www.frontiersin.org/articles/10.3389/fmolb.2022.1028334/full?utm_source=F-NTF&utm_medium=EMLX&utm_campaign=PRD_FEOPS_20170000_ARTICLE
 
 ## Description
 
-Inventa calculates multiple scores that estimate the chemical novelty potential of the natural extracts. It has the potential to accelerate the discovery of new natural produts.
+Inventa calculates multiple scores that estimate the structural novelty potential of the natural extracts. It has the potential to accelerate the discovery of new natural produts.
+
 The rank comes from the addition of four individual components:
 
 The **Feature Component (FC)** is a ratio of the number of specific non-annotated features over the total number of features of each extract. For example, an FC of ‘0.6’ implies that 60% of the total features in a given extract are specific within the extract set and do not present structural annotations.
