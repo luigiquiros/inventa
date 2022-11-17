@@ -1,7 +1,6 @@
 # INVENTA: Prioritization of natural extracts for chemical originality discovery
 
-## PUBLICATION AVAILABLE AT:
-## https://www.frontiersin.org/articles/10.3389/fmolb.2022.1028334/full?utm_source=F-NTF&utm_medium=EMLX&utm_campaign=PRD_FEOPS_20170000_ARTICLE
+## [**PUBLICATION AVAILABLE here**](https://www.frontiersin.org/articles/10.3389/fmolb.2022.1028334/full?utm_source=F-NTF&utm_medium=EMLX&utm_campaign=PRD_FEOPS_20170000_ARTICLE)
 
 ## Description
 
