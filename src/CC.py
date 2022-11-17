@@ -54,9 +54,6 @@ def class_component(quantitative_data_filename, data_process_origin, canopus_npc
         df = df.to_frame()
         df[['filename']] = pd.DataFrame(df[0].values.tolist(),index= df.index)
         df = df.drop([0], axis=1)
-        #df.reset_index(inplace=True)
-        #df['filename'] = pd.to_numeric(df['filen'],errors = 'coerce')
-        #df['row ID'] = df['row ID'].fillna(0).astype(int)
         df.reset_index(inplace=True)
 
         #merged with the information from Canopus
@@ -77,7 +74,7 @@ def class_component(quantitative_data_filename, data_process_origin, canopus_npc
         df.drop ('recurrence', axis=1, inplace=True)
 
         #add the species for each filename    
-        df = pd.merge(metadata_df[[filename_header, species_column]], df, how='left', left_on=filename_header, right_on=filename_header).dropna()
+        df = pd.merge(metadata_df[[filename_header, species_column]], df, how='left', left_on=filename_header, right_on=filename_header)
         
         ## Retrieve classes reported in Lotus
         LotusDB = pd.read_csv('../data_loc/LotusDB_inhouse_metadata.csv',sep=',').dropna()

@@ -290,8 +290,8 @@ def priority_score_ind(repository_path, filename_header, ionization_mode, specie
         df['PS'] = w1*df['AC'] + w2*df['LC'] + w3*df['CC'] + w4*df['SC']
     else:
         df
-    df = df[['sample_id', 'organism_species', 'organism_genus', 'organism_family',
-       'organism_sppart', 'initial_features', 'features_after_filtering',
+    df = df[[filename_header, species_column, genus_column, family_column,
+       sppart_column, 'initial_features', 'features_after_filtering',
        'Annot_features_after_filtering', 'AC', 'LC',
        'Reported_comp_Species', 'Reported_comp_Genus', 'Reported_comp_Family',
        'CCs', 'CCg', 'CC', 'New_CC_in_sp', 'New_CC_in_genus', 'SC','PS']]
