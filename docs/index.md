@@ -5,8 +5,10 @@ layout: default
 ![Graphical abstract](/assets/img/graphical_abstract.png)
 
 
+## [**Check the publication here**](https://www.frontiersin.org/articles/10.3389/fmolb.2022.1028334/full?utm_source=F-NTF&utm_medium=EMLX&utm_campaign=PRD_FEOPS_20170000_ARTICLE) 
+
+
 ## Description 
-[**Publication**](https://www.frontiersin.org/articles/10.3389/fmolb.2022.1028334/full?utm_source=F-NTF&utm_medium=EMLX&utm_campaign=PRD_FEOPS_20170000_ARTICLE) 
 
 Inventa calculates multiple scores that estimate the structural novelty potential of the natural extracts. It has the potential to accelerate the discovery of new natural produts.
 
