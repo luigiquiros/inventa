@@ -4,8 +4,7 @@ layout: default
 >  Graphical abstract
 ![Graphical abstract](/assets/img/graphical_abstract.png)
 
-
-## [**Check the publication here**](https://www.frontiersin.org/articles/10.3389/fmolb.2022.1028334/full?utm_source=F-NTF&utm_medium=EMLX&utm_campaign=PRD_FEOPS_20170000_ARTICLE) 
+## [**Please check the publication here**](https://www.frontiersin.org/articles/10.3389/fmolb.2022.1028334/full?utm_source=F-NTF&utm_medium=EMLX&utm_campaign=PRD_FEOPS_20170000_ARTICLE) 
 
 
 ## Description 
